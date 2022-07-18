@@ -123,6 +123,8 @@ client.on('message', async (message) => {
             //     connection.play(await ytdl(url), {type: 'opus'});
             // }
             play();
+        } else {
+            message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
     }
 });
