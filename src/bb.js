@@ -13,7 +13,7 @@ client.on('ready', () => {
 client.on("guildCreate", guild => {
     // This event triggers when the bot joins a guild.
     console.log(`New world joined it seems: ${guild.name} (id: ${guild.id}). This world has ${guild.memberCount} ***plebian*** members! ||Seems like it is up to me to start some fun||`);
-  });
+});
 
 //message.reply: replies to user
 //message.channel.send: sends message to channel
@@ -44,11 +44,9 @@ client.on('message', async (message) => {
                 return message.reply('Please provide an ID lmao. :D');
             }
         }
-
         function getMember(){
             return message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         }
-
         if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
             checkPermission();
             const member = getMember();
