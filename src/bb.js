@@ -123,9 +123,14 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'Qwalter'){
             message.channel.send('That man... is not human in more than one way... He.. Will.. Pay.. My family and friends have suffered too much due to this man\'s greed.');
         } else if(CMD_NAME === 'FastLoiter'){
-            message.channel.send('The goodest of boys. Nobody... comes... close. I am just');
+            message.channel.send('The goodest of boys. Nobody... comes... close.');
+        } else if(CMD_NAME === 'Secret'){
+            const member = getMember();
+            //Send the member a dm using the arg
+            member.send(args[1]);
         } else if(CMD_NAME === 'mute'){
             checkPermission();
+            const member = getMember();
             if(member){
                 member.edit({mute: true});
             } else {
@@ -133,6 +138,7 @@ client.on('message', async (message) => {
             }
         } else if(CMD_NAME === 'deafen'){
             checkPermission();
+            const member = getMember();
             if(member){
                 member.edit({deaf: true});
             } else {
@@ -140,6 +146,7 @@ client.on('message', async (message) => {
             }
         } else if(CMD_NAME === 'play'){
             checkArgs();
+            const member = getMember();
             if(!message.member.voice.channel){
                 message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes!: " + message.author.username);
             }
