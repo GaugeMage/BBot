@@ -49,7 +49,9 @@ client.on('message', async (message) => {
             checkPermission();
             const member = message.guild.members.cache.get(args[0]);
 
-            console.log(message.mentions.members.first());
+            const member2 = message.mentions.members.first();
+
+            console.log(member2.user.tag);
 
             console.log(member);
             if(member){
