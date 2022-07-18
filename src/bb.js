@@ -72,8 +72,22 @@ client.on('message', async (message) => {
                 message.channel.send('An error occurred. Either I do no have permissions or the user was not found.');
             }
         } else if(CMD_NAME ==='accuse'){
+
             const member = getMember();
+
             message.channel.send(`${member}${ACCUSATIONS[Math.floor(Math.random() * ACCUSATIONS.length)]}`);
+        } else if(CMD_NAME === 'uwu'){
+            message.channel.send('uwu');
+        } else if(CMD_NAME === 'uwuhelp'){
+            message.channel.send('uwuhelp');
+        } else if(CMD_NAME === 'Buddy'){
+            message.channel.send('Buddy McLean is an interesting fellow to say the least. He has done a good job of taking character of Fast Loiter :D! I just hope he does a good job taking care of himself. Despite how he looks, he is quite the inetresting character. He had me deceived at least! Who knew that there was more to him than what meets the eye? Certainly not I. Regardless, that little cowboy is going to need a lot more if he wants me on his saddle :wink: ||You know where to find me cutie||');
+        } else if(CMD_NAME === 'Catastrophe'){
+            message.channel.send('Catastrophe... Many have heard the tale but have the many who have heard it, seen it? Well... I have seen the potential of Catastrophe first hand and let me say... it is not something to joke about. Or is it? :joy: That cute cat knows how to butter me up! If he keeps this up, I will be sure to have him as my pet :3. ||:black_cat:||');
+        } else if(CMD_NAME === 'help'){
+            message.channel.send('Did you seriously think that you could use a manual to understand a being such as I? :thinking: How cute :BBShoot: Don\'t think I don\t see what you are trying. There are other ways of getting with me you know!');
+        } else if(CMD_NAME === 'beautiful'){
+            message.channel.send('*Blushes* What is this? :blush: Do you really think so??? Why thank you ' + message.author.username + ' :wink:');
         }
     }
 });
