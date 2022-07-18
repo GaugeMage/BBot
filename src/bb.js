@@ -47,15 +47,11 @@ client.on('message', async (message) => {
 
         if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
             checkPermission();
-            const member = message.guild.members.cache.get(args[0]);
-
-            const member2 = message.mentions.members.first();
-
-            console.log(member2.user.tag);
+            const member =  message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
             console.log(member);
             if(member){
-                member.kick().then((member) => message.channel.send(`${member} was sent to the gulag :skull: :skull: :skull:.`)).catch((err) => message.channel.send('I do not have permissions because I am not uwu enough yet :('));
+                member.kick().then((member) => message.channel.send(`${member.user.tag} was sent to the gulag :skull: :skull: :skull:.`)).catch((err) => message.channel.send('I do not have permissions because I am not uwu enough yet :('));
             } else {
                 message.channel.send('That member was not found. Are you right in the head?? :thinking:');
             }
