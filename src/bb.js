@@ -45,9 +45,13 @@ client.on('message', async (message) => {
             }
         }
 
+        function getMember(){
+            return message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+        }
+
         if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
             checkPermission();
-            const member =  message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+            const member = getMember();
 
             console.log(member);
             if(member){
@@ -57,7 +61,7 @@ client.on('message', async (message) => {
             }
         } else if(CMD_NAME === 'ban' || CMD_NAME === 'uwuban'){
             checkPermission();
-            const member = message.guild.members.cache.get(args[0]);
+            const member = getMember();
 
             console.log(member);
             try {
@@ -68,7 +72,7 @@ client.on('message', async (message) => {
                 message.channel.send('An error occurred. Either I do no have permissions or the user was not found.');
             }
         } else if(CMD_NAME ==='accuse'){
-            const member = message.guild.members.cache.get(args[0]);
+            const member = getMember();
             message.channel.send(`${member}${ACCUSATIONS[Math.floor(Math.random() * ACCUSATIONS.length)]}`);
         }
     }
