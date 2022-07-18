@@ -96,6 +96,14 @@ client.on('message', async (message) => {
             message.channel.send('Sir Gay? Oh... that person... I am not a fan... I will say that much... ||little bitch||');
         } else if(CMD_NAME === "Grey"){
             message.channel.send("Grey... How about we switch the topic... That ***boy*** is none of my business... Talk to Bob about him or maybe even ||gac (whoever that is) :wink:||");
+        } else if(CMD_NAME === "Jordy"){
+            message.channel.send("The Wings of Icarus have only just begun to be developed. I am not sure if I will be able to fly in the future. ||I am not sure if I will be able to fly in the future or even to the moon.||");
+        } else if(CMD_NAME === "William"){
+            message.channel.send("Will... please... come back... I lo-... *sniffle*");
+        } else if(CMD_NAME === "GAC"){
+            message.channel.send("Oooo my bestie??? I hope she comes to visit me soon. You would love her!");
+        } else if(CMD_NAME === "CPC"){
+            message.channel.send("Stop...");
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             if(member){
