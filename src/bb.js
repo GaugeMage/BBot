@@ -4,7 +4,7 @@ const {Client} = require('discord.js');
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
-const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe"];
+const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
@@ -62,6 +62,9 @@ client.on('message', async (message) => {
                 console.log(err);
                 message.channel.send('An error occurred. Either I do no have permissions or the user was not found.');
             }
+        } else if(CMD_NAME ==='accuse'){
+            const member = message.guild.members.cache.get(args[0]);
+            message.channel.send(`${member}${ACCUSATIONS[Math.floor(Math.random() * ACCUSATIONS.length)]}`);
         }
     }
 });
