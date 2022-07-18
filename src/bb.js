@@ -129,7 +129,7 @@ client.on('message', async (message) => {
             //Turn the rest of the args into 1 string
             let temp = "";
             for(let i = 1; i < args.length; i++){
-                temp += args[i];
+                temp += args[i] + " ";
             }
 
             //Send the member a dm using the arg
