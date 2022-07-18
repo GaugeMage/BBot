@@ -10,6 +10,11 @@ client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
 });
 
+client.on("guildCreate", guild => {
+    // This event triggers when the bot joins a guild.
+    console.log(`New world joined it seems: ${guild.name} (id: ${guild.id}). This world has ${guild.memberCount} ***plebian*** members! ||Seems like it is up to me to start some fun||`);
+  });
+
 //message.reply: replies to user
 //message.channel.send: sends message to channel
 client.on('message', async (message) => {
@@ -43,6 +48,8 @@ client.on('message', async (message) => {
         if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
             checkPermission();
             const member = message.guild.members.cache.get(args[0]);
+
+            console.log(message.mentions.members.first());
 
             console.log(member);
             if(member){
