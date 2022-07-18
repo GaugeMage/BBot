@@ -106,7 +106,8 @@ client.on('message', async (message) => {
             message.channel.send("Stop...");
         } else if(CMD_NAME === "NNN"){
             message.channel.send("I already talked about.... ***him*** in another one of these... commands");
-        }
+        } else if(CMD_NAME === "88"){
+            message.channel.send("The perfect number sequence!");
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             if(member){
