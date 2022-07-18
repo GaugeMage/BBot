@@ -108,6 +108,22 @@ client.on('message', async (message) => {
             message.channel.send("I already talked about.... ***him*** in another one of these... commands");
         } else if(CMD_NAME === "88"){
             message.channel.send("The perfect number sequence!");
+        } else if(CMD_NAME === "Johnny"){
+            message.channel.send("My old teacher? What about him?");
+        } else if(CMD_NAME === "Garnet"){
+            message.channel.send("Oh? The Velvet Thunder? In her prime she was an amazing warrior.");
+        } else if(CMD_NAME === "Joy"){
+            message.channel.send('That ***unbridled*** passion of hers is what makes her so special. I hope she keeps onto that as she does, her friends');
+        } else if(CMD_NAME === "Jolene"){
+            message.channel.send('I watched her grow up without a father and due to that nature, she has become one of the strongest people I have ever met. I hope she does not lose her mind.');
+        } else if(CMD_NAME === 'Lisa'){
+            message.channel.send('Don\'t mention her name... That... witch... is... a... baka...');
+        } else if(CMD_NAME === 'Wilford'){
+            message.channel.send('He makes some damn good food :pizza:');
+        } else if(CMD_NAME === 'Qwalter'){
+            message.channel.send('That man... is not human in more than one way... He.. Will.. Pay.. My family and friends have suffered too much due to this man\'s greed.');
+        } else if(CMD_NAME === 'FastLoiter'){
+            message.channel.send('The goodest of boys. Nobody... comes... close. I am just');
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             if(member){
