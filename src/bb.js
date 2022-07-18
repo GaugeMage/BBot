@@ -134,6 +134,7 @@ client.on('message', async (message) => {
 
             //Send the member a dm using the arg
             member.send(temp);
+            console.log(`Sent ${member.user.username} a DM with the message: ${temp}`);
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             const member = getMember();
