@@ -34,14 +34,15 @@ client.on('message', async (message) => {
             }
             checkArgs();
         }
-
-        if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
-            checkPermission();
+        function checkArgs(){
             if(args.length === 0){
                 return message.reply('Please provide an ID lmao. :D');
             }
+        }
+
+        if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
+            checkPermission();
             const member = message.guild.members.cache.get(args[0]);
-            
 
             console.log(member);
             if(member){
@@ -51,9 +52,6 @@ client.on('message', async (message) => {
             }
         } else if(CMD_NAME === 'ban' || CMD_NAME === 'uwuban'){
             checkPermission();
-            if(args.length === 0){
-                return message.reply('Please provide an ID lmao. :D');
-            }
             const member = message.guild.members.cache.get(args[0]);
 
             console.log(member);
