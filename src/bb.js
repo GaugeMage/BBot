@@ -96,7 +96,10 @@ client.on('message', async (message) => {
             message.channel.send('Oh? That living contradiction? Despite his contradictory powers and features, I believe there is a simple person underneath that *facade* of his. :smirk: ||I am not sure if that guy knows what he is in for when he decided to get himself involved with the JoJos||');
         } else if(CMD_NAME === 'Sirgay'){
             message.channel.send('Sir Gay? Oh... that person... I am not a fan... I will say that much... ||little bitch||');
-        } else if(CMD_NAME === 'mute'){
+        } else if(CMD_NAME === "Grey"){
+            message.channel.send("Grey... How about we switch the topic... That ***boy*** is none of my business... Talk to Bob about him or maybe even ||gac (whoever that is) :wink:||");
+        } 
+        else if(CMD_NAME === 'mute'){
             checkPermission();
             if(member){
                 member.edit({mute: true});
