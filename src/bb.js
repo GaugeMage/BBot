@@ -35,7 +35,7 @@ client.on('message', async (message) => {
         function checkPermission(){
             const permission = String.prototype.concat(String.prototype.toUpperCase(CMD_NAME), '_MEMBERS'); 
             if(!message.member.hasPermission(permission)){
-                return message.reply('You do not have permissions to use that command');
+                return message.reply('You do not have permissions to use that command loser!!! Become god or something... then we can talk.');
             }
             checkArgs();
         }
@@ -66,7 +66,7 @@ client.on('message', async (message) => {
             console.log(member);
             try {
                 const user = await message.guild.members.ban(args[0]);
-                message.channel.send('User was banned successfully');
+                message.channel.send('User was banned successfully. That user was a Baka~ and was really easy to obliterate. They could not handle the power of infinity || or 8||');
             } catch(err){
                 console.log(err);
                 message.channel.send('An error occurred. Either I do no have permissions or the user was not found.');
@@ -96,6 +96,30 @@ client.on('message', async (message) => {
             message.channel.send('Oh? That living contradiction? Despite his contradictory powers and features, I believe there is a simple person underneath that *facade* of his. :smirk: ||I am not sure if that guy knows what he is in for when he decided to get himself involved with the JoJos||');
         } else if(CMD_NAME === 'Sirgay'){
             message.channel.send('Sir Gay? Oh... that person... I am not a fan... I will say that much... ||little bitch||');
+        } else if(CMD_NAME === 'mute'){
+            checkPermission();
+            if(member){
+                member.edit({mute: true});
+            } else {
+                message.channel.send('That member was not found. Maybe you should mute... yourself??');
+            }
+        } else if(CMD_NAME === 'deafen'){
+            checkPermission();
+            if(member){
+                member.edit({deaf: true});
+            } else {
+                message.channel.send('That member was not found LMAO. Get some friends maybe?');
+            }
+        } else if(CMD_NAME === 'play'){
+            checkArgs();
+            if(!message.member.voice.channel){
+                message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes!: " + message.author.username);
+            }
+            message.member.voice.channel.join();
+            // async function play(connection, url){
+            //     connection.play(await ytdl(url), {type: 'opus'});
+            // }
+            play();
         }
     }
 });
