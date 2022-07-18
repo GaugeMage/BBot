@@ -104,6 +104,9 @@ client.on('message', async (message) => {
             message.channel.send("Oooo my bestie??? I hope she comes to visit me soon. You would love her!");
         } else if(CMD_NAME === "CPC"){
             message.channel.send("Stop...");
+        } else if(CMD_NAME === "NNN"){
+            message.channel.send("I already talked about.... ***him*** in another one of these... commands");
+        }
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             if(member){
