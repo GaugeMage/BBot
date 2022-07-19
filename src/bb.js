@@ -8,6 +8,7 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
+    client.channels.get(954939890745901058).send('It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
@@ -124,6 +125,10 @@ client.on('message', async (message) => {
             message.channel.send('That man... is not human in more than one way... He.. Will.. Pay.. My family and friends have suffered too much due to this man\'s greed.');
         } else if(CMD_NAME === 'FastLoiter'){
             message.channel.send('The goodest of boys. Nobody... comes... close.');
+        } else if(CMD_NAME === 'sex'){
+            message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
+        } else if(CMD_NAME === '8'){
+            message.reply('A beautiful number right? :8ball:');
         } else if(CMD_NAME === 'Secret'){
             const member = getMember();
             //Turn the rest of the args into 1 string
@@ -134,7 +139,7 @@ client.on('message', async (message) => {
 
             //Send the member a dm using the arg
             member.send(temp);
-            console.log(`Sent ${member.user.username} a DM with the message: ${temp}`);
+            console.log(`Sent ${member.user.username} a DM with the message: ${temp}`);c
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             const member = getMember();
