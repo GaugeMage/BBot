@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const {Client} = require('discord.js');
+const {Client, TextChannel} = require('discord.js');
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
@@ -8,8 +8,10 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.channels.get(954939890745901058).send('It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get(954939890745901058).send('It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
+
+client.on
 
 client.on("guildCreate", guild => {
     // This event triggers when the bot joins a guild.
