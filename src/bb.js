@@ -8,14 +8,14 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.channels.cache.get("954939890745901058").send('It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get("954939890745901058").send('OOOOO it seems the dice roller expansion has just been added to my firmware! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on
 
 client.on("guildCreate", guild => {
     // This event triggers when the bot joins a guild.
-    console.log(`New world joined it seems: ${guild.name} (id: ${guild.id}). This world has ${guild.memberCount} ***plebian*** members! ||Seems like it is up to me to start some fun||`);
+    client.channels.cache.get("954939890745901058").send(`New world joined it seems: ${guild.name} (id: ${guild.id}). This world has ${guild.memberCount} ***plebian*** members! ||Seems like it is up to me to start some fun||`);
 });
 
 //message.reply: replies to user
@@ -169,6 +169,77 @@ client.on('message', async (message) => {
             //     connection.play(await ytdl(url), {type: 'opus'});
             // }
             play();
+        } else if(CMD_NAME === 'rollD20'){
+            const roll = Math.floor(Math.random() * 20) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 20){
+                message.channel.send('You rolled a 20 :tada:');
+            } else if(roll === 8){
+                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
+        } else if(CMD_NAME === 'rollD100'){
+            const roll = Math.floor(Math.random() * 100) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 100){
+                message.channel.send('You rolled a 100 :tada:');
+            } else if(roll === 8){
+                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
+        } else if(CMD_NAME === 'rollD12'){
+            const roll = Math.floor(Math.random() * 12) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 12){
+                message.channel.send('You rolled a 12 :tada:');
+            } else if(roll === 8){
+                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
+        } else if(CMD_NAME === 'rollD3'){
+            const roll = Math.floor(Math.random() * 3) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 3){
+                message.channel.send('You rolled a 3 :tada:');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
+        } else if(CMD_NAME === 'rollD6'){
+            const roll = Math.floor(Math.random() * 6) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 6){
+                message.channel.send('You rolled a 6 :tada:');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
+        } else if(CMD_NAME === 'rollD8'){
+            const roll = Math.floor(Math.random() * 8) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 8){
+                message.channel.send('You rolled a 8 :tada:');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
+        } else if(CMD_NAME === 'rollD10'){
+            const roll = Math.floor(Math.random() * 10) + 1;
+            if(roll === 1){
+                message.channel.send('You rolled a 1 :sob:');
+            } else if(roll === 10){
+                message.channel.send('You rolled a 10 :tada:');
+            } else if(roll === 8){
+                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
+            } else {
+                message.channel.send('You rolled a ' + roll);
+            }
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
