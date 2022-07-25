@@ -186,7 +186,8 @@ client.on('message', async (message) => {
                 rolls.push(Math.floor(Math.random() * diceType) + 1);
                 total += rolls[i];
             }
-            if(modifier !== undefined){
+            //If modifier exists, add it to the total
+            if(modifier){
                 total += Number(modifier);
             }
             message.channel.send('You rolled a ' + total + ' :game_die:');
