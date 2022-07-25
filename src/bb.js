@@ -8,7 +8,7 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    // client.channels.cache.get("954939890745901058").send('OOOOO it seems the dice roller expansion has just been added to my firmware! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get("954939890745901058").send('POGGERS THE DICE ROLLER HAS BEEN UPDATED YEAH BABYYYYYYYYYYYYY! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on
@@ -192,10 +192,19 @@ client.on('message', async (message) => {
             }
             message.channel.send('You rolled a ' + total + ' :game_die:');
             for(let i = 0; i < rolls.length; i++){
-                message.channel.send('You rolled a ' + rolls[i] + ' :game_die:');
+                const currentRoll = rolls[i];
+                if(currentRoll === 1){
+                    message.channel.send('You rolled a 1 :sob: big oof');
+                } else if(currentRoll === diceType){
+                    message.channel.send('You rolled a ' + diceType + ' :100: POG! YOUR UWU LEVELS ARE OVER 9000');
+                } else if(currentRoll === 8){
+                    message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
+                } else {
+                    message.channel.send('You rolled a ' + currentRoll + ' :game_die:');
+                }
             }
             if(modifier){
-                message.channel.send('Your modifier is ' + modifier);   
+                message.channel.send('Your modifier is ' + modifier);
             }
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
