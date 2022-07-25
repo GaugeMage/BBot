@@ -138,7 +138,6 @@ client.on('message', async (message) => {
             for(let i = 1; i < args.length; i++){
                 temp += args[i] + " ";
             }
-
             //Send the member a dm using the arg
             member.send(temp);
             console.log(`Sent ${member.user.username} a DM with the message: ${temp}`);c
@@ -183,18 +182,14 @@ client.on('message', async (message) => {
 
             let rolls = [];
             let total = 0;
-
             for(let i = 0; i < diceAmount; i++){
                 rolls.push(Math.floor(Math.random() * diceType) + 1);
                 total += rolls[i];
             }
-
-            if(modifier !== NaN){
+            if(modifier !== undefined){
                 total += Number(modifier);
             }
-
-            message.channel.send(`You rolled ${diceAmount}d${diceType}${modifier !== NaN ? '+' + modifier : ''} and got ${total}`);
-
+            message.channel.send(`You rolled ${diceAmount}d${diceType}${modifier !== undefined ? '+' + modifier : ''} and got ${total}`);
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
