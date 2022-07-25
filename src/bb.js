@@ -205,6 +205,9 @@ client.on('message', async (message) => {
                     }
                 }
             } else {
+                if(modifier){
+                    message.channel.send('You rolled a ' + total + ' :game_die:');
+                }
                 if(rolls[0] === 1){
                     message.channel.send('You rolled a 1 :sob: big oof');
                 } else if(rolls[0] === diceType){
@@ -212,7 +215,7 @@ client.on('message', async (message) => {
                 } else if(rolls[0] === 8){
                     message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
                 } else {
-                    message.channel.send('You rolled a ' + rolls[0] + ' :game_die:');
+                    message.channel.send('You rolled a ' + rolls[0] + ' with your modifier of ' + modifier + ' :game_die:');
                 }
             }
             if(modifier){
