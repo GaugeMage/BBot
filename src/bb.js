@@ -173,7 +173,7 @@ client.on('message', async (message) => {
             checkArgs();
             //Split the string after d
             const temp = args[0].split('d');
-            const temp2 = args[1].split('+');
+            const temp2 = temp[1].split('+');
             //Get the number of dice
             const diceAmount = Number(temp[0]);
             //Get the dice type
