@@ -186,10 +186,10 @@ client.on('message', async (message) => {
                 rolls.push(Math.floor(Math.random() * diceType) + 1);
                 total += rolls[i];
             }
-            if(modifier != "NaN"){
+            if(modifier != NaN){
                 total += Number(modifier);
             }
-            message.channel.send(`You rolled ${diceAmount}d${diceType}${modifier != "NaN" ? '+' + modifier : ''} and got ${total}`);
+            message.channel.send(`You rolled ${diceAmount}d${diceType}${modifier != NaN ? '+' + modifier : ''} and got ${total}`);
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
