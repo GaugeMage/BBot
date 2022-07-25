@@ -191,16 +191,28 @@ client.on('message', async (message) => {
                 total += Number(modifier);
             }
             message.channel.send('You rolled a total of: ' + total + ' :game_die:');
-            for(let i = 0; i < rolls.length; i++){
-                const currentRoll = rolls[i];
-                if(currentRoll === 1){
+            if(rolls.length > 1){
+                for(let i = 0; i < rolls.length; i++){
+                    const currentRoll = rolls[i];
+                    if(currentRoll === 1){
+                        message.channel.send('You rolled a 1 :sob: big oof');
+                    } else if(currentRoll === diceType){
+                        message.channel.send('You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000');
+                    } else if(currentRoll === 8){
+                        message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
+                    } else {
+                        message.channel.send('You rolled a ' + currentRoll + ' :game_die:');
+                    }
+                }
+            } else {
+                if(rolls[0] === 1){
                     message.channel.send('You rolled a 1 :sob: big oof');
-                } else if(currentRoll === diceType){
+                } else if(rolls[0] === diceType){
                     message.channel.send('You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000');
-                } else if(currentRoll === 8){
+                } else if(rolls[0] === 8){
                     message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
                 } else {
-                    message.channel.send('You rolled a ' + currentRoll + ' :game_die:');
+                    message.channel.send('You rolled a ' + rolls[0] + ' :game_die:');
                 }
             }
             if(modifier){
