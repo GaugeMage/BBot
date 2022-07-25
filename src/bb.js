@@ -8,7 +8,7 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.channels.cache.get("954939890745901058").send('POGGERS THE DICE ROLLER HAS BEEN UPDATED YEAH BABYYYYYYYYYYYYY! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('POGGERS THE DICE ROLLER HAS BEEN UPDATED YEAH BABYYYYYYYYYYYYY! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on
@@ -196,7 +196,7 @@ client.on('message', async (message) => {
                 if(currentRoll === 1){
                     message.channel.send('You rolled a 1 :sob: big oof');
                 } else if(currentRoll === diceType){
-                    message.channel.send('You rolled a ' + diceType + ' :100: POG! YOUR UWU LEVELS ARE OVER 9000');
+                    message.channel.send('You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000');
                 } else if(currentRoll === 8){
                     message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
                 } else {
