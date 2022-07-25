@@ -8,7 +8,7 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.channels.cache.get("954939890745901058").send('OOOOO it seems the dice roller expansion has just been added to my firmware! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('OOOOO it seems the dice roller expansion has just been added to my firmware! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on
@@ -44,7 +44,7 @@ client.on('message', async (message) => {
         }
         function checkArgs(){
             if(args.length === 0){
-                return message.reply('Please provide an ID lmao. :D');
+                return message.reply('Please provide more args (arguments) lmao. :D');
             }
         }
         function getMember(){
@@ -84,7 +84,7 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'Catastrophe'){
             message.channel.send('Catastrophe... Many have heard the tale but have the many who have heard it, seen it? Well... I have seen the potential of Catastrophe first hand and let me say... it is not something to joke about. Or is it? :joy: That cute cat knows how to butter me up! If he keeps this up, I will be sure to have him as my pet :3. ||:black_cat:||');
         } else if(CMD_NAME === 'help'){
-            message.channel.send('Did you seriously think that you could use a manual to understand a being such as I? :thinking: How cute :BBShoot: Don\'t think I don\'t see what you are trying. There are other ways of getting with me you know!');
+            message.channel.send('Did you seriously think that you could use a manual to understand a being such as I? :thinking: How cute Don\'t think I don\'t see what you are trying. There are other ways of getting with me you know!');
         } else if(CMD_NAME === 'beautiful'){
             message.channel.send('*Blushes* What is this? :blush: Do you really think so??? Why thank you ' + message.author.username + ' :wink:');
         } else if(CMD_NAME === 'Dionte'){
@@ -169,77 +169,32 @@ client.on('message', async (message) => {
             //     connection.play(await ytdl(url), {type: 'opus'});
             // }
             play();
-        } else if(CMD_NAME === 'rollD20'){
-            const roll = Math.floor(Math.random() * 20) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 20){
-                message.channel.send('You rolled a 20 :tada:');
-            } else if(roll === 8){
-                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
-            } else {
-                message.channel.send('You rolled a ' + roll);
+        } else if(CMD_NAME === 'roll'){
+            checkArgs();
+            //Split the string after d
+            const temp = args[0].split('d');
+            const temp2 = args[1].split('+');
+            //Get the number of dice
+            const diceAmount = Number(temp[0]);
+            //Get the dice type
+            const diceType = Number(temp2[0]);
+            //Get the modifier
+            const modifier = Number(temp2[1]);
+
+            let rolls = [];
+            let total = 0;
+
+            for(let i = 0; i < diceAmount; i++){
+                rolls.push(Math.floor(Math.random() * diceType) + 1);
+                total += rolls[i];
             }
-        } else if(CMD_NAME === 'rollD100'){
-            const roll = Math.floor(Math.random() * 100) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 100){
-                message.channel.send('You rolled a 100 :tada:');
-            } else if(roll === 8){
-                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
-            } else {
-                message.channel.send('You rolled a ' + roll);
+            if(modifier !== undefined){
+                total += modifier;
             }
-        } else if(CMD_NAME === 'rollD12'){
-            const roll = Math.floor(Math.random() * 12) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 12){
-                message.channel.send('You rolled a 12 :tada:');
-            } else if(roll === 8){
-                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
-            } else {
-                message.channel.send('You rolled a ' + roll);
-            }
-        } else if(CMD_NAME === 'rollD3'){
-            const roll = Math.floor(Math.random() * 3) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 3){
-                message.channel.send('You rolled a 3 :tada:');
-            } else {
-                message.channel.send('You rolled a ' + roll);
-            }
-        } else if(CMD_NAME === 'rollD6'){
-            const roll = Math.floor(Math.random() * 6) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 6){
-                message.channel.send('You rolled a 6 :tada:');
-            } else {
-                message.channel.send('You rolled a ' + roll);
-            }
-        } else if(CMD_NAME === 'rollD8'){
-            const roll = Math.floor(Math.random() * 8) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 8){
-                message.channel.send('You rolled a 8 :tada:');
-            } else {
-                message.channel.send('You rolled a ' + roll);
-            }
-        } else if(CMD_NAME === 'rollD10'){
-            const roll = Math.floor(Math.random() * 10) + 1;
-            if(roll === 1){
-                message.channel.send('You rolled a 1 :sob:');
-            } else if(roll === 10){
-                message.channel.send('You rolled a 10 :tada:');
-            } else if(roll === 8){
-                message.channel.send('You rolled a 8 ||which in my opinion is way better xD||');
-            } else {
-                message.channel.send('You rolled a ' + roll);
-            }
+
+            message.channel.send(`You rolled ${diceAmount}d${diceType}${modifier !== undefined ? '+' + modifier : ''} and got ${total}`);
+
+
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
