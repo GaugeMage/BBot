@@ -190,7 +190,7 @@ client.on('message', async (message) => {
             if(modifier){
                 total += Number(modifier);
             }
-            message.channel.send('You rolled a ' + total + ' :game_die:');
+            message.channel.send('You rolled a total of: ' + total + ' :game_die:');
             for(let i = 0; i < rolls.length; i++){
                 const currentRoll = rolls[i];
                 if(currentRoll === 1){
