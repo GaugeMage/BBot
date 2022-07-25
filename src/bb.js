@@ -189,9 +189,9 @@ client.on('message', async (message) => {
                 total += rolls[i];
             }
 
-            // if(modifier !== NaN){
-            //     total += modifier;
-            // }
+            if(modifier !== NaN){
+                total += Number(modifier);
+            }
 
             message.channel.send(`You rolled ${diceAmount}d${diceType}${modifier !== NaN ? '+' + modifier : ''} and got ${total}`);
 
