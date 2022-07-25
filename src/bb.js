@@ -194,7 +194,9 @@ client.on('message', async (message) => {
             for(let i = 0; i < rolls.length; i++){
                 message.channel.send('You rolled a ' + rolls[i] + ' :game_die:');
             }
-            message.channel.send('Your modifier is ' + modifier);
+            if(modifier){
+                message.channel.send('Your modifier is ' + modifier);   
+            }
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
