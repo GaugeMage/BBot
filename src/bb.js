@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('POGGERS THE DICE ROLLER HAS BEEN UPDATED YEAH BABYYYYYYYYYYYYY! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get("954939890745901058").send('THE BB STREAM IS NOW ONLINE 24/7! You can find the link to BB\'s stream if you click on my profile! As well as this, BB has added more character commands for people you guys have met last session! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on
@@ -129,6 +129,14 @@ client.on('message', async (message) => {
             message.channel.send('He makes some damn good food :pizza:');
         } else if(CMD_NAME === 'Qwalter'){
             message.channel.send('That man... is not human in more than one way... He.. Will.. Pay.. My family and friends have suffered too much due to this man\'s greed.');
+        } else if(CMD_NAME === 'AceNullman'){
+            message.channel.send('Ace... what a person... Despite their limited time, they have proven themselves capable time and time again... If only Nullifer didn\'t take them in...');
+        } else if(CMD_NAME === 'Mickey'){
+            message.channel.send('Mickey... my old friend. I hope he is able to accomplish his goal. I do miss the *Lamb Gyro* especially that his carts had. Maybe one day we can have our usual 30 mins conversations while walking on the coast...');
+        } else if(CMD_NAME === 'Cometon'){
+            message.channel.send('That... girl... I can\'t even bring myself to look at her... I know Mickey misses ||her|| the most...');
+        } else if(CMD_NAME === 'Xeion'){
+            message.channel.send('That... monster... She would have been in a better state if Robert got to her first but no... **that** demon had other plans.');
         } else if(CMD_NAME === 'FastLoiter'){
             message.channel.send('The goodest of boys. Nobody... comes... close.');
         } else if(CMD_NAME === 'sex'){
