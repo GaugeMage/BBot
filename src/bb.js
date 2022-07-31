@@ -8,13 +8,10 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.user.setActivity({
-        game: {
-            name: ' your mom',
-            type: "WATCHING",
-            url: "https://www.twitch.tv/monstercat"
-        }
-    });
+    client.user.setActivity("your mom", {
+        type: "WATCHING",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      });
     // client.channels.cache.get("954939890745901058").send('POGGERS THE DICE ROLLER HAS BEEN UPDATED YEAH BABYYYYYYYYYYYYY! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
