@@ -8,7 +8,7 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.user.setPresence({
+    client.user.setActivity({
         game: {
             name: ' your mom',
             type: "WATCHING",
