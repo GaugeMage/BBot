@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    client.channels.cache.get("954939890745901058").send('THE BB STREAM IS NOW ONLINE 24/7! You can find the link to BB\'s stream if you click on my profile! As well as this, BB has added more character commands for people you guys have met last session! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('THE BB STREAM IS NOW ONLINE 24/7! You can find the link to BB\'s stream if you click on my profile! As well as this, BB has added more character commands for people you guys have met last session! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on
