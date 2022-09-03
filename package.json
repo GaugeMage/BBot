@@ -1,6 +1,6 @@
 {
   "name": "bbot",
-  "version": "1.0.0",
+  "version": "8.8.8",
   "description": "BB's amazing bot.",
   "main": "src/bb.js",
   "scripts": {

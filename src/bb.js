@@ -15,8 +15,6 @@ client.on('ready', () => {
     // client.channels.cache.get("954939890745901058").send('THE BB STREAM IS NOW ONLINE 24/7! You can find the link to BB\'s stream if you click on my profile! As well as this, BB has added more character commands for people you guys have met last session! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
-client.on
-
 client.on("guildCreate", guild => {
     // This event triggers when the bot joins a guild.
     client.channels.cache.get("954939890745901058").send(`New world joined it seems: ${guild.name} (id: ${guild.id}). This world has ${guild.memberCount} ***plebian*** members! ||Seems like it is up to me to start some fun||`);
@@ -28,6 +26,11 @@ client.on('message', async (message) => {
     //If BB said the message
     if(message.author.bot){
         return;
+    }
+
+    //Log the person who sent the message if it is a dm
+    if(message.channel.type === "dm"){
+        console.log(`${message.author.tag} said: ${message.content}`);
     }
 
     //If message contains bb or BB in it
@@ -132,7 +135,7 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'AceNullman'){
             message.channel.send('Ace... what a person... Despite their limited time, they have proven themselves capable time and time again... If only Nullifer didn\'t take them in...');
         } else if(CMD_NAME === 'Mickey'){
-            message.channel.send('Mickey... my old friend. I hope he is able to accomplish his goal. I do miss the *Lamb Gyro* especially that his carts had. Maybe one day we can have our usual 30 mins conversations while walking on the coast...');
+            message.channel.send('Mickey... my old friend. I hope he is able to accomplish his goal. I do miss the *Lamb Gyro* that his carts had. Maybe one day we can have our usual 30 mins conversations while walking on the coast...');
         } else if(CMD_NAME === 'Cometon'){
             message.channel.send('That... girl... I can\'t even bring myself to look at her... I know Mickey misses ||her|| the most...');
         } else if(CMD_NAME === 'Xeion'){
@@ -233,6 +236,12 @@ client.on('message', async (message) => {
             if(modifier){
                 message.channel.send('Your modifier is ' + modifier);
             }
+        } else if(CMD_NAME === 'send'){
+            let [channel, ...message] = args;
+            if(channel[0] === '<' && channel[channel.length - 1] === '>'){
+                channel = channel.substring(2, channel.length -1);
+            }
+            client.channels.cache.get(channel).send(message.join(' '));
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
