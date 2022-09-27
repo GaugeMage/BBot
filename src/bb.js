@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('THE BB STREAM IS NOW ONLINE 24/7! You can find the link to BB\'s stream if you click on my profile! As well as this, BB has added more character commands for people you guys have met last session! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('Uppercase/lowercase support for all commands! Now you guys don\'t have to worry about casing. It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
@@ -86,63 +86,77 @@ client.on('message', async (message) => {
             message.channel.send('uwu');
         } else if(CMD_NAME === 'uwuhelp'){
             message.channel.send('uwuhelp');
-        } else if(CMD_NAME === 'Buddy'){
-            message.channel.send('Buddy McLean is an interesting fellow to say the least. He has done a good job of taking character of Fast Loiter :D! I just hope he does a good job taking care of himself. Despite how he looks, he is quite the interesting character. He had me deceived at least! Who knew that there was more to him than what meets the eye? Certainly not I. Regardless, that little cowboy is going to need a lot more if he wants me on his saddle :wink: ||You know where to find me cutie||');
-        } else if(CMD_NAME === 'Catastrophe'){
+        } else if(CMD_NAME === 'Buddy' || CMD_NAME === 'buddy'){
+            message.channel.send('Buddy McLean is an interesting fellow to say the least. He has done a good job of taking care of Fast Loiter :D! I just hope he does a good job taking care of himself. Despite how he looks, he is quite the interesting character. He had me deceived at least! Who knew that there was more to him than what meets the eye? Certainly not I. Regardless, that little cowboy is going to need a lot more if he wants me on his saddle :wink: ||You know where to find me cutie||');
+        } else if(CMD_NAME === 'Catastrophe' || CMD_NAME == 'catastrophe'){
             message.channel.send('Catastrophe... Many have heard the tale but have the many who have heard it, seen it? Well... I have seen the potential of Catastrophe first hand and let me say... it is not something to joke about. Or is it? :joy: That cute cat knows how to butter me up! If he keeps this up, I will be sure to have him as my pet :3. ||:black_cat:||');
-        } else if(CMD_NAME === 'help'){
+        } else if(CMD_NAME === 'help' || CMD_NAME == 'HELP'){
             message.channel.send('Did you seriously think that you could use a manual to understand a being such as I? :thinking: How cute Don\'t think I don\'t see what you are trying. There are other ways of getting with me you know!');
         } else if(CMD_NAME === 'beautiful'){
             message.channel.send('*Blushes* What is this? :blush: Do you really think so??? Why thank you ' + message.author.username + ' :wink:');
-        } else if(CMD_NAME === 'Dionte'){
+        } else if(CMD_NAME === 'Dionte' || CMD_NAME == 'dionte'){
             message.channel.send('... Stop ... Brother... Sis-- ');
         } else if(CMD_NAME === 'baka'){
             message.channel.send('Baka! :angry: WHO DO YOU THINK YOU ARE CALLING A BAKA AHHHHHHH :triumph:');
-        } else if(CMD_NAME === 'Tyler'){
+        } else if(CMD_NAME === 'Tyler' || CMD_NAME == 'tyler'){
             message.channel.send('That man who recently left the eye of the peacock? Well... I have only had limited interactions with him but it seems he loves his triceratops skulls. :skull:');
-        } else if(CMD_NAME === 'Repugnans'){
+        } else if(CMD_NAME === 'Repugnans' || CMD_NAME == 'repugnans'){
             message.channel.send('Oh? That living contradiction? Despite his contradictory powers and features, I believe there is a simple person underneath that *facade* of his. :smirk: ||I am not sure if that guy knows what he is in for when he decided to get himself involved with the JoJos||');
-        } else if(CMD_NAME === 'Sirgay'){
+        } else if(CMD_NAME === 'Sirgay' || CMD_NAME == 'sirgay'){
             message.channel.send('Sir Gay? Oh... that person... I am not a fan... I will say that much... ||little bitch||');
-        } else if(CMD_NAME === "Grey"){
+        } else if(CMD_NAME === "Grey" || CMD_NAME == "grey"){
             message.channel.send("Grey... How about we switch the topic... That ***boy*** is none of my business... Talk to Bob about him or maybe even ||gac (whoever that is) :wink:||");
-        } else if(CMD_NAME === "Jordy"){
+        } else if(CMD_NAME === "Jordy" || CMD_NAME == 'jordy'){
             message.channel.send("The Wings of Icarus have only just begun to be developed. I am not sure if I will be able to fly in the future. ||I am not sure if I will be able to fly in the future or even to the moon.||");
-        } else if(CMD_NAME === "William"){
+        } else if(CMD_NAME === "William" || CMD_NAME == 'william'){
             message.channel.send("Will... please... come back... I lo-... *sniffle*");
-        } else if(CMD_NAME === "GAC"){
+        } else if(CMD_NAME === "GAC" || CMD_NAME == 'gac'){
             message.channel.send("Oooo my bestie??? I hope she comes to visit me soon. You would love her!");
-        } else if(CMD_NAME === "CPC"){
+        } else if(CMD_NAME === "CPC" || CMD_NAME == 'cpc'){
             message.channel.send("Stop...");
-        } else if(CMD_NAME === "NNN"){
+        } else if(CMD_NAME === "NNN" || CMD_NAME == 'nnn'){
             message.channel.send("I already talked about.... ***him*** in another one of these... commands");
         } else if(CMD_NAME === "88"){
             message.channel.send("The perfect number sequence!");
-        } else if(CMD_NAME === "Johnny"){
+        } else if(CMD_NAME === "Johnny" || CMD_NAME == 'johnny'){
             message.channel.send("My old teacher? What about him?");
-        } else if(CMD_NAME === "Garnet"){
+        } else if(CMD_NAME === "Garnet" || CMD_NAME == 'garnet'){
             message.channel.send("Oh? The Velvet Thunder? In her prime she was an amazing warrior.");
-        } else if(CMD_NAME === "Joy"){
+        } else if(CMD_NAME === "Joy" || CMD_NAME == 'joy'){
             message.channel.send('That ***unbridled*** passion of hers is what makes her so special. I hope she keeps onto that as she does, her friends');
-        } else if(CMD_NAME === "Jolene"){
+        } else if(CMD_NAME === "Jolene" || CMD_NAME == 'jolene'){
             message.channel.send('I watched her grow up without a father and due to that nature, she has become one of the strongest people I have ever met. I hope she does not lose her mind.');
-        } else if(CMD_NAME === 'Lisa'){
+        } else if(CMD_NAME === 'Lisa' || CMD_NAME == 'lisa'){
             message.channel.send('Don\'t mention her name... That... witch... is... a... baka...');
-        } else if(CMD_NAME === 'Wilford'){
+        } else if(CMD_NAME === 'Wilford' || CMD_NAME == 'wilford'){
             message.channel.send('He makes some damn good food :pizza:');
-        } else if(CMD_NAME === 'Qwalter'){
+        } else if(CMD_NAME === 'Qwalter' || CMD_NAME == 'qwalter'){
             message.channel.send('That man... is not human in more than one way... He.. Will.. Pay.. My family and friends have suffered too much due to this man\'s greed.');
-        } else if(CMD_NAME === 'AceNullman'){
+        } else if(CMD_NAME === 'AceNullman' || CMD_NAME == 'acenullman' || CMD_NAME == 'nullman'){
             message.channel.send('Ace... what a person... Despite their limited time, they have proven themselves capable time and time again... If only Nullifer didn\'t take them in...');
-        } else if(CMD_NAME === 'Mickey'){
+        } else if(CMD_NAME === 'Mickey' || CMD_NAME == 'mickey' || CMD_NAME == 'bausse'){
             message.channel.send('Mickey... my old friend. I hope he is able to accomplish his goal. I do miss the *Lamb Gyro* that his carts had. Maybe one day we can have our usual 30 mins conversations while walking on the coast...');
-        } else if(CMD_NAME === 'Cometon'){
+        } else if(CMD_NAME === 'Cometon' || CMD_NAME == 'cometon'){
             message.channel.send('That... girl... I can\'t even bring myself to look at her... I know Mickey misses ||her|| the most...');
-        } else if(CMD_NAME === 'Xeion'){
+        } else if(CMD_NAME === 'Xeion' || CMD_NAME == 'xeion'){
             message.channel.send('That... monster... She would have been in a better state if Robert got to her first but no... **that** demon had other plans.');
-        } else if(CMD_NAME === 'FastLoiter'){
+        } else if(CMD_NAME === 'FastLoiter' || CMD_NAME == 'fastloiter' || CMD_NAME == 'danny' || CMD_NAME == 'Danny'){
             message.channel.send('The goodest of boys. Nobody... comes... close.');
-        } else if(CMD_NAME === 'sex'){
+        } else if(CMD_NAME === 'Karolina' || CMD_NAME === 'KarolinaZeitmagier' || CMD_NAME === 'karolina' || CMD_NAME == 'zeitmagier' || CMD_NAME == 'Zeitmagier'){
+            message.channel.send('BESTIE!!!!! Where is she? Have you seen her? I have missed her soo much! Is she coming to NYC soon? Maybe we can have another movie night! AHHHHHHHHHHHHHHHHHHHHHHHHHH MY EXCITEMENT CAN\'T BE CONTAINED!!!!');
+        } else if(CMD_NAME === 'Jameson' || CMD_NAME === 'JamesonJJonah' || CMD_NAME === 'jameson' || CMD_NAME == 'jjonah' || CMD_NAME == 'JJonah'){
+            message.channel.send('Ahh, the poor man who spent his entire life to help children who have been abused like him... Unfortunate that *they* got to him and ripped him of who he was...');
+        } else if(CMD_NAME === 'OttO' || CMD_NAME === 'OttORegalageR' || CMD_NAME === 'otto' || CMD_NAME == 'regalager' || CMD_NAME == 'RegalageR'){
+            message.channel.send('Him... That house of memories is a place I would never want to go to.');
+        } else if(CMD_NAME === 'Bestie' || CMD_NAME === 'bestie'){
+            message.channel.send('KAROLINA!!!! WHERE IS MY GERMAN PRINCESS!!!!!!!!!!!!!!!!! I MISS HER SO MUCH!!!!!! Just for mentioning her you get a free hug! :hugging:');
+        } else if(CMD_NAME === 'Beatrice' || CMD_NAME === 'beatrice'){
+            message.channel.send('I would recommend that you stop...')
+        } else if(CMD_NAME === 'ArthurPendragon' || CMD_NAME === 'Arthur' || CMD_NAME === 'arthurpendragon' || CMD_NAME === 'arthur'){
+            message.channel.send('That man with the sword. I think he tried flirting with me before... couldn\'t tell if that was just him being nice though... He seems very... cordial. Regardless, it is clear that he knows how to treat *of class* like me! :wink:');
+        } else if(CMD_NAME === 'Silver' || CMD_NAME === 'SilverBucciarati' || CMD_NAME === 'silver' || CMD_NAME === 'bucciarati'){
+            message.channel.send('Ahh that man can go on for hours talking about his ideals and goals and values... How boring. It seems that Jordy\'s impact on Silver really did stick even after his death. I am surprised that he decided to take up a sword though... That is pretty unlike him.');
+        } else if(CMD_NAME === 'sex' || CMD_NAME == 'Sex'){
             message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
@@ -207,18 +221,21 @@ client.on('message', async (message) => {
             }
             if(rolls.length > 1){
                 message.channel.send('You rolled a total of: ' + total + ' :game_die:');
+                let tempString = "";
                 for(let i = 0; i < rolls.length; i++){
+                    tempString += "\n";
                     const currentRoll = rolls[i];
                     if(currentRoll === 1){
-                        message.channel.send('You rolled a 1 :sob: big oof');
+                        tempString += 'You rolled a 1 :sob: big oof';
                     } else if(currentRoll === diceType){
-                        message.channel.send('You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000');
+                        tempString += 'You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000';
                     } else if(currentRoll === 8){
-                        message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
+                        tempString += 'You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN A NATURAL ' + diceType;
                     } else {
-                        message.channel.send('You rolled a ' + currentRoll + ' :game_die:');
+                        tempString += 'You rolled a ' + currentRoll + ' :game_die:';
                     }
                 }
+                message.channel.send(tempString);
             } else {
                 if(modifier){
                     message.channel.send('You rolled a ' + total + ' :game_die:');
@@ -234,8 +251,43 @@ client.on('message', async (message) => {
                 }
             }
             if(modifier){
-                message.channel.send('Your modifier is ' + modifier);
+                message.channel.send('Your modifier was ' + modifier);
             }
+        } else if(CMD_NAME == 'myCharacterDiedSoImRollingANewCharacter'){
+            //Rolls up a new character
+            message.channel.send("Your new character's stats:");
+            let tempString = "";
+            for(let i = 0; i < 6; i++){
+                let rolls = [];
+                let total = 0;
+                for(let j = 0; j < 4; j++){
+                    rolls.push(Math.floor(Math.random() * 6) + 1);
+                    total += rolls[j];
+                }
+
+                tempString += "\n";
+                const min = Math.min(...rolls);
+                let minFound = false;
+                for(let j = 0; j < rolls.length; j++){
+                    if(minFound == true || rolls[j] != min){
+                        tempString += "(" + rolls[j] + ") ";
+                    } else {
+                        tempString += "~~(" + rolls[j] + ")~~ ";
+                        minFound = true;
+                    }
+                }
+
+                //Removes smallest value from array
+                rolls.splice(rolls.indexOf(Math.min(...rolls)), 1);
+                
+                total = 0;
+                for(let j = 0; j < rolls.length; j++){
+                    total += rolls[j];
+                }
+
+                tempString += "= " + total;
+            }
+            message.channel.send(tempString);
         } else if(CMD_NAME === 'send'){
             let [channel, ...message] = args;
             if(channel[0] === '<' && channel[channel.length - 1] === '>'){
