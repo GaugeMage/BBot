@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('Uppercase/lowercase support for all commands! Now you guys don\'t have to worry about casing. It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get("954939890745901058").send('Added some new work employees as well as a weird hungry being. It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
@@ -152,6 +152,10 @@ client.on('message', async (message) => {
             message.channel.send('KAROLINA!!!! WHERE IS MY GERMAN PRINCESS!!!!!!!!!!!!!!!!! I MISS HER SO MUCH!!!!!! Just for mentioning her you get a free hug! :hugging:');
         } else if(CMD_NAME === 'Beatrice' || CMD_NAME === 'beatrice'){
             message.channel.send('I would recommend that you stop...')
+        } else if(CMD_NAME === 'Robert' || CMD_NAME === 'robert' || CMD_NAME === 'bob' || CMD_NAME === 'Bob'){
+            message.channel.send('Bob? He can be uptight sometimes (especially when it comes to paycheck day) but I know he is trying his best. He was thrust into this position of leadership when Garnet... well you know what happened')
+        } else if(CMD_NAME === 'Nic' || CMD_NAME === 'nic'){
+            message.channel.send('That nice man has been with the Speedwagon Foundation for a long time. He practically watched Garnet and Robert grow up. Despite all of the mean comments people make towards him, he is unwavering in his duties as janitor. I just hoped he would spar with me again sometime!');
         } else if(CMD_NAME === 'ArthurPendragon' || CMD_NAME === 'Arthur' || CMD_NAME === 'arthurpendragon' || CMD_NAME === 'arthur'){
             message.channel.send('That man with the sword. I think he tried flirting with me before... couldn\'t tell if that was just him being nice though... He seems very... cordial. Regardless, it is clear that he knows how to treat *of class* like me! :wink:');
         } else if(CMD_NAME === 'Silver' || CMD_NAME === 'SilverBucciarati' || CMD_NAME === 'silver' || CMD_NAME === 'bucciarati'){
@@ -160,6 +164,8 @@ client.on('message', async (message) => {
             message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
+        } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
+            message.reply('Omnipotence? Ahh Jordy\'s ultimate weapon per say. It had quite the attitude and appetite I must say. Who knew providing it with ***infinity*** was enough to stave off its hunger :joy:');
         } else if(CMD_NAME === 'Secret'){
             const member = getMember();
             //Turn the rest of the args into 1 string
@@ -235,7 +241,21 @@ client.on('message', async (message) => {
                         tempString += 'You rolled a ' + currentRoll + ' :game_die:';
                     }
                 }
-                message.channel.send(tempString);
+                //If it is longer than 2000 characters, split it
+                if(tempString.length > 1900){
+                    const tempString2 = tempString.split('\n');
+                    let tempString3 = "";
+                    for(let i = 0; i < tempString2.length; i++){
+                        tempString3 += tempString2[i] + '\n';
+                        if(tempString3.length > 1900){
+                            message.channel.send(tempString3);
+                            tempString3 = "";
+                        }
+                    }
+                    message.channel.send(tempString3);
+                } else {
+                    message.channel.send(tempString);
+                }
             } else {
                 if(modifier){
                     message.channel.send('You rolled a ' + total + ' :game_die:');
@@ -247,7 +267,10 @@ client.on('message', async (message) => {
                 } else if(rolls[0] === 8){
                     message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
                 } else {
-                    message.channel.send('You rolled a ' + rolls[0] + ' with your modifier of ' + modifier + ' :game_die:');
+                    if(modifier){
+                        message.channel.send('You rolled a ' + rolls[0] + ' with your modifier of ' + modifier + ' :game_die:');
+                    }
+                    message.channel.send('You rolled a ' + rolls[0] + ' :game_die:');
                 }
             }
             if(modifier){
@@ -276,7 +299,6 @@ client.on('message', async (message) => {
                         minFound = true;
                     }
                 }
-
                 //Removes smallest value from array
                 rolls.splice(rolls.indexOf(Math.min(...rolls)), 1);
                 
