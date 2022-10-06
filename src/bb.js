@@ -112,7 +112,7 @@ client.on('message', async (message) => {
             message.channel.send("Will... please... come back... I lo-... *sniffle*");
         } else if(CMD_NAME === "GAC" || CMD_NAME == 'gac'){
             message.channel.send("Oooo my bestie??? I hope she comes to visit me soon. You would love her!");
-        } else if(CMD_NAME === "CPC" || CMD_NAME == 'cpc'){
+        } else if(CMD_NAME === "CPM" || CMD_NAME == 'cpm'){
             message.channel.send("Stop...");
         } else if(CMD_NAME === "NNN" || CMD_NAME == 'nnn'){
             message.channel.send("I already talked about.... ***him*** in another one of these... commands");
