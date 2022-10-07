@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('Added some new work employees as well as a weird hungry being. It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get("954939890745901058").send('Fixed an old friend and added a chess piece! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
@@ -107,7 +107,7 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === "Grey" || CMD_NAME == "grey"){
             message.channel.send("Grey... How about we switch the topic... That ***boy*** is none of my business... Talk to Bob about him or maybe even ||gac (whoever that is) :wink:||");
         } else if(CMD_NAME === "Jordy" || CMD_NAME == 'jordy'){
-            message.channel.send("The Wings of Icarus have only just begun to be developed. I am not sure if I will be able to fly in the future. ||I am not sure if I will be able to fly in the future or even to the moon.||");
+            message.channel.send("The Wings of Icarus have only just begun to grow. I am not sure if I will be able to fly in the future. If Jordy could do it. Why can't I...");
         } else if(CMD_NAME === "William" || CMD_NAME == 'william'){
             message.channel.send("Will... please... come back... I lo-... *sniffle*");
         } else if(CMD_NAME === "GAC" || CMD_NAME == 'gac'){
@@ -162,6 +162,8 @@ client.on('message', async (message) => {
             message.channel.send('Ahh that man can go on for hours talking about his ideals and goals and values... How boring. It seems that Jordy\'s impact on Silver really did stick even after his death. I am surprised that he decided to take up a sword though... That is pretty unlike him.');
         } else if(CMD_NAME === 'sex' || CMD_NAME == 'Sex'){
             message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
+        } else if(CMD_NAME === 'rook' || CMD_NAME === 'Rook'){
+            message.reply('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
         } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
