@@ -163,7 +163,7 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'sex' || CMD_NAME == 'Sex'){
             message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
         } else if(CMD_NAME === 'rook' || CMD_NAME === 'Rook'){
-            message.reply('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
+            message.channel.send('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
         } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
