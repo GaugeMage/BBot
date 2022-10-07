@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    client.channels.cache.get("954939890745901058").send('Fixed an old friend and added a chess piece! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('Fixed an old friend and added a chess piece! It seems BB has patched me once more. Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
