@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('Fixed an old friend and added a chess piece! It seems BB has patched me once more. Another step forward on our path of infinity!');
+    client.channels.cache.get("954939890745901058").send('Wings of Icarus patch... Wait... why is this a patch... BB better unpatch this... I do not like this... Please.... Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
@@ -114,6 +114,24 @@ client.on('message', async (message) => {
             message.channel.send("Oooo my bestie??? I hope she comes to visit me soon. You would love her!");
         } else if(CMD_NAME === "CPM" || CMD_NAME == 'cpm'){
             message.channel.send("Stop...");
+        } else if(CMD_NAME === 'Zero' || CMD_NAME === 'zero'){
+            message.channel.send('How?!?!?! Well... Zero is quite the interesting fellow...- I mean boss of course! Well.... ex-boss at this point... but we don\'t talk about that anymore...');
+        } else if(CMD_NAME === 'null' || CMD_NAME === 'Null'){
+            message.channel.send('What an interesting character. He knows what he has done but he doesn\'t care... To be honest, it is easier to say the things he doesn\'t care about than does. If only he didn\'t lose the one thing he cared about most that lead to him becoming like this');
+        } else if(CMD_NAME === 'hw' || CMD_NAME === 'HW' || CMD_NAME === 'HaWei' || CMD_NAME === 'hawei'){
+            message.channel.send('I miss her a lot... I know null misses her the most though. They were especially close... If only we were able to predict what was gonna happen... goddamnit... I hate this... Please don\'t use me just to get information regarding shit I don\'t want to recount');
+        } else if(CMD_NAME === 'SGW' || CMD_NAME === 'sgw'){
+            message.channel.send('"The Art of War is very important because blah blah blah" - just shut up old man :joy: . I love sgw but I think he has had enough of me at this point :joy: :joy:.');
+        } else if(CMD_NAME === 'SLL' || CMD_NAME === 'sll'){
+            message.channel.send('I hope he would at least send me a text or mail me a letter once in a while... humph. I guess I am just being selfish. I am sure he is busy with his own life. I just wish he would at least let me know that he is okay. I am sure he is doing fine though. I am sure of it. You know what... he is selfish. LEMME SEE CORVUS GODDAMNIT');
+        } else if(CMD_NAME === 'luci' || CMD_NAME === 'Luci'){
+            message.channel.send('LUCI?!?! WHO TF NAMES THEIR SON LUCI?????????? :joy: :joy: Regardless of his snarky attitude I still love him though. He is quite the hilarious man and is quite skilled when he *wants* to cooperate.');
+        } else if(CMD_NAME === 'PCC' || CMD_NAME === 'pcc'){
+            message.channel.send('How about we just go next and not talk about the originator of chaos');
+        } else if(CMD_NAME === 'MKC' || CMD_NAME === 'mkc'){
+            message.channel.send('That war hero is quite quiet... However... he might be the strongest of us :skull: We all make sure not to anger him as we know what would happen if that were the case. Regardless though, he seems to get along with the SGW!');
+        } else if(CMD_NAME === 'wingsoficarus' || CMD_NAME === 'WingsOfIcarus'){
+            message.channel.send('Oh the memories...');
         } else if(CMD_NAME === "NNN" || CMD_NAME == 'nnn'){
             message.channel.send("I already talked about.... ***him*** in another one of these... commands");
         } else if(CMD_NAME === "88"){
@@ -151,9 +169,9 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'Bestie' || CMD_NAME === 'bestie'){
             message.channel.send('KAROLINA!!!! WHERE IS MY GERMAN PRINCESS!!!!!!!!!!!!!!!!! I MISS HER SO MUCH!!!!!! Just for mentioning her you get a free hug! :hugging:');
         } else if(CMD_NAME === 'Beatrice' || CMD_NAME === 'beatrice'){
-            message.channel.send('I would recommend that you stop...')
+            message.channel.send('I would recommend that you stop...');
         } else if(CMD_NAME === 'Robert' || CMD_NAME === 'robert' || CMD_NAME === 'bob' || CMD_NAME === 'Bob'){
-            message.channel.send('Bob? He can be uptight sometimes (especially when it comes to paycheck day) but I know he is trying his best. He was thrust into this position of leadership when Garnet... well you know what happened')
+            message.channel.send('Bob? He can be uptight sometimes (especially when it comes to paycheck day) but I know he is trying his best. He was thrust into this position of leadership when Garnet... well you know what happened');
         } else if(CMD_NAME === 'Nic' || CMD_NAME === 'nic'){
             message.channel.send('That nice man has been with the Speedwagon Foundation for a long time. He practically watched Garnet and Robert grow up. Despite all of the mean comments people make towards him, he is unwavering in his duties as janitor. I just hoped he would spar with me again sometime!');
         } else if(CMD_NAME === 'ArthurPendragon' || CMD_NAME === 'Arthur' || CMD_NAME === 'arthurpendragon' || CMD_NAME === 'arthur'){
