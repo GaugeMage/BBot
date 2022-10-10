@@ -12,7 +12,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    client.channels.cache.get("954939890745901058").send('Wings of Icarus patch... Wait... why is this a patch... BB better unpatch this... I do not like this... Please.... Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('Wings of Icarus patch... Wait... why is this a patch... BB better unpatch this... I do not like this... Please.... Another step forward on our path of infinity!');
 });
 
 client.on("guildCreate", guild => {
