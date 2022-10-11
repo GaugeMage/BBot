@@ -136,6 +136,8 @@ client.on('message', async (message) => {
             message.channel.send("I already talked about.... ***him*** in another one of these... commands");
         } else if(CMD_NAME === "88"){
             message.channel.send("The perfect number sequence!");
+        } else if(CMD_NAME === 'Imbroglione' || CMD_NAME === 'imbroglione'){
+            message.channel.send('The insatiable heirloom. I\'ve always wondered how it was created and why it exists. I would be wary of it though and suggest that ***nobody*** wields it. Not even the intended user(s) of it could wield it properly. Can\'t believe that ***he*** decided it was a good gift for ***him***.');
         } else if(CMD_NAME === "Johnny" || CMD_NAME == 'johnny'){
             message.channel.send("My old teacher? What about him?");
         } else if(CMD_NAME === "Garnet" || CMD_NAME == 'garnet'){
