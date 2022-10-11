@@ -34,7 +34,7 @@ client.on('message', async (message) => {
     }
 
     //If message contains bb or BB in it
-    if((message.content.includes(' bb') || message.content.includes(' BB') || message.content.startsWith('bb ') || message.content.startsWith('BB ')) && !message.content.includes('bb!')){
+    if((message.content.includes(' bb') || message.content.includes(' BB') || message.content.startsWith('bb ') || message.content.startsWith('BB ') || message.content === 'BB' || message.content === 'bb') && !message.content.includes('bb!')){
         message.react('🇧');
         message.react('🅱️');
     }
