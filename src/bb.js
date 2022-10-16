@@ -1,6 +1,7 @@
 require('dotenv').config();
 
-const {Client, TextChannel} = require('discord.js');
+const {Client} = require('discord.js');
+const ytdl = require('ytdl-core-discord');
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
@@ -218,13 +219,43 @@ client.on('message', async (message) => {
             checkArgs();
             const member = getMember();
             if(!message.member.voice.channel){
-                message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes!: " + message.author.username);
+                message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
             }
-            message.member.voice.channel.join();
-            // async function play(connection, url){
-            //     connection.play(await ytdl(url), {type: 'opus'});
-            // }
-            play();
+            // message.member.voice.channel.join();
+            
+            let url = args;
+            if(!url){
+                message.channel.send("You must provide a url to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
+            }
+            if(!url.includes("https://")){
+                url = "https://" + url;
+            }
+
+            //Plays music using discord 12
+
+            const voiceChannel = message.member.voice.channel;
+            if(!voiceChannel) return message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
+            const permissions = voiceChannel.permissionsFor(message.client.user);
+            if(!permissions.has('CONNECT')) return message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
+            if(!permissions.has('SPEAK')) return message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
+
+            try {
+                var connection = await voiceChannel.join();
+            } catch (error) {
+                console.error(`I could not join the voice channel: ${error}`);
+                return message.channel.send(`I could not join the voice channel: ${error}`);
+            }
+
+            const dispatcher = connection.play(ytdl(url, {filter: 'audioonly', type: 'opus', quality: 'highestaudio', highWaterMark: 1<<25}))
+            .on('finish', () => {
+                voiceChannel.leave();
+            })
+            .on('error', error => {
+                console.error(error);
+            });
+
+            dispatcher.setVolumeLogarithmic(5 / 5);
+
         } else if(CMD_NAME === 'roll'){
             checkArgs();
             //Split the string after d
@@ -294,9 +325,6 @@ client.on('message', async (message) => {
                     }
                     message.channel.send('You rolled a ' + rolls[0] + ' :game_die:');
                 }
-            }
-            if(modifier){
-                message.channel.send('Your modifier was ' + modifier);
             }
         } else if(CMD_NAME == 'myCharacterDiedSoImRollingANewCharacter'){
             //Rolls up a new character
