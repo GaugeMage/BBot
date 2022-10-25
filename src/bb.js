@@ -217,6 +217,14 @@ client.on('message', async (message) => {
             } else {
                 message.channel.send('That member was not found LMAO. Get some friends maybe?');
             }
+        } else if(CMD_NAME === 'connect'){
+            //Connects bot to voice channel
+            const channel = message.member.voice.channel;
+            if(channel){
+                channel.join();
+            } else {
+                message.channel.send('You must be in a voice channel to use this command');
+            }
         } else if(CMD_NAME === 'play'){
             checkArgs();
             const member = getMember();
