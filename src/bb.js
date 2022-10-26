@@ -294,13 +294,13 @@ client.on('message', async (message) => {
             if(!correctArgs){
                 return ;
             }
-            let url = args[0];
+            let url = args.join(' ');
             const queue = player.getQueue(message);
             if(queue && queue.playing){
                 queue.tracks.push(new Track({url: url, author: message.author}, message.author, player));
                 // playlist.push(url);
             } else {
-                const song = await player.play(message, url, false);
+                const song = await player.play(message, url, true);
             }
         } else if(CMD_NAME === 'pause'){
             player.pause(message);
@@ -323,7 +323,7 @@ client.on('message', async (message) => {
                 message.channel.send('There is nothing in the queue right now');
             } else {
                 message.channel.send(queue.tracks.map((song, i) => {
-                    console.log(song);
+                    // console.log(song);
                     return `${i === 0 ? 'Song:' : `#${i+1}`} - ${song.url}`;
                     // return `${i === 0 ? 'Song:' : `#${i+1}`} - ${song}`;
                 }).join('\n'));
