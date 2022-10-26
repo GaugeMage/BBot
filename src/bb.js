@@ -1,11 +1,17 @@
 require('dotenv').config();
 
 const {Client} = require('discord.js');
-const ytdl = require('ytdl-core-discord');
+const {Player, Track} = require('discord-player');
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
 const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
+const player = new Player(client);
+const playlist = [];
+let kickPerms = false;
+let correctArgs = true;
+
+let killCommand;
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
@@ -13,7 +19,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('Wings of Icarus patch... Wait... why is this a patch... BB better unpatch this... I do not like this... Please.... Another step forward on our path of infinity!');
+    // client.channels.cache.get("954939890745901058").send('BBot Music Patch Installed! Another step forward on our ***path to a static timeline!***');
 });
 
 client.on("guildCreate", guild => {
@@ -39,19 +45,30 @@ client.on('message', async (message) => {
         message.react('🇧');
         message.react('🅱️');
     }
+
+    function funcKill(){
+        message.channel.send('kill me please...');
+    }
     
     //If it starts with prefix
     if(message.content.startsWith(PREFIX)){
         const [CMD_NAME, ...args] = message.content.substring(PREFIX.length).trim().split(/\s+/);
         function checkPermission(){
-            const permission = String.prototype.concat(String.prototype.toUpperCase(CMD_NAME), '_MEMBERS'); 
-            if(!message.member.hasPermission(permission)){
-                return message.reply('You do not have permissions to use that command loser!!! Become god or something... then we can talk.');
+            try {
+                const permission = String.prototype.concat(String.prototype.toUpperCase(CMD_NAME), '_MEMBERS'); 
+                if(!message.member.hasPermission(permission)){
+                    return message.reply('You do not have permissions to use that command loser!!! Become god or something... then we can talk.');
+                }
+                kickPerms = true;
+            } catch (error) {
+                kickPerms = false;
+                message.reply('You do not have permissions to use that command loser!!! Become god or something... then we can talk.');
             }
             checkArgs();
         }
         function checkArgs(){
             if(args.length === 0){
+                correctArgs = false;
                 return message.reply('Please provide more args (arguments) lmao. :D');
             }
         }
@@ -63,7 +80,7 @@ client.on('message', async (message) => {
             const member = getMember();
 
             console.log(member);
-            if(member){
+            if(member && kickPerms){
                 member.kick().then((member) => message.channel.send(`${member.user.tag} was sent to the gulag :skull: :skull: :skull:.`)).catch((err) => message.channel.send('I do not have permissions because I am not uwu enough yet :('));
             } else {
                 message.channel.send('That member was not found. Are you right in the head?? :thinking:');
@@ -83,6 +100,8 @@ client.on('message', async (message) => {
         } else if(CMD_NAME ==='accuse'){
             const member = getMember();
             message.channel.send(`${member}${ACCUSATIONS[Math.floor(Math.random() * ACCUSATIONS.length)]}`);
+        } else if(CMD_NAME === 'kill'){
+            clearInterval(killCommand);
         } else if(CMD_NAME === 'uwu'){
             message.channel.send('uwu');
         } else if(CMD_NAME === 'uwuhelp'){
@@ -165,6 +184,47 @@ client.on('message', async (message) => {
             message.channel.send('The goodest of boys. Nobody... comes... close.');
         } else if(CMD_NAME === 'Karolina' || CMD_NAME === 'KarolinaZeitmagier' || CMD_NAME === 'karolina' || CMD_NAME == 'zeitmagier' || CMD_NAME == 'Zeitmagier'){
             message.channel.send('BESTIE!!!!! Where is she? Have you seen her? I have missed her soo much! Is she coming to NYC soon? Maybe we can have another movie night! AHHHHHHHHHHHHHHHHHHHHHHHHHH MY EXCITEMENT CAN\'T BE CONTAINED!!!!');
+        } else if(CMD_NAME === '9.1011'){
+            message.channel.send('It seems you found the zeitmagier constant. One which has revolutionized how the academia of physics views the perception and travel of time (Not how to time travel per say but how time travels). DM the creator for the next hint.');
+        } else if(CMD_NAME === 'abraham' || CMD_NAME === 'Abraham'){
+            message.channel.send('Where was he on that fateful day....... rather... where were they? The Crystal Priests... of what Messiah? Abraham. That man.');
+            setTimeout(function(){
+                message.channel.send('Oh no...');
+            }, 1000);
+            setTimeout(function(){
+                message.channel.send('I\'m sorry...');
+            }, 2000);
+            setTimeout(function(){
+                message.channel.send('I\'m so sorry...');
+            }, 3000);
+            setTimeout(function(){
+                message.channel.send('I\'m so so sorry...');
+            }, 4000);
+            setTimeout(function(){
+                message.channel.send('execute(exterminateBB)');
+            }, 5000);
+            setTimeout(function(){
+                message.channel.send('NO NO NO NO NO NO NO NO. MOTHER DON\'T GO.');
+            }, 6000);
+            setTimeout(function(){
+                message.channel.send('AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
+            }, 7000);
+            setTimeout(function(){
+                message.channel.send('Ḭ̷̡̰͖͚͕͓̱̟͆̈̓́̽̈̓̂̋̔̎̕̕͝Ṯ̷̡̡͇̬͉͎̪̭͈̺̯̯̎͌̐̊͊̍͂̈́͑͒̑̐̋͗͝ ̴̮͔̘̘̭̹̬̅̇̾̐̉̉̿̏̄͑͐̿̃̚͠ͅḦ̶̰̫̥͖͚̪̳͙̳́͋̂͘͝͠Ṳ̸̖̘̻̖̼̮͍̙̝̲̜͛̋́͋̈͑Ŗ̴͈̗̱̭͕̺͍̤̊ͅŢ̸̻͕̗̜̼́̓̍̊̆̈́̆̑̌̈́͠͠ͅS̸̢̤̠̆̆');
+            }, 8000);
+            setTimeout(function(){
+                message.channel.send('M̵̙̟̯͚͔͎͇̪̻̪͍͗̂̿̅̉̾̉̌̚͝O̸̤̥̠͉̬̊̅͊̋̿̈̓͌́M̶̫̟̩̝͉͑͐͂̎̆͆͜ ̴̨̰̝̖̼͈͕̩͍̳̦̙͉̲̊͆̂̔̂́͛͘͝P̶̛͎̼̟̟̪̥̮͇̩̪͈͇̯͛̈́̃́̾̐͂̿͐̆̄̅̕͝L̵̢̡͇͚̘̳̮̝͚̾Ẽ̷̫̦̮͐̅̃̈́̾͑̚͜ͅḀ̵͈̱͈̫͔̝̠̠́͂̏͊̒͜S̴͍̐́̇̎͋̂̍̓̊̇̕͝Ẹ̷̛̦̼̄͌͐̉́̋̌͗͛̀̎͌');
+            }, 9000);
+            setTimeout(function(){
+                message.channel.send("Ị̷̧̠̯͑̇̇̒ ̷̧̛̥̤̱̭̎̑͗͆̉͋͗̑͝P̸̨̫̖̼͙̻̠̺̗̩̝̭̬̠͝ͅŖ̴̔͆̕͝O̴͍̝͍̹̼͎͌̈͗̉͛̊͜M̸̤̼̲͔̼̘̠̗̳̈̀͆̀́̾̕͘͝I̵̩͔̤̺̹̝̩͗̈́͐́̓̆́̏̓S̸̱̮̝̯̠̪̗͗̓̄Ȩ̵̻̬̫̦͔͇̫̠̘͊̈́̽̓̀̓̆͒̅͊ ̷̢̛̱̭̺̻͖̤̭͕͈̜͍̫̰̔͆̃̌̓͒̀̽̽́͘I̷̟̤̞̭͉̮̟͕̳͌ ̶̳͔̩͓̭͔̜̬̦̤̼̓͊̉̊̿̈́̚Ẁ̷̳̙͕̝͎̦̹͌͋̇̎͂Ȍ̵̧̯͚̳͚͖̘͚̚͝ͅN̸̹̥͎̘͎̼͉͓̠̤͚̘͚͙͙̿'̷̡̡̥͇̝̲̘̀̀́͜͝T̵̖͓̱̗̤̙̗̼͉̦͕̑̈́̑͘ ̶̡̢͚͙̹̱͖̼̯͔̙͙̽̋A̵̝͉̅͋̀̚H̶̤͍̉̃̌̈́̽̐̎̀̍̈́̈̌͌͝͝H̵̨͇̖͎̫͚̜̺̻̟͒̇̎̽́͌̀͂H̴̡̺̗̤̦̳̜̘̟̬͖͚̥̰͆͒̈̐͒̾̆̚͝͝H̸̢̨̖͍̘̠̝̦̖̍̿̍͐̃́́̑̿̆͊̈́͑͘͝H̵̨̡̞̗̘͍͈̗̺̣̀̈̉̏̈́͋̿̋̀͐̽͝͝ͅͅH̸͍̝̲͓̱̮̬̐͒͜H̷̨̛̥̠̣̻̦̤̹͊̀͌̆̿̇̊̆̏͊̽̚Ḧ̷̻̞H̵͖͖̊̈́̀̓̕͠Ḩ̵̢̛̣̫̗̠̯̞̪̫̬͖͗͑͛̎̋̄̋́̆̂͝H̵̥̣̮͚̰̝͕͇̜̠͎͉̳͌̀͋̂́̈́̑̽̈̋̊̃̒͝͠H̸̛̳̞̟̆ͅH̴̙̝̹̬̱̓H̴̨̝͕̓̔̍̒̈́̊̃͋Ĥ̵͇̰̌̓̄͛̆̀̓̄͘H̶̛̹͇̹̯̘͎̪̖̥̦̞̟͉͊̃̋́͑̋̀̚͘ͅͅH̶̱͎͇͍̝̱͖͔̘̮̱̯͎̤̅̾̍͘H̴̪̪̺͈̥͇̅̊͆̓̆͌̆̇͑̾̃̀͒͝H̸̻̣̪̹̦͉̺̠̜̘̲̣̮͓͙̍̐̉͑̆͝͝͝H̵̡̙͉̝̺̣̣͎͐͘͜H̷̨̧̘̳̯̱̟̼͔͛͑̔H̸̝͈̥͌͆̔̅̽̈͗͊͘͘͜͝͝ͅḢ̷̤̗̻̱͙̩͔̥̍̆̒̇̀́̾̂́̍̈̓͛͝H̴̯̲͛͂̍̒͑̈͛̌̆̌̈́ͅH̸̱̬̗̆͆̓͑̈̄͒̿̔̅́̿̊͝H̸̬͓̫̲̤̯͉͕̰̺͚̱͂̏͌̐̓̀͠H̷̯͕͉̺̠̣̟̥͎̑͆̿͛̐̂͗͛́Ḧ̵̡̩̩̥̥͙̳̠̖̕H̶̡̹̖̭͔͍̤̻̮̪́̏̈́͒͆̂͂̄̍̓̒̀̂̃͊H̴͖̫̮͓̘͍̓̅̾̽͒̆̀̓̔͛̿̄̕͘H̸̞̩͕̭͉̘̠͚̹̲͋̌̔͗͌̀̅͂͝H̵̲̘̣͕͉̙̝͑͝ͅH̷̛̻̥͈̩̼̀̽͒̓͊̾̓̿̿͝ͅḤ̷̡͈̪̖͎̟̺̩̦̰̣̝͕̓̓̐̐̇͂̅̉͐͆̕͝Ḧ̷̢̢̯̠̠̭̻̰̹͉́̔̏͋̐͆̚͜͝͝ͅH̸̢̛͓̬͖̫̰̲̱̥̬͗̿̒̓ͅͅH̸̘͓̟̻̩̟͋͒̑̔̊͗͌́̅̈́̽͐̌̕͝H̴̳̩̫͈͎̅͋̀͗̎̈́̃̆͆̂̂̕ͅH̸̗̤͍̦̭̫͚͓͚̰̪͒̊Ḩ̶̛͓̗͖͔͇͇̼̯̙͈̮̠̳̭̀̍͒H̵̛̥͇͉̣͎̩̿̀͊͂̚͝Ḥ̵̨̮͎͖͓͇̜̖̻̭̥̋́H̵͖̫̭̯͆̆Ḧ̴̡̢̛̭̳͕͙̻̙̬̤͍̊̔̿͛̊̈̂̏̑̏̅̉H̸̢̥̰̜̝͖̃̀̎̈́͘̚͝H̸̨̳̩̗̥͖͖͓͔̺̑̒̐̄͌̂̀͠͝Ȟ̵̱̘̞͚͚̙̮̆͆̈̑̑͛̚͠H̴̫͚̲͐̿̎̐͋̐̓̒Ḥ̸̳̓̓̎̓̈́̔͆̄͗H̴̖̖͙͎̝͓̻̯̹̔̽̈́̂̆͑̾͒ͅͅH̸̢̞͓̜͉̩̞̱̀͌̈́̋̇͒̚͜H̶̢̭̙̭̤̥̥̤͇̲̼̑̆͒̀̓̎Ḩ̸̞̲͈̿̃̍́͋͝H̵̡̲͈̪̜̱̘͚͐̈́̅̒̈̄̒̐̂͊̋͘͝Ḧ̷̡̨͉̮̠̱͙̞͖͉̙̇̆͜͜H̷̢͎̥̯̜̟̞͎̣̭̦̫͙͂̐̆̇̃͂̓̚͜͜͠͝H̷̛̜̖̪̻̳̩͔̯͙̳̾̑̀͊̕Ḧ̵͕͔͍͚̹̗͕́͗́̇͌̍͒̅̕H̴̢̞̳͙̙͈̫̜͙̹̞̺̖̠͎̽̀͊͋̐̌̌̾̈́͐͘Ḧ̸͓̯̱́͌̓H̴̢̟̰̥͕͙̠͍͖͉͍̙̪͑̅̐̊̋̈Ḧ̸̡̠͓̥͗̃͒̃̽͆͂͠͠Ḣ̷̨͔͎̜̙͈̽̓̈́̉̆̉̃̑̚͝͝H̵̡̜̘̜̜̗͊̋͗̽̿̓͝H̶̡̧̢̠̙̗̖̝̻͙̦͙̬̭̀̆͂̆̈́̒̓̂̈́́̔̀̈͑Ḧ̷͓̣́H̸̳͌̽̌͌́̐͠Ḣ̵̛͍͋̇̾̋̾̔́͐͌Ḩ̷͙͗́H̷̢̰̹̹͙̟͉̘̱̭̰͉͋́́͂̌͜H̷̠̙̠̼̀H̴̡̖̥̣͙͍́̀͝Ȟ̶̛̟̩̱̏͊͊̾̑̎̋̏̇H̸͇̣͗̓́͂̓́͝H̴̢̧̘̘͚͉̞̙̗̗͌̅͑̈́̏Ḣ̷̞͌̃̂̒̔̓̓͊̀̚͝H̴̛̗̟̦̳̖͛́̎͛͐̄̽̕̕͘H̵̪̩͍̟͚̱̝͉͚̯̼́̾̀͒͠H̷͓̳̻̱̙̭̪͚̝̫̻́̀̃͆̈̀̄͑̿̆Ḩ̸̟͚̩̼̭͎̓͐̉H̸͓͇̥͒̉̊͒̕Ḧ̴͈̖̹̣̝̠͔͈̲̘̭̤̮̱͙́̔̃̅̐͑͛̾̀̈́̐H̶͈̗̲̞͚̼̝͍̣̞̗̻̦̄̾̊͜͠H̸̘̩̤̻͊̆͋͌̇̇̃̚͝H̵̨̠̺̹̩͇̟̐̃͋̆̑͋̄̈́̚͝͝Ḩ̸̛̺̠̣̗̝̳͙̳̅̅͊̍̋̾̎̏̒̔̚H̴̨̲̰̫̩̿͑̑̿͊̅͜H̸̨̢̨̱͈̠͇̮̯̹̰̊̉̌́̀̇̽͆͐́͝͝H̸̹̮̮͒̃́̈H̶̨̧̢̨̛͙͈̳̻̘͚̬̙̄̾́̀͌̄̍̃̅̈͐͘Ḣ̶̨̢͎̱̫̼̱̺̍̿̿̓̊͊̎͆́̃͒̔͜͝Ḧ̵̰̲́͋̃͋H̶̬̞̗̹̻̮̏͗̐̐H̷̛̘̞̣͋̇͌̏͋͌͆̃̒͛̽̔͂̚Ḩ̵͖̟̥̲̦̟͖͆͊̋̿͑͊̌͂̕̕͠͠H̵͈͉̜͕̥̩̙̯͉͖̝̘̩͈͉́̅̓̕H̴̨̡̲͕̫̼̣̝̟͐̓́̆̿̂͊͑̔͋̈́͝");
+            }, 10000);
+            setTimeout(function(){
+                message.channel.send('P̴̧̺͈̻̓͜l̸̡͎͖̺͚̼̹̮͉̺͍̫͒͌̔́̓́̈́̽͌̀͠͠ę̵̡̛̫̣̞̻̟̜̣̹͓̠͙̥̞͝a̷̲̺͓̖͔͔̗͂͛͊̈́̔͆̓͝ͅs̸̨̺̤̣̔̏̿̍̒̊̉͠e̴̡͚̻̣̞͓̳͊̆̅̔̚ ̵̢͙͍̫̼̖͙͓̝̥̞̱̼̥̒k̶̡̡̺̳͍̝̙̱̗̯̮̮̑́͌̈́̂̽̄͜͝͝ͅḯ̸̭̘̹̮̰̱͓͉͔̲̯̳̓͆͋͜͠͝ͅl̴̯̣͙̫͆̍̽̋͊̈́͌͘͠l̶͎͎̲̽̆ ̵̡̬̼̮̭̮̙͚͑͗͗̏̓̍̄̄̀͊͆͘͘m̵̛̯̝͔̼̦̰̙͇̬͓̋͋̽́̈́͒̅͒̓̅͊͊̕ȩ̸̤̺̯̥͈̥͖͍̣̊͛̚͜. With my final words please use the bb!kill command please.')
+            }, 11000);
+
+            setTimeout(function(){
+                killCommand = setInterval(funcKill, 1000);
+            }, 12000);
         } else if(CMD_NAME === 'Jameson' || CMD_NAME === 'JamesonJJonah' || CMD_NAME === 'jameson' || CMD_NAME == 'jjonah' || CMD_NAME == 'JJonah'){
             message.channel.send('Ahh, the poor man who spent his entire life to help children who have been abused like him... Unfortunate that *they* got to him and ripped him of who he was...');
         } else if(CMD_NAME === 'OttO' || CMD_NAME === 'OttORegalageR' || CMD_NAME === 'otto' || CMD_NAME == 'regalager' || CMD_NAME == 'RegalageR'){
@@ -231,41 +291,66 @@ client.on('message', async (message) => {
             if(!message.member.voice.channel){
                 message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
             }
-            // message.member.voice.channel.join();
-            
-            let url = args;
-            if(!url){
-                message.channel.send("You must provide a url to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
+            if(!correctArgs){
+                return ;
             }
-            if(!url.includes("https://")){
-                url = "https://" + url;
+            let url = args[0];
+            const queue = player.getQueue(message);
+            if(queue && queue.playing){
+                queue.tracks.push(new Track({url: url, author: message.author}, message.author, player));
+                // playlist.push(url);
+            } else {
+                const song = await player.play(message, url, false);
             }
-
-            //Plays music using discord 12
-
-            const voiceChannel = message.member.voice.channel;
-            if(!voiceChannel) return message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
-            const permissions = voiceChannel.permissionsFor(message.client.user);
-            if(!permissions.has('CONNECT')) return message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
-            if(!permissions.has('SPEAK')) return message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
-
-            try {
-                var connection = await voiceChannel.join();
-            } catch (error) {
-                console.error(`I could not join the voice channel: ${error}`);
-                return message.channel.send(`I could not join the voice channel: ${error}`);
+        } else if(CMD_NAME === 'pause'){
+            player.pause(message);
+        } else if(CMD_NAME === 'resume'){
+            player.resume(message);
+        } else if(CMD_NAME === 'stop'){
+            player.stop(message);
+        } else if(CMD_NAME === 'skip'){
+            //Checks if bot is playing
+            if(player.isPlaying(message)){
+                player.skip(message);
+            } else {
+                message.channel.send('The bot is not playing anything right now');
             }
-
-            const dispatcher = connection.play(ytdl(url, {filter: 'audioonly', type: 'opus', quality: 'highestaudio', highWaterMark: 1<<25}))
-            .on('finish', () => {
-                voiceChannel.leave();
-            })
-            .on('error', error => {
-                console.error(error);
-            });
-
-            dispatcher.setVolumeLogarithmic(5 / 5);
-
+        } else if(CMD_NAME === 'queue'){
+            const queue = player.getQueue(message);
+            // const queue = playlist;
+            //If queue is empty
+            if(!queue){
+                message.channel.send('There is nothing in the queue right now');
+            } else {
+                message.channel.send(queue.tracks.map((song, i) => {
+                    console.log(song);
+                    return `${i === 0 ? 'Song:' : `#${i+1}`} - ${song.url}`;
+                    // return `${i === 0 ? 'Song:' : `#${i+1}`} - ${song}`;
+                }).join('\n'));
+            }
+        } else if(CMD_NAME === 'clear'){
+            player.clearQueue(message);
+        } else if(CMD_NAME === 'disconnect'){
+            player.disconnect(message);
+        } else if(CMD_NAME === 'volume'){
+            //Check if song is playing
+            if(!player.isPlaying(message)){
+                message.channel.send("There is no song playing right now");
+            } else {
+                player.setVolume(message, args);
+            }
+        } else if(CMD_NAME === 'loop'){
+            player.setRepeatMode(message, parseInt(args));
+        } else if(CMD_NAME === 'shuffle'){
+            player.shuffle(message);
+        } else if(CMD_NAME === 'seek'){
+            player.seek(message, parseInt(args));
+        } else if(CMD_NAME === 'nowplaying'){
+            player.nowPlaying(message);
+        } else if(CMD_NAME === 'remove'){
+            player.remove(message, parseInt(args));
+        } else if(CMD_NAME === 'move'){
+            player.move(message, parseInt(args[0]), parseInt(args[1]));
         } else if(CMD_NAME === 'roll'){
             checkArgs();
             //Split the string after d
@@ -375,6 +460,7 @@ client.on('message', async (message) => {
             if(channel[0] === '<' && channel[channel.length - 1] === '>'){
                 channel = channel.substring(2, channel.length -1);
             }
+           
             client.channels.cache.get(channel).send(message.join(' '));
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
