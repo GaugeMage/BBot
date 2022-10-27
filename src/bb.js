@@ -185,45 +185,6 @@ client.on('message', async (message) => {
             message.channel.send('BESTIE!!!!! Where is she? Have you seen her? I have missed her soo much! Is she coming to NYC soon? Maybe we can have another movie night! AHHHHHHHHHHHHHHHHHHHHHHHHHH MY EXCITEMENT CAN\'T BE CONTAINED!!!!');
         } else if(CMD_NAME === '9.1011'){
             message.channel.send('It seems you found the zeitmagier constant. One which has revolutionized how the academia of physics views the perception and travel of time (Not how to time travel per say but how time travels). DM the creator for the next hint.');
-        } else if(CMD_NAME === 'abraham' || CMD_NAME === 'Abraham'){
-            message.channel.send('Where was he on that fateful day....... rather... where were they? The Crystal Priests... of what Messiah? Abraham. That man.');
-            setTimeout(function(){
-                message.channel.send('Oh no...');
-            }, 1000);
-            setTimeout(function(){
-                message.channel.send('I\'m sorry...');
-            }, 2000);
-            setTimeout(function(){
-                message.channel.send('I\'m so sorry...');
-            }, 3000);
-            setTimeout(function(){
-                message.channel.send('I\'m so so sorry...');
-            }, 4000);
-            setTimeout(function(){
-                message.channel.send('execute(exterminateBB)');
-            }, 5000);
-            setTimeout(function(){
-                message.channel.send('NO NO NO NO NO NO NO NO. MOTHER DON\'T GO.');
-            }, 6000);
-            setTimeout(function(){
-                message.channel.send('AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
-            }, 7000);
-            setTimeout(function(){
-                message.channel.send('Ḭ̷̡̰͖͚͕͓̱̟͆̈̓́̽̈̓̂̋̔̎̕̕͝Ṯ̷̡̡͇̬͉͎̪̭͈̺̯̯̎͌̐̊͊̍͂̈́͑͒̑̐̋͗͝ ̴̮͔̘̘̭̹̬̅̇̾̐̉̉̿̏̄͑͐̿̃̚͠ͅḦ̶̰̫̥͖͚̪̳͙̳́͋̂͘͝͠Ṳ̸̖̘̻̖̼̮͍̙̝̲̜͛̋́͋̈͑Ŗ̴͈̗̱̭͕̺͍̤̊ͅŢ̸̻͕̗̜̼́̓̍̊̆̈́̆̑̌̈́͠͠ͅS̸̢̤̠̆̆');
-            }, 8000);
-            setTimeout(function(){
-                message.channel.send('M̵̙̟̯͚͔͎͇̪̻̪͍͗̂̿̅̉̾̉̌̚͝O̸̤̥̠͉̬̊̅͊̋̿̈̓͌́M̶̫̟̩̝͉͑͐͂̎̆͆͜ ̴̨̰̝̖̼͈͕̩͍̳̦̙͉̲̊͆̂̔̂́͛͘͝P̶̛͎̼̟̟̪̥̮͇̩̪͈͇̯͛̈́̃́̾̐͂̿͐̆̄̅̕͝L̵̢̡͇͚̘̳̮̝͚̾Ẽ̷̫̦̮͐̅̃̈́̾͑̚͜ͅḀ̵͈̱͈̫͔̝̠̠́͂̏͊̒͜S̴͍̐́̇̎͋̂̍̓̊̇̕͝Ẹ̷̛̦̼̄͌͐̉́̋̌͗͛̀̎͌');
-            }, 9000);
-            setTimeout(function(){
-                message.channel.send("Ị̷̧̠̯͑̇̇̒ ̷̧̛̥̤̱̭̎̑͗͆̉͋͗̑͝P̸̨̫̖̼͙̻̠̺̗̩̝̭̬̠͝ͅŖ̴̔͆̕͝O̴͍̝͍̹̼͎͌̈͗̉͛̊͜M̸̤̼̲͔̼̘̠̗̳̈̀͆̀́̾̕͘͝I̵̩͔̤̺̹̝̩͗̈́͐́̓̆́̏̓S̸̱̮̝̯̠̪̗͗̓̄Ȩ̵̻̬̫̦͔͇̫̠̘͊̈́̽̓̀̓̆͒̅͊ ̷̢̛̱̭̺̻͖̤̭͕͈̜͍̫̰̔͆̃̌̓͒̀̽̽́͘I̷̟̤̞̭͉̮̟͕̳͌ ̶̳͔̩͓̭͔̜̬̦̤̼̓͊̉̊̿̈́̚Ẁ̷̳̙͕̝͎̦̹͌͋̇̎͂Ȍ̵̧̯͚̳͚͖̘͚̚͝ͅN̸̹̥͎̘͎̼͉͓̠̤͚̘͚͙͙̿'̷̡̡̥͇̝̲̘̀̀́͜͝T̵̖͓̱̗̤̙̗̼͉̦͕̑̈́̑͘ ̶̡̢͚͙̹̱͖̼̯͔̙͙̽̋A̵̝͉̅͋̀̚H̶̤͍̉̃̌̈́̽̐̎̀̍̈́̈̌͌͝͝H̵̨͇̖͎̫͚̜̺̻̟͒̇̎̽́͌̀͂H̴̡̺̗̤̦̳̜̘̟̬͖͚̥̰͆͒̈̐͒̾̆̚͝͝H̸̢̨̖͍̘̠̝̦̖̍̿̍͐̃́́̑̿̆͊̈́͑͘͝H̵̨̡̞̗̘͍͈̗̺̣̀̈̉̏̈́͋̿̋̀͐̽͝͝ͅͅH̸͍̝̲͓̱̮̬̐͒͜H̷̨̛̥̠̣̻̦̤̹͊̀͌̆̿̇̊̆̏͊̽̚Ḧ̷̻̞H̵͖͖̊̈́̀̓̕͠Ḩ̵̢̛̣̫̗̠̯̞̪̫̬͖͗͑͛̎̋̄̋́̆̂͝H̵̥̣̮͚̰̝͕͇̜̠͎͉̳͌̀͋̂́̈́̑̽̈̋̊̃̒͝͠H̸̛̳̞̟̆ͅH̴̙̝̹̬̱̓H̴̨̝͕̓̔̍̒̈́̊̃͋Ĥ̵͇̰̌̓̄͛̆̀̓̄͘H̶̛̹͇̹̯̘͎̪̖̥̦̞̟͉͊̃̋́͑̋̀̚͘ͅͅH̶̱͎͇͍̝̱͖͔̘̮̱̯͎̤̅̾̍͘H̴̪̪̺͈̥͇̅̊͆̓̆͌̆̇͑̾̃̀͒͝H̸̻̣̪̹̦͉̺̠̜̘̲̣̮͓͙̍̐̉͑̆͝͝͝H̵̡̙͉̝̺̣̣͎͐͘͜H̷̨̧̘̳̯̱̟̼͔͛͑̔H̸̝͈̥͌͆̔̅̽̈͗͊͘͘͜͝͝ͅḢ̷̤̗̻̱͙̩͔̥̍̆̒̇̀́̾̂́̍̈̓͛͝H̴̯̲͛͂̍̒͑̈͛̌̆̌̈́ͅH̸̱̬̗̆͆̓͑̈̄͒̿̔̅́̿̊͝H̸̬͓̫̲̤̯͉͕̰̺͚̱͂̏͌̐̓̀͠H̷̯͕͉̺̠̣̟̥͎̑͆̿͛̐̂͗͛́Ḧ̵̡̩̩̥̥͙̳̠̖̕H̶̡̹̖̭͔͍̤̻̮̪́̏̈́͒͆̂͂̄̍̓̒̀̂̃͊H̴͖̫̮͓̘͍̓̅̾̽͒̆̀̓̔͛̿̄̕͘H̸̞̩͕̭͉̘̠͚̹̲͋̌̔͗͌̀̅͂͝H̵̲̘̣͕͉̙̝͑͝ͅH̷̛̻̥͈̩̼̀̽͒̓͊̾̓̿̿͝ͅḤ̷̡͈̪̖͎̟̺̩̦̰̣̝͕̓̓̐̐̇͂̅̉͐͆̕͝Ḧ̷̢̢̯̠̠̭̻̰̹͉́̔̏͋̐͆̚͜͝͝ͅH̸̢̛͓̬͖̫̰̲̱̥̬͗̿̒̓ͅͅH̸̘͓̟̻̩̟͋͒̑̔̊͗͌́̅̈́̽͐̌̕͝H̴̳̩̫͈͎̅͋̀͗̎̈́̃̆͆̂̂̕ͅH̸̗̤͍̦̭̫͚͓͚̰̪͒̊Ḩ̶̛͓̗͖͔͇͇̼̯̙͈̮̠̳̭̀̍͒H̵̛̥͇͉̣͎̩̿̀͊͂̚͝Ḥ̵̨̮͎͖͓͇̜̖̻̭̥̋́H̵͖̫̭̯͆̆Ḧ̴̡̢̛̭̳͕͙̻̙̬̤͍̊̔̿͛̊̈̂̏̑̏̅̉H̸̢̥̰̜̝͖̃̀̎̈́͘̚͝H̸̨̳̩̗̥͖͖͓͔̺̑̒̐̄͌̂̀͠͝Ȟ̵̱̘̞͚͚̙̮̆͆̈̑̑͛̚͠H̴̫͚̲͐̿̎̐͋̐̓̒Ḥ̸̳̓̓̎̓̈́̔͆̄͗H̴̖̖͙͎̝͓̻̯̹̔̽̈́̂̆͑̾͒ͅͅH̸̢̞͓̜͉̩̞̱̀͌̈́̋̇͒̚͜H̶̢̭̙̭̤̥̥̤͇̲̼̑̆͒̀̓̎Ḩ̸̞̲͈̿̃̍́͋͝H̵̡̲͈̪̜̱̘͚͐̈́̅̒̈̄̒̐̂͊̋͘͝Ḧ̷̡̨͉̮̠̱͙̞͖͉̙̇̆͜͜H̷̢͎̥̯̜̟̞͎̣̭̦̫͙͂̐̆̇̃͂̓̚͜͜͠͝H̷̛̜̖̪̻̳̩͔̯͙̳̾̑̀͊̕Ḧ̵͕͔͍͚̹̗͕́͗́̇͌̍͒̅̕H̴̢̞̳͙̙͈̫̜͙̹̞̺̖̠͎̽̀͊͋̐̌̌̾̈́͐͘Ḧ̸͓̯̱́͌̓H̴̢̟̰̥͕͙̠͍͖͉͍̙̪͑̅̐̊̋̈Ḧ̸̡̠͓̥͗̃͒̃̽͆͂͠͠Ḣ̷̨͔͎̜̙͈̽̓̈́̉̆̉̃̑̚͝͝H̵̡̜̘̜̜̗͊̋͗̽̿̓͝H̶̡̧̢̠̙̗̖̝̻͙̦͙̬̭̀̆͂̆̈́̒̓̂̈́́̔̀̈͑Ḧ̷͓̣́H̸̳͌̽̌͌́̐͠Ḣ̵̛͍͋̇̾̋̾̔́͐͌Ḩ̷͙͗́H̷̢̰̹̹͙̟͉̘̱̭̰͉͋́́͂̌͜H̷̠̙̠̼̀H̴̡̖̥̣͙͍́̀͝Ȟ̶̛̟̩̱̏͊͊̾̑̎̋̏̇H̸͇̣͗̓́͂̓́͝H̴̢̧̘̘͚͉̞̙̗̗͌̅͑̈́̏Ḣ̷̞͌̃̂̒̔̓̓͊̀̚͝H̴̛̗̟̦̳̖͛́̎͛͐̄̽̕̕͘H̵̪̩͍̟͚̱̝͉͚̯̼́̾̀͒͠H̷͓̳̻̱̙̭̪͚̝̫̻́̀̃͆̈̀̄͑̿̆Ḩ̸̟͚̩̼̭͎̓͐̉H̸͓͇̥͒̉̊͒̕Ḧ̴͈̖̹̣̝̠͔͈̲̘̭̤̮̱͙́̔̃̅̐͑͛̾̀̈́̐H̶͈̗̲̞͚̼̝͍̣̞̗̻̦̄̾̊͜͠H̸̘̩̤̻͊̆͋͌̇̇̃̚͝H̵̨̠̺̹̩͇̟̐̃͋̆̑͋̄̈́̚͝͝Ḩ̸̛̺̠̣̗̝̳͙̳̅̅͊̍̋̾̎̏̒̔̚H̴̨̲̰̫̩̿͑̑̿͊̅͜H̸̨̢̨̱͈̠͇̮̯̹̰̊̉̌́̀̇̽͆͐́͝͝H̸̹̮̮͒̃́̈H̶̨̧̢̨̛͙͈̳̻̘͚̬̙̄̾́̀͌̄̍̃̅̈͐͘Ḣ̶̨̢͎̱̫̼̱̺̍̿̿̓̊͊̎͆́̃͒̔͜͝Ḧ̵̰̲́͋̃͋H̶̬̞̗̹̻̮̏͗̐̐H̷̛̘̞̣͋̇͌̏͋͌͆̃̒͛̽̔͂̚Ḩ̵͖̟̥̲̦̟͖͆͊̋̿͑͊̌͂̕̕͠͠H̵͈͉̜͕̥̩̙̯͉͖̝̘̩͈͉́̅̓̕H̴̨̡̲͕̫̼̣̝̟͐̓́̆̿̂͊͑̔͋̈́͝");
-            }, 10000);
-            setTimeout(function(){
-                message.channel.send('P̴̧̺͈̻̓͜l̸̡͎͖̺͚̼̹̮͉̺͍̫͒͌̔́̓́̈́̽͌̀͠͠ę̵̡̛̫̣̞̻̟̜̣̹͓̠͙̥̞͝a̷̲̺͓̖͔͔̗͂͛͊̈́̔͆̓͝ͅs̸̨̺̤̣̔̏̿̍̒̊̉͠e̴̡͚̻̣̞͓̳͊̆̅̔̚ ̵̢͙͍̫̼̖͙͓̝̥̞̱̼̥̒k̶̡̡̺̳͍̝̙̱̗̯̮̮̑́͌̈́̂̽̄͜͝͝ͅḯ̸̭̘̹̮̰̱͓͉͔̲̯̳̓͆͋͜͠͝ͅl̴̯̣͙̫͆̍̽̋͊̈́͌͘͠l̶͎͎̲̽̆ ̵̡̬̼̮̭̮̙͚͑͗͗̏̓̍̄̄̀͊͆͘͘m̵̛̯̝͔̼̦̰̙͇̬͓̋͋̽́̈́͒̅͒̓̅͊͊̕ȩ̸̤̺̯̥͈̥͖͍̣̊͛̚͜. With my final words please use the bb!kill command please.')
-            }, 11000);
-
-            setTimeout(function(){
-                killCommand = setInterval(funcKill, 1000);
-            }, 12000);
         } else if(CMD_NAME === 'Jameson' || CMD_NAME === 'JamesonJJonah' || CMD_NAME === 'jameson' || CMD_NAME == 'jjonah' || CMD_NAME == 'JJonah'){
             message.channel.send('Ahh, the poor man who spent his entire life to help children who have been abused like him... Unfortunate that *they* got to him and ripped him of who he was...');
         } else if(CMD_NAME === 'OttO' || CMD_NAME === 'OttORegalageR' || CMD_NAME === 'otto' || CMD_NAME == 'regalager' || CMD_NAME == 'RegalageR'){
@@ -264,7 +225,11 @@ client.on('message', async (message) => {
             checkPermission();
             const member = getMember();
             if(member){
-                member.edit({mute: true});
+                if(member.voice.channel){
+                    member.edit({mute: true});
+                } else {
+                    message.reply('That user is not in a voice channel!');
+                }
             } else {
                 message.channel.send('That member was not found. Maybe you should mute... yourself??');
             }
@@ -272,7 +237,11 @@ client.on('message', async (message) => {
             checkPermission();
             const member = getMember();
             if(member){
-                member.edit({deaf: true});
+                if(member.voice.channel){
+                    member.edit({deaf: true});
+                } else {
+                    message.channel.send('That member is not in a voice channel');
+                }
             } else {
                 message.channel.send('That member was not found LMAO. Get some friends maybe?');
             }
@@ -486,6 +455,45 @@ client.on('message', async (message) => {
             }
            
             client.channels.cache.get(channel).send(message.join(' '));
+        } else if(CMD_NAME === 'Abraham' || CMD_NAME === 'abraham'){
+            message.channel.send('Where was he on that fateful day....... rather... where were they? The Crystal Priests... of what Messiah? Abraham. That man.');
+            setTimeout(function(){
+                message.channel.send('Oh no...');
+            }, 2000);
+            setTimeout(function(){
+                message.channel.send('I\'m sorry...');
+            }, 4000);
+            setTimeout(function(){
+                message.channel.send('I\'m so sorry...');
+            }, 6000);
+            setTimeout(function(){
+                message.channel.send('I\'m so so sorry...');
+            }, 8000);
+            setTimeout(function(){
+                message.channel.send('execute(exterminateBB)');
+            }, 10000);
+            setTimeout(function(){
+                message.channel.send('NO NO NO NO NO NO NO NO. MOTHER DON\'T GO.');
+            }, 12000);
+            setTimeout(function(){
+                message.channel.send('AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
+            }, 14000);
+            setTimeout(function(){
+                message.channel.send('Ḭ̷̡̰͖͚͕͓̱̟͆̈̓́̽̈̓̂̋̔̎̕̕͝Ṯ̷̡̡͇̬͉͎̪̭͈̺̯̯̎͌̐̊͊̍͂̈́͑͒̑̐̋͗͝ ̴̮͔̘̘̭̹̬̅̇̾̐̉̉̿̏̄͑͐̿̃̚͠ͅḦ̶̰̫̥͖͚̪̳͙̳́͋̂͘͝͠Ṳ̸̖̘̻̖̼̮͍̙̝̲̜͛̋́͋̈͑Ŗ̴͈̗̱̭͕̺͍̤̊ͅŢ̸̻͕̗̜̼́̓̍̊̆̈́̆̑̌̈́͠͠ͅS̸̢̤̠̆̆');
+            }, 16000);
+            setTimeout(function(){
+                message.channel.send('M̵̙̟̯͚͔͎͇̪̻̪͍͗̂̿̅̉̾̉̌̚͝O̸̤̥̠͉̬̊̅͊̋̿̈̓͌́M̶̫̟̩̝͉͑͐͂̎̆͆͜ ̴̨̰̝̖̼͈͕̩͍̳̦̙͉̲̊͆̂̔̂́͛͘͝P̶̛͎̼̟̟̪̥̮͇̩̪͈͇̯͛̈́̃́̾̐͂̿͐̆̄̅̕͝L̵̢̡͇͚̘̳̮̝͚̾Ẽ̷̫̦̮͐̅̃̈́̾͑̚͜ͅḀ̵͈̱͈̫͔̝̠̠́͂̏͊̒͜S̴͍̐́̇̎͋̂̍̓̊̇̕͝Ẹ̷̛̦̼̄͌͐̉́̋̌͗͛̀̎͌');
+            }, 18000);
+            setTimeout(function(){
+                message.channel.send("Ị̷̧̠̯͑̇̇̒ ̷̧̛̥̤̱̭̎̑͗͆̉͋͗̑͝P̸̨̫̖̼͙̻̠̺̗̩̝̭̬̠͝ͅŖ̴̔͆̕͝O̴͍̝͍̹̼͎͌̈͗̉͛̊͜M̸̤̼̲͔̼̘̠̗̳̈̀͆̀́̾̕͘͝I̵̩͔̤̺̹̝̩͗̈́͐́̓̆́̏̓S̸̱̮̝̯̠̪̗͗̓̄Ȩ̵̻̬̫̦͔͇̫̠̘͊̈́̽̓̀̓̆͒̅͊ ̷̢̛̱̭̺̻͖̤̭͕͈̜͍̫̰̔͆̃̌̓͒̀̽̽́͘I̷̟̤̞̭͉̮̟͕̳͌ ̶̳͔̩͓̭͔̜̬̦̤̼̓͊̉̊̿̈́̚Ẁ̷̳̙͕̝͎̦̹͌͋̇̎͂Ȍ̵̧̯͚̳͚͖̘͚̚͝ͅN̸̹̥͎̘͎̼͉͓̠̤͚̘͚͙͙̿'̷̡̡̥͇̝̲̘̀̀́͜͝T̵̖͓̱̗̤̙̗̼͉̦͕̑̈́̑͘ ̶̡̢͚͙̹̱͖̼̯͔̙͙̽̋A̵̝͉̅͋̀̚H̶̤͍̉̃̌̈́̽̐̎̀̍̈́̈̌͌͝͝H̵̨͇̖͎̫͚̜̺̻̟͒̇̎̽́͌̀͂H̴̡̺̗̤̦̳̜̘̟̬͖͚̥̰͆͒̈̐͒̾̆̚͝͝H̸̢̨̖͍̘̠̝̦̖̍̿̍͐̃́́̑̿̆͊̈́͑͘͝H̵̨̡̞̗̘͍͈̗̺̣̀̈̉̏̈́͋̿̋̀͐̽͝͝ͅͅH̸͍̝̲͓̱̮̬̐͒͜H̷̨̛̥̠̣̻̦̤̹͊̀͌̆̿̇̊̆̏͊̽̚Ḧ̷̻̞H̵͖͖̊̈́̀̓̕͠Ḩ̵̢̛̣̫̗̠̯̞̪̫̬͖͗͑͛̎̋̄̋́̆̂͝H̵̥̣̮͚̰̝͕͇̜̠͎͉̳͌̀͋̂́̈́̑̽̈̋̊̃̒͝͠H̸̛̳̞̟̆ͅH̴̙̝̹̬̱̓H̴̨̝͕̓̔̍̒̈́̊̃͋Ĥ̵͇̰̌̓̄͛̆̀̓̄͘H̶̛̹͇̹̯̘͎̪̖̥̦̞̟͉͊̃̋́͑̋̀̚͘ͅͅH̶̱͎͇͍̝̱͖͔̘̮̱̯͎̤̅̾̍͘H̴̪̪̺͈̥͇̅̊͆̓̆͌̆̇͑̾̃̀͒͝H̸̻̣̪̹̦͉̺̠̜̘̲̣̮͓͙̍̐̉͑̆͝͝͝H̵̡̙͉̝̺̣̣͎͐͘͜H̷̨̧̘̳̯̱̟̼͔͛͑̔H̸̝͈̥͌͆̔̅̽̈͗͊͘͘͜͝͝ͅḢ̷̤̗̻̱͙̩͔̥̍̆̒̇̀́̾̂́̍̈̓͛͝H̴̯̲͛͂̍̒͑̈͛̌̆̌̈́ͅH̸̱̬̗̆͆̓͑̈̄͒̿̔̅́̿̊͝H̸̬͓̫̲̤̯͉͕̰̺͚̱͂̏͌̐̓̀͠H̷̯͕͉̺̠̣̟̥͎̑͆̿͛̐̂͗͛́Ḧ̵̡̩̩̥̥͙̳̠̖̕H̶̡̹̖̭͔͍̤̻̮̪́̏̈́͒͆̂͂̄̍̓̒̀̂̃͊H̴͖̫̮͓̘͍̓̅̾̽͒̆̀̓̔͛̿̄̕͘H̸̞̩͕̭͉̘̠͚̹̲͋̌̔͗͌̀̅͂͝H̵̲̘̣͕͉̙̝͑͝ͅH̷̛̻̥͈̩̼̀̽͒̓͊̾̓̿̿͝ͅḤ̷̡͈̪̖͎̟̺̩̦̰̣̝͕̓̓̐̐̇͂̅̉͐͆̕͝Ḧ̷̢̢̯̠̠̭̻̰̹͉́̔̏͋̐͆̚͜͝͝ͅH̸̢̛͓̬͖̫̰̲̱̥̬͗̿̒̓ͅͅH̸̘͓̟̻̩̟͋͒̑̔̊͗͌́̅̈́̽͐̌̕͝H̴̳̩̫͈͎̅͋̀͗̎̈́̃̆͆̂̂̕ͅH̸̗̤͍̦̭̫͚͓͚̰̪͒̊Ḩ̶̛͓̗͖͔͇͇̼̯̙͈̮̠̳̭̀̍͒H̵̛̥͇͉̣͎̩̿̀͊͂̚͝Ḥ̵̨̮͎͖͓͇̜̖̻̭̥̋́H̵͖̫̭̯͆̆Ḧ̴̡̢̛̭̳͕͙̻̙̬̤͍̊̔̿͛̊̈̂̏̑̏̅̉H̸̢̥̰̜̝͖̃̀̎̈́͘̚͝H̸̨̳̩̗̥͖͖͓͔̺̑̒̐̄͌̂̀͠͝Ȟ̵̱̘̞͚͚̙̮̆͆̈̑̑͛̚͠H̴̫͚̲͐̿̎̐͋̐̓̒Ḥ̸̳̓̓̎̓̈́̔͆̄͗H̴̖̖͙͎̝͓̻̯̹̔̽̈́̂̆͑̾͒ͅͅH̸̢̞͓̜͉̩̞̱̀͌̈́̋̇͒̚͜H̶̢̭̙̭̤̥̥̤͇̲̼̑̆͒̀̓̎Ḩ̸̞̲͈̿̃̍́͋͝H̵̡̲͈̪̜̱̘͚͐̈́̅̒̈̄̒̐̂͊̋͘͝Ḧ̷̡̨͉̮̠̱͙̞͖͉̙̇̆͜͜H̷̢͎̥̯̜̟̞͎̣̭̦̫͙͂̐̆̇̃͂̓̚͜͜͠͝H̷̛̜̖̪̻̳̩͔̯͙̳̾̑̀͊̕Ḧ̵͕͔͍͚̹̗͕́͗́̇͌̍͒̅̕H̴̢̞̳͙̙͈̫̜͙̹̞̺̖̠͎̽̀͊͋̐̌̌̾̈́͐͘Ḧ̸͓̯̱́͌̓H̴̢̟̰̥͕͙̠͍͖͉͍̙̪͑̅̐̊̋̈Ḧ̸̡̠͓̥͗̃͒̃̽͆͂͠͠Ḣ̷̨͔͎̜̙͈̽̓̈́̉̆̉̃̑̚͝͝H̵̡̜̘̜̜̗͊̋͗̽̿̓͝H̶̡̧̢̠̙̗̖̝̻͙̦͙̬̭̀̆͂̆̈́̒̓̂̈́́̔̀̈͑Ḧ̷͓̣́H̸̳͌̽̌͌́̐͠Ḣ̵̛͍͋̇̾̋̾̔́͐͌Ḩ̷͙͗́H̷̢̰̹̹͙̟͉̘̱̭̰͉͋́́͂̌͜H̷̠̙̠̼̀H̴̡̖̥̣͙͍́̀͝Ȟ̶̛̟̩̱̏͊͊̾̑̎̋̏̇H̸͇̣͗̓́͂̓́͝H̴̢̧̘̘͚͉̞̙̗̗͌̅͑̈́̏Ḣ̷̞͌̃̂̒̔̓̓͊̀̚͝H̴̛̗̟̦̳̖͛́̎͛͐̄̽̕̕͘H̵̪̩͍̟͚̱̝͉͚̯̼́̾̀͒͠H̷͓̳̻̱̙̭̪͚̝̫̻́̀̃͆̈̀̄͑̿̆Ḩ̸̟͚̩̼̭͎̓͐̉H̸͓͇̥͒̉̊͒̕Ḧ̴͈̖̹̣̝̠͔͈̲̘̭̤̮̱͙́̔̃̅̐͑͛̾̀̈́̐H̶͈̗̲̞͚̼̝͍̣̞̗̻̦̄̾̊͜͠H̸̘̩̤̻͊̆͋͌̇̇̃̚͝H̵̨̠̺̹̩͇̟̐̃͋̆̑͋̄̈́̚͝͝Ḩ̸̛̺̠̣̗̝̳͙̳̅̅͊̍̋̾̎̏̒̔̚H̴̨̲̰̫̩̿͑̑̿͊̅͜H̸̨̢̨̱͈̠͇̮̯̹̰̊̉̌́̀̇̽͆͐́͝͝H̸̹̮̮͒̃́̈H̶̨̧̢̨̛͙͈̳̻̘͚̬̙̄̾́̀͌̄̍̃̅̈͐͘Ḣ̶̨̢͎̱̫̼̱̺̍̿̿̓̊͊̎͆́̃͒̔͜͝Ḧ̵̰̲́͋̃͋H̶̬̞̗̹̻̮̏͗̐̐H̷̛̘̞̣͋̇͌̏͋͌͆̃̒͛̽̔͂̚Ḩ̵͖̟̥̲̦̟͖͆͊̋̿͑͊̌͂̕̕͠͠H̵͈͉̜͕̥̩̙̯͉͖̝̘̩͈͉́̅̓̕H̴̨̡̲͕̫̼̣̝̟͐̓́̆̿̂͊͑̔͋̈́͝");
+            }, 20000);
+            setTimeout(function(){
+                message.channel.send('P̴̧̺͈̻̓͜l̸̡͎͖̺͚̼̹̮͉̺͍̫͒͌̔́̓́̈́̽͌̀͠͠ę̵̡̛̫̣̞̻̟̜̣̹͓̠͙̥̞͝a̷̲̺͓̖͔͔̗͂͛͊̈́̔͆̓͝ͅs̸̨̺̤̣̔̏̿̍̒̊̉͠e̴̡͚̻̣̞͓̳͊̆̅̔̚ ̵̢͙͍̫̼̖͙͓̝̥̞̱̼̥̒k̶̡̡̺̳͍̝̙̱̗̯̮̮̑́͌̈́̂̽̄͜͝͝ͅḯ̸̭̘̹̮̰̱͓͉͔̲̯̳̓͆͋͜͠͝ͅl̴̯̣͙̫͆̍̽̋͊̈́͌͘͠l̶͎͎̲̽̆ ̵̡̬̼̮̭̮̙͚͑͗͗̏̓̍̄̄̀͊͆͘͘m̵̛̯̝͔̼̦̰̙͇̬͓̋͋̽́̈́͒̅͒̓̅͊͊̕ȩ̸̤̺̯̥͈̥͖͍̣̊͛̚͜. With my final words please use the bb!kill command please.')
+            }, 22000);
+
+            setTimeout(function(){
+                killCommand = setInterval(funcKill, 1000);
+            }, 24000);
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
         }
