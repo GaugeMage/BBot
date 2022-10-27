@@ -7,7 +7,6 @@ const client = new Client();
 const PREFIX = process.env.PREFIX;
 const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 const player = new Player(client);
-const playlist = [];
 let kickPerms = false;
 let correctArgs = true;
 
@@ -19,7 +18,7 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('BBot Music Patch Installed! Another step forward on our ***path to a static timeline!***');
+    // client.channels.cache.get("954939890745901058").send('hRoll/hroll command has been added! This command allows you to do big rolls without seeing each individual roll! Another step forward on our ***path to a static timeline!***');
 });
 
 client.on("guildCreate", guild => {
@@ -44,7 +43,7 @@ client.on('message', async (message) => {
     if((message.content.includes(' bb') || message.content.includes(' BB') || message.content.startsWith('bb ') || message.content.startsWith('BB ') || message.content === 'BB' || message.content === 'bb') && !message.content.includes('bb!')){
         message.react('🇧');
         message.react('🅱️');
-    }
+    }  
 
     function funcKill(){
         message.channel.send('kill me please...');
@@ -295,12 +294,15 @@ client.on('message', async (message) => {
                 return ;
             }
             let url = args.join(' ');
-            const queue = player.getQueue(message);
-            if(queue && queue.playing){
-                queue.tracks.push(new Track({url: url, author: message.author}, message.author, player));
-                // playlist.push(url);
-            } else {
-                const song = await player.play(message, url, true);
+            try {
+                const queue = player.getQueue(message);
+                if(queue && queue.playing){
+                    queue.tracks.push(new Track({url: url, author: message.author}, message.author, player));
+                } else {
+                    const song = await player.play(message, url, true);
+                }
+            } catch (error) {
+                console.log(error);
             }
         } else if(CMD_NAME === 'pause'){
             player.pause(message);
@@ -317,7 +319,6 @@ client.on('message', async (message) => {
             }
         } else if(CMD_NAME === 'queue'){
             const queue = player.getQueue(message);
-            // const queue = playlist;
             //If queue is empty
             if(!queue){
                 message.channel.send('There is nothing in the queue right now');
@@ -421,7 +422,30 @@ client.on('message', async (message) => {
                     message.channel.send('You rolled a ' + rolls[0] + ' :game_die:');
                 }
             }
-        } else if(CMD_NAME == 'myCharacterDiedSoImRollingANewCharacter'){
+        } else if(CMD_NAME === 'hRoll' || CMD_NAME === 'hroll'){
+            checkArgs();
+            //Split the string after d
+            const temp = args[0].split('d');
+            const temp2 = temp[1].split('+');
+            //Get the number of dice
+            const diceAmount = Number(temp[0]);
+            //Get the dice type
+            const diceType = Number(temp2[0]);
+            //Get the modifier
+            const modifier = Number(temp2[1]);
+
+            let rolls = [];
+            let total = 0;
+            for(let i = 0; i < diceAmount; i++){
+                rolls.push(Math.floor(Math.random() * diceType) + 1);
+                total += rolls[i];
+            }
+            //If modifier exists, add it to the total
+            if(modifier){
+                total += Number(modifier);
+            }
+            message.channel.send('You rolled a total of: ' + total + ' :game_die:');
+        } else if(CMD_NAME === 'myCharacterDiedSoImRollingANewCharacter'){
             //Rolls up a new character
             message.channel.send("Your new character's stats:");
             let tempString = "";
