@@ -177,13 +177,19 @@ client.on('message', async (message) => {
             }
             if(board[0][2] === board[1][1] && board[1][1] === board[2][0]){
                 if(board[0][2] === ' X '){
-                    message.channel.send('X wins!');
+                    if(isX){
+                        botWins = true;
+                    } else {
+                        playerWins = true;
+                    }
                     ticTacToeStarted = false;
-                    return true;
                 } else if(board[0][2] === ' O '){
-                    message.channel.send('O wins!');
+                    if(isX){
+                        playerWins = true;
+                    } else {
+                        botWins = true;
+                    }
                     ticTacToeStarted = false;
-                    return true;
                 }
             }
             if(botWins){
@@ -427,6 +433,20 @@ client.on('message', async (message) => {
             }
 
             checkArgs();
+            //Check if args are in the format of 1-1
+            if(args[0].length !== 3){
+                message.channel.send('Invalid format! Please use the format row-column');
+                return;
+            } else if(args[0][1] !== '-'){
+                message.channel.send('Invalid format! Please use the format row-column');
+                return;
+            } else if(args[0][0] < 1 || args[0][0] > 3){
+                message.channel.send('Invalid format! Please use the format row-column');
+                return;
+            } else if(args[0][2] < 1 || args[0][2] > 3){
+                message.channel.send('Invalid format! Please use the format row-column');
+                return;
+            }
             //Check if the user is X or O
             const temp = args[0].split('-');
             const row = parseInt(temp[0] - 1);
