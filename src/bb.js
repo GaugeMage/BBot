@@ -9,6 +9,9 @@ const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 const player = new Player(client);
 let kickPerms = false;
 let correctArgs = true;
+let board = [];
+let ticTacToeStarted = false;
+let isX = false;
 
 let killCommand;
 
@@ -18,7 +21,8 @@ client.on('ready', () => {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       });
-    // client.channels.cache.get("954939890745901058").send('hRoll/hroll command has been added! This command allows you to do big rolls without seeing each individual roll! Another step forward on our ***path to a static timeline!***');
+    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11 uploaded by <Chaos_User>LSH</Chaos_User>! Another step forward on our ***path to a static timeline!***');
+    // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
 
 client.on("guildCreate", guild => {
@@ -73,6 +77,134 @@ client.on('message', async (message) => {
         }
         function getMember(){
             return message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+        }
+        //Prints the tictactoe board
+        let printBoard = function(){
+            let temp = "Board: \n";
+            for(let i = 0; i < 3; i++){
+                temp += board[i][0] + "|" + board[i][1] + "|" + board[i][2] + "\n";
+            }
+            return temp;
+        }
+        let checkWin = function(){
+            //Check rows
+            for(let i = 0; i < 3; i++){
+                //Check which row
+                if((board[i][0] === ' X ' && board[i][1] === ' X ' && board[i][2] === '     ') || (board[i][0] === ' X ' && board[i][2] === ' X ' && board[i][1] === '     ') || (board[i][1] === ' X ' && board[i][2] === ' X ' && board[i][0] === '     ')){
+                    return [' X ', 'row', i];
+                } else if((board[i][0] === ' O ' && board[i][1] === ' O ' && board[i][2] === '     ') || (board[i][0] === ' O ' && board[i][2] === ' O ' && board[i][1] === '     ') || (board[i][1] === ' O ' && board[i][2] === ' O ' && board[i][0] === '     ')){
+                    return [' O ', 'row', i];
+                }
+            }
+            //Check columns
+            for(let i = 0; i < 3; i++){
+                //Check which column it is
+                if((board[0][i] === ' X ' && board[1][i] === ' X ' && board[2][i] === '     ') || (board[0][i] === ' X ' && board[2][i] === ' X ' && board[1][i] === '     ') || (board[1][i] === ' X ' && board[2][i] === ' X ' && board[0][i] === '     ')){
+                    return [' X ', 'col', i];
+                } else if((board[0][i] === ' O ' && board[1][i] === ' O ' && board[2][i] === '     ') || (board[0][i] === ' O ' && board[2][i] === ' O ' && board[1][i] === '     ') || (board[1][i] === ' O ' && board[2][i] === ' O ' && board[0][i] === '     ')){
+                    return [' O ', 'col', i];
+                }
+            }
+            //Check diagonals
+            if((board[0][0] === ' X ' && board[1][1] === ' X ' && board[2][2] === '     ') || (board[1][1] === ' X ' && board[2][2] === ' X ' && board[0][0] === '     ') || (board[0][0] === ' X ' && board[2][2] === ' X ' && board[1][1] === '     ')){
+                return [' X ', 'diag', 0];
+            } else if((board[0][0] === ' O ' && board[1][1] === ' O ' && board[2][2] === '     ') || (board[1][1] === ' O ' && board[2][2] === ' O ' && board[0][0] === '     ') || (board[0][0] === ' O ' && board[2][2] === ' O ' && board[1][1] === '     ')){
+                return [' O ', 'diag', 0];
+            } else if((board[0][2] === ' X ' && board[1][1] === ' X ' && board[2][0] === '     ') || (board[1][1] === ' X ' && board[2][0] === ' X ' && board[0][2] === '     ') || (board[0][2] === ' X ' && board[2][0] === ' X ' && board[1][1] === '     ')){
+                return [' X ', 'diag', 1];
+            } else if((board[0][2] === ' O ' && board[1][1] === ' O ' && board[2][0] === '     ') || (board[1][1] === ' O ' && board[2][0] === ' O ' && board[0][2] === '     ') || (board[0][2] === ' O ' && board[2][0] === ' O ' && board[1][1] === '     ')){
+                return [' O ', 'diag', 1];
+            }
+            return false;
+        }
+        //Checks if the game is over
+        let checkGameOver = function(){
+            //Check if there is a winner
+            let botWins = false;
+            let playerWins = false;
+            for(let i = 0; i < 3; i++){
+                if(board[i][0] === board[i][1] && board[i][1] === board[i][2]){
+                    if(board[i][0] === ' X '){
+                        if(isX){
+                            botWins = true;
+                        } else {
+                            playerWins = true;
+                        }
+                        ticTacToeStarted = false;
+                    } else if(board[i][0] === ' O '){
+                        if(isX){
+                            playerWins = true;
+                        } else {
+                            botWins = true;
+                        }
+                        ticTacToeStarted = false;
+                    }
+                }
+                if(board[0][i] === board[1][i] && board[1][i] === board[2][i]){
+                    if(board[0][i] === ' X '){
+                        if(isX){
+                            botWins = true;
+                        } else {
+                            playerWins = true;
+                        }
+                        ticTacToeStarted = false;
+                    } else if(board[0][i] === ' O '){
+                        if(isX){
+                            playerWins = true;
+                        } else {
+                            botWins = true;
+                        }
+                        ticTacToeStarted = false;
+                    }
+                }
+            }
+            if(board[0][0] === board[1][1] && board[1][1] === board[2][2]){
+                if(board[0][0] === ' X '){
+                    if(isX){
+                        botWins = true;
+                    } else {
+                        playerWins = true;
+                    }
+                    ticTacToeStarted = false;
+                } else if(board[0][0] === ' O '){
+                    if(isX){
+                        playerWins = true;
+                    } else {
+                        botWins = true;
+                    }
+                    ticTacToeStarted = false;
+                }
+            }
+            if(board[0][2] === board[1][1] && board[1][1] === board[2][0]){
+                if(board[0][2] === ' X '){
+                    message.channel.send('X wins!');
+                    ticTacToeStarted = false;
+                    return true;
+                } else if(board[0][2] === ' O '){
+                    message.channel.send('O wins!');
+                    ticTacToeStarted = false;
+                    return true;
+                }
+            }
+            if(botWins){
+                message.channel.send('BBot wins! :joy: :joy: :joy: The power of infinity is too much for you mere mortals to handle!');
+                return true;
+            } else if(playerWins){
+                message.channel.send('You win! :sob: :sob: :sob: You got really lucky this time, but I will get you next time!');
+                return true;
+            }
+            //Check if there is a tie
+            for(let i = 0; i < 3; i++){
+                for(let j = 0; j < 3; j++){
+                    if(board[i][j] === '     '){
+                        return false;
+                    }
+                }
+            }
+            message.channel.send('Tie game! :neutral_face: :neutral_face: :neutral_face: I guess you are pretty good after all!');
+            ticTacToeStarted = false;
+
+            return true;
         }
         if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
             checkPermission();
@@ -203,10 +335,16 @@ client.on('message', async (message) => {
             message.channel.send('This constellation... If you are really targeting me... You must have gotten this far. Congratulations on that young one. For your next hint, you should message the one who created this puzzle. Give them a screenshot of this message and they will give you your next hint.');
         } else if(CMD_NAME === 'Silver' || CMD_NAME === 'SilverBucciarati' || CMD_NAME === 'silver' || CMD_NAME === 'bucciarati'){
             message.channel.send('Ahh that man can go on for hours talking about his ideals and goals and values... How boring. It seems that Jordy\'s impact on Silver really did stick even after his death. I am surprised that he decided to take up a sword though... That is pretty unlike him.');
+        } else if(CMD_NAME === 'Pucci' || CMD_NAME === 'pucci' || CMD_NAME === 'Enrico' || CMD_NAME === 'enrico' || CMD_NAME === 'EnricoPucci' || CMD_NAME === 'enricopucci'){
+            message.channel.send('Pucci. The second in command for Mouse Halal? He is a unique person who follows more than one religion... AKA: Multiple religious belonging, also known as double belonging. Despite his unusual friends like Dionte and .... him... he seems to act on the benefit of Mouse Halal and for the betterment of people.');
         } else if(CMD_NAME === 'sex' || CMD_NAME == 'Sex'){
             message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
         } else if(CMD_NAME === 'rook' || CMD_NAME === 'Rook'){
             message.channel.send('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
+        } else if(CMD_NAME === 'muhammed' || CMD_NAME === 'Muhammed'){
+            message.channel.send("Oh? The son of ||Redacted||? I am usually not into the younger type of guy but Muhammed is... a little more built than the average boy. Despite his father's achievements, he does ***not*** look at him with a high regard. Muhammed seeks to pave a story for the Hassan family.");
+        } else if(CMD_NAME === 'yui' || CMD_NAME === 'Yui' || CMD_NAME === 'Shogun' || CMD_NAME === 'shogun'){
+            message.channel.send("Oh the Shogun! She is quite a good friend of mine (as long as she keeps bringing me that nice Sake :ok_hand: ) She is the current leader of the Verdant Night and is very generous. I would not take this for granted though as she is very strict and sometimes... terrifying. Not even I dare to anger her.");
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
         } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
@@ -252,6 +390,167 @@ client.on('message', async (message) => {
                 channel.join();
             } else {
                 message.channel.send('You must be in a voice channel to use this command');
+            }
+        } else if(CMD_NAME === 'tictactoe'){
+            //Creates an empty tictac toe board
+            //The rules of tictactoe
+            message.channel.send("Welcome to TicTacToe! Depending on a coinflip you may be 'X' or 'O'. X always goes first! To place your piece, use the bb!place command to place your piece at (1-1, 1-2, 1-3, 2-1, 2-2, 2-3, 3-1, 3-2, or 3-3'. The first number is the row and the last number is the column. For example if I want to place a piece in the 1st row and 2nd column it would be bb!place 1-2.")
+            ticTacToeStarted = true;
+            board = [];
+            for(let i = 0; i < 3; i++){
+                board.push([]);
+                for(let j = 0; j < 3; j++){
+                    board[i].push('     ');
+                }
+            }
+
+            message.channel.send(printBoard());
+
+            //Determines who goes first.
+            let turn = Math.floor(Math.random() * 2);
+            if(turn === 0){
+                message.channel.send('Coin landed on head so you go first! Therefore you are X. Use the bb!place command to place your piece at (1-1, 1-2, 1-3, 2-1, 2-2, 2-3, 3-1, 3-2, or 3-3');
+                isX = false;
+            } else {
+                message.channel.send('I go first! Therefore I am X');
+                isX = true;
+                //Does first move:
+                board[1][1] = ' X ';
+                message.channel.send('I have moved');
+                message.channel.send(printBoard());
+            }
+        } else if(CMD_NAME === 'place'){
+            //Check if game is started
+            if(!ticTacToeStarted){
+                message.channel.send('You must start a game first!');
+                return;
+            }
+
+            checkArgs();
+            //Check if the user is X or O
+            const temp = args[0].split('-');
+            const row = parseInt(temp[0] - 1);
+            const col = parseInt(temp[1] - 1);
+
+            if(!isX){
+                //Check if the spot is empty
+                if(board[row][col] === '     '){
+                    board[row][col] = ' X ';
+                    message.channel.send('You have moved');
+                    message.channel.send(printBoard());
+                } else {
+                    message.channel.send('That spot is already taken!');
+                    return;
+                }
+            } else {
+                //Check if the spot is empty
+                if(board[row][col] === '     '){
+                    board[row][col] = ' O ';
+                    message.channel.send('You have moved');
+                    message.channel.send(printBoard());
+                } else {
+                    message.channel.send('That spot is already taken!');
+                    return;
+                }
+            }
+            checkGameOver();
+
+            //Bot's turn
+            if(ticTacToeStarted){
+                message.channel.send('My turn!');
+                //Check if someone is about to win
+                const placer = isX ? ' X ' : ' O ';
+                let temp = checkWin();
+                console.log(temp);
+                if(temp != false){
+                    if((temp[0] === ' X ' && isX) || (temp[0] === ' O ' && !isX)){
+                        if(temp[1] === 'row'){
+                            board[temp[2]][0] = temp[0];
+                            board[temp[2]][1] = temp[0];
+                            board[temp[2]][2] = temp[0];
+                        } else if(temp[1] === 'col'){
+                            board[0][temp[2]] = temp[0];
+                            board[1][temp[2]] = temp[0];
+                            board[2][temp[2]] = temp[0];
+                        } else if(temp[1] === 'diag'){
+                            if(temp[2] === 0){
+                                board[0][0] = temp[0];
+                                board[1][1] = temp[0];
+                                board[2][2] = temp[0];
+                            } else {
+                                board[0][2] = temp[0];
+                                board[1][1] = temp[0];
+                                board[2][0] = temp[0];
+                            }
+                        }
+                    } else {
+                        //Stop opponent from winning
+                        if(temp[1] === 'row'){
+                            if(board[temp[2]][0] === '     '){
+                                board[temp[2]][0] = placer;
+                            } else if(board[temp[2]][1] === '     '){
+                                board[temp[2]][1] = placer;
+                            } else {
+                                board[temp[2]][2] = placer;
+                            }
+                        } else if(temp[1] === 'col'){
+                            if(board[0][temp[2]] === '     '){
+                                board[0][temp[2]] = placer;
+                            } else if(board[1][temp[2]] === '     '){
+                                board[1][temp[2]] = placer;
+                            } else {
+                                board[2][temp[2]] = placer;
+                            }
+                        } else if(temp[1] === 'diag'){
+                            if(temp[2] === 0){
+                                if(board[0][0] === '     '){
+                                    board[0][0] = placer;
+                                } else if(board[1][1] === '     '){
+                                    board[1][1] = placer;
+                                } else {
+                                    board[2][2] = placer;
+                                }
+                            } else {
+                                if(board[0][2] === '     '){
+                                    board[0][2] = placer;
+                                } else if(board[1][1] === '     '){
+                                    board[1][1] = placer;
+                                } else {
+                                    board[2][0] = placer;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    //Check if the center is empty
+                    if(board[1][1] === '     '){
+                        board[1][1] = placer;
+                    } else {
+                        //Check if a corner is empty
+                        if(board[0][0] === '     '){
+                            board[0][0] = placer;
+                        } else if(board[0][2] === '     '){
+                            board[0][2] = placer;
+                        } else if(board[2][0] === '     '){
+                            board[2][0] = placer;
+                        } else if(board[2][2] === '     '){
+                            board[2][2] = placer;
+                        } else {
+                            //Check if a side is empty
+                            if(board[0][1] === '     '){
+                                board[0][1] = placer;
+                            } else if(board[1][0] === '     '){
+                                board[1][0] = placer;
+                            } else if(board[1][2] === '     '){
+                                board[1][2] = placer;
+                            } else if(board[2][1] === '     '){
+                                board[2][1] = placer;
+                            }
+                        }
+                    }
+                }
+                message.channel.send(printBoard());
+                checkGameOver();
             }
         } else if(CMD_NAME === 'play'){
             checkArgs();
@@ -455,7 +754,7 @@ client.on('message', async (message) => {
             }
            
             client.channels.cache.get(channel).send(message.join(' '));
-        } else if(CMD_NAME === 'Abraham' || CMD_NAME === 'abraham'){
+        } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             message.channel.send('Where was he on that fateful day....... rather... where were they? The Crystal Priests... of what Messiah? Abraham. That man.');
             setTimeout(function(){
                 message.channel.send('Oh no...');
@@ -495,7 +794,7 @@ client.on('message', async (message) => {
                 killCommand = setInterval(funcKill, 1000);
             }, 24000);
         } else {
-            message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by BB in a future patch? There will be ***infinite*** patches after all.');
+            message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by **<ERROR_404: USER_NOT_FOUND>** in a future patch? There will be infinite patches after all.');
         }
     }
 });
