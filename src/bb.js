@@ -12,7 +12,6 @@ let correctArgs = true;
 let board = [];
 let ticTacToeStarted = false;
 let isX = false;
-
 let killCommand;
 
 client.on('ready', () => {
@@ -77,6 +76,17 @@ client.on('message', async (message) => {
         }
         function getMember(){
             return message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+        }
+        //Bot chooses rock paper scissors
+        function botChooseRPS(){
+            let botChoice = Math.floor(Math.random() * 3);
+            if(botChoice === 0){
+                return 'rock';
+            } else if(botChoice === 1){
+                return 'paper';
+            } else {
+                return 'scissors';
+            }
         }
         //Prints the tictactoe board
         let printBoard = function(){
@@ -571,6 +581,17 @@ client.on('message', async (message) => {
                 }
                 message.channel.send(printBoard());
                 checkGameOver();
+            }
+        } else if(CMD_NAME === 'rock' || CMD_NAME === 'paper' || CMD_NAME === 'scissors'){
+            message.channel.send('You have chosen ' + CMD_NAME + '!');
+            const botChoice = botChooseRPS();
+            message.channel.send('I have chosen ' + botChoice + '!');
+            if(botChoice === CMD_NAME){
+                message.channel.send('It\'s a tie! It seems I have underestimated you!');
+            } else if((botChoice === 'rock' && CMD_NAME === 'paper') || (botChoice === 'paper' && CMD_NAME === 'scissors') || (botChoice === 'scissors' && CMD_NAME === 'rock')){
+                message.channel.send('You win.... this time. I will get you next time!');
+            } else {
+                message.channel.send('I win! HAHAHAHA :joy: :joy: :joy: Seems like you\'re not very good at this game :wink:');
             }
         } else if(CMD_NAME === 'play'){
             checkArgs();
