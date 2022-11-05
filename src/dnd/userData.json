@@ -1,0 +1,24 @@
+{
+	"Users": [
+		{
+			"id": "182512457405825025",
+			"name": "GaugeMage",
+			"decks": [],
+			"wins": 0,
+			"losses": 0,
+			"draws": 0,
+			"cards": [],
+			"destinyFragments": 0
+		},
+		{
+			"id": "291016452884922368",
+			"name": "Spade",
+			"decks": [],
+			"wins": 0,
+			"losses": 0,
+			"draws": 0,
+			"cards": [],
+			"destinyFragments": 0
+		}
+	]
+}

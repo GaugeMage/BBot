@@ -14,8 +14,10 @@ let board = [];
 let ticTacToeStarted = false;
 let isX = false;
 let killCommand;
+let dndGameStarted = false;
+let dndPlayer1 = null;
+let dndPlayer2 = null;
 
-const cards = require('./cards.json');
 const checkArgs = require('./helpers/checkArgs.js');
 
 client.on('ready', () => {
@@ -441,18 +443,16 @@ client.on('message', async (message) => {
                 channel = channel.substring(2, channel.length -1);
             }
             client.channels.cache.get(channel).send(message.join(' '));
+        } else if(CMD_NAME === 'registerD&D'){
+            require('./dnd/addNewUser.js').run(message);
         } else if(CMD_NAME === 'decks'){
         } else if(CMD_NAME === 'd&d' || CMD_NAME === 'dnd' || CMD_NAME === 'D&D' || CMD_NAME === 'DnD' || CMD_NAME === 'DestinyAndDelusion' || CMD_NAME === 'destinyanddelusion'){
-            checkArgs.run(args, message);
-            let player1 = message.author.id;
-            let player2 = args[0];
-
-            if(player2[0] === '<' && player2[player2.length - 1] === '>'){
-                player2 = player2.substring(2, player2.length -1);
-            }
-
-            client.users.cache.get(player1).send("Pick what deck you would like to use: (If you don't what decks you have, use the bb!decks command)");
-            client.users.cache.get(player2).send("Pick what deck you would like to use: (If you don't what decks you have, use the bb!decks command)");
+            const results = await require('./dnd/dnd.js').run(client, message, args);
+            dndGameStarted = results[0];
+            dndPlayer1 = results[1];
+            dndPlayer2 = results[2];
+        } else if(CMD_NAME === 'characterCard' || CMD_NAME === 'cCard'){
+            require('./dnd/characterCard.js').run(client, message, args);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){
