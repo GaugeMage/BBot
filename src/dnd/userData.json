@@ -8,7 +8,7 @@
 				"cards": [
 					"Buddy McLean",
 					"Catastrophe",
-					"Repugnans",
+					"Repugnans Fabula",
 					"Ace Nullman",
 					"Niko Goluskey",
 					"Tyler Wolfe",
@@ -23,12 +23,38 @@
 					"Speedwagon Foundation HQ"
 				],
 				"isValid": true
+			},
+			{
+				"name": "hello",
+				"cards": [
+					"Ace Nullman",
+					"Buddy McLean",
+					"Catastrophe",
+					"Repugnans Fabula"
+				],
+				"isValid": false
 			}
 		],
 		"wins": 0,
 		"losses": 0,
 		"draws": 0,
-		"cards": [],
+		"cards": [
+			"Buddy McLean",
+			"Catastrophe",
+			"Repugnans Fabula",
+			"Ace Nullman",
+			"Niko Goluskey",
+			"Tyler Wolfe",
+			"Tommy",
+			"Robert E. O. Speedwagon",
+			"Ultor",
+			"Brooklyn Art Museum",
+			"Darnell Webber",
+			"Nic",
+			"Garnet Speedwagon",
+			"Rook",
+			"Speedwagon Foundation HQ"
+		],
 		"destinyFragments": 0
 	},
 	{

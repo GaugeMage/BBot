@@ -385,6 +385,8 @@ client.on('message', async (message) => {
             dndGameStarted = results[0];
             dndPlayer1 = results[1];
             dndPlayer2 = results[2];
+            dndDeck1 = results[3];
+            dndDeck2 = results[4];
         } else if(CMD_NAME === 'characterCard' || CMD_NAME === 'cCard'){
             require('./dnd/cardSearches/characterCard.js').run(message, args);
         } else if(CMD_NAME === 'locationCard' || CMD_NAME === 'lCard'){
@@ -392,9 +394,9 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'equipmentCard' || CMD_NAME === 'eCard'){
             require('./dnd/cardSearches/equipmentCard.js').run(message, args);
         } else if(CMD_NAME === 'addCard'){
-            require('./dnd/deckCommands/addCardToDeck.js').run(client, message, args);
-        } else if(CMD_NAME === 'removeCard'){
-            require('./dnd/deckCommands/removeCardFromDeck.js').run(client, message, args);
+            require('./dnd/deckCommands/addCardToDeck.js').run(message, args);
+        } else if(CMD_NAME === 'removeCard' || CMD_NAME === 'deleteCard'){
+            require('./dnd/deckCommands/removeCardFromDeck.js').run(message, args);
         } else if(CMD_NAME === 'createDeck'){
             require('./dnd/deckCommands/createDeck.js').run(message, args);
         } else if(CMD_NAME === 'deleteDeck'){

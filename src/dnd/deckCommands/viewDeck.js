@@ -22,23 +22,15 @@ exports.run = async(message, args) => {
 
     //Check if deck exists
     let deck = null;
-    let deckIndex = null;
     for(let i = 0; i < user.decks.length; i++){
         if(user.decks[i].name === deckName){
             deck = user.decks[i];
-            deckIndex = i;
             break;
         }
         if(i === user.decks.length - 1){
             message.channel.send("You do not have a deck with that name!");
             return;
         }
-    }
-
-    //Check if deck is valid
-    if(deck.isValid === false){
-        message.channel.send("Deck is not valid!");
-        return;
     }
 
     //Create embed
@@ -55,5 +47,4 @@ exports.run = async(message, args) => {
 
     //Send embed
     message.channel.send(embed);
-
 };
