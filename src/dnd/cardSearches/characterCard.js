@@ -1,7 +1,7 @@
-exports.run = async(client, message, args) => {
+exports.run = async(message, args) => {
     const Discord = require('discord.js');
     const cardName = args.join(' ');
-    const characterCards = require('./cards.json').Characters;
+    const characterCards = require('../cards/characterCards.json');
 
     //Looks for cardname within charactercards
     for(let i = 0; i < characterCards.length; i++){
@@ -13,6 +13,7 @@ exports.run = async(client, message, args) => {
                 addFields(
                     {name: 'Stats', value: 'Attack: ' + card.attack + '\nHealth: ' + card.health, inline: true},
                     {name: 'Cost', value: card.cost, inline: true},
+                    {name: 'Faction', value: card.faction, inline: true},
                 ).
                 setFooter('"' + card.footer + '"').
                 setDescription('*' + card.description + '*').

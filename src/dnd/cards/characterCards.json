@@ -1,0 +1,287 @@
+[
+    {
+        "name": "Buddy McLean",
+        "color": "#DC143C",
+        "description": "Stand Summon: American Pie. When I am played, choose 2 enemy cards on the field to silence. If there are less than 2 cards to silence, deal 5 damage to the enemy world instead",
+        "image": "https://cdn.discordapp.com/attachments/988186263825829898/1010989752356458627/unknown.png",
+        "attack": 3,
+        "health": 4,
+        "cost": 4,
+        "type": "Stand User",
+        "footer": "Ceilings are weird, y'know? They only act to limit us, and stop us from taking flight, and seeing the stars.",
+        "faction": "5 Horsemen",
+        "stand": {
+            "name": "American Pie",
+            "description": "Every time an enemy card is silenced, deal 1 damage to a random enemy. This damage is increased by 1 every time an enemy card is silenced",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/300795873/1jmdPl3iL3D6DY0P8MOjTA/med.png?1661109404",
+            "attack": 4,
+            "health": 4,
+            "cost": 4
+        }
+    },
+    {
+        "name": "Repugnans Fabula",
+        "color": "#808080",
+        "description": "Stand Summon: Paradox. When I am played, choose an enemy card on the field to paradoxify. If it is already paradoxified, afflict it with a random paradox. All paradoxes last 1 additional turn.",
+        "image": "https://cdn.discordapp.com/attachments/988186263825829898/1010988500448972841/glowycandlesandacreepything.jpg",
+        "attack": "2",
+        "health": "3",
+        "cost": "4",
+        "type": "Stand User",
+        "footer": "",
+        "faction": "5 Horsemen",
+        "stand": {
+            "name": "Paradox",
+            "description": "Whenever an enemy card gets afflicted with a paradox. Make the paradox trigger a second different paradox.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/300795461/Ulsbq-Rcc68SPfy-u96oKg/med.png?1661109305",
+            "attack": "1",
+            "health": "3",
+            "cost": "4"
+        }
+    },
+    {
+        "name": "Catastrophe",
+        "color": "#000000",
+        "description": "Whenever an enemy attacks or targets an ally card, it has a 50% chance of targeting a random enemy instead. If there are no enemies, it targets itself.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/280737666/jRjzfAEY9GpaTmW8QJc3lw/med.png?1650057691",
+        "attack": "1",
+        "health": "1",
+        "cost": "2",
+        "type": "Stand",
+        "footer": "",
+        "faction": "5 Horsemen"
+    },
+    {
+        "name": "Rook",
+        "color": "#FFA500",
+        "description": "Stand Summon: Merrie Melodies. When I am hit or attack an enemy for the first time, transform me into 'Ricky Rat'.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/308180610/g72IoykKWQS58EcDBrV3tA/med.jpg?1665182209",
+        "attack": "2",
+        "health": "2",
+        "cost": "4",
+        "type": "Stand User",
+        "footer": "",
+        "faction": "5 Horsemen",
+        "stand": {
+            "name": "Merrie Melodies",
+            "description": "Whenever I am summoned, equip me with a random weapon and get a random card from either the enemy's or your deck. All cards that you generate cost 1 less gold.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/286566318/WqFEd608YRsB3TovEa5HBw/med.png?1653358824",
+            "attack": "1",
+            "health": "2",
+            "cost": "4"
+        }
+    },
+    {
+        "name": "Ricky Rat",
+        "color": "#FFA500",
+        "description": "Stand Summon: Merrie Melodies. When I am defeated, create a 'Rook' in your hand.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/308183654/UYWA8A3BdJzRcSkMrFoc3Q/med.png?1665183174",
+        "attack": "4",
+        "health": "4",
+        "cost": "4",
+        "type": "Stand User",
+        "footer": "",
+        "faction": "5 Horsemen",
+        "stand": {
+            "name": "Merrie Melodies",
+            "description": "Whenever I am summoned, equip me with a random weapon and get a random card from either the enemy's or your deck. All cards that you generate cost 1 less gold.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/286566318/WqFEd608YRsB3TovEa5HBw/med.png?1653358824",
+            "attack": "1",
+            "health": "2",
+            "cost": "4"
+        },
+        "isGenerated": true
+    },
+    {
+        "name": "Tyler Wolfe",
+        "color": "",
+        "description": "Stand Summon: See You Again. When I am played, choose an enemy with equal or less attack than me to store inside a card. When I am defeated, release the stored enemy.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/293904627/IPQshzOEGqLwmYNMi0ugtQ/med.png?1657485598",
+        "attack": "3",
+        "health": "2",
+        "cost": "4",
+        "type": "Stand User",
+        "footer": "",
+        "faction": "5 Horsemen",
+        "stand": {
+            "name": "See You Again",
+            "description": "Store an enemy inside me. I cannot be targeted by ANYTHING.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/309658874/I_n0UGWef-6QWzzW6GNByg/med.png?1665949221",
+            "attack": "1",
+            "health": "2",
+            "cost": "4"
+        }
+    },
+    {
+        "name": "Tommy",
+        "color": "#000000",
+        "description": "If all of the 5 Horsemen have been summoned, I gain +5/+5 and all cards on the field, in your hand, and in your deck gain +5/+5.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/300795152/F2Rlrs2s75pUof5M_G41nA/med.png?1661109236",
+        "attack": "1",
+        "health": "1",
+        "cost": "1",
+        "type": "Normal",
+        "footer": "Ahh! Please don't fire me! I have to provide for...",
+        "faction": "None"
+    },
+    {
+        "name": "Robert E. O. Speedwagon",
+        "color": "#DC143C",
+        "description": "Stand Summon: Die Young. When I am played, if your world is below 50% HP, equip me with Wild Child. If I am above 50% give me Kesha.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/288737978/Qfwl9Vrm1Lrf4T5_YR0RLw/med.png?1654592161",
+        "attack": "5",
+        "health": "5",
+        "cost": "8",
+        "type": "Stand User",
+        "footer": "The government shall pay... for my suffering!",
+        "faction": "Speedwagon Foundation",
+        "stand": {
+            "name": "Die Young",
+            "description": "Whenever I am summoned, grant my user +1/+1 for each HP your world has lost this game.",
+            "image": "https://slm-assets.secondlife.com/assets/18305224/original/gif__Blood_Pool_Waves_Overlay_Alpha_4x3.gif?1504947628",
+            "attack": "1",
+            "health": "1",
+            "cost": "1"
+        },
+        "equipment": [
+            {
+                "name": "Wild Child",
+                "description": "When my wielder attacks, deal 1 damage to my world to deal 2 damage to the enemy getting attacked.",
+                "image": "https://cdn.discordapp.com/attachments/988186263825829898/988205294591037460/unknown.png",
+                "attack": "2",
+                "health": "0",
+                "cost": "3"
+            },
+            {
+                "name": "Kesha",
+                "description": "",
+                "image": "https://www.medievalcollectibles.com/wp-content/uploads/2020/06/NP-K-1878.jpg",
+                "attack": "4",
+                "health": "0",
+                "cost": "3"
+            }
+        ]
+    },
+    {
+        "name": "Garnet Speedwagon",
+        "color": "#023020",
+        "description": "If I survive for 5 turns, add 'Dionte' in your hand.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/291177889/i4SjiqfeD-0tzXtTtHocRg/med.png?1655969837",
+        "attack": "0",
+        "health": "1",
+        "cost": "3",
+        "type": "Normal",
+        "footer": "'What is your name? Jolene? That is a pretty name. I had a daugther with that name!' - <Redacted> Months/Years ago",
+        "faction": "Speedwagon Foundation"
+    },
+    {
+        "name": "Nic",
+        "color": "#FFC0CB",
+        "description": "Stand Armor: Brittle Bones Nic. When I am summoned, equip me with 'Mop'.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/300464852/Diobpo6xd6ih3YTAb9ZzuQ/med.png?1660961134",
+        "attack": "3",
+        "health": "3",
+        "cost": "6",
+        "type": "Stand User",
+        "footer": "While cleaning may look easy, it would be naive to think that it is always a simple task..",
+        "faction": "Speedwagon Foundation",
+        "stand": {
+            "name": "Brittle Bones Nic",
+            "description": "Turn 'Mop' into 'Bone Club'.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/307474692/NJTTA5exJBIW7ADNQr2kZA/med.png?1664745953",
+            "attack": "3",
+            "health": "5",
+            "cost": "5"
+        },
+        "equipment": [
+            {
+                "name": "Mop",
+                "description": "",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Mop_%28less_heavy%29.svg/1200px-Mop_%28less_heavy%29.svg.png",
+                "attack": "1",
+                "health": "0",
+                "cost": "3"
+            },
+            {
+                "name": "Bone Club",
+                "description": "The enemy whom I attacked gets stunned for 1 turn.",
+                "image": "https://cdna.artstation.com/p/assets/images/images/002/656/918/large/pio-paulo-santana-jawclub-beauty-frnt-002.jpg?1471711631",
+                "attack": "4",
+                "health": "0",
+                "cost": "3"
+            }
+        ]
+    },
+    {
+        "name": "Niko Goluskey",
+        "color": "#808080",
+        "description": "Stand Summon: Rasputin. When I am summoned, choose 1 enemy card on the field to silence. If there are no cards to silence on the field, silence a card in the enemy's hand.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/288359576/hQ3I2Od9CLZhbSDlP1AgrA/med.png?1654388397",
+        "attack": "2",
+        "health": "1",
+        "cost": "2",
+        "type": "Stand User",
+        "footer": "... What do you need this time?",
+        "faction": "None",
+        "stand": {
+            "name": "Rasputin",
+            "description": "Whenever I am summoned, show 2 random cards in the enemy's hand.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/288359786/0g_pAO_gHEknH-82q-HFDA/med.png?1654388475",
+            "attack": "1",
+            "health": "1",
+            "cost": "2"
+        }
+    },
+    {
+        "name": "Darnell Webber",
+        "color": "#A020F0",
+        "description": "When I am summoned, equip me with the 'Tree-90'. If there is an enemy card on the field who is silenced, give me +2/+2.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/291248367/mDL4L6fb8ab0Aoq1va9o8g/med.png?1656016495",
+        "attack": "2",
+        "health": "2",
+        "cost": "4",
+        "type": "Normal",
+        "footer": "Shit! I will be late to my honey again!",
+        "faction": "Children of Liberty",
+        "equipment": [
+            {
+                "name": "Tree-90",
+                "description": "Whenever my wielder attacks, stun a random enemy on the field for 1 turn.",
+                "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2ff94a8a-45fe-461b-ac92-9aaf88d6947c/d4oqvp5-8c92b6d5-232c-4262-b8d5-d215bc8b8a58.jpg/v1/fill/w_900,h_675,q_75,strp/p90_green_by_giuliomig87_d4oqvp5-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Njc1IiwicGF0aCI6IlwvZlwvMmZmOTRhOGEtNDVmZS00NjFiLWFjOTItOWFhZjg4ZDY5NDdjXC9kNG9xdnA1LThjOTJiNmQ1LTIzMmMtNDI2Mi1iOGQ1LWQyMTViYzhiOGE1OC5qcGciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.WeZFn0OpH2baZmerTFwe-YD6pAppzNxa0-ILj1XJDWc",
+                "attack": "2",
+                "health": "0",
+                "cost": "4"
+            }
+        ]
+    },
+    {
+        "name": "Ace Nullman",
+        "color": "#00008B",
+        "description": "Stand Summon: American Boy. Deal 2 damage to the enemy world for every enemy card which was silenced or revealed this game. If the enemy world has more than 0 hp, equip omnipotence.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/289546444/wuA7lDiP_o7rHKrVrkekxg/med.png?1655054872",
+        "attack": "5",
+        "health": "5",
+        "cost": "9",
+        "type": "Stand User",
+        "footer": "'The mission is to kill those guys who went after Xeion and Cometon. If you fail, consider yourself --' Cuts off communication. 'You don't tell me what to do... Pretender'",
+        "faction": "Eye of the Peacock",
+        "stand": {
+            "name": "American Boy",
+            "description": "At the end of your turn, deal 3 damage to all silenced enemies on the field",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/294993700/uvORD-5SmrgKbn5AskUYcg/med.png?1658080200",
+            "attack": "5",
+            "health": "5",
+            "cost": "9"
+        },
+        "equipment": [
+            {
+                "name": "Omnipotence",
+                "description": "Transform me into any equipment of your choice.",
+                "image": "https://c.tenor.com/OzhQ9uwR9Z8AAAAC/spirit-athame.gif",
+                "attack": "0",
+                "health": "0",
+                "cost": "0"
+            }
+        ]
+    }
+]

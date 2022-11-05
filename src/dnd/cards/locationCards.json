@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Speedwagon Foundation HQ",
+        "color": "#32CD32",
+        "description": "Generate 2 extra gold every turn.",
+        "image": "https://static.wikia.nocookie.net/jjba/images/3/3d/Speedwagon_Foundation_Anime.png/revision/latest/scale-to-width-down/300?cb=20130124182529",
+        "cost": "4",
+        "footer": "The Speedwagon Foundation... A mysterious organization which has deceived the world into believing that it is just a philanthropic organization."
+    },
+    {
+        "name": "Brooklyn Art Museum",
+        "color": "#32CD32",
+        "description": "Whenever a Speedwagon Foundation card is summoned, draw a card",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Brooklyn_Museum_-_Entrance_%2852302265063%29.jpg",
+        "cost": "3",
+        "footer": "You know BB... I think this is the place! The homely feeling and beautiful displays... I'll take it!"
+    },
+    {
+        "name": "JoJo Media Corporation Building",
+        "color": "#FFFF00",
+        "description": "Every turn, transform me into a random location.",
+        "image": "https://static.wikia.nocookie.net/marveldatabase/images/8/8f/Daily_Bugle_%28Earth-92131%29.jpg/revision/latest?cb=20120304125628",
+        "cost": "5",
+        "footer": "What is this place?!?!? One second I am in a recording studio and now I am in an children's daycare?!?! I need to find my kids!"
+    },
+    {
+        "name": "5 Horsemen HQ",
+        "color": "#000000",
+        "description": "Whenever you summon a 5 Horsemen card, reveal an enemy card in the enemy's hand",
+        "image": "",
+        "cost": "3",
+        "footer": "The 5 Horsemen. A budding new organization whose goals are unknown to the world. Who knows what they are planning next!"
+    }
+]

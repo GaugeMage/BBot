@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Ultor",
+        "color": "#32CD32",
+        "description": "When I am equipped, give me, the stand summon ability of an allied stand which was summoned this game.",
+        "image": "https://cdn.discordapp.com/attachments/988186263825829898/996518846846484530/Ultor_Black.png",
+        "attack": 3,
+        "health": 1,
+        "cost": 5,
+        "footer": "Please... Don't put me in here... all alone... I'm scared... Why must I be the one to avenge???"
+    }
+]

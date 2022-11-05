@@ -298,71 +298,6 @@ client.on('message', async (message) => {
             } else {
                 message.channel.send('I win! HAHAHAHA :joy: :joy: :joy: Seems like you\'re not very good at this game :wink:');
             }
-        //Another simple game like tic tac toe and rock paper scissors
-        } else if(CMD_NAME === 'blackjack'){
-            money = 100;
-            if(args.length === 0){
-                message.channel.send('You must specify a bet amount!');
-                return ;
-            }
-            let bet = parseInt(args[0]);
-            if(bet > money){
-                message.channel.send('You don\'t have that much money!');
-                return ;
-            }
-            money -= bet;
-            let playerHand = [];
-            let dealerHand = [];
-            let playerSum = 0;
-            let dealerSum = 0;
-            let playerAces = 0;
-            let dealerAces = 0;
-            let playerBust = false;
-            let dealerBust = false;
-            let playerBlackjack = false;
-            let dealerBlackjack = false;
-            let playerDone = false;
-            let dealerDone = false;
-            let playerWin = false;
-            let dealerWin = false;
-            let tie = false;
-            let playerTurn = true;
-            let dealerTurn = false;
-            let playerMessage = '';
-            let dealerMessage = '';
-            let playerEmbed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle('Blackjack')
-                .setAuthor(message.author.username, message.author.avatarURL())
-                .setDescription('You have ' + money + ' coins left!')
-                .setThumbnail('https://i.imgur.com/6Kv7i8w.png')
-                .addFields(
-                    { name: 'Dealer', value: 'Cards: ' + dealerHand + '\nSum: ' + dealerSum + '\nAces: ' + dealerAces + '\nBust: ' + dealerBust + '\nBlackjack: ' + dealerBlackjack + '\nDone: ' + dealerDone, inline: true },
-                    { name: 'Player', value: '\nCards: ' + playerHand + '\nSum: ' + playerSum + '\nAces: ' + playerAces + '\nBust: ' + playerBust + '\nBlackjack: ' + playerBlackjack + '\nDone: ' + playerDone, inline: true },
-                )
-                .setTimestamp()
-                .setFooter('Blackjack', 'https://i.imgur.com/6Kv7i8w.png');
-            message.channel.send(playerEmbed);
-            //Add two cards to the player's hand
-            for(let i = 0; i < 2; i++){
-                let card = Math.floor(Math.random() * 13) + 1;
-                if(card === 1){
-                    playerAces++;
-                }
-                playerHand.push(card);
-                playerSum += card;
-            }
-            //Add two cards to the dealer's hand
-            for(let i = 0; i < 2; i++){
-                let card = Math.floor(Math.random() * 13) + 1;
-                if(card === 1){
-                    dealerAces++;
-                }
-                dealerHand.push(card);
-                dealerSum += card;
-            }
-            //Show the player's hand
-            message.channel.send('Your hand: ' + playerHand + '\nSum: ' + playerSum + '\nAces: ' + playerAces + '\nBust: ' + playerBust + '\nBlackjack: ' + playerBlackjack + '\nDone: ' + playerDone);
         } else if(CMD_NAME === 'play'){
             checkArgs.run(args, message);
             const member = getMember();
@@ -445,14 +380,29 @@ client.on('message', async (message) => {
             client.channels.cache.get(channel).send(message.join(' '));
         } else if(CMD_NAME === 'registerD&D'){
             require('./dnd/addNewUser.js').run(message);
-        } else if(CMD_NAME === 'decks'){
         } else if(CMD_NAME === 'd&d' || CMD_NAME === 'dnd' || CMD_NAME === 'D&D' || CMD_NAME === 'DnD' || CMD_NAME === 'DestinyAndDelusion' || CMD_NAME === 'destinyanddelusion'){
             const results = await require('./dnd/dnd.js').run(client, message, args);
             dndGameStarted = results[0];
             dndPlayer1 = results[1];
             dndPlayer2 = results[2];
         } else if(CMD_NAME === 'characterCard' || CMD_NAME === 'cCard'){
-            require('./dnd/characterCard.js').run(client, message, args);
+            require('./dnd/cardSearches/characterCard.js').run(message, args);
+        } else if(CMD_NAME === 'locationCard' || CMD_NAME === 'lCard'){
+            require('./dnd/cardSearches/locationCard.js').run(message, args);
+        } else if(CMD_NAME === 'equipmentCard' || CMD_NAME === 'eCard'){
+            require('./dnd/cardSearches/equipmentCard.js').run(message, args);
+        } else if(CMD_NAME === 'addCard'){
+            require('./dnd/deckCommands/addCardToDeck.js').run(client, message, args);
+        } else if(CMD_NAME === 'removeCard'){
+            require('./dnd/deckCommands/removeCardFromDeck.js').run(client, message, args);
+        } else if(CMD_NAME === 'createDeck'){
+            require('./dnd/deckCommands/createDeck.js').run(message, args);
+        } else if(CMD_NAME === 'deleteDeck'){
+            require('./dnd/deckCommands/deleteDeck.js').run(message, args);
+        } else if(CMD_NAME === 'viewDeck'){
+            require('./dnd/deckCommands/viewDeck.js').run(message, args);
+        } else if(CMD_NAME === 'decks'){
+            require('./dnd/deckCommands/viewDecks.js').run(message);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){

@@ -1,24 +1,44 @@
-{
-	"Users": [
-		{
-			"id": "182512457405825025",
-			"name": "GaugeMage",
-			"decks": [],
-			"wins": 0,
-			"losses": 0,
-			"draws": 0,
-			"cards": [],
-			"destinyFragments": 0
-		},
-		{
-			"id": "291016452884922368",
-			"name": "Spade",
-			"decks": [],
-			"wins": 0,
-			"losses": 0,
-			"draws": 0,
-			"cards": [],
-			"destinyFragments": 0
-		}
-	]
-}
+[
+	{
+		"id": "182512457405825025",
+		"name": "GaugeMage",
+		"decks": [
+			{
+				"name": "Temp",
+				"cards": [
+					"Buddy McLean",
+					"Catastrophe",
+					"Repugnans",
+					"Ace Nullman",
+					"Niko Goluskey",
+					"Tyler Wolfe",
+					"Tommy",
+					"Robert E. O. Speedwagon",
+					"Ultor",
+					"Brooklyn Art Museum",
+					"Darnell Webber",
+					"Nic",
+					"Garnet Speedwagon",
+					"Rook",
+					"Speedwagon Foundation HQ"
+				],
+				"isValid": true
+			}
+		],
+		"wins": 0,
+		"losses": 0,
+		"draws": 0,
+		"cards": [],
+		"destinyFragments": 0
+	},
+	{
+		"id": "291016452884922368",
+		"name": "Spade",
+		"decks": [],
+		"wins": 0,
+		"losses": 0,
+		"draws": 0,
+		"cards": [],
+		"destinyFragments": 0
+	}
+]
