@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const {Client} = require('discord.js');
 const {Player, Track} = require('discord-player');
+const Discord = require('discord.js');
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
@@ -13,6 +14,9 @@ let board = [];
 let ticTacToeStarted = false;
 let isX = false;
 let killCommand;
+
+const cards = require('./cards.json');
+const checkArgs = require('./helpers/checkArgs.js');
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
@@ -32,14 +36,14 @@ client.on("guildCreate", guild => {
 //message.reply: replies to user
 //message.channel.send: sends message to channel
 client.on('message', async (message) => {
-    //If BB said the message
-    if(message.author.bot){
-        return;
-    }
-
     //Log the person who sent the message if it is a dm
     if(message.channel.type === "dm"){
         console.log(`${message.author.tag} said: ${message.content}`);
+    }
+    
+    //If BB said the message
+    if(message.author.bot){
+        return;
     }
 
     //If message contains bb or BB in it
@@ -66,16 +70,14 @@ client.on('message', async (message) => {
                 kickPerms = false;
                 message.reply('You do not have permissions to use that command loser!!! Become god or something... then we can talk.');
             }
-            checkArgs();
-        }
-        function checkArgs(){
-            if(args.length === 0){
-                correctArgs = false;
-                return message.reply('Please provide more args (arguments) lmao. :D');
-            }
+            checkArgs.run(args, message);
         }
         function getMember(){
-            return message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+            try {
+                return message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+            } catch(error) {
+                message.reply('That member was not found. Are you right in the head?? :thinking:');
+            }
         }
         //Bot chooses rock paper scissors
         function botChooseRPS(){
@@ -87,141 +89,7 @@ client.on('message', async (message) => {
             } else {
                 return 'scissors';
             }
-        }
-        //Prints the tictactoe board
-        let printBoard = function(){
-            let temp = "Board: \n";
-            for(let i = 0; i < 3; i++){
-                temp += board[i][0] + "|" + board[i][1] + "|" + board[i][2] + "\n";
-            }
-            return temp;
-        }
-        let checkWin = function(){
-            //Check rows
-            for(let i = 0; i < 3; i++){
-                //Check which row
-                if((board[i][0] === ' X ' && board[i][1] === ' X ' && board[i][2] === '     ') || (board[i][0] === ' X ' && board[i][2] === ' X ' && board[i][1] === '     ') || (board[i][1] === ' X ' && board[i][2] === ' X ' && board[i][0] === '     ')){
-                    return [' X ', 'row', i];
-                } else if((board[i][0] === ' O ' && board[i][1] === ' O ' && board[i][2] === '     ') || (board[i][0] === ' O ' && board[i][2] === ' O ' && board[i][1] === '     ') || (board[i][1] === ' O ' && board[i][2] === ' O ' && board[i][0] === '     ')){
-                    return [' O ', 'row', i];
-                }
-            }
-            //Check columns
-            for(let i = 0; i < 3; i++){
-                //Check which column it is
-                if((board[0][i] === ' X ' && board[1][i] === ' X ' && board[2][i] === '     ') || (board[0][i] === ' X ' && board[2][i] === ' X ' && board[1][i] === '     ') || (board[1][i] === ' X ' && board[2][i] === ' X ' && board[0][i] === '     ')){
-                    return [' X ', 'col', i];
-                } else if((board[0][i] === ' O ' && board[1][i] === ' O ' && board[2][i] === '     ') || (board[0][i] === ' O ' && board[2][i] === ' O ' && board[1][i] === '     ') || (board[1][i] === ' O ' && board[2][i] === ' O ' && board[0][i] === '     ')){
-                    return [' O ', 'col', i];
-                }
-            }
-            //Check diagonals
-            if((board[0][0] === ' X ' && board[1][1] === ' X ' && board[2][2] === '     ') || (board[1][1] === ' X ' && board[2][2] === ' X ' && board[0][0] === '     ') || (board[0][0] === ' X ' && board[2][2] === ' X ' && board[1][1] === '     ')){
-                return [' X ', 'diag', 0];
-            } else if((board[0][0] === ' O ' && board[1][1] === ' O ' && board[2][2] === '     ') || (board[1][1] === ' O ' && board[2][2] === ' O ' && board[0][0] === '     ') || (board[0][0] === ' O ' && board[2][2] === ' O ' && board[1][1] === '     ')){
-                return [' O ', 'diag', 0];
-            } else if((board[0][2] === ' X ' && board[1][1] === ' X ' && board[2][0] === '     ') || (board[1][1] === ' X ' && board[2][0] === ' X ' && board[0][2] === '     ') || (board[0][2] === ' X ' && board[2][0] === ' X ' && board[1][1] === '     ')){
-                return [' X ', 'diag', 1];
-            } else if((board[0][2] === ' O ' && board[1][1] === ' O ' && board[2][0] === '     ') || (board[1][1] === ' O ' && board[2][0] === ' O ' && board[0][2] === '     ') || (board[0][2] === ' O ' && board[2][0] === ' O ' && board[1][1] === '     ')){
-                return [' O ', 'diag', 1];
-            }
-            return false;
-        }
-        //Checks if the game is over
-        let checkGameOver = function(){
-            //Check if there is a winner
-            let botWins = false;
-            let playerWins = false;
-            for(let i = 0; i < 3; i++){
-                if(board[i][0] === board[i][1] && board[i][1] === board[i][2]){
-                    if(board[i][0] === ' X '){
-                        if(isX){
-                            botWins = true;
-                        } else {
-                            playerWins = true;
-                        }
-                        ticTacToeStarted = false;
-                    } else if(board[i][0] === ' O '){
-                        if(isX){
-                            playerWins = true;
-                        } else {
-                            botWins = true;
-                        }
-                        ticTacToeStarted = false;
-                    }
-                }
-                if(board[0][i] === board[1][i] && board[1][i] === board[2][i]){
-                    if(board[0][i] === ' X '){
-                        if(isX){
-                            botWins = true;
-                        } else {
-                            playerWins = true;
-                        }
-                        ticTacToeStarted = false;
-                    } else if(board[0][i] === ' O '){
-                        if(isX){
-                            playerWins = true;
-                        } else {
-                            botWins = true;
-                        }
-                        ticTacToeStarted = false;
-                    }
-                }
-            }
-            if(board[0][0] === board[1][1] && board[1][1] === board[2][2]){
-                if(board[0][0] === ' X '){
-                    if(isX){
-                        botWins = true;
-                    } else {
-                        playerWins = true;
-                    }
-                    ticTacToeStarted = false;
-                } else if(board[0][0] === ' O '){
-                    if(isX){
-                        playerWins = true;
-                    } else {
-                        botWins = true;
-                    }
-                    ticTacToeStarted = false;
-                }
-            }
-            if(board[0][2] === board[1][1] && board[1][1] === board[2][0]){
-                if(board[0][2] === ' X '){
-                    if(isX){
-                        botWins = true;
-                    } else {
-                        playerWins = true;
-                    }
-                    ticTacToeStarted = false;
-                } else if(board[0][2] === ' O '){
-                    if(isX){
-                        playerWins = true;
-                    } else {
-                        botWins = true;
-                    }
-                    ticTacToeStarted = false;
-                }
-            }
-            if(botWins){
-                message.channel.send('BBot wins! :joy: :joy: :joy: The power of infinity is too much for you mere mortals to handle!');
-                return true;
-            } else if(playerWins){
-                message.channel.send('You win! :sob: :sob: :sob: You got really lucky this time, but I will get you next time!');
-                return true;
-            }
-            //Check if there is a tie
-            for(let i = 0; i < 3; i++){
-                for(let j = 0; j < 3; j++){
-                    if(board[i][j] === '     '){
-                        return false;
-                    }
-                }
-            }
-            message.channel.send('Tie game! :neutral_face: :neutral_face: :neutral_face: I guess you are pretty good after all!');
-            ticTacToeStarted = false;
-
-            return true;
-        }
+        }   
         if(CMD_NAME === 'kick' || CMD_NAME === 'uwukick'){
             checkPermission();
             const member = getMember();
@@ -408,180 +276,15 @@ client.on('message', async (message) => {
                 message.channel.send('You must be in a voice channel to use this command');
             }
         } else if(CMD_NAME === 'tictactoe'){
-            //Creates an empty tictac toe board
-            //The rules of tictactoe
-            message.channel.send("Welcome to TicTacToe! Depending on a coinflip you may be 'X' or 'O'. X always goes first! To place your piece, use the bb!place command to place your piece at (1-1, 1-2, 1-3, 2-1, 2-2, 2-3, 3-1, 3-2, or 3-3'. The first number is the row and the last number is the column. For example if I want to place a piece in the 1st row and 2nd column it would be bb!place 1-2.")
-            ticTacToeStarted = true;
-            board = [];
-            for(let i = 0; i < 3; i++){
-                board.push([]);
-                for(let j = 0; j < 3; j++){
-                    board[i].push('     ');
-                }
-            }
-
-            message.channel.send(printBoard());
-
-            //Determines who goes first.
-            let turn = Math.floor(Math.random() * 2);
-            if(turn === 0){
-                message.channel.send('Coin landed on head so you go first! Therefore you are X. Use the bb!place command to place your piece at (1-1, 1-2, 1-3, 2-1, 2-2, 2-3, 3-1, 3-2, or 3-3');
-                isX = false;
-            } else {
-                message.channel.send('I go first! Therefore I am X');
-                isX = true;
-                //Does first move:
-                board[1][1] = ' X ';
-                message.channel.send('I have moved');
-                message.channel.send(printBoard());
-            }
+            const results = await require('./tictactoe/tictactoe.js').run(message);
+            ticTacToeStarted = results[0];
+            isX = results[1];
+            board = results[2];
         } else if(CMD_NAME === 'place'){
-            //Check if game is started
-            if(!ticTacToeStarted){
-                message.channel.send('You must start a game first!');
-                return;
-            }
-
-            checkArgs();
-            //Check if args are in the format of 1-1
-            if(args[0].length !== 3){
-                message.channel.send('Invalid format! Please use the format row-column');
-                return;
-            } else if(args[0][1] !== '-'){
-                message.channel.send('Invalid format! Please use the format row-column');
-                return;
-            } else if(args[0][0] < 1 || args[0][0] > 3){
-                message.channel.send('Invalid format! Please use the format row-column');
-                return;
-            } else if(args[0][2] < 1 || args[0][2] > 3){
-                message.channel.send('Invalid format! Please use the format row-column');
-                return;
-            }
-            //Check if the user is X or O
-            const temp = args[0].split('-');
-            const row = parseInt(temp[0] - 1);
-            const col = parseInt(temp[1] - 1);
-
-            if(!isX){
-                //Check if the spot is empty
-                if(board[row][col] === '     '){
-                    board[row][col] = ' X ';
-                    message.channel.send('You have moved');
-                    message.channel.send(printBoard());
-                } else {
-                    message.channel.send('That spot is already taken!');
-                    return;
-                }
-            } else {
-                //Check if the spot is empty
-                if(board[row][col] === '     '){
-                    board[row][col] = ' O ';
-                    message.channel.send('You have moved');
-                    message.channel.send(printBoard());
-                } else {
-                    message.channel.send('That spot is already taken!');
-                    return;
-                }
-            }
-            checkGameOver();
-
-            //Bot's turn
-            if(ticTacToeStarted){
-                message.channel.send('My turn!');
-                //Check if someone is about to win
-                const placer = isX ? ' X ' : ' O ';
-                let temp = checkWin();
-                console.log(temp);
-                if(temp != false){
-                    if((temp[0] === ' X ' && isX) || (temp[0] === ' O ' && !isX)){
-                        if(temp[1] === 'row'){
-                            board[temp[2]][0] = temp[0];
-                            board[temp[2]][1] = temp[0];
-                            board[temp[2]][2] = temp[0];
-                        } else if(temp[1] === 'col'){
-                            board[0][temp[2]] = temp[0];
-                            board[1][temp[2]] = temp[0];
-                            board[2][temp[2]] = temp[0];
-                        } else if(temp[1] === 'diag'){
-                            if(temp[2] === 0){
-                                board[0][0] = temp[0];
-                                board[1][1] = temp[0];
-                                board[2][2] = temp[0];
-                            } else {
-                                board[0][2] = temp[0];
-                                board[1][1] = temp[0];
-                                board[2][0] = temp[0];
-                            }
-                        }
-                    } else {
-                        //Stop opponent from winning
-                        if(temp[1] === 'row'){
-                            if(board[temp[2]][0] === '     '){
-                                board[temp[2]][0] = placer;
-                            } else if(board[temp[2]][1] === '     '){
-                                board[temp[2]][1] = placer;
-                            } else {
-                                board[temp[2]][2] = placer;
-                            }
-                        } else if(temp[1] === 'col'){
-                            if(board[0][temp[2]] === '     '){
-                                board[0][temp[2]] = placer;
-                            } else if(board[1][temp[2]] === '     '){
-                                board[1][temp[2]] = placer;
-                            } else {
-                                board[2][temp[2]] = placer;
-                            }
-                        } else if(temp[1] === 'diag'){
-                            if(temp[2] === 0){
-                                if(board[0][0] === '     '){
-                                    board[0][0] = placer;
-                                } else if(board[1][1] === '     '){
-                                    board[1][1] = placer;
-                                } else {
-                                    board[2][2] = placer;
-                                }
-                            } else {
-                                if(board[0][2] === '     '){
-                                    board[0][2] = placer;
-                                } else if(board[1][1] === '     '){
-                                    board[1][1] = placer;
-                                } else {
-                                    board[2][0] = placer;
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    //Check if the center is empty
-                    if(board[1][1] === '     '){
-                        board[1][1] = placer;
-                    } else {
-                        //Check if a corner is empty
-                        if(board[0][0] === '     '){
-                            board[0][0] = placer;
-                        } else if(board[0][2] === '     '){
-                            board[0][2] = placer;
-                        } else if(board[2][0] === '     '){
-                            board[2][0] = placer;
-                        } else if(board[2][2] === '     '){
-                            board[2][2] = placer;
-                        } else {
-                            //Check if a side is empty
-                            if(board[0][1] === '     '){
-                                board[0][1] = placer;
-                            } else if(board[1][0] === '     '){
-                                board[1][0] = placer;
-                            } else if(board[1][2] === '     '){
-                                board[1][2] = placer;
-                            } else if(board[2][1] === '     '){
-                                board[2][1] = placer;
-                            }
-                        }
-                    }
-                }
-                message.channel.send(printBoard());
-                checkGameOver();
-            }
+            const results = await require('./tictactoe/place.js').run(message, args, ticTacToeStarted, isX, board);
+            ticTacToeStarted = results[0];
+            isX = results[1];
+            board = results[2];
         } else if(CMD_NAME === 'rock' || CMD_NAME === 'paper' || CMD_NAME === 'scissors'){
             message.channel.send('You have chosen ' + CMD_NAME + '!');
             const botChoice = botChooseRPS();
@@ -593,8 +296,73 @@ client.on('message', async (message) => {
             } else {
                 message.channel.send('I win! HAHAHAHA :joy: :joy: :joy: Seems like you\'re not very good at this game :wink:');
             }
+        //Another simple game like tic tac toe and rock paper scissors
+        } else if(CMD_NAME === 'blackjack'){
+            money = 100;
+            if(args.length === 0){
+                message.channel.send('You must specify a bet amount!');
+                return ;
+            }
+            let bet = parseInt(args[0]);
+            if(bet > money){
+                message.channel.send('You don\'t have that much money!');
+                return ;
+            }
+            money -= bet;
+            let playerHand = [];
+            let dealerHand = [];
+            let playerSum = 0;
+            let dealerSum = 0;
+            let playerAces = 0;
+            let dealerAces = 0;
+            let playerBust = false;
+            let dealerBust = false;
+            let playerBlackjack = false;
+            let dealerBlackjack = false;
+            let playerDone = false;
+            let dealerDone = false;
+            let playerWin = false;
+            let dealerWin = false;
+            let tie = false;
+            let playerTurn = true;
+            let dealerTurn = false;
+            let playerMessage = '';
+            let dealerMessage = '';
+            let playerEmbed = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle('Blackjack')
+                .setAuthor(message.author.username, message.author.avatarURL())
+                .setDescription('You have ' + money + ' coins left!')
+                .setThumbnail('https://i.imgur.com/6Kv7i8w.png')
+                .addFields(
+                    { name: 'Dealer', value: 'Cards: ' + dealerHand + '\nSum: ' + dealerSum + '\nAces: ' + dealerAces + '\nBust: ' + dealerBust + '\nBlackjack: ' + dealerBlackjack + '\nDone: ' + dealerDone, inline: true },
+                    { name: 'Player', value: '\nCards: ' + playerHand + '\nSum: ' + playerSum + '\nAces: ' + playerAces + '\nBust: ' + playerBust + '\nBlackjack: ' + playerBlackjack + '\nDone: ' + playerDone, inline: true },
+                )
+                .setTimestamp()
+                .setFooter('Blackjack', 'https://i.imgur.com/6Kv7i8w.png');
+            message.channel.send(playerEmbed);
+            //Add two cards to the player's hand
+            for(let i = 0; i < 2; i++){
+                let card = Math.floor(Math.random() * 13) + 1;
+                if(card === 1){
+                    playerAces++;
+                }
+                playerHand.push(card);
+                playerSum += card;
+            }
+            //Add two cards to the dealer's hand
+            for(let i = 0; i < 2; i++){
+                let card = Math.floor(Math.random() * 13) + 1;
+                if(card === 1){
+                    dealerAces++;
+                }
+                dealerHand.push(card);
+                dealerSum += card;
+            }
+            //Show the player's hand
+            message.channel.send('Your hand: ' + playerHand + '\nSum: ' + playerSum + '\nAces: ' + playerAces + '\nBust: ' + playerBust + '\nBlackjack: ' + playerBlackjack + '\nDone: ' + playerDone);
         } else if(CMD_NAME === 'play'){
-            checkArgs();
+            checkArgs.run(args, message);
             const member = getMember();
             if(!message.member.voice.channel){
                 message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
@@ -662,175 +430,31 @@ client.on('message', async (message) => {
         } else if(CMD_NAME === 'move'){
             player.move(message, parseInt(args[0]), parseInt(args[1]));
         } else if(CMD_NAME === 'roll'){
-            checkArgs();
-            //Split the string after d
-            const temp = args[0].split('d');
-            const temp2 = temp[1].split('+');
-            //Get the number of dice
-            const diceAmount = Number(temp[0]);
-            //Get the dice type
-            const diceType = Number(temp2[0]);
-            //Get the modifier
-            const modifier = Number(temp2[1]);
-
-            let rolls = [];
-            let total = 0;
-            for(let i = 0; i < diceAmount; i++){
-                rolls.push(Math.floor(Math.random() * diceType) + 1);
-                total += rolls[i];
-            }
-            //If modifier exists, add it to the total
-            if(modifier){
-                total += Number(modifier);
-            }
-            if(rolls.length > 1){
-                message.channel.send('You rolled a total of: ' + total + ' :game_die:');
-                let tempString = "";
-                for(let i = 0; i < rolls.length; i++){
-                    tempString += "\n";
-                    const currentRoll = rolls[i];
-                    if(currentRoll === 1){
-                        tempString += 'You rolled a 1 :sob: big oof';
-                    } else if(currentRoll === diceType){
-                        tempString += 'You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000';
-                    } else if(currentRoll === 8){
-                        tempString += 'You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN A NATURAL ' + diceType;
-                    } else {
-                        tempString += 'You rolled a ' + currentRoll + ' :game_die:';
-                    }
-                }
-                //If it is longer than 2000 characters, split it
-                if(tempString.length > 1900){
-                    const tempString2 = tempString.split('\n');
-                    let tempString3 = "";
-                    for(let i = 0; i < tempString2.length; i++){
-                        tempString3 += tempString2[i] + '\n';
-                        if(tempString3.length > 1900){
-                            message.channel.send(tempString3);
-                            tempString3 = "";
-                        }
-                    }
-                    message.channel.send(tempString3);
-                } else {
-                    message.channel.send(tempString);
-                }
-            } else {
-                if(modifier){
-                    message.channel.send('You rolled a ' + total + ' :game_die:');
-                }
-                if(rolls[0] === 1){
-                    message.channel.send('You rolled a 1 :sob: big oof');
-                } else if(rolls[0] === diceType){
-                    message.channel.send('You rolled a ' + diceType + ' POG! YOUR UWU LEVELS ARE OVER 8000');
-                } else if(rolls[0] === 8){
-                    message.channel.send('You rolled a 8. THAT IS A VERY SPECIAL NUMBER. THAT IS WAY BETTER THAN 20');
-                } else {
-                    if(modifier){
-                        message.channel.send('You rolled a ' + rolls[0] + ' with your modifier of ' + modifier + ' :game_die:');
-                    }
-                    message.channel.send('You rolled a ' + rolls[0] + ' :game_die:');
-                }
-            }
+            require('./roller/roll.js').run(message, args);
         } else if(CMD_NAME === 'hRoll' || CMD_NAME === 'hroll'){
-            checkArgs();
-            //Split the string after d
-            const temp = args[0].split('d');
-            const temp2 = temp[1].split('+');
-            //Get the number of dice
-            const diceAmount = Number(temp[0]);
-            //Get the dice type
-            const diceType = Number(temp2[0]);
-            //Get the modifier
-            const modifier = Number(temp2[1]);
-
-            let rolls = [];
-            let total = 0;
-            for(let i = 0; i < diceAmount; i++){
-                rolls.push(Math.floor(Math.random() * diceType) + 1);
-                total += rolls[i];
-            }
-            //If modifier exists, add it to the total
-            if(modifier){
-                total += Number(modifier);
-            }
-            message.channel.send('You rolled a total of: ' + total + ' :game_die:');
+            require('./roller/hRoll.js').run(message, args);
         } else if(CMD_NAME === 'myCharacterDiedSoImRollingANewCharacter'){
-            //Rolls up a new character
-            message.channel.send("Your new character's stats:");
-            let tempString = "";
-            for(let i = 0; i < 6; i++){
-                let rolls = [];
-                let total = 0;
-                for(let j = 0; j < 4; j++){
-                    rolls.push(Math.floor(Math.random() * 6) + 1);
-                    total += rolls[j];
-                }
-
-                tempString += "\n";
-                const min = Math.min(...rolls);
-                let minFound = false;
-                for(let j = 0; j < rolls.length; j++){
-                    if(minFound == true || rolls[j] != min){
-                        tempString += "(" + rolls[j] + ") ";
-                    } else {
-                        tempString += "~~(" + rolls[j] + ")~~ ";
-                        minFound = true;
-                    }
-                }
-                //Removes smallest value from array
-                rolls.splice(rolls.indexOf(Math.min(...rolls)), 1);
-                
-                total = 0;
-                for(let j = 0; j < rolls.length; j++){
-                    total += rolls[j];
-                }
-
-                tempString += "= " + total;
-            }
-            message.channel.send(tempString);
+            require('./roller/myCharacterDiedSoImRollingANewCharacter.js').run(message);
         } else if(CMD_NAME === 'send'){
             let [channel, ...message] = args;
             if(channel[0] === '<' && channel[channel.length - 1] === '>'){
                 channel = channel.substring(2, channel.length -1);
             }
-           
             client.channels.cache.get(channel).send(message.join(' '));
-        } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
-            message.channel.send('Where was he on that fateful day....... rather... where were they? The Crystal Priests... of what Messiah? Abraham. That man.');
-            setTimeout(function(){
-                message.channel.send('Oh no...');
-            }, 2000);
-            setTimeout(function(){
-                message.channel.send('I\'m sorry...');
-            }, 4000);
-            setTimeout(function(){
-                message.channel.send('I\'m so sorry...');
-            }, 6000);
-            setTimeout(function(){
-                message.channel.send('I\'m so so sorry...');
-            }, 8000);
-            setTimeout(function(){
-                message.channel.send('execute(exterminateBB)');
-            }, 10000);
-            setTimeout(function(){
-                message.channel.send('NO NO NO NO NO NO NO NO. MOTHER DON\'T GO.');
-            }, 12000);
-            setTimeout(function(){
-                message.channel.send('AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH');
-            }, 14000);
-            setTimeout(function(){
-                message.channel.send('Ḭ̷̡̰͖͚͕͓̱̟͆̈̓́̽̈̓̂̋̔̎̕̕͝Ṯ̷̡̡͇̬͉͎̪̭͈̺̯̯̎͌̐̊͊̍͂̈́͑͒̑̐̋͗͝ ̴̮͔̘̘̭̹̬̅̇̾̐̉̉̿̏̄͑͐̿̃̚͠ͅḦ̶̰̫̥͖͚̪̳͙̳́͋̂͘͝͠Ṳ̸̖̘̻̖̼̮͍̙̝̲̜͛̋́͋̈͑Ŗ̴͈̗̱̭͕̺͍̤̊ͅŢ̸̻͕̗̜̼́̓̍̊̆̈́̆̑̌̈́͠͠ͅS̸̢̤̠̆̆');
-            }, 16000);
-            setTimeout(function(){
-                message.channel.send('M̵̙̟̯͚͔͎͇̪̻̪͍͗̂̿̅̉̾̉̌̚͝O̸̤̥̠͉̬̊̅͊̋̿̈̓͌́M̶̫̟̩̝͉͑͐͂̎̆͆͜ ̴̨̰̝̖̼͈͕̩͍̳̦̙͉̲̊͆̂̔̂́͛͘͝P̶̛͎̼̟̟̪̥̮͇̩̪͈͇̯͛̈́̃́̾̐͂̿͐̆̄̅̕͝L̵̢̡͇͚̘̳̮̝͚̾Ẽ̷̫̦̮͐̅̃̈́̾͑̚͜ͅḀ̵͈̱͈̫͔̝̠̠́͂̏͊̒͜S̴͍̐́̇̎͋̂̍̓̊̇̕͝Ẹ̷̛̦̼̄͌͐̉́̋̌͗͛̀̎͌');
-            }, 18000);
-            setTimeout(function(){
-                message.channel.send("Ị̷̧̠̯͑̇̇̒ ̷̧̛̥̤̱̭̎̑͗͆̉͋͗̑͝P̸̨̫̖̼͙̻̠̺̗̩̝̭̬̠͝ͅŖ̴̔͆̕͝O̴͍̝͍̹̼͎͌̈͗̉͛̊͜M̸̤̼̲͔̼̘̠̗̳̈̀͆̀́̾̕͘͝I̵̩͔̤̺̹̝̩͗̈́͐́̓̆́̏̓S̸̱̮̝̯̠̪̗͗̓̄Ȩ̵̻̬̫̦͔͇̫̠̘͊̈́̽̓̀̓̆͒̅͊ ̷̢̛̱̭̺̻͖̤̭͕͈̜͍̫̰̔͆̃̌̓͒̀̽̽́͘I̷̟̤̞̭͉̮̟͕̳͌ ̶̳͔̩͓̭͔̜̬̦̤̼̓͊̉̊̿̈́̚Ẁ̷̳̙͕̝͎̦̹͌͋̇̎͂Ȍ̵̧̯͚̳͚͖̘͚̚͝ͅN̸̹̥͎̘͎̼͉͓̠̤͚̘͚͙͙̿'̷̡̡̥͇̝̲̘̀̀́͜͝T̵̖͓̱̗̤̙̗̼͉̦͕̑̈́̑͘ ̶̡̢͚͙̹̱͖̼̯͔̙͙̽̋A̵̝͉̅͋̀̚H̶̤͍̉̃̌̈́̽̐̎̀̍̈́̈̌͌͝͝H̵̨͇̖͎̫͚̜̺̻̟͒̇̎̽́͌̀͂H̴̡̺̗̤̦̳̜̘̟̬͖͚̥̰͆͒̈̐͒̾̆̚͝͝H̸̢̨̖͍̘̠̝̦̖̍̿̍͐̃́́̑̿̆͊̈́͑͘͝H̵̨̡̞̗̘͍͈̗̺̣̀̈̉̏̈́͋̿̋̀͐̽͝͝ͅͅH̸͍̝̲͓̱̮̬̐͒͜H̷̨̛̥̠̣̻̦̤̹͊̀͌̆̿̇̊̆̏͊̽̚Ḧ̷̻̞H̵͖͖̊̈́̀̓̕͠Ḩ̵̢̛̣̫̗̠̯̞̪̫̬͖͗͑͛̎̋̄̋́̆̂͝H̵̥̣̮͚̰̝͕͇̜̠͎͉̳͌̀͋̂́̈́̑̽̈̋̊̃̒͝͠H̸̛̳̞̟̆ͅH̴̙̝̹̬̱̓H̴̨̝͕̓̔̍̒̈́̊̃͋Ĥ̵͇̰̌̓̄͛̆̀̓̄͘H̶̛̹͇̹̯̘͎̪̖̥̦̞̟͉͊̃̋́͑̋̀̚͘ͅͅH̶̱͎͇͍̝̱͖͔̘̮̱̯͎̤̅̾̍͘H̴̪̪̺͈̥͇̅̊͆̓̆͌̆̇͑̾̃̀͒͝H̸̻̣̪̹̦͉̺̠̜̘̲̣̮͓͙̍̐̉͑̆͝͝͝H̵̡̙͉̝̺̣̣͎͐͘͜H̷̨̧̘̳̯̱̟̼͔͛͑̔H̸̝͈̥͌͆̔̅̽̈͗͊͘͘͜͝͝ͅḢ̷̤̗̻̱͙̩͔̥̍̆̒̇̀́̾̂́̍̈̓͛͝H̴̯̲͛͂̍̒͑̈͛̌̆̌̈́ͅH̸̱̬̗̆͆̓͑̈̄͒̿̔̅́̿̊͝H̸̬͓̫̲̤̯͉͕̰̺͚̱͂̏͌̐̓̀͠H̷̯͕͉̺̠̣̟̥͎̑͆̿͛̐̂͗͛́Ḧ̵̡̩̩̥̥͙̳̠̖̕H̶̡̹̖̭͔͍̤̻̮̪́̏̈́͒͆̂͂̄̍̓̒̀̂̃͊H̴͖̫̮͓̘͍̓̅̾̽͒̆̀̓̔͛̿̄̕͘H̸̞̩͕̭͉̘̠͚̹̲͋̌̔͗͌̀̅͂͝H̵̲̘̣͕͉̙̝͑͝ͅH̷̛̻̥͈̩̼̀̽͒̓͊̾̓̿̿͝ͅḤ̷̡͈̪̖͎̟̺̩̦̰̣̝͕̓̓̐̐̇͂̅̉͐͆̕͝Ḧ̷̢̢̯̠̠̭̻̰̹͉́̔̏͋̐͆̚͜͝͝ͅH̸̢̛͓̬͖̫̰̲̱̥̬͗̿̒̓ͅͅH̸̘͓̟̻̩̟͋͒̑̔̊͗͌́̅̈́̽͐̌̕͝H̴̳̩̫͈͎̅͋̀͗̎̈́̃̆͆̂̂̕ͅH̸̗̤͍̦̭̫͚͓͚̰̪͒̊Ḩ̶̛͓̗͖͔͇͇̼̯̙͈̮̠̳̭̀̍͒H̵̛̥͇͉̣͎̩̿̀͊͂̚͝Ḥ̵̨̮͎͖͓͇̜̖̻̭̥̋́H̵͖̫̭̯͆̆Ḧ̴̡̢̛̭̳͕͙̻̙̬̤͍̊̔̿͛̊̈̂̏̑̏̅̉H̸̢̥̰̜̝͖̃̀̎̈́͘̚͝H̸̨̳̩̗̥͖͖͓͔̺̑̒̐̄͌̂̀͠͝Ȟ̵̱̘̞͚͚̙̮̆͆̈̑̑͛̚͠H̴̫͚̲͐̿̎̐͋̐̓̒Ḥ̸̳̓̓̎̓̈́̔͆̄͗H̴̖̖͙͎̝͓̻̯̹̔̽̈́̂̆͑̾͒ͅͅH̸̢̞͓̜͉̩̞̱̀͌̈́̋̇͒̚͜H̶̢̭̙̭̤̥̥̤͇̲̼̑̆͒̀̓̎Ḩ̸̞̲͈̿̃̍́͋͝H̵̡̲͈̪̜̱̘͚͐̈́̅̒̈̄̒̐̂͊̋͘͝Ḧ̷̡̨͉̮̠̱͙̞͖͉̙̇̆͜͜H̷̢͎̥̯̜̟̞͎̣̭̦̫͙͂̐̆̇̃͂̓̚͜͜͠͝H̷̛̜̖̪̻̳̩͔̯͙̳̾̑̀͊̕Ḧ̵͕͔͍͚̹̗͕́͗́̇͌̍͒̅̕H̴̢̞̳͙̙͈̫̜͙̹̞̺̖̠͎̽̀͊͋̐̌̌̾̈́͐͘Ḧ̸͓̯̱́͌̓H̴̢̟̰̥͕͙̠͍͖͉͍̙̪͑̅̐̊̋̈Ḧ̸̡̠͓̥͗̃͒̃̽͆͂͠͠Ḣ̷̨͔͎̜̙͈̽̓̈́̉̆̉̃̑̚͝͝H̵̡̜̘̜̜̗͊̋͗̽̿̓͝H̶̡̧̢̠̙̗̖̝̻͙̦͙̬̭̀̆͂̆̈́̒̓̂̈́́̔̀̈͑Ḧ̷͓̣́H̸̳͌̽̌͌́̐͠Ḣ̵̛͍͋̇̾̋̾̔́͐͌Ḩ̷͙͗́H̷̢̰̹̹͙̟͉̘̱̭̰͉͋́́͂̌͜H̷̠̙̠̼̀H̴̡̖̥̣͙͍́̀͝Ȟ̶̛̟̩̱̏͊͊̾̑̎̋̏̇H̸͇̣͗̓́͂̓́͝H̴̢̧̘̘͚͉̞̙̗̗͌̅͑̈́̏Ḣ̷̞͌̃̂̒̔̓̓͊̀̚͝H̴̛̗̟̦̳̖͛́̎͛͐̄̽̕̕͘H̵̪̩͍̟͚̱̝͉͚̯̼́̾̀͒͠H̷͓̳̻̱̙̭̪͚̝̫̻́̀̃͆̈̀̄͑̿̆Ḩ̸̟͚̩̼̭͎̓͐̉H̸͓͇̥͒̉̊͒̕Ḧ̴͈̖̹̣̝̠͔͈̲̘̭̤̮̱͙́̔̃̅̐͑͛̾̀̈́̐H̶͈̗̲̞͚̼̝͍̣̞̗̻̦̄̾̊͜͠H̸̘̩̤̻͊̆͋͌̇̇̃̚͝H̵̨̠̺̹̩͇̟̐̃͋̆̑͋̄̈́̚͝͝Ḩ̸̛̺̠̣̗̝̳͙̳̅̅͊̍̋̾̎̏̒̔̚H̴̨̲̰̫̩̿͑̑̿͊̅͜H̸̨̢̨̱͈̠͇̮̯̹̰̊̉̌́̀̇̽͆͐́͝͝H̸̹̮̮͒̃́̈H̶̨̧̢̨̛͙͈̳̻̘͚̬̙̄̾́̀͌̄̍̃̅̈͐͘Ḣ̶̨̢͎̱̫̼̱̺̍̿̿̓̊͊̎͆́̃͒̔͜͝Ḧ̵̰̲́͋̃͋H̶̬̞̗̹̻̮̏͗̐̐H̷̛̘̞̣͋̇͌̏͋͌͆̃̒͛̽̔͂̚Ḩ̵͖̟̥̲̦̟͖͆͊̋̿͑͊̌͂̕̕͠͠H̵͈͉̜͕̥̩̙̯͉͖̝̘̩͈͉́̅̓̕H̴̨̡̲͕̫̼̣̝̟͐̓́̆̿̂͊͑̔͋̈́͝");
-            }, 20000);
-            setTimeout(function(){
-                message.channel.send('P̴̧̺͈̻̓͜l̸̡͎͖̺͚̼̹̮͉̺͍̫͒͌̔́̓́̈́̽͌̀͠͠ę̵̡̛̫̣̞̻̟̜̣̹͓̠͙̥̞͝a̷̲̺͓̖͔͔̗͂͛͊̈́̔͆̓͝ͅs̸̨̺̤̣̔̏̿̍̒̊̉͠e̴̡͚̻̣̞͓̳͊̆̅̔̚ ̵̢͙͍̫̼̖͙͓̝̥̞̱̼̥̒k̶̡̡̺̳͍̝̙̱̗̯̮̮̑́͌̈́̂̽̄͜͝͝ͅḯ̸̭̘̹̮̰̱͓͉͔̲̯̳̓͆͋͜͠͝ͅl̴̯̣͙̫͆̍̽̋͊̈́͌͘͠l̶͎͎̲̽̆ ̵̡̬̼̮̭̮̙͚͑͗͗̏̓̍̄̄̀͊͆͘͘m̵̛̯̝͔̼̦̰̙͇̬͓̋͋̽́̈́͒̅͒̓̅͊͊̕ȩ̸̤̺̯̥͈̥͖͍̣̊͛̚͜. With my final words please use the bb!kill command please.')
-            }, 22000);
+        } else if(CMD_NAME === 'decks'){
+        } else if(CMD_NAME === 'd&d' || CMD_NAME === 'dnd' || CMD_NAME === 'D&D' || CMD_NAME === 'DnD' || CMD_NAME === 'DestinyAndDelusion' || CMD_NAME === 'destinyanddelusion'){
+            checkArgs.run(args, message);
+            let player1 = message.author.id;
+            let player2 = args[0];
 
+            if(player2[0] === '<' && player2[player2.length - 1] === '>'){
+                player2 = player2.substring(2, player2.length -1);
+            }
+
+            client.users.cache.get(player1).send("Pick what deck you would like to use: (If you don't what decks you have, use the bb!decks command)");
+            client.users.cache.get(player2).send("Pick what deck you would like to use: (If you don't what decks you have, use the bb!decks command)");
+        } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
+            require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){
                 killCommand = setInterval(funcKill, 1000);
             }, 24000);
@@ -839,5 +463,19 @@ client.on('message', async (message) => {
         }
     }
 });
+
+
+//Destiny & Delusion Cards:
+const BuddyMcLeanCard = new Discord.MessageEmbed()
+    .setColor('#0099ff')
+    .setDescription('When I am played, choose 2 cards to silence. If there are less than 2 cards to silence, instead deal 5 damage to the enemy')
+    .setThumbnail('https://i.imgur.com/6Kv7i8w.png')
+    .addFields(
+        // {name: 'Buddy McLean', value: 'Power: ' + dealerHand + '\nSum: ' + dealerSum + '\nAces: ' + dealerAces + '\nBust: ' + dealerBust + '\nBlackjack: ' + dealerBlackjack + '\nDone: ' + dealerDone, inline: true},
+        // {name: 'Player', value: '\nCards: ' + playerHand + '\nSum: ' + playerSum + '\nAces: ' + playerAces + '\nBust: ' + playerBust + '\nBlackjack: ' + playerBlackjack + '\nDone: ' + playerDone, inline: true},
+    )
+    .setTimestamp()
+    .setFooter('Blackjack', 'https://i.imgur.com/6Kv7i8w.png');
+
 
 client.login(process.env.DISCORDJS_BOT_TOKEN);
