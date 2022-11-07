@@ -2,11 +2,31 @@
     {
         "name": "Ultor",
         "color": "#32CD32",
-        "description": "When I am equipped, give me, the stand summon ability of an allied stand which was summoned this game.",
+        "description": "When I am equipped, give me the stand ability of an allied stand which was summoned this game.",
         "image": "https://cdn.discordapp.com/attachments/988186263825829898/996518846846484530/Ultor_Black.png",
         "attack": 3,
         "health": 1,
         "cost": 5,
         "footer": "Please... Don't put me in here... all alone... I'm scared... Why must I be the one to avenge???"
+    },
+    {
+        "name": "Chronohacker",
+        "color": "#00FFFF",
+        "description": "My wielder can make an additional attack for each point of health that I have. Reduce my health by 1 every time my wielder attacks.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/305269873/q3o3G5-SFtdFbgazhye5tA/med.png?1663543875",
+        "attack": 2,
+        "health": 7,
+        "cost": 8,
+        "footer": "Damn Alice. You really are a beaut! I can't wait to see how many people you save."
+    },
+    {
+        "name": "Imbroglione",
+        "color": "#FF0000",
+        "description": "Whenever my wielder attacks, they damage all enemies. For every enemy defeated, heal the allied world and my wielder by 2. When my wielder dies, replace it with 'Imbroglione Unleashed'.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/308575376/vE6VlieDuMuppNIZGvDyfA/med.png?1665352190",
+        "attack": 8,
+        "health": -2,
+        "cost": 12,
+        "footer": "Jordy... my brother. I give you this, my last gift. I hope you can use it to save the world."
     }
 ]

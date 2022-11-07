@@ -58,6 +58,18 @@
 		"destinyFragments": 0
 	},
 	{
+		"id": "88",
+		"name": "BB",
+		"decks": [],
+		"wins": 8,
+		"losses": 8,
+		"draws": 8,
+		"cards": [
+			"BB"
+		],
+		"destinyFragments": 0
+	},
+	{
 		"id": "291016452884922368",
 		"name": "Spade",
 		"decks": [],

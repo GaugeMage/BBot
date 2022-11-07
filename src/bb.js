@@ -403,8 +403,28 @@ client.on('message', async (message) => {
             require('./dnd/deckCommands/deleteDeck.js').run(message, args);
         } else if(CMD_NAME === 'viewDeck'){
             require('./dnd/deckCommands/viewDeck.js').run(message, args);
+        } else if(CMD_NAME === 'viewCards' || CMD_NAME === 'viewCollection'){
+            require('./dnd/deckCommands/viewCards.js').run(message);
         } else if(CMD_NAME === 'decks'){
             require('./dnd/deckCommands/viewDecks.js').run(message);
+        } else if(CMD_NAME === 'temp'){
+            let player1 = message.author.id;
+            const userData = require('./dnd/userData.json');
+            for(let i = 0; i < userData.length; i++){
+                if(userData[i].id === player1){
+                    player1 = userData[i];
+                }
+            }
+            require('./dnd/gameCommands/showField.js').run(message,
+                25,
+                player1,
+                ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"],
+                ["Ultor", null, null, null, null, "Chronohacker"],
+                8,
+                userData[1],
+                ["BB", "Tommy", "Nic", "Robert E. O. Speedwagon", "Garnet Speedwagon", "Brooklyn Art Museum"],
+                [null, "Chronohacker", null, "Kesha", null, null]
+                );
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){
