@@ -28,5 +28,25 @@
         "health": -2,
         "cost": 12,
         "footer": "Jordy... my brother. I give you this, my last gift. I hope you can use it to save the world."
+    },
+    {
+        "name": "McLean Cap",
+        "color": "#FFD700",
+        "description": "When an enemy 'Eye of the Peacock' card is summoned, give it +1 attack and -2 health.",
+        "image": "https://cdn.discordapp.com/attachments/703461116994650203/1039653071141208064/McleanCap.png",
+        "attack": 0,
+        "health": 1,
+        "cost": 1,
+        "footer": "Who ever wears this hat is like a super hero, little bro. So I entrust its power to you!"
+    },
+    {
+        "name": "Hat of Chaos",
+        "color": "#000000",
+        "description": "Round End: Cast a random spell",
+        "image": "https://isteam.wsimg.com/ip/7c9c96eb-abec-11e4-8625-14feb5d9f2e6/ols/44_original/:/rs=w:600,h:600",
+        "attack": 0,
+        "health": 1,
+        "cost": 4,
+        "footer": "I wonder why that cat wheres that black top hat..."
     }
 ]

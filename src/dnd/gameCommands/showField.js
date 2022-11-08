@@ -71,10 +71,12 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     const cCardData = require("../cards/characterCards.json");
     const lCardData = require("../cards/locationCards.json");
     const eCardData = require("../cards/equipmentCards.json");
+    const sCardData = require("../cards/spellCards.json");
     console.log("Total Character Cards: " + cCardData.length)
     console.log("Total Location Cards: " + lCardData.length)
     console.log("Total Equipment Cards: " + eCardData.length)
-    console.log("Total Cards: " + (cCardData.length + lCardData.length + eCardData.length));
+    console.log("Total Spell Cards: " + sCardData.length)
+    console.log("Total Cards: " + (cCardData.length + lCardData.length + eCardData.length + sCardData.length));
 
     //Checks player 1 field
     let field1Attack = [];
@@ -178,7 +180,6 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
             }
         }
         if(!isEmpty && !isLocation){
-            console.log(card.name + " has " + card.attack + " attack");
             field2Attack.push(card.attack);
             field2Health.push(card.health);
         }

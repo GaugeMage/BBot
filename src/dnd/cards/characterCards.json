@@ -41,7 +41,7 @@
     },
     {
         "name": "Catastrophe",
-        "color": "#000000",
+        "color": "#FFFF00",
         "description": "Whenever an enemy attacks or targets an ally card, it has a 50% chance of targeting a random enemy instead. If there are no enemies, it targets itself.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/280737666/jRjzfAEY9GpaTmW8QJc3lw/med.png?1650057691",
         "attack": 1,
@@ -54,7 +54,7 @@
     {
         "name": "Rook",
         "color": "#FFA500",
-        "description": "Stand Summon: **Merrie Melodies**. When I am hit or attack an enemy for the first time, transform me into 'Ricky Rat'.",
+        "description": "Stand Summon: **Merrie Melodies**. The first time I am damaged, transform me into 'Ricky Rat'.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/308180610/g72IoykKWQS58EcDBrV3tA/med.jpg?1665182209",
         "attack": 2,
         "health": 2,
@@ -64,7 +64,7 @@
         "faction": "5 Horsemen",
         "stand": {
             "name": "Merrie Melodies",
-            "description": "Whenever I am summoned, equip me with a random weapon and add a random card from the enemy's deck to your hand. All cards that you generate cost 1 less gold.",
+            "description": "Whenever I am summoned, equip me with a random weapon and add a random spell from the enemy's deck into your hand. All cards that did not start in your deck cost 1 less gold.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/286566318/WqFEd608YRsB3TovEa5HBw/med.png?1653358824",
             "attack": 1,
             "health": 2,
@@ -166,14 +166,28 @@
     {
         "name": "Garnet Speedwagon",
         "color": "#023020",
-        "description": "If I survive for 5 turns, add 'Dionte' in your hand.",
+        "description": "If I survive for 5 turns, add 1 cost 'Dionte' in your hand.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/291177889/i4SjiqfeD-0tzXtTtHocRg/med.png?1655969837",
         "attack": 0,
         "health": 1,
         "cost": 3,
         "type": "Normal",
         "footer": "'What is your name? Jolene? That is a pretty name. I had a daugther with that name!' - <Redacted> Months/Years ago",
-        "faction": "Speedwagon Foundation"
+        "faction": "Speedwagon Foundation",
+        "generatedCharacters": [
+            {
+                "name": "Dionte Brando",
+                "color": "#FFFF00",
+                "description": "When I am summoned, Destroy the enemy deck.",
+                "image": "https://s3.amazonaws.com/files.d20.io/images/291618339/iRzxHDqEJ0KrNlLVN0E3wg/med.png?1656206909",
+                "attack": 50,
+                "health": 50,
+                "cost": 50,
+                "type": "Normal",
+                "faction": "My own faction",
+                "footer": "Time for the 50th reincarnation... Let's have some fun with it."
+            }
+        ]
     },
     {
         "name": "Nic",
@@ -288,7 +302,7 @@
     {
         "name": "BB",
         "color": "#E6E6FA",
-        "description": "Stand: **Fly Me to the Moon**. Game Start: Both players can have up to 8 cards on the field. When I am summoned, if have played 7 other cards this turn (making me the 8th!), give me infinite attack and health.",
+        "description": "Stand: **Fly Me to the Moon**. Game Start: Both players can have up to 8 cards on the field. When I am summoned, if your field has 7 other cards on it and if you have played 7 other cards this turn (making me the 8th!), give me infinite attack and health.",
         "image": "https://external-preview.redd.it/73N3mDKoryWMclDCDFG2uAiBvKniLfJpmaSAutgC83s.jpg?auto=webp&s=ccc3d1ba1979d11cecbb09400e997cb385704051",
         "attack": 8,
         "health": 8,
@@ -318,7 +332,7 @@
         "faction": "5 Horsemen",
         "stand": {
             "name": "Locked out of Heaven",
-            "description": "Round End: Shuffle a Lock into your opponent's deck. When drawn, it deals 2 damage to all enemies.",
+            "description": "Round End: Shuffle a Lock into your opponent's deck. When drawn, it deals 1 damage to all enemies.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/277119938/2FmHHOUPKGGG6aLfJX5Glg/max.png?1648093242",
             "attack": 2,
             "health": 3,
@@ -327,7 +341,7 @@
         "generatedCharacters": [
             {
                 "name": "Uptown Funk",
-                "description": "Deal damage equal to my attack to all enemies. This repeats for the next 2 rounds.",
+                "description": "Deal damage equal to my attack to all enemies. This repeats for the next 2 rounds. Round End: Shuffle a Lock into your opponent's deck. When drawn, it deals 1 damage to all enemies",
                 "image": "https://s3.amazonaws.com/files.d20.io/images/295288353/b6MORp578jWtHx-UX-X56w/med.png?1658243123",
                 "attack": 4,
                 "health": 6,
@@ -415,7 +429,7 @@
     {
         "name": "Enrico Pucci",
         "color": "#A020F0",
-        "description": "Stand Summon: **Made in Heaven**. When I am summoned, equip me with the 'Insert Arabic Named Weapon'.",
+        "description": "Stand Summon: **Made in Heaven**. When I am summoned, equip me with the 'نداء الجنة (Nida' Aljana)'.",
         "image": "https://cdn.discordapp.com/attachments/954939890745901065/1036459274274086973/unknown.png",
         "attack": 7,
         "health": 5,
@@ -425,7 +439,7 @@
         "faction": "Mouse Halal",
         "stand": {
             "name": "Made in Heaven",
-            "description": "Round End: Next 1 turn is skipped. This amount of turns skipped increases every 2 rounds.",
+            "description": "Round end: Skip a number of turns equal to the amount of non skipped turns this card has been on the field.",
             "image": "https://cdn.discordapp.com/attachments/979498329660616725/1036460402357325974/token_1_-_2022-10-30T220031.598.png",
             "attack": 10,
             "health": 5,
@@ -433,7 +447,7 @@
         },
         "equipment": [
             {
-                "name": "Insert Arabic Named Weapon",
+                "name": "نداء الجنة (Nida' Aljana)",
                 "description": "If it is past turn 10, give me +6 attack and +6 health.",
                 "image": "https://cdn.discordapp.com/attachments/988186263825829898/1036381275545682003/unknown.png",
                 "attack": 1,
@@ -554,13 +568,14 @@
     {
         "name": "Wilford Zeppeli",
         "color": "#00FF00",
-        "description": "Stand: **Le Freak**. If there is an ally on the position before mine, feed them a random 'Soul Dish'.",
+        "description": "Stand: **Le Freak**. If there is an ally on the position before mine, feed them a random 2 cost 'Soul Dish'.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/291732425/ExkfDaLWpuLlrxYM6of8iw/med.png?1656267225",
         "attack": 1,
         "health": 6,
         "cost": 4,
         "type": "Stand User",
         "footer": "HOW MARVELOUS!!! I hope you enjoy my next dish!!!",
+        "faction": "None",
         "stand": {
             "name": "Le Freak",
             "description": "Round End: Add a 'Soul Dish' to your hand.",
@@ -571,10 +586,61 @@
         },
         "generatedCards": [
             {
-                "name": "Soul Dish",
+                "name": "*Hey Baby!* Margherita Flatbread",
+                "description": "Feed me to an ally on the field to give them +1 attack and +2 health.",
+                "image": "https://i.pinimg.com/originals/3d/11/d1/3d11d1e94a816f510d86be9790ef1a73.jpg"
+            },
+            {
+                "name": "*Yes I am* Greek Salad *with* Lettuce",
+                "description": "Feed me to an ally on the field to give them +2 attack and +1 health.",
+                "image": "https://carlsbadcravings.com/wp-content/uploads/2021/09/greek-salad-main-recipe-500x500.jpg"
+            },
+            {
+                "name": "*Kono* Greek Chicken Gyros with Tzatziki *Da!*",
+                "description": "Feed me to 3 allies in your deck to give them +2 attack and +2 health.",
+                "image": "https://www.culinaryhill.com/wp-content/uploads/2022/04/Beef-Gyros-Culinary-Hill-1200x800-1.jpg"
+            },
+            {
+                "name": "*Oh? You're approaching this* Lasagna? *Instead of running away, you're coming right to this Lasagna?*",
+                "description": "Feed me to an ally on the field to give them +3 attack",
+                "image": "http://games.cookinggames.com/images/lasagna-med.jpg?gms2h1"
+            },
+            {
+                "name": "*I can't beat the shit out of this Penne Pasta without getting closer*",
+                "description": "Feed me to an ally on the field to give them +3 health.",
+                "image": "https://i.pinimg.com/originals/45/45/bc/4545bc8598b5c46067538eab9db36429.jpg"
+            },
+            {
+                "name": "Calamari *OVERDRIVE!*",
+                "description": "Feed me to an ally in hand to reduce their cost by 3.",
+                "image": "https://pbs.twimg.com/media/DfNeFiRU0AASHMH.jpg"
+            },
+            {
+                "name": "Lesson 1: If you have the Tiramisu, then do it",
+                "description": "Feed me to an ally in hand to give them +4 attack.",
+                "image": "https://64.media.tumblr.com/ef472c4b23a9f1f00bbaf3b2aeed4e75/tumblr_ol4v1c7SnA1t2rr2bo1_1280.png"
+            },
+            {
+                "name": "*Lesson 2: Work those* Galaktoboureko (custard in filo)",
+                "description": "Feed me to an ally in hand to give them +4 health.",
+                "image": "https://www.dianekochilas.com/wp-content/uploads/2020/02/galaktoboureko-500x500.jpg"
+            },
+            {
+                "name": "*Lesson 3: Believe in the* Kourabiedes (butter cookies)",
+                "description": "Feed me to an ally in hand to give them +1 attack and +3 health.",
+                "image": "https://www.mygreekdish.com/wp-content/uploads/2013/12/Easiest-Homemade-Kourabiedes-Christmas-Butter-Cookies-22.jpg"
+            },
+            {
+                "name": "*Lesson 4: Pay your respects. Spin your* Gelato *in the golden ratio.*",
+                "description": "Feed me to an ally in hand to give them +3 attack and +1 health.",
+                "image": "https://thirdimpactanime.files.wordpress.com/2017/12/anime-ice-cream.jpg"
+            },
+            {
+                "name": "*Lesson 5: The shortest route is the* Halva (nut butter sweets). *It was the* Halva (nut butter sweets) *that was our shortest path*",
                 "description": "Feed me to an ally in hand to give them +2 attack and +2 health.",
-                "image": "https://itadakimasuanime.files.wordpress.com/2015/03/pizza-koufuku-graffiti-10-08.png"
+                "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/Semolina_Dry_Halwa.JPG"
             }
+
         ]
     },
     {
@@ -619,16 +685,24 @@
         "cost": 4,
         "type": "Stand User",
         "footer": "The younger... the better :)",
-        "faction": "JoJo Media Corporation.",
+        "faction": "JoJo Media Corporation",
         "stand": {
             "name": "Paparazzi",
-            "description": "For every position taken on the allied field, reveal a card in the enemy hand.",
+            "description": "When I am summoned, for every position taken on the allied field, reveal a card in the enemy hand.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/291460293/XKx-EP8OMuqnbg8m9iwyfw/med.png?1656131739",
             "attack": 0,
             "health": 1,
             "cost": 4
         },
         "generatedCharacters": [
+            {
+                "name": "Death By Glamour",
+                "description": "When I am summoned, for every position taken on the allied field, reveal a card in the enemy hand and give all allies +1 attack and +1 health (max amount is +7 attack and +7 health).",
+                "image": "https://cdn.discordapp.com/attachments/954939890745901065/1016116616590807080/unknown.png",
+                "attack": 4,
+                "health": 12,
+                "cost": 4
+            },
             {
                 "name": "Child",
                 "description": "",
@@ -667,7 +741,7 @@
     {
         "name": "Kelly Shanks",
         "color": "#FF0000",
-        "description": "Stand Equip: **GAS GAS GAS** (Sword Mode when enemy world is higher than 10 HP and Bike Mode when enemy world is less than or equal to 10 HP). When I am played, deal 1 damage to the enemy world.",
+        "description": "Stand Equip: **GAS GAS GAS**. When I am played, deal 1 damage to the enemy world.",
         "image": "https://i.kym-cdn.com/photos/images/original/000/683/740/e28.jpg",
         "attack": 2,
         "health": 3,
@@ -689,7 +763,7 @@
                 },
                 {
                     "name": "GAS GAS GAS (Sword Mode)",
-                    "description": "When I am in this mode, whenever my wielder attacks, they deal 3 damage to the enemy world.",
+                    "description": "When I am in this mode, whenever my wielder attacks, they deal 2 damage to the enemy world.",
                     "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011052349705437234/unknown.png",
                     "attack": 4,
                     "health": 0,
@@ -697,5 +771,322 @@
                 }
             ]
         }
+    },
+    {
+        "name": "Pyotr Parker",
+        "color": "#FF0000",
+        "description": "When I die, draw a stand user.",
+        "image": "https://cdn.discordapp.com/attachments/954939890745901065/1011296522891165706/unknown.png",
+        "attack": 1,
+        "health": 1,
+        "cost": 1,
+        "type": "Normal",
+        "footer": "I hope you guys enjoyed the tour for today!",
+        "faction": "JoJo Media Corporation"
+    },
+    {
+        "name": "Arthur Pendragon",
+        "color": "#00FFFF",
+        "description": "Stand Equip: **Excalibur**. When I am played, kill an enemy.",
+        "image": "https://cdn.donmai.us/original/22/e1/22e137a9baa91edc2f651c31015c34c8.jpg",
+        "attack": 5,
+        "health": 4,
+        "cost": 6,
+        "type": "Stand User",
+        "footer": "My judgement shall no longer be clouded! I shall be the one who brings justice to this cruel world!",
+        "faction": "Eye of the Peacock",
+        "stand": {
+            "name": "Excalibur",
+            "description": "Every time an enemy dies, I gain +2 attack.",
+            "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011017604200140850/unknown.png",
+            "attack": 2,
+            "health": 0,
+            "cost": 6
+        }
+    },
+    {
+        "name": "Hilde Pendragon",
+        "color": "#00FFFF",
+        "description": "Stand Summon: **Edge of Dawn**.",
+        "image": "https://cdn.discordapp.com/attachments/954939890745901065/1011298254555721829/unknown.png",
+        "attack": 1,
+        "health": 1,
+        "cost": 8,
+        "type": "Stand User",
+        "footer": "I will not let you take my father away from me!",
+        "faction": "None",
+        "stand": {
+            "name": "Edge of Dawn",
+            "description": "No allies can die or take damage while I am in play.",
+            "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011017604200140850/unknown.png",
+            "attack": 0,
+            "health": 5,
+            "cost": 8
+        }
+    },
+    {
+        "name": "Shane Crawford",
+        "color": "#000000",
+        "description": "Stand: **The Final Countdown**. When I am played, give me -1 attack for every enemy in play.",
+        "image": "https://cdn.discordapp.com/attachments/954939890745901065/1013852820631457862/unknown.png",
+        "attack": 2,
+        "health": 5,
+        "cost": 4,
+        "type": "Stand User",
+        "footer": "Darnell, I can't shoot this. Please... Take it.",
+        "faction": "Children of Liberty",
+        "stand": {
+            "name": "The Final Countdown",
+            "description": "Round End: All permanent stat buffs / debuffs that have occurred this round go away.",
+            "image": "",
+            "attack": 0,
+            "health": 0,
+            "cost": 4
+        }
+    },
+    {
+        "name": "Ben Torch",
+        "color": "#000000",
+        "description": "Stand Equip: **Fireflies**. When I am summoned, give me +1 attack and +1 health for every 'Children of Liberty' card in the allied field.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/287517460/81BhIDX8k3DjcLhht5tJOA/med.png?1653891463",
+        "attack": 3,
+        "health": 3,
+        "cost": 5,
+        "type": "Stand User",
+        "footer": "Monoceros Lumineers, we will rescue those children and figure out the secrets to this building okay? I know we are a new team but I have faith in us!",
+        "faction": "Children of Liberty",
+        "stand": {
+            "name": "Fireflies",
+            "description": "Whenever my wielder attacks, if the enemy target has more attack than my wielder has health, give me +2 health. If the enemy target has less attack than my wielder has health, give me +2 attack.",
+            "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011017604200140850/unknown.png",
+            "attack": 0,
+            "health": 0,
+            "cost": 5
+        }
+    },
+    {
+        "name": "Chris Woles",
+        "color": "#000000",
+        "description": "When I am summoned, shuffle a 'Pretender' into your deck and give me +1 attack for every enemy on the field.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/286275004/tm_J-XM19Ge7CtDJmNDzHQ/med.png?1653207101",
+        "attack": 2,
+        "health": 2,
+        "cost": 3,
+        "type": "Normal",
+        "footer": "Your mission is to assassinate the stand users on that subway. Succeed and your mother and sister shall be set for life okay?",
+        "faction": "Federation of Bizarre Intelligence",
+        "generatedCharacters": [
+            {
+                "name": "Pretender",
+                "color": "#000000",
+                "description": "When I am summoned, transform me into another card of the same cost from your hand or deck. I gain its effects as well. When I am attacked, I explode, dealing 5 damage to the attacker and 1 damage to all other enemies.",
+                "image": "https://media.tenor.com/Vb_CFDSopBIAAAAC/eldritch-creepy.gif",
+                "attack": 1,
+                "health": 1,
+                "cost": 3,
+                "type": "Normal",
+                "footer": "I am not who I seem to be. I am not who you think I am. I am not who you want me to be. I am not who you need me to be. But most importantly, I am not who I was.",
+                "faction": "Federation of Bizarre Intelligence"
+            }
+        ]
+    },
+    {
+        "name": "Sergey Stepanov",
+        "color": "#000000",
+        "description": "Stand Summon: **Owner of a Lonely Heart**.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/287069213/NmzCnOcWXJ_nnC966h3z5g/med.png?1653688127",
+        "attack": 2,
+        "health": 2,
+        "cost": 3,
+        "type": "Stand User",
+        "footer": "Now you... seem like a powerful opponent.",
+        "faction": "5 Horsemen",
+        "stand": {
+            "name": "Owner of a Lonely Heart",
+            "description": "Before I attack an enemy, I steal 1 attack and 1 health from them. (These stat bonuses go to my user as well)",
+            "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011017604200140850/unknown.png",
+            "attack": 3,
+            "health": 2,
+            "cost": 3
+        }
+    },
+    {
+        "name": "Dionte Brando",
+        "color": "#FFFF00",
+        "description": "When I am summoned, Destroy the enemy deck.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/291618339/iRzxHDqEJ0KrNlLVN0E3wg/med.png?1656206909",
+        "attack": 50,
+        "health": 50,
+        "cost": 50,
+        "type": "Normal",
+        "faction": "My own faction",
+        "footer": "Time for the 50th reincarnation... Let's have some fun with it."
+    },
+    {
+        "name": "Cometon",
+        "color": "#89CFF0",
+        "description": "Stand Summon: **Believing and Being**. When I am summoned, give me +1 attack and +1 health for every 'Eye of the Peacock' card in the allied field.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/293856561/iQaJ29WqOD0GesCYsAOeNg/med.png?1657472459",
+        "attack": 5,
+        "health": 3,
+        "cost": 5,
+        "type": "Stand User",
+        "footer": "This younger girl came to us after that taliban attack. She is quite pretty ain't she? Lets have some... fun with her.",
+        "faction": "Eye of the Peacock",
+        "stand": {
+            "name": "Believing and Being",
+            "description": "When there are 3 or more enemies on the enemy field, give me +3 attack. When there are less than 3 enemies on the enemy field, give me +3 health. When there are less than 2 allies on the allied field, give me +3 attack. When there are 2 or more allies on the allied field, give me +3 health.",
+            "image": "https://c.tenor.com/1Z0jcT7rGy4AAAAM/muse-dash-marija.gif",
+            "attack": 5,
+            "health": 3,
+            "cost": 5
+        }
+    },
+    {
+        "name": "Xeion",
+        "color": "#89CFF0",
+        "description": "Stand Suit: **Never gonna give you up**. When I am summoned, give me +1 attack and +1 health for every 'Eye of the Peacock' card in the allied field.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/293785234/2iuPB1Req2VOLQZUKDKpgw/med.png?1657433839",
+        "attack": 3,
+        "health": 5,
+        "cost": 5,
+        "type": "Stand User",
+        "footer": "This one came in with the other young girl. She is quite... deformed ain't she? Let's reshape her shall we?",
+        "faction": "Eye of the Peacock",
+        "stand": {
+            "name": "Never gonna give you up",
+            "description": "When an ally on the field is about to get an attack that would be lethal to them, I will move to their position and will take it instead.",
+            "image": "",
+            "attack": 3,
+            "health": 5,
+            "cost": 5
+        }
+    },
+    {
+        "name": "Silver Bucciarati",
+        "color": "#C0C0C0",
+        "description": "Stand Summon: **The Phoenix**. When I am summoned, give me +1 attack and +1 health for every ally on the field.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/303029457/143KrS3OJVfh_WB9kkIStg/med.png?1662313772",
+        "attack": 6,
+        "health": 6,
+        "cost": 6,
+        "type": "Stand User",
+        "footer": "That man made me sick... imagine abusing children for fun... 'You know we are part of the reason he is like that right?'",
+        "faction": "Eye of the Peacock",
+        "stand": {
+            "name": "The Phoenix",
+            "description": "Round Start: Heal me and all adjacent allies by 3.",
+            "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011017604200140850/unknown.png",
+            "attack": 6,
+            "health": 6,
+            "cost": 6
+        }
+    },
+    {
+        "name": "FBI Soldier",
+        "color": "#000000",
+        "description": "When I am summoned, give me +1 attack for every 'Federation of Bizarre Intelligence' card in the allied field.",
+        "image": "http://4.bp.blogspot.com/-FsQMtZWmDaA/UL1lJdXm3WI/AAAAAAAA7To/PxB-Qklc9sg/s640/FBI-054.jpg",
+        "attack": 2,
+        "health": 2,
+        "cost": 2,
+        "type": "Normal",
+        "footer": "Abnormalities detected. Perimeter secured. Proceed into the house.",
+        "faction": "Federation of Bizarre Intelligence"
+    },
+    {
+        "name": "Minnie Bausse",
+        "color": "#FF0000",
+        "description": "When I am summoned, add a random spell and character card to your hand",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/296209494/s4ZcHU1Aa10L3nTyzrchIA/med.png?1658704098",
+        "attack": 2,
+        "health": 2,
+        "cost": 3,
+        "type": "Normal",
+        "footer": "I'm simply ear-esistible!",
+        "faction": "Mouse Halal"
+    },
+    {
+        "name": "Boofy",
+        "color": "#FF0000",
+        "description": "When I am summoned, add a random equipment and location card to your hand",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/297378294/zTqoJveIxGboe73InfUHyw/med.png?1659302116",
+        "attack": 2,
+        "health": 2,
+        "cost": 3,
+        "type": "Normal",
+        "footer": "Ya gotta talk to everybody! I bet you'll hear some pretty interestin' stuff. Course, you can always keep on talkin' to me, too! ",
+        "faction": "Mouse Halal"
+    },
+    {
+        "name": "Donald Buck",
+        "color": "#FF0000",
+        "description": "When I am summoned, destroy an enemy location",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/313335693/oF6mGauDAE6fSOiw_T64VQ/med.png?1667943885",
+        "attack": 4,
+        "health": 4,
+        "cost": 5,
+        "type": "Normal",
+        "footer": "It must be a Heartless! Let's see how it handles my magic! THUNDER! Huh? That's odd. THUNDER! THUNDER! Umm... FIRE! Blizzard? I don't get it. Why isn't my magic working?",
+        "faction": "Mouse Halal"
+    },
+    {
+        "name": "Bete",
+        "color": "#FF0000",
+        "description": "When I am summoned, destroy an enemy equipment",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/313336202/SNI4wS9-fIQg4-nMA1QlrQ/med.png?1667944128",
+        "attack": 3,
+        "health": 6,
+        "cost": 5,
+        "type": "Normal",
+        "footer": "Alright you Grim Grinning Ghosties get out there and haunt this house!",
+        "faction": "Mouse Halal"
+    },
+    {
+        "name": "Bhip",
+        "color": "#FF0000",
+        "description": "When I am summoned, add a 1 cost 'Bale' card to your hand.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/313336625/K6VvFivgFapDFrRHIrNH6g/med.png?1667944346",
+        "attack": 1,
+        "health": 1,
+        "cost": 1,
+        "type": "Normal",
+        "footer": "Bale Forgets His Own Phone Number. How Is He Gonna Break A Code?",
+        "faction": "Mouse Halal",
+        "generatedCharacters": [
+            {
+                "name": "Bale",
+                "color": "#FF0000",
+                "description": "When I am summoned, add a 1 cost 'Bhip' card to your hand.",
+                "image": "https://s3.amazonaws.com/files.d20.io/images/313336728/1zxsK_SiV56ILBlOFyBOZQ/med.png?1667944394",
+                "attack": 1,
+                "health": 1,
+                "cost": 1
+            }
+        ]
+    },
+    {
+        "name": "Mortimer Bausse",
+        "color": "#FF0000",
+        "description": "When I am summoned, give me +1 attack and +1 health for every card you have generated this game.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/313337532/pAo01vhfSetnhsizMAuVLQ/med.png?1667944775",
+        "attack": 2,
+        "health": 2,
+        "cost": 7,
+        "type": "Normal",
+        "footer": "Mind if I barrow your girl?",
+        "faction": "Mouse Halal"
+    },
+    {
+        "name": "Daisy Buck",
+        "color": "#FF0000",
+        "description": "Deal damage equal to the amount of generated cards you have played this game to an enemy character or the enemy world.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/313338201/BjWXkl9LrKrcqduHybHDyA/med.png?1667945104",
+        "attack": 4,
+        "health": 4,
+        "cost": 6,
+        "type": "Normal",
+        "footer": "Do you have a second? Fashion isn't just about clothing, you know. You also have to know how to accessorize. I've been putting together a nice collection of accessories myself... but now I've run out of room to store them all. My place is positively full to bursting! Even the nicest home can be ruined by too much clutter--no matter how fashionable. If only I had a nifty shelf to hold my accessories...",
+        "faction": "Mouse Halal"
     }
 ]

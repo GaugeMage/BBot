@@ -30,5 +30,110 @@
         "image": "",
         "cost": 3,
         "footer": "The 5 Horsemen. A budding new organization whose goals are unknown to the world. Who knows what they are planning next!"
+    },
+    {
+        "name": "Willie's Pizzas and Gyros",
+        "color": "#000000",
+        "description": "Whenever you play a 'Soul Dish'. Generate another random 2 cost 'Soul Dish' in your hand.",
+        "image": "https://img-aws.ehowcdn.com/700x/www.onlyinyourstate.com/wp-content/uploads/2019/09/Screen-Shot-2019-09-02-at-6.26.22-PM.png",
+        "cost": 2,
+        "footer": "Hey gurls! I found this pizza place we can go to! It's called Willie's Pizzas and Gyros! I heard that their food can give an out of world experience!",
+        "generatedCards": [
+            {
+                "name": "*Hey Baby!* Margherita Flatbread",
+                "description": "Feed me to an ally on the field to give them +1 attack and +2 health.",
+                "image": "https://i.pinimg.com/originals/3d/11/d1/3d11d1e94a816f510d86be9790ef1a73.jpg"
+            },
+            {
+                "name": "*Yes I am* Greek Salad *with* Lettuce",
+                "description": "Feed me to an ally on the field to give them +2 attack and +1 health.",
+                "image": "https://carlsbadcravings.com/wp-content/uploads/2021/09/greek-salad-main-recipe-500x500.jpg"
+            },
+            {
+                "name": "*Kono* Greek Chicken Gyros with Tzatziki *Da!*",
+                "description": "Feed me to 3 allies in your deck to give them +2 attack and +2 health.",
+                "image": "https://www.culinaryhill.com/wp-content/uploads/2022/04/Beef-Gyros-Culinary-Hill-1200x800-1.jpg"
+            },
+            {
+                "name": "*Oh? You're approaching this* Lasagna? *Instead of running away, you're coming right to this Lasagna?*",
+                "description": "Feed me to an ally on the field to give them +3 attack",
+                "image": "http://games.cookinggames.com/images/lasagna-med.jpg?gms2h1"
+            },
+            {
+                "name": "*I can't beat the shit out of this Penne Pasta without getting closer*",
+                "description": "Feed me to an ally on the field to give them +3 health.",
+                "image": "https://i.pinimg.com/originals/45/45/bc/4545bc8598b5c46067538eab9db36429.jpg"
+            },
+            {
+                "name": "Calamari *OVERDRIVE!*",
+                "description": "Feed me to an ally in hand to reduce their cost by 3.",
+                "image": "https://pbs.twimg.com/media/DfNeFiRU0AASHMH.jpg"
+            },
+            {
+                "name": "Lesson 1: If you have the Tiramisu, then do it",
+                "description": "Feed me to an ally in hand to give them +4 attack.",
+                "image": "https://64.media.tumblr.com/ef472c4b23a9f1f00bbaf3b2aeed4e75/tumblr_ol4v1c7SnA1t2rr2bo1_1280.png"
+            },
+            {
+                "name": "*Lesson 2: Work those* Galaktoboureko (custard in filo)",
+                "description": "Feed me to an ally in hand to give them +4 health.",
+                "image": "https://www.dianekochilas.com/wp-content/uploads/2020/02/galaktoboureko-500x500.jpg"
+            },
+            {
+                "name": "*Lesson 3: Believe in the* Kourabiedes (butter cookies)",
+                "description": "Feed me to an ally in hand to give them +1 attack and +3 health.",
+                "image": "https://www.mygreekdish.com/wp-content/uploads/2013/12/Easiest-Homemade-Kourabiedes-Christmas-Butter-Cookies-22.jpg"
+            },
+            {
+                "name": "*Lesson 4: Pay your respects. Spin your* Gelato *in the golden ratio.*",
+                "description": "Feed me to an ally in hand to give them +3 attack and +1 health.",
+                "image": "https://thirdimpactanime.files.wordpress.com/2017/12/anime-ice-cream.jpg"
+            },
+            {
+                "name": "*Lesson 5: The shortest route is the* Halva (nut butter sweets). *It was the* Halva (nut butter sweets) *that was our shortest path*",
+                "description": "Feed me to an ally in hand to give them +2 attack and +2 health.",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/Semolina_Dry_Halwa.JPG"
+            }
+        ]
+    },
+    {
+        "name": "Ice Cream Store",
+        "description": "Whenever you summon a 5 Horsemen card, reveal an enemy card and increase its cost by 1.",
+        "image": "https://i.pinimg.com/736x/1a/5c/85/1a5c853e28289fda04c7fd6b60f3f325.jpg"
+    },
+    {
+        "name": "Space",
+        "description": "When I am summoned, give both players a 1 cost 'Dionte' and destroy me instantly.",
+        "image": "http://www.nasa.gov/sites/default/files/thumbnails/image/web_first_images_release.png",
+        "generatedCharacters": [
+            {
+                "name": "Dionte Brando",
+                "color": "#FFFF00",
+                "description": "When I am summoned, Destroy the enemy deck.",
+                "image": "https://s3.amazonaws.com/files.d20.io/images/291618339/iRzxHDqEJ0KrNlLVN0E3wg/med.png?1656206909",
+                "attack": 50,
+                "health": 50,
+                "cost": 50,
+                "type": "Normal",
+                "faction": "My own faction",
+                "footer": "Time for the 50th reincarnation... Let's have some fun with it."
+            }
+        ]
+    },
+    {
+        "name": "Meth Lab",
+        "description": "Round Start: Summon a 0 / 1 child.",
+        "image": "https://images.theconversation.com/files/343737/original/file-20200624-133013-1chiizs.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+        "generatedCharacters": [
+            {
+                "name": "Child",
+                "description": "",
+                "image": "https://i0.wp.com/recommendmeanime.com/wp-content/uploads/2021/01/anime-for-young-children.jpg?fit=1280%2C720&ssl=1",
+                "attack": 0,
+                "health": 1,
+                "cost": 1,
+                "type": "Normal"
+            }
+        ]
     }
 ]

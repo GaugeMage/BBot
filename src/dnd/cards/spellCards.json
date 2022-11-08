@@ -38,5 +38,53 @@
         "image": "https://previews.123rf.com/images/evilwata/evilwata1803/evilwata180300009/98618541-plastic-medical-syringe-filled-with-yellow-liquid-and-isolated-on-white-background-with-clipping-pat.jpg",
         "cost": "5",
         "footer": "The syringe with the golden liquid"
+    },
+    {
+        "name": "D10",
+        "color": "#A020F0",
+        "description": "Liberate a stand which can liberate.",
+        "image": "https://c8.alamy.com/comp/2AB8H7N/syringe-with-purple-liquid-2AB8H7N.jpg",
+        "cost": "5",
+        "footer": "Liberation... An interesting concept pioneered by an... irritating man."
+    },
+    {
+        "name": "Donald's Zettaflare!",
+        "color": "#FF0000",
+        "description": "Deal 20 damage to an enemy character. If it has equipment, destroy that as well.",
+        "image": "https://i.kym-cdn.com/entries/icons/original/000/032/667/1bcoj6xlfwe31.jpg",
+        "cost": "11",
+        "footer": "Zettaflare!"
+    },
+    {
+        "name": "Volume Mourning",
+        "color": "#DC143C",
+        "description": "Silence all cards that are not '5 Horsemen' cards",
+        "image": "https://blog.motionisland.com/wp-content/uploads/2018/04/after-effects-audio-spectrum-with-color-bar.gif",
+        "cost": "6",
+        "footer": "And just like that, the room went silent. Can you believe that?"
+    },
+    {
+        "name": "Sonic Cannon",
+        "color": "#DC143C",
+        "description": "Silence 2 enemies",
+        "image": "https://cdn.discordapp.com/attachments/703461116994650203/1039666215070744667/unknown.png",
+        "cost": "3",
+        "footer": "This guy's stand is quite fascinating I must say. Maybe he is worthy?"
+    },
+    {
+        "name": "Bite",
+        "color": "#964B00",
+        "description": "Deal 2 damage to a character",
+        "image": "https://media.tenor.com/hRIYC92gFNMAAAAC/nichijou-dog.gif",
+        "cost": "2",
+        "footer": "'Awww that Yorkshire Terrier is so cute!! Wait... why is it AHHHHHHHHHHHHHH' - Unlucky FBI soldier"
+    },
+    {
+        "name": "Card Throw",
+        "color": "",
+        "description": "Deal 3 damage to an enemy character and 2 damage to the enemy world",
+        "image": "https://cdn.discordapp.com/attachments/719666834269274194/1039668427763241020/unknown.png",
+        "cost": "5",
+        "footer": "'That weird guy just threw a card at me like that is gonna do any-' knife to the throat"
     }
 ]
