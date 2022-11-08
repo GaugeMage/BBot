@@ -26,7 +26,7 @@
     {
         "name": "5 Horsemen HQ",
         "color": "#000000",
-        "description": "Whenever you summon a 5 Horsemen card, reveal an enemy card in the enemy's hand",
+        "description": "Whenever you summon a 5 Horsemen card, give it +2 attack and +2 health.",
         "image": "",
         "cost": 3,
         "footer": "The 5 Horsemen. A budding new organization whose goals are unknown to the world. Who knows what they are planning next!"

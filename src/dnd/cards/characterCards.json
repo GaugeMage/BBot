@@ -315,7 +315,7 @@
         "cost": 5,
         "type": "Stand User",
         "footer": "'Woof!' - Danny said moments after feasting on a car engine.",
-        "faction": "Speedwagon Foundation",
+        "faction": "5 Horsemen",
         "stand": {
             "name": "Locked out of Heaven",
             "description": "Round End: Shuffle a Lock into your opponent's deck. When drawn, it deals 2 damage to all enemies.",
@@ -337,7 +337,7 @@
         "generatedCards": [
             {
                 "name": "Lock",
-                "description": "Deal 2 damage to all enemies.",
+                "description": "Deal 1 damage to all enemies.",
                 "image": "https://static.wikia.nocookie.net/jjba/images/4/4d/TheLock_KeyArt.png/revision/latest?cb=20160506161202"
             }
         ]
@@ -383,9 +383,9 @@
         }
     },
     {
-        "name": "Akihito Ki",
+        "name": "Ki Akihito",
         "color": "#023020",
-        "description": "Stand Summon: **24-Hour Cinderella**. When I am summoned, equip me with the '生命の刃(Seimei no ha)'.",
+        "description": "Stand Summon: **24-Hour Cinderella**. When I am summoned, equip me with the '宮本 武蔵(Miyamoto Musashi)'.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/300444237/77nAXTlvnl4aHRkL_heBfQ/med.png?1660953817",
         "attack": 3,
         "health": 3,
@@ -403,7 +403,7 @@
         },
         "equipment": [
             {
-                "name": "生命の刃(Seimei no ha)",
+                "name": "宮本 武蔵(Miyamoto Musashi)",
                 "description": "If my wielder is part of the verdant night give me +2 attack and +2 health.",
                 "image": "https://gbf.wiki/images/thumb/9/92/Eight-Life_Katana_Cobalt.png/462px-Eight-Life_Katana_Cobalt.png",
                 "attack": 2,
@@ -425,7 +425,7 @@
         "faction": "Mouse Halal",
         "stand": {
             "name": "Made in Heaven",
-            "description": "Round End: Next turn is skipped.",
+            "description": "Round End: Next 1 turn is skipped. This amount of turns skipped increases every 2 rounds.",
             "image": "https://cdn.discordapp.com/attachments/979498329660616725/1036460402357325974/token_1_-_2022-10-30T220031.598.png",
             "attack": 10,
             "health": 5,
@@ -612,7 +612,90 @@
     {
         "name": "Jameson J. Jonah",
         "color": "#00FF00",
-        "description": "Stand: **Paparazzi**. If I am the only stand user in the deck, **Liberate Me**.",
-        "image": ""
+        "description": "Stand: **Paparazzi**. **Liberation (10)**. When I am played, summon two 0 / 1 children.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/291460293/XKx-EP8OMuqnbg8m9iwyfw/med.png?1656131739",
+        "attack": 1,
+        "health": 6,
+        "cost": 4,
+        "type": "Stand User",
+        "footer": "The younger... the better :)",
+        "faction": "JoJo Media Corporation.",
+        "stand": {
+            "name": "Paparazzi",
+            "description": "For every position taken on the allied field, reveal a card in the enemy hand.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/291460293/XKx-EP8OMuqnbg8m9iwyfw/med.png?1656131739",
+            "attack": 0,
+            "health": 1,
+            "cost": 4
+        },
+        "generatedCharacters": [
+            {
+                "name": "Child",
+                "description": "",
+                "image": "https://i0.wp.com/recommendmeanime.com/wp-content/uploads/2021/01/anime-for-young-children.jpg?fit=1280%2C720&ssl=1",
+                "attack": 0,
+                "health": 1,
+                "cost": 1,
+                "type": "Normal"
+            }
+        ]
+    },
+    {
+        "name": "Pretender",
+        "color": "#000000",
+        "description": "When I am summoned, transform me into another card of the same cost from your hand or deck. I gain its effects as well. When I am attacked, I explode, dealing 5 damage to the attacker and 1 damage to all other enemies.",
+        "image": "https://media.tenor.com/Vb_CFDSopBIAAAAC/eldritch-creepy.gif",
+        "attack": 1,
+        "health": 1,
+        "cost": 3,
+        "type": "Normal",
+        "footer": "I am not who I seem to be. I am not who you think I am. I am not who you want me to be. I am not who you need me to be. But most importantly, I am not who I was.",
+        "faction": "Federation of Bizarre Intelligence"
+    },
+    {
+        "name": "Contradictory Soldier",
+        "color": "#000000",
+        "description": "When I strike an enemy, give them the paradox condition. If it is already paradoxified, afflict it with a random paradox.",
+        "image": "https://st3.depositphotos.com/1003697/32545/i/1600/depositphotos_325456440-stock-photo-soldier-aiming-laseer-sight-optics.jpg",
+        "attack": 1,
+        "health": 3,
+        "cost": 1,
+        "type": "Normal",
+        "footer": "I am but a mere paradox... Kill me...",
+        "faction": "Federation of Bizarre Intelligence"
+    },
+    {
+        "name": "Kelly Shanks",
+        "color": "#FF0000",
+        "description": "Stand Equip: **GAS GAS GAS** (Sword Mode when enemy world is higher than 10 HP and Bike Mode when enemy world is less than or equal to 10 HP). When I am played, deal 1 damage to the enemy world.",
+        "image": "https://i.kym-cdn.com/photos/images/original/000/683/740/e28.jpg",
+        "attack": 2,
+        "health": 3,
+        "cost": 2,
+        "type": "Stand User",
+        "footer": "PEDAL TO THE METAL BABY!!!",
+        "faction": "Children of Liberty",
+        "stand": {
+            "name": "GAS GAS GAS",
+            "description": "I go into Sword Mode when enemy world is higher than 10 HP and Bike Mode when enemy world is less than or equal to 10 HP",
+            "mode": [
+                {
+                    "name": "GAS GAS GAS (Bike Mode)",
+                    "description": "When I am in this mode, whenever my wielder attacks, they attack all enemies and the enemy world.",
+                    "image": "https://s3.amazonaws.com/files.d20.io/images/301953086/pHgzUmkWFtMsTlF8O8xDfA/med.png?1661711276",
+                    "attack": 2,
+                    "health": 4,
+                    "cost": 2
+                },
+                {
+                    "name": "GAS GAS GAS (Sword Mode)",
+                    "description": "When I am in this mode, whenever my wielder attacks, they deal 3 damage to the enemy world.",
+                    "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011052349705437234/unknown.png",
+                    "attack": 4,
+                    "health": 0,
+                    "cost": 2
+                }
+            ]
+        }
     }
 ]

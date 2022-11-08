@@ -393,6 +393,8 @@ client.on('message', async (message) => {
             require('./dnd/cardSearches/locationCard.js').run(message, args);
         } else if(CMD_NAME === 'equipmentCard' || CMD_NAME === 'eCard'){
             require('./dnd/cardSearches/equipmentCard.js').run(message, args);
+        } else if(CMD_NAME === 'spellCard' || CMD_NAME === 'sCard'){
+            require('./dnd/cardSearches/spellCard.js').run(message, args);
         } else if(CMD_NAME === 'addCard'){
             require('./dnd/deckCommands/addCardToDeck.js').run(message, args);
         } else if(CMD_NAME === 'removeCard' || CMD_NAME === 'deleteCard'){

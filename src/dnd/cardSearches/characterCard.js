@@ -20,16 +20,31 @@ exports.run = async(message, args) => {
                 setColor(card.color);
             message.channel.send(cardString);
             if(card.type === 'Stand User'){
-                const standString = new Discord.MessageEmbed().
-                    setTitle(card.stand.name).
-                    setImage(card.stand.image).
-                    addFields(
-                        {name: 'Stats', value: 'Attack: ' + card.stand.attack + '\nHealth: ' + card.stand.health, inline: true},
-                        {name: 'Cost', value: card.stand.cost, inline: true},
-                    ).
-                    setDescription('*' + card.stand.description + '*').
-                    setColor(card.color);
-                message.channel.send(standString);
+                if(card.stand.mode === undefined){
+                    const standString = new Discord.MessageEmbed().
+                        setTitle(card.stand.name).
+                        setImage(card.stand.image).
+                        addFields(
+                            {name: 'Stats', value: 'Attack: ' + card.stand.attack + '\nHealth: ' + card.stand.health, inline: true},
+                            {name: 'Cost', value: card.stand.cost, inline: true},
+                        ).
+                        setDescription('*' + card.stand.description + '*').
+                        setColor(card.color);
+                        message.channel.send(standString);
+                } else {
+                    for(let i = 0; i < card.stand.mode.length; i++){
+                        const standString = new Discord.MessageEmbed().
+                            setTitle(card.stand.mode[i].name).
+                            setImage(card.stand.mode[i].image).
+                            addFields(
+                                {name: 'Stats', value: 'Attack: ' + card.stand.mode[i].attack + '\nHealth: ' + card.stand.mode[i].health, inline: true},
+                                {name: 'Cost', value: card.stand.mode[i].cost, inline: true},
+                            ).
+                            setDescription('*' + card.stand.mode[i].description + '*').
+                            setColor(card.color);
+                        message.channel.send(standString);
+                    }
+                }
             }
             if(card.equipment !== undefined){
                 for(let i = 0; i < card.equipment.length; i++){

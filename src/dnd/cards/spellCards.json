@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Stand Rush",
+        "color": "#A020F0",
+        "description": "Choose an allied stand on the field to strike an opponent 3 times.",
+        "image": "https://static.wikia.nocookie.net/jjba/images/c/c1/JotaroRubberSoul.png/revision/latest?cb=20140726112355",
+        "cost": "10",
+        "footer": "ORA ORA ORA ORA ORA"
+    },
+    {
+        "name": "Stand Strike",
+        "color": "#A020F0",
+        "description": "Choose an allied stand on the field to strike an opponent 1 time.",
+        "image": "https://jacksonjournal.news/wp-content/uploads/2021/02/1435017356_jba_sc_2_emerald_splash__by_phatkoala-d7m9l74.gif",
+        "cost": "3",
+        "footer": "Stands are mysterious beings which can be manifested from the souls and willpowers of humans."
+    },
+    {
+        "name": "Free Candy!",
+        "color": "#A020F0",
+        "description": "Kill an ally card to draw a stand user card.",
+        "image": "https://media.tenor.com/images/2401ebd842b435590c8fa587c4165348/tenor.png",
+        "cost": "3",
+        "footer": "'Hey kids we have some free candy!' - Jameson J. Jonah"
+    },
+    {
+        "name": "Paradox Spit",
+        "color": "#A020F0",
+        "description": "Paradoxify an enemy card. If it is already paradoxified, afflict it with a random paradox.",
+        "image": "https://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/KogMawQ.png",
+        "cost": "1",
+        "footer": "Paradox. A stand with the power of... contradiction?"  
+    },
+    {
+        "name": "The syringe with the golden liquid",
+        "color": "#FFD700",
+        "description": "Give a normal card, a random stand.",
+        "image": "https://previews.123rf.com/images/evilwata/evilwata1803/evilwata180300009/98618541-plastic-medical-syringe-filled-with-yellow-liquid-and-isolated-on-white-background-with-clipping-pat.jpg",
+        "cost": "5",
+        "footer": "The syringe with the golden liquid"
+    }
+]
