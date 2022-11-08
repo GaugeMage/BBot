@@ -2,7 +2,7 @@
     {
         "name": "Buddy McLean",
         "color": "#DC143C",
-        "description": "Stand Summon: American Pie. When I am played, choose 2 enemy cards on the field to silence. If there are less than 2 cards to silence, deal 5 damage to the enemy world instead",
+        "description": "Stand Summon: **American Pie**. When I am played, choose 2 enemy cards on the field to silence. If there are less than 2 cards to silence, deal 5 damage to the enemy world instead",
         "image": "https://cdn.discordapp.com/attachments/988186263825829898/1010989752356458627/unknown.png",
         "attack": 3,
         "health": 4,
@@ -22,7 +22,7 @@
     {
         "name": "Repugnans Fabula",
         "color": "#808080",
-        "description": "Stand Summon: Paradox. When I am played, choose an enemy card on the field to paradoxify. If it is already paradoxified, afflict it with a random paradox. All paradoxes last 1 additional turn.",
+        "description": "Stand Summon: **Paradox**. When I am played, choose an enemy card on the field to paradoxify. If it is already paradoxified, afflict it with a random paradox. All paradoxes last 1 additional turn.",
         "image": "https://cdn.discordapp.com/attachments/988186263825829898/1010988500448972841/glowycandlesandacreepything.jpg",
         "attack": 2,
         "health": 3,
@@ -54,7 +54,7 @@
     {
         "name": "Rook",
         "color": "#FFA500",
-        "description": "Stand Summon: Merrie Melodies. When I am hit or attack an enemy for the first time, transform me into 'Ricky Rat'.",
+        "description": "Stand Summon: **Merrie Melodies**. When I am hit or attack an enemy for the first time, transform me into 'Ricky Rat'.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/308180610/g72IoykKWQS58EcDBrV3tA/med.jpg?1665182209",
         "attack": 2,
         "health": 2,
@@ -64,7 +64,7 @@
         "faction": "5 Horsemen",
         "stand": {
             "name": "Merrie Melodies",
-            "description": "Whenever I am summoned, equip me with a random weapon and get a random card from either the enemy's or your deck. All cards that you generate cost 1 less gold.",
+            "description": "Whenever I am summoned, equip me with a random weapon and add a random card from the enemy's deck to your hand. All cards that you generate cost 1 less gold.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/286566318/WqFEd608YRsB3TovEa5HBw/med.png?1653358824",
             "attack": 1,
             "health": 2,
@@ -74,7 +74,7 @@
             {
                 "name": "Ricky Rat",
                 "color": "#FFA500",
-                "description": "Stand Summon: Merrie Melodies. When I am defeated, create a 'Rook' in your hand.",
+                "description": "Stand Summon: **Merrie Melodies**. When I am defeated, create a 'Rook' in your hand.",
                 "image": "https://s3.amazonaws.com/files.d20.io/images/308183654/UYWA8A3BdJzRcSkMrFoc3Q/med.png?1665183174",
                 "attack": 4,
                 "health": 4,
@@ -96,7 +96,7 @@
     {
         "name": "Tyler Wolfe",
         "color": "",
-        "description": "Stand: See You Again. When I am played, choose an enemy with equal or less attack than me to store inside a card. When I am defeated, release the stored enemy.",
+        "description": "Stand: **See You Again**. When I am played, choose an enemy with equal or less attack than me to store inside a card. When I am defeated, release the stored enemy.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/293904627/IPQshzOEGqLwmYNMi0ugtQ/med.png?1657485598",
         "attack": 3,
         "health": 2,
@@ -128,7 +128,7 @@
     {
         "name": "Robert E. O. Speedwagon",
         "color": "#DC143C",
-        "description": "Stand Summon: Die Young. When I am played, if your world is below 50% HP, equip me with Wild Child. If I am above 50% give me Kesha.",
+        "description": "Stand Summon: **Die Young**. When I am played, if your world is below 50% HP, equip me with Wild Child. If I am above 50% give me Kesha.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/288737978/Qfwl9Vrm1Lrf4T5_YR0RLw/med.png?1654592161",
         "attack": 5,
         "health": 5,
@@ -178,7 +178,7 @@
     {
         "name": "Nic",
         "color": "#FFC0CB",
-        "description": "Stand Armor: Brittle Bones Nic. When I am summoned, equip me with 'Mop'.",
+        "description": "Stand Suit: **Brittle Bones Nic**. When I am summoned, equip me with 'Mop'.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/300464852/Diobpo6xd6ih3YTAb9ZzuQ/med.png?1660961134",
         "attack": 3,
         "health": 3,
@@ -216,7 +216,7 @@
     {
         "name": "Niko Goluskey",
         "color": "#808080",
-        "description": "Stand Summon: Rasputin. When I am summoned, choose 1 enemy card on the field to silence. If there are no cards to silence on the field, silence a card in the enemy's hand.",
+        "description": "Stand Summon: **Rasputin**. When I am summoned, choose 1 enemy card on the field to silence. If there are no cards to silence on the field, silence a card in the enemy's hand.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/288359576/hQ3I2Od9CLZhbSDlP1AgrA/med.png?1654388397",
         "attack": 2,
         "health": 1,
@@ -258,21 +258,21 @@
     {
         "name": "Ace Nullman",
         "color": "#00008B",
-        "description": "Stand Summon: American Boy. Deal 2 damage to the enemy world for every enemy card which was silenced or revealed this game. If the enemy world has more than 0 hp, equip omnipotence.",
+        "description": "Stand Summon: **American Boy**. Deal 2 damage to the enemy world for every enemy card which was silenced or revealed this game. If the enemy world has more than 0 hp, equip omnipotence.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/289546444/wuA7lDiP_o7rHKrVrkekxg/med.png?1655054872",
         "attack": 5,
         "health": 5,
-        "cost": 9,
+        "cost": 12,
         "type": "Stand User",
         "footer": "'The mission is to kill those guys who went after Xeion and Cometon. If you fail, consider yourself --' Cuts off communication. 'You don't tell me what to do... Pretender'",
         "faction": "Eye of the Peacock",
         "stand": {
             "name": "American Boy",
-            "description": "At the end of your turn, deal 3 damage to all silenced enemies on the field",
+            "description": "At the end of your turn, deal 4 damage to all silenced enemies on the field",
             "image": "https://s3.amazonaws.com/files.d20.io/images/294993700/uvORD-5SmrgKbn5AskUYcg/med.png?1658080200",
             "attack": 5,
             "health": 5,
-            "cost": 9
+            "cost": 12
         },
         "equipment": [
             {
@@ -288,7 +288,7 @@
     {
         "name": "BB",
         "color": "#E6E6FA",
-        "description": "Stand: Fly Me to the Moon. Game Start: Both players can have up to 8 cards on the field. When I am summoned, if have played 7 other cards this turn (making me the 8th!), give me infinite attack and health.",
+        "description": "Stand: **Fly Me to the Moon**. Game Start: Both players can have up to 8 cards on the field. When I am summoned, if have played 7 other cards this turn (making me the 8th!), give me infinite attack and health.",
         "image": "https://external-preview.redd.it/73N3mDKoryWMclDCDFG2uAiBvKniLfJpmaSAutgC83s.jpg?auto=webp&s=ccc3d1ba1979d11cecbb09400e997cb385704051",
         "attack": 8,
         "health": 8,
@@ -304,5 +304,315 @@
             "health": 8,
             "cost": 8
         }
+    },
+    {
+        "name": "Danny",
+        "color": "#C0C0C0",
+        "description": "Stand Summon: **Locked out of Heaven**. **Liberation (5)**. Deal damage equal to my attack to all enemies.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/277992487/v_vN7d30WH4UJHGTq2p2LQ/med.png?1648559377",
+        "attack": 2,
+        "health": 3,
+        "cost": 5,
+        "type": "Stand User",
+        "footer": "'Woof!' - Danny said moments after feasting on a car engine.",
+        "faction": "Speedwagon Foundation",
+        "stand": {
+            "name": "Locked out of Heaven",
+            "description": "Round End: Shuffle a Lock into your opponent's deck. When drawn, it deals 2 damage to all enemies.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/277119938/2FmHHOUPKGGG6aLfJX5Glg/max.png?1648093242",
+            "attack": 2,
+            "health": 3,
+            "cost": 4
+        },
+        "generatedCharacters": [
+            {
+                "name": "Uptown Funk",
+                "description": "Deal damage equal to my attack to all enemies. This repeats for the next 2 rounds.",
+                "image": "https://s3.amazonaws.com/files.d20.io/images/295288353/b6MORp578jWtHx-UX-X56w/med.png?1658243123",
+                "attack": 4,
+                "health": 6,
+                "cost": 4
+            }
+        ],
+        "generatedCards": [
+            {
+                "name": "Lock",
+                "description": "Deal 2 damage to all enemies.",
+                "image": "https://static.wikia.nocookie.net/jjba/images/4/4d/TheLock_KeyArt.png/revision/latest?cb=20160506161202"
+            }
+        ]
+    },
+    {
+        "name": "Jolene Jones",
+        "color": "#32CD32",
+        "description": "Stand Summon: **The Scientist**.",
+        "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22222-nnVrPKNN9PRG.jpg",
+        "attack": 4,
+        "health": 6,
+        "cost": 8,
+        "type": "Stand User",
+        "footer": "I will protect her from you. I will not fail her any more than I already have.",
+        "faction": "None",
+        "stand": {
+            "name": "The Scientist",
+            "description": "When I am summoned, make my user have 1 health for this turn. If they survive until the next turn, let them choose the perfect card to add to their hand.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/288736289/PRYg71rKAu_ruz0w1kQobA/med.png?1654590078",
+            "attack": 0,
+            "health": 1,
+            "cost": 8
+        }
+    },
+    {
+        "name": "Joy Jones",
+        "color": "#32CD32",
+        "description": "Stand Summon: **Eye of the Tiger**. If there is an enemy on the same position as me, grant that enemy -2 attack and -2 health.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/287517556/krRuJBxeppnmzoFmm0Td0Q/med.png?1653891568",
+        "attack": 3,
+        "health": 2,
+        "cost": 4,
+        "type": "Stand User",
+        "footer": "I must train harder. I must show her that I am strong enough to take care of myself!",
+        "faction": "None",
+        "stand": {
+            "name": "Eye of the Tiger",
+            "description": "If there is an enemy on the same position as me, grant me +2 attack and +2 health.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/292617814/d4NU2UqzPfxThiTVvXnAmw/med.png?1656788257",
+            "attack": 5,
+            "health": 2,
+            "cost": 4
+        }
+    },
+    {
+        "name": "Akihito Ki",
+        "color": "#023020",
+        "description": "Stand Summon: **24-Hour Cinderella**. When I am summoned, equip me with the '生命の刃(Seimei no ha)'.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/300444237/77nAXTlvnl4aHRkL_heBfQ/med.png?1660953817",
+        "attack": 3,
+        "health": 3,
+        "cost": 6,
+        "type": "Stand User",
+        "footer": "Akihito! Get off your phone! .... Actually, never mind. I'll let Yui lecture you again :P",
+        "faction": "Verdant Night",
+        "stand": {
+            "name": "24-Hour Cinderella",
+            "description": "Round End: If you have 5 or less gold, generate a low cost spell. If you have 10 or less gold, generate a medium cost spell. If you have more than 10 gold, generate a high cost spell.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/309644221/KWAYhuqxGOjA1jfY3a-BgA/max.jpg?1665945405",
+            "attack": 1,
+            "health": 3,
+            "cost": 6
+        },
+        "equipment": [
+            {
+                "name": "生命の刃(Seimei no ha)",
+                "description": "If my wielder is part of the verdant night give me +2 attack and +2 health.",
+                "image": "https://gbf.wiki/images/thumb/9/92/Eight-Life_Katana_Cobalt.png/462px-Eight-Life_Katana_Cobalt.png",
+                "attack": 2,
+                "health": 2,
+                "cost": 2
+            }
+        ]
+    },
+    {
+        "name": "Enrico Pucci",
+        "color": "#A020F0",
+        "description": "Stand Summon: **Made in Heaven**. When I am summoned, equip me with the 'Insert Arabic Named Weapon'.",
+        "image": "https://cdn.discordapp.com/attachments/954939890745901065/1036459274274086973/unknown.png",
+        "attack": 7,
+        "health": 5,
+        "cost": 12,
+        "type": "Stand User",
+        "footer": "I am but a mere supporter of the spectacle that will be witnessed for the 50th time. Happy 50th anniversary... player.",
+        "faction": "Mouse Halal",
+        "stand": {
+            "name": "Made in Heaven",
+            "description": "Round End: Next turn is skipped.",
+            "image": "https://cdn.discordapp.com/attachments/979498329660616725/1036460402357325974/token_1_-_2022-10-30T220031.598.png",
+            "attack": 10,
+            "health": 5,
+            "cost": 12
+        },
+        "equipment": [
+            {
+                "name": "Insert Arabic Named Weapon",
+                "description": "If it is past turn 10, give me +6 attack and +6 health.",
+                "image": "https://cdn.discordapp.com/attachments/988186263825829898/1036381275545682003/unknown.png",
+                "attack": 1,
+                "health": 1,
+                "cost": 2
+            }
+        ]
+    },
+    {
+        "name": "Mickey Bausse",
+        "color": "#A020F0",
+        "description": "Stand Summon: **Clubhouse**. When I am summoned, summon a 'Mouse Halal Guard' on the next 2 positions.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/291178149/6TTez41lqIDZ0fFNI2Q0GQ/med.png?1655969960",
+        "attack": 1,
+        "health": 10,
+        "cost": 6,
+        "type": "Stand User",
+        "footer": "I won't let your sacrifice go in vain... friend. I will take care of your family and community.",
+        "faction": "Mouse Halal",
+        "stand": {
+            "name": "Clubhouse",
+            "description": "Round End: Add a random Mouse Halal card to your hand.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/290324913/90zoCnAOqLmBK6-FJh3rIw/max.png?1655515719",
+            "attack": 0,
+            "health": 0,
+            "cost": 10
+        },
+        "generatedCharacters": [
+            {
+                "name": "Mouse Halal Guard",
+                "description": "",
+                "image": "https://s3.amazonaws.com/files.d20.io/images/296245475/fU2VOrW2yntQRavNVP7QMg/med.png?1658718653",
+                "attack": 2,
+                "health": 2,
+                "cost": 1
+            }
+        ]
+    },
+    {
+        "name": "Muhammed Hassan",
+        "color": "#808080",
+        "description": "Stand Summon: **Mirrors**.",
+        "image": "https://cdn.discordapp.com/attachments/954939890745901065/1033903413097930813/unknown.png",
+        "attack": 2,
+        "health": 2,
+        "cost": 7,
+        "type": "Stand User",
+        "footer": "Please for the love of god shut up about my dad.",
+        "faction": "None",
+        "stand": {
+            "name": "Mirrors",
+            "description": "When I am summoned, deal damage to all enemies equal to their attack.",
+            "image": "https://cdna.artstation.com/p/assets/images/images/035/886/164/large/julija-gumbryte-d4aa7759-2440-4403-b160-7277b340002f.jpg?1616157629",
+            "attack": 3,
+            "health": 2,
+            "cost": 7
+        }
+    },
+    {
+        "name": "Dr. Wilson",
+        "color": "#FFFF00",
+        "description": "Whenever I am damaged, deal 2 damage to the enemy with the lowest health. If there are no enemies, deal 3 damage to the enemy world",
+        "image": "https://cdn.discordapp.com/attachments/954939890745901065/1029392209377759393/unknown.png",
+        "attack": 1,
+        "health": 6,
+        "cost": 4,
+        "type": "Normal",
+        "footer": "Oh yes, that is the spot. OH YES! OH YES! OH YES! MAKE ME BLEED MORE!",
+        "faction": "Federation of Bizarre Intelligence"
+    },
+    {
+        "name": "Sabrina",
+        "color": "#A020F0",
+        "description": "Stand: **Devil Trigger**. I can attack any enemy on the enemy field. Every time I attack an enemy who is not on my position my attack action will not be used.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/288737893/7iC7htJmiqizumdYxcWC6Q/med.png?1654592023",
+        "attack": 5,
+        "health": 5,
+        "cost": 8,
+        "type": "Stand User",
+        "footer": "PAXTON. YOU WILL PAYYYYYYYYYYYY!!!!!!!!!!!!!!!!",
+        "faction": "Vindicators of Tomorrow",
+        "stand": {
+            "name": "Devil Trigger",
+            "description": "Every time my user attacks and survives, give them +2 attack and +2 health.",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/288738600/S8kbO6fKXen8j4scKjYvVA/med.png?1654593119",
+            "attack": 0,
+            "health": 5,
+            "cost": 5
+        }
+    },
+    {
+        "name": "Karolina Zeitmagier",
+        "color": "#4169e1",
+        "description": "Stand Summon: **Billie Jean**. When I am summoned, heal all allies and the allied World for all damage that was taken within the last 4 rounds. Round End: Heal all allies and the allied World for the damage taken last round.",
+        "image": "https://i.redd.it/wynw1x8z2pu91.jpg",
+        "attack": 2,
+        "health": 11,
+        "cost": 9,
+        "type": "Stand User",
+        "footer": "'Billie Jean is not my lover. She's just a girl who claims that I am the one. But the kid is not my son' - Karolina sings happily while writing down some of her findings.",
+        "faction": "None",
+        "stand": {
+            "name": "Billie Jean",
+            "description": "Round Start and Summon: Summon a 'Zeit-Bombe' location on the enemy field.",
+            "image": "https://i.redd.it/l3jn8jak715z.jpg",
+            "attack": 10,
+            "health": 11,
+            "cost": 9
+        },
+        "generatedCards": [
+            {
+                "name": "Zeit-Bombe",
+                "description": "Any enemy which is adjacent to me cannot attack this turn. Destroy me at the end of your turn.",
+                "image": "https://s3.amazonaws.com/files.d20.io/images/295870234/K1I7UiStgAft4v7U_j0ULQ/med.png?1658558455"
+            }
+        ]
+    },
+    {
+        "name": "Wilford Zeppeli",
+        "color": "#00FF00",
+        "description": "Stand: **Le Freak**. If there is an ally on the position before mine, feed them a random 'Soul Dish'.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/291732425/ExkfDaLWpuLlrxYM6of8iw/med.png?1656267225",
+        "attack": 1,
+        "health": 6,
+        "cost": 4,
+        "type": "Stand User",
+        "footer": "HOW MARVELOUS!!! I hope you enjoy my next dish!!!",
+        "stand": {
+            "name": "Le Freak",
+            "description": "Round End: Add a 'Soul Dish' to your hand.",
+            "image": "",
+            "attack": 0,
+            "health": 0,
+            "cost": 4
+        },
+        "generatedCards": [
+            {
+                "name": "Soul Dish",
+                "description": "Feed me to an ally in hand to give them +2 attack and +2 health.",
+                "image": "https://itadakimasuanime.files.wordpress.com/2015/03/pizza-koufuku-graffiti-10-08.png"
+            }
+        ]
+    },
+    {
+        "name": "Grey Nullifer",
+        "color": "#000000",
+        "description": "Stand Summon: **Gangsta's Paradise**. Equalize my opponent's stats making them equal each other by reducing the higher stat by the difference.",
+        "image": "https://static.zerochan.net/Dazai.Osamu.full.1980325.jpg",
+        "attack": 7,
+        "health": 7,
+        "cost": 10,
+        "type": "Stand User",
+        "footer": "And when there is null, there is me... all alone.",
+        "faction": "Eye of the Peacock",
+        "stand": {
+            "name": "Gangsta's Paradise",
+            "description": "Summon and Round End: Nullify **ALL STANDS** on both fields",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/290477018/50CpKCynaXDisr5GK3k9dA/med.png?1655592244",
+            "attack": 1,
+            "health": 7,
+            "cost": 10
+        }
+    },
+    {
+        "name": "Essence of Delusion",
+        "color": "#A020F0",
+        "description": "Spend all of your gold to play me. When I am summoned, I gain attack and health for each gold spent.",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/309697584/oxEP5PLF6r2pU0NPUiTAvA/med.png?1665960809",
+        "attack": 1,
+        "health": 1,
+        "cost": 0,
+        "type": "Normal",
+        "footer": "WE'VE DONE IT! WE HAVE SUCCESSFULLY MADE A VIAL OF D10! Wait... why is it moving...",
+        "faction": "Federation of Bizarre Intelligence"
+    },
+    {
+        "name": "Jameson J. Jonah",
+        "color": "#00FF00",
+        "description": "Stand: **Paparazzi**. If I am the only stand user in the deck, **Liberate Me**.",
+        "image": ""
     }
 ]

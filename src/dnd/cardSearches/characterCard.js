@@ -59,6 +59,16 @@ exports.run = async(message, args) => {
                     message.channel.send(generatedString);
                 }
             }
+            if(card.generatedCards !== undefined){
+                for(let i = 0; i < card.generatedCards.length; i++){
+                    const generatedString = new Discord.MessageEmbed().
+                        setTitle(card.generatedCards[i].name).
+                        setImage(card.generatedCards[i].image).
+                        setDescription('*' + card.generatedCards[i].description + '*').
+                        setColor(card.generatedCards[i].color);
+                    message.channel.send(generatedString);
+                }
+            }
 
             return;
         }
