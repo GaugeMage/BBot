@@ -95,14 +95,14 @@
     },
     {
         "name": "Tyler Wolfe",
-        "color": "",
+        "color": "#5A0034",
         "description": "Stand: **See You Again**. When I am played, choose an enemy with equal or less attack than me to store inside a card. When I am defeated, release the stored enemy.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/293904627/IPQshzOEGqLwmYNMi0ugtQ/med.png?1657485598",
         "attack": 3,
         "health": 2,
         "cost": 4,
         "type": "Stand User",
-        "footer": "",
+        "footer": "I'm not gonna let my friends die, not anymore.",
         "faction": "5 Horsemen",
         "stand": {
             "name": "See You Again",
@@ -666,7 +666,7 @@
     {
         "name": "Essence of Delusion",
         "color": "#A020F0",
-        "description": "Spend all of your gold to play me. When I am summoned, I gain attack and health for each gold spent.",
+        "description": "Spend all of your gold to play me. When I am summoned, I gain 1 attack and 1 health for each gold spent. Shuffle a copy of me into your deck.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/309697584/oxEP5PLF6r2pU0NPUiTAvA/med.png?1665960809",
         "attack": 1,
         "health": 1,
@@ -1088,5 +1088,53 @@
         "type": "Normal",
         "footer": "Do you have a second? Fashion isn't just about clothing, you know. You also have to know how to accessorize. I've been putting together a nice collection of accessories myself... but now I've run out of room to store them all. My place is positively full to bursting! Even the nicest home can be ruined by too much clutter--no matter how fashionable. If only I had a nifty shelf to hold my accessories...",
         "faction": "Mouse Halal"
+    },
+    {
+        "name": "Paradoxed Survivor",
+        "color": "#FFFFFF",
+        "description": "When I am summoned, paradoxify an enemy character. If it is already paradoxified, afflict it with a random paradox. Whenever an enemy gets afflicted with a random paradox, give me +1 attack and +1 health.",
+        "image": "",
+        "attack": 2,
+        "health": 1,
+        "cost": 3,
+        "type": "Normal",
+        "footer": "I'm not sure what's going on, but I'm pretty sure I'm not supposed to be here.",
+        "faction": "None"
+    },
+    {
+        "name": "FBI Pediatrician (Children's Doctor)",
+        "color": "#FFFFFF",
+        "description": "When I am summoned, heal an ally character and the allied world for 2 health",
+        "image": "",
+        "attack": 2,
+        "health": 2,
+        "cost": 2,
+        "type": "Normal",
+        "footer": "'It is okay X137. I promise I will not hurt you. I am here to help you.' *scoffs* (unlike those monsters)",
+        "faction": "Federation of Bizarre Intelligence"
+    },
+    {
+        "name": "Doctor Rose",
+        "color": "#FFFFFF",
+        "description": "Heal the allied world by 2 for every ally character you have on the field.",
+        "image": "",
+        "attack": 2,
+        "health": 2,
+        "cost": 3,
+        "type": "Normal",
+        "footer": "I have to get out of here...",
+        "faction": "None"
+    },
+    {
+        "name": "Child of Liberty",
+        "color": "#FFFFFF",
+        "description": "When I am summoned, draw a card",
+        "image": "",
+        "attack": 2,
+        "health": 1,
+        "cost": 2,
+        "type": "Normal",
+        "footer": "On it Olympic Torch! Operation B.R.E.A.K.E.R Underway!",
+        "faction": "Children of Liberty"
     }
 ]

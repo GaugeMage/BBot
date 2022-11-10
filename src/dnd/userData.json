@@ -55,7 +55,8 @@
 			"Rook",
 			"Speedwagon Foundation HQ"
 		],
-		"destinyFragments": 0
+		"destinyFragments": 0,
+		"delusionPacks": 0
 	},
 	{
 		"id": "88",
@@ -67,16 +68,38 @@
 		"cards": [
 			"BB"
 		],
-		"destinyFragments": 0
+		"destinyFragments": 0,
+		"delusionPacks": 0
 	},
 	{
 		"id": "291016452884922368",
 		"name": "Spade",
-		"decks": [],
+		"decks": [
+			{
+				"name": "tempo",
+				"cards": [
+					"Buddy McLean",
+					"Darnell Webber",
+					"Niko Goluskey",
+					"Volume Mourning",
+					"Stand Strike",
+					"Stand Rush"
+				],
+				"isValid": true
+			}
+		],
 		"wins": 0,
 		"losses": 0,
 		"draws": 0,
-		"cards": [],
-		"destinyFragments": 0
+		"cards": [
+			"Buddy McLean",
+			"Darnell Webber",
+			"Niko Goluskey",
+			"Volume Mourning",
+			"Stand Strike",
+			"Stand Rush"
+		],
+		"destinyFragments": 0,
+		"delusionPacks": 0
 	}
 ]

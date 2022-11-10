@@ -417,16 +417,52 @@ client.on('message', async (message) => {
                     player1 = userData[i];
                 }
             }
-            require('./dnd/gameCommands/showField.js').run(message,
-                25,
-                player1,
-                ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"],
-                ["Ultor", null, null, null, null, "Chronohacker"],
-                8,
-                userData[1],
-                ["BB", "Tommy", "Nic", "Robert E. O. Speedwagon", "Garnet Speedwagon", "Brooklyn Art Museum"],
-                [null, "Chronohacker", null, "Kesha", null, null]
-                );
+
+            player1 = {
+                name: player1.name,
+                id: player1.id,
+                deck: {
+                    name: "Temp",
+                    cards: [
+                        "Buddy McLean",
+                        "Catastrophe",
+                        "Repugnans Fabula",
+                        "Ace Nullman",
+                        "Niko Goluskey",
+                        "Tyler Wolfe",
+                        "Tommy",
+                        "Robert E. O. Speedwagon",
+                        "Ultor",
+                        "Brooklyn Art Museum",
+                        "Darnell Webber",
+                        "Nic",
+                        "Garnet Speedwagon",
+                        "Rook",
+                        "Speedwagon Foundation HQ"
+                    ],
+                    isValid: true
+                },
+                field: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"],
+                subField: ["Ultor", null, null, null, null, "Chronohacker"],
+                worldHP: 25,
+                gold: 0,
+                hand: [],
+                deckSize: 10,
+                handSize: 6,
+            }
+            player2 ={
+                name: "BB",
+                id: 1,
+                deck: ["Enrico Pucci", "BB", "Karolina Zeitmagier", "Ultor", "Essence of Delusion"],
+                field: ["BB", "Tommy", "Nic", "Robert E. O. Speedwagon", "Garnet Speedwagon", "Brooklyn Art Museum"],
+                subField: [null, "Chronohacker", null, "Kesha", null, null],
+                worldHP: 8,
+                gold: 0,
+                hand: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"],
+                deckSize: 10,
+                handSize: 6,
+            }
+            require('./dnd/gameCommands/openingHand.js').run(client, message, player1);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){
@@ -437,19 +473,5 @@ client.on('message', async (message) => {
         }
     }
 });
-
-
-//Destiny & Delusion Cards:
-const BuddyMcLeanCard = new Discord.MessageEmbed()
-    .setColor('#0099ff')
-    .setDescription('When I am played, choose 2 cards to silence. If there are less than 2 cards to silence, instead deal 5 damage to the enemy')
-    .setThumbnail('https://i.imgur.com/6Kv7i8w.png')
-    .addFields(
-        // {name: 'Buddy McLean', value: 'Power: ' + dealerHand + '\nSum: ' + dealerSum + '\nAces: ' + dealerAces + '\nBust: ' + dealerBust + '\nBlackjack: ' + dealerBlackjack + '\nDone: ' + dealerDone, inline: true},
-        // {name: 'Player', value: '\nCards: ' + playerHand + '\nSum: ' + playerSum + '\nAces: ' + playerAces + '\nBust: ' + playerBust + '\nBlackjack: ' + playerBlackjack + '\nDone: ' + playerDone, inline: true},
-    )
-    .setTimestamp()
-    .setFooter('Blackjack', 'https://i.imgur.com/6Kv7i8w.png');
-
 
 client.login(process.env.DISCORDJS_BOT_TOKEN);

@@ -1,3 +1,5 @@
+const { SystemChannelFlags } = require('discord.js');
+
 exports.run = async(client, message, args, dndGameStarted) => {
     if(dndGameStarted){
         message.channel.send("A game is already in progress!");
@@ -5,7 +7,6 @@ exports.run = async(client, message, args, dndGameStarted) => {
     }
     require('../helpers/checkArgs.js').run(args, message);
     const userData = require('./userData.json');
-    const showField = require('./gameCommands/showField.js');
     
     let player1 = message.author.id;
     let player2 = args[0];
@@ -54,11 +55,15 @@ exports.run = async(client, message, args, dndGameStarted) => {
     //Check if player 1 picked a deck that exists
     for(let i = 0; i < player1.decks.length; i++){
         if(player1.decks[i].name === player1Deck){
+            if(player1.decks[i].isValid === false){
+                client.users.cache.get(player1.id).send("That deck is not valid!  Please fill this deck with the appropriate amount of cards");
+                return [dndGameStarted, null, null, null, null];
+            }
             player1Deck = player1.decks[i];
             break;
         }
         if(i === player1.decks.length - 1){
-            message.channel.send("You do not have a deck with that name!");
+            client.users.cache.get(player1.id).send("You do not have a deck with that name!");
             return [dndGameStarted, null, null, null, null];
         }
     }
@@ -68,7 +73,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
     await client.users.cache.get(player2.id).send("Pick what deck you would like to use: (If you don't know what decks you have, use the bb!decks command)");
 
     //Wait for player 2 to pick a deck
-    let player2Deck = await message.channel.awaitMessages(m => m.author.id === player2.id, {max: 1, time: 30000, errors: ['time']})
+    let player2Deck = await client.users.cache.get(player2.id).dmChannel.awaitMessages(m => m.author.id === player2.id, {max: 1, time: 30000, errors: ['time']})
         .then(collected => {
             return collected.first().content;
         })
@@ -84,14 +89,20 @@ exports.run = async(client, message, args, dndGameStarted) => {
     //Check if player 2 picked a deck that exists
     for(let i = 0; i < player2.decks.length; i++){
         if(player2.decks[i].name === player2Deck){
+            if(player2.decks[i].isValid == false){
+                client.users.cache.get(player2.id).send("That deck is not valid! Please fill this deck with the appropriate amount of cards");
+                return [dndGameStarted, null, null, null, null];
+            }
             player2Deck = player2.decks[i];
             break;
         }
         if(i === player2.decks.length - 1){
-            message.channel.send("You do not have a deck with that name!");
+            client.users.cache.get(player2.id).send("You do not have a deck with that name!");
             return [dndGameStarted, null, null, null, null];
         }
     }
+
+    await client.users.cache.get(player1.id).send("Deck successfully chosen!");
 
     message.channel.send("Game started! " + player1.name + " vs " + player2.name);
     dndGameStarted = true;
@@ -115,5 +126,74 @@ exports.run = async(client, message, args, dndGameStarted) => {
         player2SubField.push(null);
     }
 
-    return [dndGameStarted, player1, player2, player1Deck, player2Deck]
+    let player1WorldHP = 25;
+    let player2WorldHP = 25;
+    let player1Gold = 0;
+    let player2Gold = 0;
+    let player1Hand = [];
+    let player2Hand = [];
+    let player1HandSize = player1Hand.length;
+    let player2HandSize = player1Hand.length;
+    let player1DeckSize = player1Deck.cards.length;
+    let player2DeckSize = player2Deck.cards.length;
+
+    player1 = {
+        name: player1.name,
+        id: player1.id,
+        deck: player1Deck,
+        field: player1Field,
+        subField: player1SubField,
+        worldHP: player1WorldHP,
+        gold: player1Gold,
+        hand: player1Hand,
+        deckSize: player1DeckSize,
+        handSize: player1HandSize,
+    }
+
+    player2 = {
+        name: player2.name,
+        id: player2.id,
+        deck: player2Deck,
+        field: player2Field,
+        subField: player2SubField,
+        worldHP: player2WorldHP,
+        gold: player2Gold,
+        hand: player2Hand,
+        deckSize: player2DeckSize,
+        handSize: player2HandSize,
+    }
+
+    let isPlayer1Turn = true;
+
+    const showField = require('./gameCommands/showField.js');
+    const drawCard = require('./gameCommands/drawCard.js');
+    const shuffleDeck = require('./gameCommands/shuffleDeck.js');
+    const openingHand = require('./gameCommands/openingHand.js');
+
+    //Opening hand
+    shuffleDeck.run(player1);
+    shuffleDeck.run(player2);
+
+    player1 = openingHand.run(client, message, player1);
+    player2 = openingHand.run(client, message, player2);
+
+    //Gameplay loop
+    while(player1WorldHP > 0 && player2WorldHP > 0){
+        player1.gold += player1.gold + 1;
+        player2.gold += player2.gold + 1;
+        showField.run(message, player1, player2);
+        let playerChosen = player1;
+        if(!isPlayer1Turn){
+            playerChosen = player2;
+        }
+
+        //The player chosen draws a card
+        playerChosen = drawCard.run(message, playerChosen);
+
+        message.channel.send("It is " + playerChosen.name + "'s turn! What would you like to do?");
+    }
+
+
+
+    // return [dndGameStarted, player1, player2, player1Deck, player2Deck]
 };

@@ -18,6 +18,7 @@ exports.run = async(message) => {
         draws: 0,
         cards: [],
         destinyFragments: 0,
+        delusionPacks: 0,
     }
 
     userData.push(newUser);

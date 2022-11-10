@@ -1,4 +1,4 @@
-exports.run = async(message, player1WorldHP, player1, player1Field, player1SubField, player2WorldHP, player2, player2Field, player2SubField) => {
+exports.run = async(message, player1, player2) => {
 
     let divider = "\n+--------------------------------------------------------------------------------------------------------------------------------------------------------+\n";
     let fieldString = divider;
@@ -9,58 +9,58 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     fieldString += "| **" + player1.name + "** |";
 
     //Show player 1's world hp and center it on the line
-    fieldString += "\n| World HP: **" + player1WorldHP + "** |";
+    fieldString += "\n| World HP: **" + player1.worldHP + "** |" + " Gold: **" + player1.gold + "** |" + " Hand Size: **" + player1.handSize + "** |" + " Deck Size: **" + player1.deckSize + "** |";
 
     fieldString += divider;
 
     let tempStrings = [];
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line
-    for(let i = 0; i < player1SubField.length; i++){
+    for(let i = 0; i < player1.subField.length; i++){
         let tempString = "";
         let isEmpty = false;
-        if(player1SubField[i] === null){
+        if(player1.subField[i] === null){
             isEmpty = true;
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player1SubField[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player1.subField[i] + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
-        while(tempString.length < lineLength / player1SubField.length){
+        while(tempString.length < lineLength / player1.subField.length){
             tempString += " ";
         }
         tempStrings.push(tempString);
     }
 
     //Add the subfield elements to the string
-    for(let i = 0; i < player1SubField.length; i++){
+    for(let i = 0; i < player1.subField.length; i++){
         fieldString += tempStrings[i];
     }
     fieldString += divider;
 
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line
     tempStrings = [];
-    for(let i = 0; i < player1Field.length; i++){
+    for(let i = 0; i < player1.field.length; i++){
         let tempString = "";
         let isEmpty = false;
-        if(player1Field[i] === null){
+        if(player1.field[i] === null){
             isEmpty = true;
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player1Field[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player1.field[i] + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
-        while(tempString.length < lineLength / player1Field.length){
+        while(tempString.length < lineLength / player1.field.length){
             tempString += " ";
         }
         tempStrings.push(tempString);
     }
 
     //Add the field elements to the string
-    for(let i = 0; i < player1Field.length; i++){
+    for(let i = 0; i < player1.field.length; i++){
         fieldString += tempStrings[i];
     }
 
@@ -81,27 +81,27 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     //Checks player 1 field
     let field1Attack = [];
     let field1Health = [];
-    for(let i = 0; i < player1Field.length; i++){
+    for(let i = 0; i < player1.field.length; i++){
         let isEmpty = false;
         let isLocation = false;
         //Check if the space is empty
-        if(player1Field[i] === null){
+        if(player1.field[i] === null){
             isEmpty = true;
             field1Attack.push(0);
             field1Health.push(0);
         }
         //Look for the card in the character cards
-        let card = cCardData.find(card => card.name === player1Field[i]);
+        let card = cCardData.find(card => card.name === player1.field[i]);
         if(card === undefined && !isEmpty){
             //Look for the card in the location cards
-            card = lCardData.find(card => card.name === player1Field[i]);
+            card = lCardData.find(card => card.name === player1.field[i]);
             if(card === undefined){
                 //Look for the card if it is a stand
-                card = cCardData.find(card => card.stand?.name === player1Field[i]);
+                card = cCardData.find(card => card.stand?.name === player1.field[i]);
                 //Look for the card if it is a generated character
                 if(card === undefined){
-                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player1Field[i]));
-                    card = card.generatedCharacters.find(card => card.name === player1Field[i]);
+                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player1.field[i]));
+                    card = card.generatedCharacters.find(card => card.name === player1.field[i]);
                 } else {
                     card = card.stand;
                 }
@@ -119,14 +119,14 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     }
 
     //Checks player 1 subfield
-    for(let i = 0; i < player1SubField.length; i++){
+    for(let i = 0; i < player1.subField.length; i++){
         let isEmpty = false;
         //Check if it is empty
-        if(player1SubField[i] === null){
+        if(player1.subField[i] === null){
             isEmpty = true;
         }
         //Look for the card in the equipment cards
-        let card = eCardData.find(card => card.name === player1SubField[i]);
+        let card = eCardData.find(card => card.name === player1.subField[i]);
         if(card === undefined && !isEmpty){
             //Look for the card in the equipment of the character cards
             //First checks if it has equipment
@@ -134,7 +134,7 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
                 //Then it iterates through the equipment
                 for(let j = 0; j < cCardData.find(card => card.equipment !== undefined).equipment.length; j++){
                     //Checks if the equipment matches the card
-                    if(cCardData.find(card => card.equipment !== undefined).equipment[j].name === player1SubField[i]){
+                    if(cCardData.find(card => card.equipment !== undefined).equipment[j].name === player1.subField[i]){
                         card = cCardData.find(card => card.equipment !== undefined).equipment[j];
                     }
                 }
@@ -149,27 +149,27 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     //Checks player 2 field
     let field2Attack = [];
     let field2Health = [];
-    for(let i = 0; i < player2Field.length; i++){
+    for(let i = 0; i < player2.field.length; i++){
         let isEmpty = false;
         let isLocation = false;
         //Check if the space is empty
-        if(player2Field[i] === null){
+        if(player2.field[i] === null){
             isEmpty = true;
             field2Attack.push(0);
             field2Health.push(0);
         }
         //Look for the card in the character cards
-        let card = cCardData.find(card => card.name === player2Field[i]);
+        let card = cCardData.find(card => card.name === player2.field[i]);
         if(card === undefined && !isEmpty){
             //Look for the card in the location cards
-            card = lCardData.find(card => card.name === player2Field[i]);
+            card = lCardData.find(card => card.name === player2.field[i]);
             if(card === undefined){
                 //Look for the card if it is a stand
-                card = cCardData.find(card => card.stand?.name === player2Field[i]);
+                card = cCardData.find(card => card.stand?.name === player2.field[i]);
                 //Look for the card if it is a generated character
                 if(card === undefined){
-                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player2Field[i]));
-                    card = card.generatedCharacters.find(card => card.name === player2Field[i]);
+                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player2.field[i]));
+                    card = card.generatedCharacters.find(card => card.name === player2.field[i]);
                 } else {
                     card = card.stand;
                 }
@@ -186,14 +186,14 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     }
 
     //Checks player 2 subfield
-    for(let i = 0; i < player2SubField.length; i++){
+    for(let i = 0; i < player2.subField.length; i++){
         let isEmpty = false;
         //Check if it is empty
-        if(player2SubField[i] === null){
+        if(player2.subField[i] === null){
             isEmpty = true;
         }
         //Look for the card in the equipment cards
-        let card = eCardData.find(card => card.name === player2SubField[i]);
+        let card = eCardData.find(card => card.name === player2.subField[i]);
         if(card === undefined && !isEmpty){
             //Look for the card in the equipment of the character cards
             //First checks if it has equipment
@@ -201,7 +201,7 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
                 //Then it iterates through the equipment
                 for(let j = 0; j < cCardData.find(card => card.equipment !== undefined).equipment.length; j++){
                     //Checks if the equipment matches the card
-                    if(cCardData.find(card => card.equipment !== undefined).equipment[j].name === player2SubField[i]){
+                    if(cCardData.find(card => card.equipment !== undefined).equipment[j].name === player2.subField[i]){
                         card = cCardData.find(card => card.equipment !== undefined).equipment[j];
                     }
                 }
@@ -215,9 +215,9 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
 
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line
     tempStrings = [];
-    for(let i = 0; i < player1Field.length; i++){
+    for(let i = 0; i < player1.field.length; i++){
         let tempString = "| " + (i + 1) + ". **" + field1Attack[i] + "** / **" + field1Health[i] + "**";
-        while(tempString.length < lineLength / player1Field.length){
+        while(tempString.length < lineLength / player1.field.length){
             tempString += " ";
         }
         tempStrings.push(tempString);
@@ -232,9 +232,9 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
 
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line
     tempStrings = [];
-    for(let i = 0; i < player2Field.length; i++){
+    for(let i = 0; i < player2.field.length; i++){
         let tempString = "| " + (i + 1) + ". **" + field2Attack[i] + "** / **" + field2Health[i] + "**";
-        while(tempString.length < lineLength / player2Field.length){
+        while(tempString.length < lineLength / player2.field.length){
             tempString += " ";
         }
         tempStrings.push(tempString);
@@ -251,26 +251,26 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
     //Player 2's field
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line
     tempStrings = [];
-    for(let i = 0; i < player2Field.length; i++){
+    for(let i = 0; i < player2.field.length; i++){
         let tempString = "";
         let isEmpty = false;
-        if(player2Field[i] === null){
+        if(player2.field[i] === null){
             isEmpty = true;
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player2Field[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player2.field[i] + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
-        while(tempString.length < lineLength / player2Field.length){
+        while(tempString.length < lineLength / player2.field.length){
             tempString += " ";
         }
         tempStrings.push(tempString);
     }
 
     //Add the field elements to the string
-    for(let i = 0; i < player2Field.length; i++){
+    for(let i = 0; i < player2.field.length; i++){
         fieldString += tempStrings[i];
     }
     
@@ -278,32 +278,32 @@ exports.run = async(message, player1WorldHP, player1, player1Field, player1SubFi
 
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line
     tempStrings = [];
-    for(let i = 0; i < player2SubField.length; i++){
+    for(let i = 0; i < player2.subField.length; i++){
         let tempString = "";
         let isEmpty = false;
-        if(player2SubField[i] === null){
+        if(player2.subField[i] === null){
             isEmpty = true;
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player2SubField[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player2.subField[i] + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
-        while(tempString.length < lineLength / player2SubField.length){
+        while(tempString.length < lineLength / player2.subField.length){
             tempString += " ";
         }
         tempStrings.push(tempString);
     }
 
     //Add the subfield elements to the string
-    for(let i = 0; i < player2SubField.length; i++){
+    for(let i = 0; i < player2.subField.length; i++){
         fieldString += tempStrings[i];
     }
     fieldString += divider;
 
     //Show player 1's world hp and center it on the line
-    fieldString += "| World HP: **" + player2WorldHP + "** |";
+    fieldString += "| World HP: **" + player2.worldHP + "** |" + " Gold: **" + player1.gold + "** |" + " Hand Size: **" + player1.handSize + "** |" + " Deck Size: **" + player1.deckSize + "** |";;
 
     //Show player 2's name and center it on the line
     fieldString += "\n| **" + player2.name + "** |";

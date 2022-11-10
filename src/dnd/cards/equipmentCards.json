@@ -48,5 +48,8 @@
         "health": 1,
         "cost": 4,
         "footer": "I wonder why that cat wheres that black top hat..."
+    },
+    {
+        "name": "GPU"
     }
 ]
