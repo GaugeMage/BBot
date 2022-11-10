@@ -9,10 +9,6 @@ exports.run = async(client, message, player) => {
         tempPlayer = await drawCard.run(client, message, player);
     }
 
-    //Show the player's hand
-    client.users.cache.get(player.id).send("Your hand:");
-    showHand.run(client, player);
-
-    console.log(tempPlayer);
+    // console.log(tempPlayer);
     return tempPlayer;
 }

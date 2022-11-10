@@ -102,7 +102,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
         }
     }
 
-    await client.users.cache.get(player1.id).send("Deck successfully chosen!");
+    await client.users.cache.get(player2.id).send("Deck successfully chosen!");
 
     message.channel.send("Game started! " + player1.name + " vs " + player2.name);
     dndGameStarted = true;
@@ -132,10 +132,6 @@ exports.run = async(client, message, args, dndGameStarted) => {
     let player2Gold = 0;
     let player1Hand = [];
     let player2Hand = [];
-    let player1HandSize = player1Hand.length;
-    let player2HandSize = player1Hand.length;
-    let player1DeckSize = player1Deck.cards.length;
-    let player2DeckSize = player2Deck.cards.length;
 
     player1 = {
         name: player1.name,
@@ -146,8 +142,6 @@ exports.run = async(client, message, args, dndGameStarted) => {
         worldHP: player1WorldHP,
         gold: player1Gold,
         hand: player1Hand,
-        deckSize: player1DeckSize,
-        handSize: player1HandSize,
     }
 
     player2 = {
@@ -159,8 +153,6 @@ exports.run = async(client, message, args, dndGameStarted) => {
         worldHP: player2WorldHP,
         gold: player2Gold,
         hand: player2Hand,
-        deckSize: player2DeckSize,
-        handSize: player2HandSize,
     }
 
     let isPlayer1Turn = true;
@@ -169,31 +161,34 @@ exports.run = async(client, message, args, dndGameStarted) => {
     const drawCard = require('./gameCommands/drawCard.js');
     const shuffleDeck = require('./gameCommands/shuffleDeck.js');
     const openingHand = require('./gameCommands/openingHand.js');
+    const showHand = require('./gameCommands/showHand.js');
 
     //Opening hand
-    shuffleDeck.run(player1);
-    shuffleDeck.run(player2);
+    await shuffleDeck.run(player1);
+    await shuffleDeck.run(player2);
 
-    player1 = openingHand.run(client, message, player1);
-    player2 = openingHand.run(client, message, player2);
+    player1 = await openingHand.run(client, message, player1);
+    player2 = await openingHand.run(client, message, player2);
+    await showHand.run(client, player2);
 
     //Gameplay loop
-    while(player1WorldHP > 0 && player2WorldHP > 0){
-        player1.gold += player1.gold + 1;
-        player2.gold += player2.gold + 1;
-        showField.run(message, player1, player2);
+    // while(player1WorldHP > 0 && player2WorldHP > 0){
         let playerChosen = player1;
         if(!isPlayer1Turn){
             playerChosen = player2;
         }
 
-        //The player chosen draws a card
-        playerChosen = drawCard.run(message, playerChosen);
 
-        message.channel.send("It is " + playerChosen.name + "'s turn! What would you like to do?");
-    }
+        playerChosen = await drawCard.run(client, message, playerChosen);
+        await showHand.run(client, playerChosen);
+        playerChosen.gold += playerChosen.gold + 1;
+
+        await showField.run(message, player1, player2);
+
+        await message.channel.send("It is " + playerChosen.name + "'s turn! What would you like to do?");
+    // }
 
 
 
-    // return [dndGameStarted, player1, player2, player1Deck, player2Deck]
+    return [dndGameStarted, player1, player2, player1Deck, player2Deck]
 };

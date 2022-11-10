@@ -1,6 +1,6 @@
 exports.run = async(message, player1, player2) => {
 
-    let divider = "\n+--------------------------------------------------------------------------------------------------------------------------------------------------------+\n";
+    let divider = "\n+--------------------------------------------------------------------------------------------------------------------------+\n";
     let fieldString = divider;
     const lineLength = fieldString.length;
 
@@ -9,7 +9,7 @@ exports.run = async(message, player1, player2) => {
     fieldString += "| **" + player1.name + "** |";
 
     //Show player 1's world hp and center it on the line
-    fieldString += "\n| World HP: **" + player1.worldHP + "** |" + " Gold: **" + player1.gold + "** |" + " Hand Size: **" + player1.handSize + "** |" + " Deck Size: **" + player1.deckSize + "** |";
+    fieldString += "\n| World HP: **" + player1.worldHP + "** |" + " Gold: **" + player1.gold + "** |" + " Hand Size: **" + player1.hand.length + "** |" + " Deck Size: **" + player1.deck.cards.length + "** |";
 
     fieldString += divider;
 
@@ -303,7 +303,8 @@ exports.run = async(message, player1, player2) => {
     fieldString += divider;
 
     //Show player 1's world hp and center it on the line
-    fieldString += "| World HP: **" + player2.worldHP + "** |" + " Gold: **" + player1.gold + "** |" + " Hand Size: **" + player1.handSize + "** |" + " Deck Size: **" + player1.deckSize + "** |";;
+    console.log(player1.hand);
+    fieldString += "| World HP: **" + player2.worldHP + "** |" + " Gold: **" + player2.gold + "** |" + " Hand Size: **" + player2.hand.length + "** |" + " Deck Size: **" + player2.deck.cards.length + "** |";;
 
     //Show player 2's name and center it on the line
     fieldString += "\n| **" + player2.name + "** |";

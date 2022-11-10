@@ -446,9 +446,7 @@ client.on('message', async (message) => {
                 subField: ["Ultor", null, null, null, null, "Chronohacker"],
                 worldHP: 25,
                 gold: 0,
-                hand: [],
-                deckSize: 10,
-                handSize: 6,
+                hand: []
             }
             player2 ={
                 name: "BB",
@@ -458,9 +456,7 @@ client.on('message', async (message) => {
                 subField: [null, "Chronohacker", null, "Kesha", null, null],
                 worldHP: 8,
                 gold: 0,
-                hand: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"],
-                deckSize: 10,
-                handSize: 6,
+                hand: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"]
             }
             require('./dnd/gameCommands/openingHand.js').run(client, message, player1);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){

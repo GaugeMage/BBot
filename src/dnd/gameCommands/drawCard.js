@@ -9,6 +9,8 @@ exports.run = async(client, message, player) => {
     cards.splice(0, 1);
     deck.cards = cards;
     player.deck = deck;
+    console.log(hand);
+    console.log(player.hand);
     player.hand = hand;
     return player;
 }
