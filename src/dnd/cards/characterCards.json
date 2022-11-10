@@ -1114,10 +1114,10 @@
         "faction": "Federation of Bizarre Intelligence"
     },
     {
-        "name": "Doctor Rose",
+        "name": "Dr. Rose",
         "color": "#FFFFFF",
         "description": "Heal the allied world by 2 for every ally character you have on the field.",
-        "image": "",
+        "image": "https://cdn.discordapp.com/attachments/1036438669680197632/1036445061346512916/token_1_-_2022-10-30T210202.407.png",
         "attack": 2,
         "health": 2,
         "cost": 3,

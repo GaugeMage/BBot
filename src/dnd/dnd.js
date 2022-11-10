@@ -162,6 +162,13 @@ exports.run = async(client, message, args, dndGameStarted) => {
     const shuffleDeck = require('./gameCommands/shuffleDeck.js');
     const openingHand = require('./gameCommands/openingHand.js');
     const showHand = require('./gameCommands/showHand.js');
+    const roundStart = require('./gameCommands/roundStart.js');
+    const roundEnd = require('./gameCommands/roundEnd.js');
+    const summon = require('./playerCommands/summon.js');
+    const attack = require('./playerCommands/attack.js');
+    const cast = require('./playerCommands/cast.js');
+    const location = require('./playerCommands/location.js');
+    const equip = require('./playerCommands/equip.js');
 
     //Opening hand
     await shuffleDeck.run(player1);
@@ -171,24 +178,81 @@ exports.run = async(client, message, args, dndGameStarted) => {
     player2 = await openingHand.run(client, message, player2);
     await showHand.run(client, player2);
 
+    let turn = 1;
+
     //Gameplay loop
-    // while(player1WorldHP > 0 && player2WorldHP > 0){
+    while(player1WorldHP > 0 && player2WorldHP > 0){
+        let turnEnd = false;
         let playerChosen = player1;
+        let playerUnchosen = player2;
         if(!isPlayer1Turn){
             playerChosen = player2;
+            playerUnchosen = player1;
         }
 
+        await message.channel.send("Turn " + turn + " has started! " + playerChosen.name + "'s turn!");
 
         playerChosen = await drawCard.run(client, message, playerChosen);
         await showHand.run(client, playerChosen);
         playerChosen.gold += playerChosen.gold + 1;
 
-        await showField.run(message, player1, player2);
+        //Round start
+        playerChosen = await roundStart.run(client, message, playerChosen);
 
-        await message.channel.send("It is " + playerChosen.name + "'s turn! What would you like to do?");
-    // }
+        while(!turnEnd){
+            await showField.run(message, player1, player2);
 
+            await message.channel.send("It is your turn! What would you like to do? (summon/cast/location/equip/attack/endturn/surrender)");
 
+            //Wait for player to say summon, cast, location, equip, attack, surrender, or end turn
+            let answer = null;
+            while(!answer.includes("summon") && !answer.includes("cast") && !answer.includes("location") && !answer.includes("equip") && !answer.includes("endturn") && !answer.includes("surrender") && !answer.includes("attack")){
+                let answer = await client.users.cache.get(playerChosen.id).dmChannel.awaitMessages(m => m.author.id === playerChosen.id, {max: 1})
+                    .then(collected => {
+                        return collected.first().content;
+                    }
+                );
+                if(!answer.includes("summon") && !answer.includes("cast") && !answer.includes("location") && !answer.includes("equip") && !answer.includes("endturn") && !answer.includes("surrender") && !answer.includes("attack")){
+                    await message.channel.send("That is not a valid command! Please try one of the following: summon, cast, location, equip, endturn, or surrender");
+                }
+            }
+
+            if(answer.includes("summon")){
+                playerChosen = await summon.run(client, message, playerChosen, playerUnchosen, dndGameStarted);
+            } else if(answer.includes("cast")){
+                playerChosen = await cast.run(client, message, playerChosen, playerUnchosen, dndGameStarted);
+            } else if(answer.includes("location")){
+                playerChosen = await location.run(client, message, playerChosen, playerUnchosen, dndGameStarted);
+            } else if(answer.includes("equip")){
+                playerChosen = await equip.run(client, message, playerChosen, playerUnchosen, dndGameStarted);
+            } else if(answer.includes("attack")){
+                playerChosen = await attack.run(client, message, playerChosen, playerUnchosen, dndGameStarted);
+            } else if(answer.includes("endturn")){
+                turnEnd = true;
+            } else if(answer.includes("surrender")){
+                playerChosen.worldHP = 0;
+            } else {
+                await message.channel.send("That is not a valid command! Please try one of the following: summon, cast, location, equip, endturn, or surrender");
+            }
+        }
+        playerChosen = await roundEnd.run(client, message, playerChosen);
+        if(isPlayer1Turn){
+            player1 = playerChosen;
+        } else {
+            player2 = playerChosen;
+            turn += 1;
+        }
+
+        isPlayer1Turn = !isPlayer1Turn;
+
+        if(player1WorldHP <= 0){
+            await message.channel.send("Player 2 wins!");
+        } else if(player2WorldHP <= 0){
+            await message.channel.send("Player 1 wins!");
+        }
+    }
+
+    dndGameStarted = false;
 
     return [dndGameStarted, player1, player2, player1Deck, player2Deck]
 };
