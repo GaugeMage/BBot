@@ -33,6 +33,20 @@
 					"Repugnans Fabula"
 				],
 				"isValid": false
+			},
+			{
+				"name": "test",
+				"cards": [
+					"Buddy McLean",
+					"Buddy McLean",
+					"Buddy McLean",
+					"Buddy McLean",
+					"Buddy McLean",
+					"Buddy McLean",
+					"Buddy McLean",
+					"Buddy McLean"
+				],
+				"isValid": true
 			}
 		],
 		"wins": 0,

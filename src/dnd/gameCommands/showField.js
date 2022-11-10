@@ -49,7 +49,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player1.field[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player1.field[i].name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
@@ -89,19 +89,21 @@ exports.run = async(message, player1, player2) => {
             isEmpty = true;
             field1Attack.push(0);
             field1Health.push(0);
+            continue;
         }
         //Look for the card in the character cards
-        let card = cCardData.find(card => card.name === player1.field[i]);
+
+        let card = cCardData.find(card => card.name === player1.field[i].name);
         if(card === undefined && !isEmpty){
             //Look for the card in the location cards
-            card = lCardData.find(card => card.name === player1.field[i]);
+            card = lCardData.find(card => card.name === player1.field[i].name);
             if(card === undefined){
                 //Look for the card if it is a stand
-                card = cCardData.find(card => card.stand?.name === player1.field[i]);
+                card = cCardData.find(card => card.stand?.name === player1.field[i].name);
                 //Look for the card if it is a generated character
                 if(card === undefined){
-                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player1.field[i]));
-                    card = card.generatedCharacters.find(card => card.name === player1.field[i]);
+                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player1.field[i].name));
+                    card = card.generatedCharacters.find(card => card.name === player1.field[i].name);
                 } else {
                     card = card.stand;
                 }
@@ -124,6 +126,7 @@ exports.run = async(message, player1, player2) => {
         //Check if it is empty
         if(player1.subField[i] === null){
             isEmpty = true;
+            continue;
         }
         //Look for the card in the equipment cards
         let card = eCardData.find(card => card.name === player1.subField[i]);
@@ -157,19 +160,20 @@ exports.run = async(message, player1, player2) => {
             isEmpty = true;
             field2Attack.push(0);
             field2Health.push(0);
+            continue;
         }
         //Look for the card in the character cards
-        let card = cCardData.find(card => card.name === player2.field[i]);
+        let card = cCardData.find(card => card.name === player2.field[i].name);
         if(card === undefined && !isEmpty){
             //Look for the card in the location cards
-            card = lCardData.find(card => card.name === player2.field[i]);
+            card = lCardData.find(card => card.name === player2.field[i].name);
             if(card === undefined){
                 //Look for the card if it is a stand
-                card = cCardData.find(card => card.stand?.name === player2.field[i]);
+                card = cCardData.find(card => card.stand?.name === player2.field[i].name);
                 //Look for the card if it is a generated character
                 if(card === undefined){
-                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player2.field[i]));
-                    card = card.generatedCharacters.find(card => card.name === player2.field[i]);
+                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player2.field[i].name));
+                    card = card.generatedCharacters.find(card => card.name === player2.field[i].name);
                 } else {
                     card = card.stand;
                 }
@@ -191,6 +195,7 @@ exports.run = async(message, player1, player2) => {
         //Check if it is empty
         if(player2.subField[i] === null){
             isEmpty = true;
+            continue;
         }
         //Look for the card in the equipment cards
         let card = eCardData.find(card => card.name === player2.subField[i]);
@@ -259,7 +264,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player2.field[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player2.field[i].name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
@@ -303,7 +308,6 @@ exports.run = async(message, player1, player2) => {
     fieldString += divider;
 
     //Show player 1's world hp and center it on the line
-    console.log(player1.hand);
     fieldString += "| World HP: **" + player2.worldHP + "** |" + " Gold: **" + player2.gold + "** |" + " Hand Size: **" + player2.hand.length + "** |" + " Deck Size: **" + player2.deck.cards.length + "** |";;
 
     //Show player 2's name and center it on the line
