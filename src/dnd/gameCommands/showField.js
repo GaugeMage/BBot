@@ -82,140 +82,52 @@ exports.run = async(message, player1, player2) => {
     let field1Attack = [];
     let field1Health = [];
     for(let i = 0; i < player1.field.length; i++){
-        let isEmpty = false;
-        let isLocation = false;
         //Check if the space is empty
         if(player1.field[i] === null){
-            isEmpty = true;
             field1Attack.push(0);
             field1Health.push(0);
             continue;
         }
-        //Look for the card in the character cards
 
-        let card = cCardData.find(card => card.name === player1.field[i].name);
-        if(card === undefined && !isEmpty){
-            //Look for the card in the location cards
-            card = lCardData.find(card => card.name === player1.field[i].name);
-            if(card === undefined){
-                //Look for the card if it is a stand
-                card = cCardData.find(card => card.stand?.name === player1.field[i].name);
-                //Look for the card if it is a generated character
-                if(card === undefined){
-                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player1.field[i].name));
-                    card = card.generatedCharacters.find(card => card.name === player1.field[i].name);
-                } else {
-                    card = card.stand;
-                }
-            } else {
-                field1Attack.push(0)
-                field1Health.push(0);
-                isLocation = true;
-            }
-        }
-        if(!isEmpty && !isLocation){
-            // console.log(card.name + " has " + card.attack + " attack");
-            field1Attack.push(card.attack);
-            field1Health.push(card.health);
-        }
+        field1Attack.push(player1.field[i].attack);
+        field1Health.push(player1.field[i].health);
     }
 
     //Checks player 1 subfield
     for(let i = 0; i < player1.subField.length; i++){
-        let isEmpty = false;
         //Check if it is empty
         if(player1.subField[i] === null){
-            isEmpty = true;
             continue;
         }
-        //Look for the card in the equipment cards
-        let card = eCardData.find(card => card.name === player1.subField[i]);
-        if(card === undefined && !isEmpty){
-            //Look for the card in the equipment of the character cards
-            //First checks if it has equipment
-            if(cCardData.find(card => card.equipment !== undefined)){
-                //Then it iterates through the equipment
-                for(let j = 0; j < cCardData.find(card => card.equipment !== undefined).equipment.length; j++){
-                    //Checks if the equipment matches the card
-                    if(cCardData.find(card => card.equipment !== undefined).equipment[j].name === player1.subField[i]){
-                        card = cCardData.find(card => card.equipment !== undefined).equipment[j];
-                    }
-                }
-            }
-        }
-        if(!isEmpty){
-            field1Attack[i] += card.attack;
-            field1Health[i] += card.health;
-        }
+
+        console.log("Checking subfield card: " + player1.subField[i]);
+        field1Attack[i] += player1.subField[i].attack;
+        field1Health[i] += player1.subField[i].health;
     }
 
     //Checks player 2 field
     let field2Attack = [];
     let field2Health = [];
     for(let i = 0; i < player2.field.length; i++){
-        let isEmpty = false;
-        let isLocation = false;
         //Check if the space is empty
         if(player2.field[i] === null){
-            isEmpty = true;
             field2Attack.push(0);
             field2Health.push(0);
             continue;
         }
-        //Look for the card in the character cards
-        let card = cCardData.find(card => card.name === player2.field[i].name);
-        if(card === undefined && !isEmpty){
-            //Look for the card in the location cards
-            card = lCardData.find(card => card.name === player2.field[i].name);
-            if(card === undefined){
-                //Look for the card if it is a stand
-                card = cCardData.find(card => card.stand?.name === player2.field[i].name);
-                //Look for the card if it is a generated character
-                if(card === undefined){
-                    card = cCardData.find(card => card.generatedCharacters?.find(card => card.name === player2.field[i].name));
-                    card = card.generatedCharacters.find(card => card.name === player2.field[i].name);
-                } else {
-                    card = card.stand;
-                }
-            } else {
-                field2Attack.push(0)
-                field2Health.push(0);
-                isLocation = true;
-            }
-        }
-        if(!isEmpty && !isLocation){
-            field2Attack.push(card.attack);
-            field2Health.push(card.health);
-        }
+
+        field2Attack.push(player2.field[i].attack);
+        field2Health.push(player2.field[i].health);
     }
 
     //Checks player 2 subfield
     for(let i = 0; i < player2.subField.length; i++){
-        let isEmpty = false;
         //Check if it is empty
         if(player2.subField[i] === null){
-            isEmpty = true;
             continue;
         }
-        //Look for the card in the equipment cards
-        let card = eCardData.find(card => card.name === player2.subField[i]);
-        if(card === undefined && !isEmpty){
-            //Look for the card in the equipment of the character cards
-            //First checks if it has equipment
-            if(cCardData.find(card => card.equipment !== undefined)){
-                //Then it iterates through the equipment
-                for(let j = 0; j < cCardData.find(card => card.equipment !== undefined).equipment.length; j++){
-                    //Checks if the equipment matches the card
-                    if(cCardData.find(card => card.equipment !== undefined).equipment[j].name === player2.subField[i]){
-                        card = cCardData.find(card => card.equipment !== undefined).equipment[j];
-                    }
-                }
-            }
-        }
-        if(!isEmpty){
-            field2Attack[i] += card.attack;
-            field2Health[i] += card.health;
-        }
+        field2Attack[i] += player2.subField[i].attack;
+        field2Health[i] += player2.subField[i].health;
     }
 
     //Add spaces to the end of each element to make the total length of the array equal to the length of the line

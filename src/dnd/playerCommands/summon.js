@@ -4,26 +4,18 @@ exports.run = async(client, message, args, player, player2, dndGameStarted) => {
 
     if(!dndGameStarted){
         client.users.cache.get(player.id).send("There is no game in progress!");
-        return [player, player2]
+        return;
     }
 
     [summonCommand, ...cardName] = args.split(" ");
     cardName = cardName.join(" ");
 
     //Check if the card exists in the player's hand
-    let cardExists = false;
-    let cardIndex = 0;
-    for(let i = 0; i < player.hand.length; i++){
-        if(player.hand[i] === cardName){
-            cardExists = true;
-            cardIndex = i;
-            break;
-        }
-    }
+    let cardIndex = player.hand.findIndex(card => card.name === cardName);
 
-    if(!cardExists){
+    if(cardIndex === -1){
         client.users.cache.get(player.id).send("That card is not in your hand!");
-        return [player, player2];
+        return;
     }
 
     //Check if the card is a character card
@@ -31,26 +23,26 @@ exports.run = async(client, message, args, player, player2, dndGameStarted) => {
     let card = null;
     for(let i = 0; i < characterCards.length; i++){
         if(characterCards[i].name === cardName){
-            card = characterCards[i];
+            card = player.hand[cardIndex];
             isCharacterCard = true;
         }
     }
 
     if(!isCharacterCard){
         client.users.cache.get(player.id).send("That card is not a character card!");
-        return [player, player2];
+        return;
     }
 
     //Check if the player has enough gold to play the card
     if(player.gold < card.cost){
         client.users.cache.get(player.id).send("You do not have enough gold to play that card!");
-        return [player, player2];
+        return;
     }
 
     //Check if field is full
     if(player.field[player.field.length - 1] !== null){
         client.users.cache.get(player.id).send("Your field is full!");
-        return [player, player2];
+        return;
     }
 
     //Insert card into field
@@ -71,19 +63,29 @@ exports.run = async(client, message, args, player, player2, dndGameStarted) => {
 
     //Special effects for cards
     const standSummon = require('../cardActions/standSummon.js');
+    const chooseTarget = require('./chooseTarget.js');
     const silenceField = require('../cardActions/silenceField.js');
     const silenceHand = require('../cardActions/silenceHand.js');
-    const dealDamage = require('../cardActions/dealDamage.js');
+    const damageField = require('../cardActions/damageField.js');
     const paradox = require('../cardActions/paradox.js');
     const summonCard = require('../cardActions/summonCard.js');
 
-    if(card.name === "Buddy McLean"){
-        //Stand Summon: **American Pie**. When I am played, choose 2 enemy cards on the field to silence. If there are less than 2 cards to silence, deal 5 damage to the enemy world instead
-        const result = await standSummon.run(client, message, player, player2, "American Pie");
-        player = result[0];
-        player2 = result[1];
-        //This happened
+    //Checks if the card has "Stand Summon: " in its description
+    if(card.description.includes("Stand Summon: ")){
+        await standSummon.run(client, message, player, player2, card.stand.name);
     }
 
-    return [player, player2];
+    if(card.name === "Buddy McLean"){
+        if(player2.field[1] === null){
+            player2.worldHP -= 5;
+        } else {
+            //Choose 1st target
+            let cardIndex = await chooseTarget.run(client, player, player2);
+            await silenceField.run(client, player, player2, cardIndex);
+
+            //Choose 2nd target
+            cardIndex = await chooseTarget.run(client, player, player2);
+            await silenceField.run(client, player, player2, cardIndex);
+        }
+    }
 }

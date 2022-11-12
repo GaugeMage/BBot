@@ -12,5 +12,5 @@ exports.run = async(player) => {
     deck.cards = shuffledCards;
     player.deck = deck;
     
-    return player;
+    return;
 }

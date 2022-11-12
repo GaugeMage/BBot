@@ -6,7 +6,6 @@ exports.run = async(message, args) => {
     for(let i = 0; i < locationCards.length; i++){
         let card = locationCards[i];
         if(card.name === cardName){
-            console.log(card.cost);
             const cardString = new Discord.MessageEmbed().
                 setTitle(card.name).
                 setImage(card.image).

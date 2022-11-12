@@ -4,15 +4,15 @@ exports.run = async(client, message, player, player2, standName) => {
 
     //Check if there is space
     if(player.field[player.field.length - 1] !== null){
-        client.users.cache.get(player.id).send("Your field is full!");
-        return [player, player2];
+        client.users.cache.get(player.id).send("Your field is full so this stand will not summon!");
+        return;
     }
 
     //Looks for card in characterCards
     let card = null;
     for(let i = 0; i < characterCards.length; i++){
         if(characterCards[i].stand?.name === standName){
-            card = characterCards[i].stand;
+            card = Object.assign({}, characterCards[i].stand);
             break;
         }
     }
@@ -25,5 +25,5 @@ exports.run = async(client, message, player, player2, standName) => {
         }
     }
 
-    return [player, player2];
+    return;
 }

@@ -425,40 +425,50 @@ client.on('message', async (message) => {
                     name: "Temp",
                     cards: [
                         "Buddy McLean",
-                        "Catastrophe",
-                        "Repugnans Fabula",
-                        "Ace Nullman",
-                        "Niko Goluskey",
-                        "Tyler Wolfe",
-                        "Tommy",
-                        "Robert E. O. Speedwagon",
                         "Ultor",
-                        "Brooklyn Art Museum",
-                        "Darnell Webber",
-                        "Nic",
-                        "Garnet Speedwagon",
-                        "Rook",
-                        "Speedwagon Foundation HQ"
+                        "Buddy McLean",
+                        "Buddy McLean",
+                        "Buddy McLean",
+                        "Buddy McLean"
                     ],
                     isValid: true
                 },
-                field: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"],
-                subField: ["Ultor", null, null, null, null, "Chronohacker"],
+                field: [null, null, null, null, null, null],
+                subField: [null, null, null, null, null, null],
                 worldHP: 25,
-                gold: 0,
+                gold: 100,
                 hand: []
             }
             player2 ={
                 name: "BB",
-                id: 1,
-                deck: ["Enrico Pucci", "BB", "Karolina Zeitmagier", "Ultor", "Essence of Delusion"],
-                field: ["BB", "Tommy", "Nic", "Robert E. O. Speedwagon", "Garnet Speedwagon", "Brooklyn Art Museum"],
-                subField: [null, "Chronohacker", null, "Kesha", null, null],
+                id: player1.id,
+                deck: {
+                    name: "uwu",
+                    cards: [
+                        "Enrico Pucci", "Catastrophe", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
+                    ],
+                    isValid: true
+                },
+                field: [null, null, null, null, null, null],
+                subField: [null, null, null, null, null, null],
                 worldHP: 8,
-                gold: 0,
+                gold: 100,
                 hand: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"]
             }
-            require('./dnd/gameCommands/openingHand.js').run(client, message, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, message, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, message, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, message, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, message, player2);
+            await require('./dnd/gameCommands/drawCard.js').run(client, message, player2);
+            await require('./dnd/gameCommands/drawCard.js').run(client, message, player2);
+            await require('./dnd/gameCommands/showHand.js').run(client, player1);
+            dndGameStarted = true;
+            await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, message, "summon Enrico Pucci", player2, player1, dndGameStarted);
+            await require('./dnd/playerCommands/summon.js').run(client, message, "summon Enrico Pucci", player2, player1, dndGameStarted);
+            // await require('./dnd/playerCommands/summon.js').run(client, message, "summon Enrico Pucci", player2, player1, dndGameStarted);
+            await require('./dnd/playerCommands/summon.js').run(client, message, "summon Buddy McLean", player1, player2, dndGameStarted);
+            await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){

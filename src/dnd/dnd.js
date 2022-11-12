@@ -174,8 +174,8 @@ exports.run = async(client, message, args, dndGameStarted) => {
     await shuffleDeck.run(player1);
     await shuffleDeck.run(player2);
 
-    player1 = await openingHand.run(client, message, player1);
-    player2 = await openingHand.run(client, message, player2);
+    await openingHand.run(client, message, player1);
+    await openingHand.run(client, message, player2);
     await showHand.run(client, player2);
 
     let turn = 1;
@@ -192,12 +192,12 @@ exports.run = async(client, message, args, dndGameStarted) => {
 
         await message.channel.send("Turn " + turn + " has started! " + playerChosen.name + "'s turn!");
 
-        playerChosen = await drawCard.run(client, message, playerChosen);
+        await drawCard.run(client, message, playerChosen);
         await showHand.run(client, playerChosen);
-        playerChosen.gold += playerChosen.gold + 1;
+        playerChosen.gold += turn;
 
         //Round start
-        playerChosen = await roundStart.run(client, message, playerChosen);
+        await roundStart.run(client, message, playerChosen);
 
         message.channel.send("Field before " + playerChosen.name +"' s turn:");
         await showField.run(message, player1, player2);
@@ -219,31 +219,27 @@ exports.run = async(client, message, args, dndGameStarted) => {
             }
 
             if(answer.includes("summon")){
-                const result = await summon.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
-                console.log("Result: " + result)
-                playerChosen = result[0];
-                playerUnchosen = result[1];
-                console.log(playerChosen);
+                await summon.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("cast")){
-                [playerChosen, playerUnchosen] = await cast.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await cast.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("location")){
-                [playerChosen, playerUnchosen] = await location.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await location.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("equip")){
-                [playerChosen, playerUnchosen] = await equip.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await equip.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("attack")){
-                [playerChosen, playerUnchosen] = await attack.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await attack.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("endturn")){
                 turnEnd = true;
+                await message.channel.send("Player " + playerChosen.name + " has ended their turn!");
             } else if(answer.includes("surrender")){
                 await message.channel.send("Player " + playerChosen.name + " has surrendered!");
                 playerChosen.worldHP = 0;
                 turnEnd = true;
             } else {
-                client.users.cache.get(playerChosen.id).send("That is not a valid command! Please try one of the following: summon, cast, location, equip, endturn, or surrender");
+                await client.users.cache.get(playerChosen.id).send("That is not a valid command! Please try one of the following: summon, cast, location, equip, endturn, or surrender");
             }
         }
-        message.channel.send("Player " + playerChosen.name + " has ended their turn!");
-        playerChosen = await roundEnd.run(client, message, playerChosen);
+        await roundEnd.run(client, message, playerChosen);
         if(isPlayer1Turn){
             player1 = playerChosen;
         } else {

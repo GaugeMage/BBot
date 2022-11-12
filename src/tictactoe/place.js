@@ -58,7 +58,6 @@ exports.run = async(message, args, ticTacToeStarted, isX, board) => {
         //Check if someone is about to win
         const placer = isX ? ' X ' : ' O ';
         let temp = require('./checkWin.js').run(board);
-        console.log(temp);
         if(temp != false){
             if((temp[0] === ' X ' && isX) || (temp[0] === ' O ' && !isX)){
                 if(temp[1] === 'row'){
