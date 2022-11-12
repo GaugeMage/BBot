@@ -1,4 +1,4 @@
-exports.run = async(client, message, player) => {
+exports.run = async(client, turnLog, player) => {
     //Check if any card is silenced (Silenced would be in the name as (S-<Silence Amount>))
     for(let i = 0; i < player.field.length; i++){
         if(player.field[i] !== null){

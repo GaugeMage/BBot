@@ -1,4 +1,4 @@
-exports.run = async(client, message, player) => {
+exports.run = async(client, turnLog, player) => {
     //Draws the top card of the player's deck
     let deck = player.deck;
     let cards = deck.cards;
@@ -58,5 +58,6 @@ exports.run = async(client, message, player) => {
     deck.cards = cards;
     player.deck = deck;
     player.hand = hand;
-    return ;
+
+    turnLog.text += "\n" + player.name + " drew a card!";
 }

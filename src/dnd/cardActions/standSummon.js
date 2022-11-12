@@ -1,4 +1,4 @@
-exports.run = async(client, message, player, player2, standName) => {
+exports.run = async(client, turnLog, player, player2, standName) => {
     //Character cards
     const characterCards = require('../cards/characterCards.json');
 

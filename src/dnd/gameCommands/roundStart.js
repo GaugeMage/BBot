@@ -1,3 +1,2 @@
-exports.run = async(client, message, player) => {
-    return player;
+exports.run = async(client, turnLog, player) => {
 }

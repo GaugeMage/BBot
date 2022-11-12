@@ -1,5 +1,3 @@
-const { SystemChannelFlags } = require('discord.js');
-
 exports.run = async(client, message, args, dndGameStarted) => {
     if(dndGameStarted){
         message.channel.send("A game is already in progress!");
@@ -13,6 +11,11 @@ exports.run = async(client, message, args, dndGameStarted) => {
 
     let player1Exists = false;
     let player2Exists = false;
+
+    if(player2 == undefined){
+        message.channel.send("Please specify a player to play against!");
+        return [dndGameStarted, null, null, null, null];
+    }
 
     
     if(player2[0] === '<' && player2[player2.length - 1] === '>'){
@@ -44,7 +47,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
             return collected.first().content;
         })
         .catch(collected => {
-            message.channel.send("You did not enter a deck name in time!");
+            client.users.cache.get(player1.id).send("You didn't pick a deck in time!");
             return null;
         });
 
@@ -78,7 +81,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
             return collected.first().content;
         })
         .catch(collected => {
-            message.channel.send("You didn't pick a deck in time!");
+            client.users.cache.get(player2.id).send("You didn't pick a deck in time!");
             return null;
         });
     
@@ -169,19 +172,24 @@ exports.run = async(client, message, args, dndGameStarted) => {
     const cast = require('./playerCommands/cast.js');
     const location = require('./playerCommands/location.js');
     const equip = require('./playerCommands/equip.js');
+    
+    let turnLog = {turnNumber: 0, text: ""};
 
     //Opening hand
     await shuffleDeck.run(player1);
     await shuffleDeck.run(player2);
 
-    await openingHand.run(client, message, player1);
-    await openingHand.run(client, message, player2);
+    await openingHand.run(client, turnLog, player1);
+    await openingHand.run(client, turnLog, player2);
     await showHand.run(client, player2);
 
     let turn = 1;
 
     //Gameplay loop
     while(player1.worldHP > 0 && player2.worldHP > 0){
+        turnLog.turnNumber = turn;
+        turnLog.text = "";
+
         let turnEnd = false;
         let playerChosen = player1;
         let playerUnchosen = player2;
@@ -192,12 +200,12 @@ exports.run = async(client, message, args, dndGameStarted) => {
 
         await message.channel.send("Turn " + turn + " has started! " + playerChosen.name + "'s turn!");
 
-        await drawCard.run(client, message, playerChosen);
+        await drawCard.run(client, turnLog, playerChosen);
         await showHand.run(client, playerChosen);
         playerChosen.gold += turn;
 
         //Round start
-        await roundStart.run(client, message, playerChosen);
+        await roundStart.run(client, turnLog, playerChosen);
 
         message.channel.send("Field before " + playerChosen.name +"' s turn:");
         await showField.run(message, player1, player2);
@@ -219,15 +227,15 @@ exports.run = async(client, message, args, dndGameStarted) => {
             }
 
             if(answer.includes("summon")){
-                await summon.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await summon.run(client, turnLog, answer, playerChosen, playerUnchosen, turnLog, dndGameStarted);
             } else if(answer.includes("cast")){
-                await cast.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await cast.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("location")){
-                await location.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await location.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("equip")){
-                await equip.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await equip.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("attack")){
-                await attack.run(client, message, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await attack.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
             } else if(answer.includes("endturn")){
                 turnEnd = true;
                 await message.channel.send("Player " + playerChosen.name + " has ended their turn!");
@@ -239,7 +247,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
                 await client.users.cache.get(playerChosen.id).send("That is not a valid command! Please try one of the following: summon, cast, location, equip, endturn, or surrender");
             }
         }
-        await roundEnd.run(client, message, playerChosen);
+        await roundEnd.run(client, turnLog, playerChosen);
         if(isPlayer1Turn){
             player1 = playerChosen;
         } else {
@@ -254,6 +262,8 @@ exports.run = async(client, message, args, dndGameStarted) => {
         } else if(player2.worldHP <= 0){
             await message.channel.send("Player 1 wins!");
         }
+
+        message.channel.send("Turn log:\n" + turnLog.text);
 
         message.channel.send("Field after turn " + playerChosen.name + " 's turn:");
         await showField.run(message, player1, player2);

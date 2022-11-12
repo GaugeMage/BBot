@@ -455,20 +455,21 @@ client.on('message', async (message) => {
                 gold: 100,
                 hand: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"]
             }
-            await require('./dnd/gameCommands/drawCard.js').run(client, message, player1);
-            await require('./dnd/gameCommands/drawCard.js').run(client, message, player1);
-            await require('./dnd/gameCommands/drawCard.js').run(client, message, player1);
-            await require('./dnd/gameCommands/drawCard.js').run(client, message, player2);
-            await require('./dnd/gameCommands/drawCard.js').run(client, message, player2);
-            await require('./dnd/gameCommands/drawCard.js').run(client, message, player2);
+            let turnLog = {turnNumber: 1, text: ""};;
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/showHand.js').run(client, player1);
             dndGameStarted = true;
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
-            await require('./dnd/playerCommands/summon.js').run(client, message, "summon Enrico Pucci", player2, player1, dndGameStarted);
-            await require('./dnd/playerCommands/summon.js').run(client, message, "summon Enrico Pucci", player2, player1, dndGameStarted);
-            // await require('./dnd/playerCommands/summon.js').run(client, message, "summon Enrico Pucci", player2, player1, dndGameStarted);
-            await require('./dnd/playerCommands/summon.js').run(client, message, "summon Buddy McLean", player1, player2, dndGameStarted);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1, dndGameStarted);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player2, player1, dndGameStarted);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2, dndGameStarted);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
+            message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){

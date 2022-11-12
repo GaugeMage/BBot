@@ -1,4 +1,4 @@
-exports.run = async(client, message, args, player, player2, dndGameStarted) => {
+exports.run = async(client, turnLog, args, player, player2, dndGameStarted) => {
 
     const characterCards = require('../cards/characterCards.json');
 
@@ -60,6 +60,7 @@ exports.run = async(client, message, args, player, player2, dndGameStarted) => {
     player.gold -= card.cost;
 
     client.users.cache.get(player.id).send("You have summoned " + card.name + " to your field!");
+    turnLog.text += "\n" + player.name + " has summoned " + card.name + " to their field!";
 
     //Special effects for cards
     const standSummon = require('../cardActions/standSummon.js');
@@ -72,20 +73,22 @@ exports.run = async(client, message, args, player, player2, dndGameStarted) => {
 
     //Checks if the card has "Stand Summon: " in its description
     if(card.description.includes("Stand Summon: ")){
-        await standSummon.run(client, message, player, player2, card.stand.name);
+        await standSummon.run(client, turnLog, player, player2, card.stand.name);
     }
 
     if(card.name === "Buddy McLean"){
         if(player2.field[1] === null){
             player2.worldHP -= 5;
+            client.users.cache.get(player.id).send("You have dealt 5 damage to " + player2.name + "'s world!");
+            turnLog.text += "\n Buddy McLean has dealt 5 damage to " + player2.name + "'s world!";
         } else {
             //Choose 1st target
             let cardIndex = await chooseTarget.run(client, player, player2);
-            await silenceField.run(client, player, player2, cardIndex);
+            await silenceField.run(client, turnLog, player, player2, cardIndex);
 
             //Choose 2nd target
             cardIndex = await chooseTarget.run(client, player, player2);
-            await silenceField.run(client, player, player2, cardIndex);
+            await silenceField.run(client, turnLog, player, player2, cardIndex);
         }
     }
 }
