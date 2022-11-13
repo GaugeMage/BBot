@@ -1,11 +1,6 @@
-exports.run = async(client, turnLog, args, player, player2, dndGameStarted) => {
+exports.run = async(client, turnLog, args, player, player2) => {
 
     const characterCards = require('../cards/characterCards.json');
-
-    if(!dndGameStarted){
-        client.users.cache.get(player.id).send("There is no game in progress!");
-        return;
-    }
 
     [summonCommand, ...cardName] = args.split(" ");
     cardName = cardName.join(" ");
@@ -80,7 +75,7 @@ exports.run = async(client, turnLog, args, player, player2, dndGameStarted) => {
         if(player2.field[1] === null){
             player2.worldHP -= 5;
             client.users.cache.get(player.id).send("You have dealt 5 damage to " + player2.name + "'s world!");
-            turnLog.text += "\n Buddy McLean has dealt 5 damage to " + player2.name + "'s world!";
+            turnLog.text += "\nBuddy McLean has dealt 5 damage to " + player2.name + "'s world!";
         } else {
             //Choose 1st target
             let cardIndex = await chooseTarget.run(client, player, player2);
@@ -90,5 +85,9 @@ exports.run = async(client, turnLog, args, player, player2, dndGameStarted) => {
             cardIndex = await chooseTarget.run(client, player, player2);
             await silenceField.run(client, turnLog, player, player2, cardIndex);
         }
+    }
+
+    if(card.name === "Repugnans Fabula"){
+
     }
 }

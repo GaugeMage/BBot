@@ -445,7 +445,7 @@ client.on('message', async (message) => {
                 deck: {
                     name: "uwu",
                     cards: [
-                        "Enrico Pucci", "Catastrophe", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
+                        "Enrico Pucci", "Speedwagon Foundation HQ", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
                     ],
                     isValid: true
                 },
@@ -453,7 +453,7 @@ client.on('message', async (message) => {
                 subField: [null, null, null, null, null, null],
                 worldHP: 8,
                 gold: 100,
-                hand: ["Buddy McLean", "American Pie", "Ricky Rat", "Merrie Melodies", "Speedwagon Foundation HQ", "Tyler Wolfe"]
+                hand: []
             }
             let turnLog = {turnNumber: 1, text: ""};;
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
@@ -466,8 +466,9 @@ client.on('message', async (message) => {
             dndGameStarted = true;
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1, dndGameStarted);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player2, player1, dndGameStarted);
+            await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1, dndGameStarted);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2, dndGameStarted);
+            await require('./dnd/gameCommands/roundStart').run(client, turnLog, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){

@@ -227,15 +227,15 @@ exports.run = async(client, message, args, dndGameStarted) => {
             }
 
             if(answer.includes("summon")){
-                await summon.run(client, turnLog, answer, playerChosen, playerUnchosen, turnLog, dndGameStarted);
+                await summon.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("cast")){
-                await cast.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await cast.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("location")){
-                await location.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await location.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("equip")){
-                await equip.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await equip.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("attack")){
-                await attack.run(client, turnLog, answer, playerChosen, playerUnchosen, dndGameStarted);
+                await attack.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("endturn")){
                 turnEnd = true;
                 await message.channel.send("Player " + playerChosen.name + " has ended their turn!");

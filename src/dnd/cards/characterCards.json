@@ -23,20 +23,20 @@
     {
         "name": "Repugnans Fabula",
         "color": "#808080",
-        "description": "Stand Summon: **Paradox**. When I am played, choose an enemy card on the field to paradoxify. If it is already paradoxified, afflict it with a random paradox. All paradoxes last 1 additional turn.",
+        "description": "Stand Summon: **Paradox**. When I am played, choose 2 enemy cards on the field to paradoxify. If it is already paradoxified, afflict it with a random paradox.",
         "image": "https://cdn.discordapp.com/attachments/988186263825829898/1010988500448972841/glowycandlesandacreepything.jpg",
         "attack": 2,
-        "health": 3,
+        "health": 4,
         "cost": 4,
         "type": "Stand User",
-        "footer": "",
+        "footer": "I may not know who I am, but it won't stop me from doing what I have to.",
         "faction": "5 Horsemen",
         "stand": {
             "name": "Paradox",
             "description": "Whenever an enemy card gets afflicted with a paradox. Make the paradox trigger a second different paradox.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/300795461/Ulsbq-Rcc68SPfy-u96oKg/med.png?1661109305",
             "attack": 1,
-            "health": 3,
+            "health": 4,
             "cost": 4,
             "type": "Stand"
         }

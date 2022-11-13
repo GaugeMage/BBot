@@ -28,6 +28,7 @@ exports.run = async(client, turnLog, player) => {
         for(let i = 0; i < locationCards.length; i++){
             if(locationCards[i].name === cardDrawn){
                 card = Object.assign({}, locationCards[i]);
+                card['type'] = "Location";
                 card['attack'] = 0;
                 card['health'] = 0;
                 break;
