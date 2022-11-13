@@ -58,4 +58,8 @@ exports.run = async(client, turnLog, args, player, player2) => {
     turnLog.text += "\n" + player.name + " has summoned " + card.name + " to their field!";
 
     //Special effects for cards
+    switch(card.name){
+        case "Space":
+            break;
+    }
 }

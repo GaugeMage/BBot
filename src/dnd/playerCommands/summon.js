@@ -59,7 +59,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
 
     //Special effects for cards
     const standSummon = require('../cardActions/standSummon.js');
-    const chooseTarget = require('./chooseTarget.js');
+    const chooseEnemyTarget = require('./chooseEnemyTarget.js');
     const silenceField = require('../cardActions/silenceField.js');
     const silenceHand = require('../cardActions/silenceHand.js');
     const damageField = require('../cardActions/damageField.js');
@@ -71,23 +71,24 @@ exports.run = async(client, turnLog, args, player, player2) => {
         await standSummon.run(client, turnLog, player, player2, card.stand.name);
     }
 
-    if(card.name === "Buddy McLean"){
-        if(player2.field[1] === null){
-            player2.worldHP -= 5;
-            client.users.cache.get(player.id).send("You have dealt 5 damage to " + player2.name + "'s world!");
-            turnLog.text += "\nBuddy McLean has dealt 5 damage to " + player2.name + "'s world!";
-        } else {
-            //Choose 1st target
-            let cardIndex = await chooseTarget.run(client, player, player2);
-            await silenceField.run(client, turnLog, player, player2, cardIndex);
+    switch(card.name){
+        case "Buddy McLean":
+            if(player2.field[1] === null){
+                player2.worldHP -= 5;
+                client.users.cache.get(player.id).send("You have dealt 5 damage to " + player2.name + "'s world!");
+                turnLog.text += "\nBuddy McLean has dealt 5 damage to " + player2.name + "'s world!";
+            } else {
+                //Choose 1st target
+                let cardIndex = await chooseEnemyTarget.run(client, player, player2);
+                await silenceField.run(client, turnLog, player, player2, cardIndex);
 
-            //Choose 2nd target
-            cardIndex = await chooseTarget.run(client, player, player2);
-            await silenceField.run(client, turnLog, player, player2, cardIndex);
-        }
-    }
+                //Choose 2nd target
+                cardIndex = await chooseEnemyTarget.run(client, player, player2);
+                await silenceField.run(client, turnLog, player, player2, cardIndex);
+            }
+            break;
 
-    if(card.name === "Repugnans Fabula"){
-
+        case "Repugnans Fabula":
+            break;
     }
 }
