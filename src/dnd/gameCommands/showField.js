@@ -23,7 +23,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player1.subField[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player1.subField[i].name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
@@ -100,7 +100,6 @@ exports.run = async(message, player1, player2) => {
             continue;
         }
 
-        console.log("Checking subfield card: " + player1.subField[i]);
         field1Attack[i] += player1.subField[i].attack;
         field1Health[i] += player1.subField[i].health;
     }
@@ -203,7 +202,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player2.subField[i] + "**";
+            tempString = "| " + (i + 1) + ". **" + player2.subField[i].name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }

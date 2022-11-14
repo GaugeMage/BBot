@@ -1,9 +1,9 @@
 exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) => {
     //If cardIndex is null, damage a random card
     do {
+        //Find how many cards are in the field
+        let fieldLength = player2.field.findIndex(card => card === null);
         if(cardIndex === null){
-            //Find how many cards are in the field
-            let fieldLength = player.field.findIndex(card => card === null);
     
             //If there are no cards in the field, return
             if(fieldLength === 0){
@@ -12,12 +12,11 @@ exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) =
             }
     
             //Choose a random card
-            console.log("Field length before: " + fieldLength);
             cardIndex = Math.floor(Math.random() * fieldLength);
         }
 
         //Check if there is only one card and that card is a location card
-        if(player2.field.length === 1 && player2.field[0].type === "Location"){
+        if(fieldLength === 1 && player2.field[0].type === "Location"){
             await client.users.cache.get(player.id).send("Cannot damage a location card!");
             return;
         }

@@ -1,8 +1,6 @@
 exports.run = async(client, player) => {
     const Discord = require('discord.js');
     const hand = player.hand;
-
-    // console.log(hand);
     
     const embed = new Discord.MessageEmbed()
         .setColor('#0099ff')

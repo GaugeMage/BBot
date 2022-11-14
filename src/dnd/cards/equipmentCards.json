@@ -2,11 +2,11 @@
     {
         "name": "Ultor",
         "color": "#32CD32",
-        "description": "When I am equipped, give me the stand ability of an allied stand which was summoned this game.",
+        "description": "When I am equipped, give me the random stand ability of an allied stand which was summoned/played this game.",
         "image": "https://cdn.discordapp.com/attachments/988186263825829898/996518846846484530/Ultor_Black.png",
         "attack": 3,
         "health": 1,
-        "cost": 5,
+        "cost": 4,
         "footer": "Please... Don't put me in here... all alone... I'm scared... Why must I be the one to avenge???"
     },
     {
@@ -22,7 +22,7 @@
     {
         "name": "Imbroglione",
         "color": "#FF0000",
-        "description": "Whenever my wielder attacks, they damage all enemies. For every enemy defeated, heal the allied world and my wielder by 2. When my wielder dies, replace it with 'Imbroglione Unleashed'.",
+        "description": "Whenever my wielder attacks, they damage all enemies. For every enemy defeated, heal the allied world and my wielder by 2.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/308575376/vE6VlieDuMuppNIZGvDyfA/med.png?1665352190",
         "attack": 8,
         "health": -2,
@@ -42,7 +42,7 @@
     {
         "name": "Hat of Chaos",
         "color": "#000000",
-        "description": "Round End: Cast a random spell",
+        "description": "Round End: Cast a random spell.",
         "image": "https://isteam.wsimg.com/ip/7c9c96eb-abec-11e4-8625-14feb5d9f2e6/ols/44_original/:/rs=w:600,h:600",
         "attack": 0,
         "health": 1,
@@ -51,5 +51,15 @@
     },
     {
         "name": "GPU"
+    },
+    {
+        "name": "Eye of Infinity",
+        "color": "#E6E6FA",
+        "description": "Whenever you cast a spell, you can cast it multiple times (Each cast will still cost gold).",
+        "image": "https://static.wikia.nocookie.net/narutofanon/images/f/fe/Fai_s_Staff_by_Amierith.png/revision/latest?cb=20140311222206",
+        "attack": 0,
+        "health": 1,
+        "cost": 9,
+        "footer": "And we offer this to you my Archmage... for you are now the Lavenger Archmage of Infinity!"
     }
 ]

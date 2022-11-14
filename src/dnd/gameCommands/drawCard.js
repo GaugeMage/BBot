@@ -60,5 +60,7 @@ exports.run = async(client, turnLog, player) => {
     player.deck = deck;
     player.hand = hand;
 
+    player["standsSummoned"] = [];
+
     turnLog.text += "\n" + player.name + " drew a card!";
 }

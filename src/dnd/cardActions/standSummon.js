@@ -25,5 +25,7 @@ exports.run = async(client, turnLog, player, player2, standName) => {
         }
     }
 
+    player["standsSummoned"].push(card);
+
     return;
 }

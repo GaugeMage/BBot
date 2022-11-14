@@ -31,8 +31,6 @@ exports.run = async(client, turnLog, player, player2, cardIndex) => {
             cardIndex -= 1;
         }
 
-        console.log("Card index: " + cardIndex);
-        console.log("Field length: " + player2.field.length);
         for(let i = cardIndex; i < player2.field.length; i++){
             if(player2.field[i + 1] !== null && player2.field[i + 1] !== undefined){
                 player2.field[i] = player2.field[i + 1];

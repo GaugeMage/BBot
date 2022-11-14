@@ -425,8 +425,8 @@ client.on('message', async (message) => {
                     name: "Temp",
                     cards: [
                         "Buddy McLean",
-                        "Repugnans Fabula",
-                        "Stand Strike",
+                        "Buddy McLean",
+                        "Ultor",
                         "Buddy McLean",
                         "Buddy McLean",
                         "Buddy McLean",
@@ -446,7 +446,7 @@ client.on('message', async (message) => {
                 deck: {
                     name: "uwu",
                     cards: [
-                        "Enrico Pucci", "Speedwagon Foundation HQ", "Catastrophe", "Joy Jones", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
+                        "Enrico Pucci", "Speedwagon Foundation HQ", "Ultor", "Joy Jones", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
                     ],
                     isValid: true
                 },
@@ -463,13 +463,13 @@ client.on('message', async (message) => {
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-            await require('./dnd/gameCommands/showHand.js').run(client, player1);
-            dndGameStarted = true;
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
-            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Stand Strike", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2);
+            await require('./dnd/playerCommands/equip.js').run(client, turnLog, "equip Ultor", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2);
+            await require('./dnd/gameCommands/roundEnd.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
