@@ -35,6 +35,11 @@ client.on("guildCreate", guild => {
     client.channels.cache.get("954939890745901058").send(`New world joined it seems: ${guild.name} (id: ${guild.id}). This world has ${guild.memberCount} ***plebian*** members! ||Seems like it is up to me to start some fun||`);
 });
 
+//Exception handling lol
+client.on('error', error => {
+    console.error('Error:', error);
+});
+
 //message.reply: replies to user
 //message.channel.send: sends message to channel
 client.on('message', async (message) => {
@@ -425,7 +430,7 @@ client.on('message', async (message) => {
                     name: "Temp",
                     cards: [
                         "Buddy McLean",
-                        "Buddy McLean",
+                        "Catastrophe",
                         "Ultor",
                         "Buddy McLean",
                         "Buddy McLean",
@@ -466,10 +471,10 @@ client.on('message', async (message) => {
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2);
-            await require('./dnd/playerCommands/equip.js').run(client, turnLog, "equip Ultor", player1, player2);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2);
-            await require('./dnd/gameCommands/roundEnd.js').run(client, turnLog, player2);
+            // await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player1, player2);
+            await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player1);
+            await require('./dnd/playerCommands/attack.js').run(client, turnLog, "attack 1", player1, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){

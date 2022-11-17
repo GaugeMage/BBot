@@ -55,6 +55,9 @@ exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) =
 
     //If the card is a stand, deal damage to the stand user (if it exists)
     breakCheck: if(player2.field[cardIndex].type == "Stand"){
+        if(player.field[cardIndex - 1] == undefined){
+            break breakCheck;
+        }
         if(player2.field[cardIndex - 1].type == "Stand User"){
             player2.field[cardIndex - 1].health -= damageAmount;
             await client.users.cache.get(player.id).send("Dealt " + damageAmount + " damage to " + player2.field[cardIndex - 1].name + "!");
@@ -71,5 +74,5 @@ exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) =
 
     //Check if card is dead
     const checkCardDeath = require('../gameCommands/checkCardDeath.js');
-    await checkCardDeath.run(client, turnLog, player, player2, cardIndex);
+    await checkCardDeath.run(client, turnLog, player, player2); 
 }

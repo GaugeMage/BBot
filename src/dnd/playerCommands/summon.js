@@ -44,6 +44,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     for(let i = 0; i < player.field.length; i++){
         if(player.field[i] === null){
             player.field[i] = card;
+            player.field[i]['hasAttacked'] = true;
             break;
         }
     }
@@ -65,6 +66,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     const damageField = require('../cardActions/damageField.js');
     const paradox = require('../cardActions/paradox.js');
     const summonCard = require('../cardActions/summonCard.js');
+    const damageWorld = require('../cardActions/damageWorld.js');
 
     //Checks if the card has "Stand Summon: " in its description
     if(card.description.includes("Stand Summon: ")){
@@ -74,9 +76,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     switch(card.name){
         case "Buddy McLean":
             if(player2.field[1] === null){
-                player2.worldHP -= 5;
-                client.users.cache.get(player.id).send("You have dealt 5 damage to " + player2.name + "'s world!");
-                turnLog.text += "\nBuddy McLean has dealt 5 damage to " + player2.name + "'s world!";
+                await damageWorld.run(client, turnLog, player2, 5);
             } else {
                 //Choose 1st target
                 let cardIndex = await chooseEnemyTarget.run(client, player, player2);

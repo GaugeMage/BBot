@@ -33,7 +33,7 @@
         "faction": "5 Horsemen",
         "stand": {
             "name": "Paradox",
-            "description": "Whenever an enemy card gets afflicted with a paradox. Make the paradox trigger a second different paradox.",
+            "description": "Whenever an enemy card gets afflicted with a paradox, make the paradox trigger a second different paradox.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/300795461/Ulsbq-Rcc68SPfy-u96oKg/med.png?1661109305",
             "attack": 1,
             "health": 4,

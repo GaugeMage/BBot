@@ -1,5 +1,4 @@
 exports.run = async(client, turnLog, args, player, player2) => {
-
     const spellCards = require('../cards/spellCards.json');
     [summonCommand, ...cardName] = args.split(" ");
     cardName = cardName.join(" ");
