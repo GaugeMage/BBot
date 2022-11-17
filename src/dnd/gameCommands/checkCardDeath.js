@@ -7,6 +7,7 @@ exports.run = async(client, turnLog, player, player2) => {
         }
         //Iterate through player 2 field
         for(let cardIndex = 0; cardIndex < currentPlayer.field.length; cardIndex++){
+            console.log("It is this");
             //If the card is null, skip it
             if(currentPlayer.field[cardIndex] === null){
                 continue;

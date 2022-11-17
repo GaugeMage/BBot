@@ -429,9 +429,9 @@ client.on('message', async (message) => {
                 deck: {
                     name: "Temp",
                     cards: [
-                        "Buddy McLean",
+                        "Repugnans Fabula",
                         "Catastrophe",
-                        "Ultor",
+                        "Repugnans Fabula",
                         "Buddy McLean",
                         "Buddy McLean",
                         "Buddy McLean",
@@ -471,10 +471,11 @@ client.on('message', async (message) => {
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-            // await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Buddy McLean", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player1, player2);
             await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player1);
-            await require('./dnd/playerCommands/attack.js').run(client, turnLog, "attack 1", player1, player2);
+            await require('./dnd/playerCommands/attack.js').run(client, turnLog, "attack 4", player1, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){

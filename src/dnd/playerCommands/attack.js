@@ -5,7 +5,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
 
     //Check if the cardIndex is an integer
     if(!Number.isInteger(parseInt(cardIndex))){
-        client.users.cache.get(player.id).send("You must enter a number!");
+        await client.users.cache.get(player.id).send("You must enter a number!");
         return;
     }
 
@@ -13,19 +13,19 @@ exports.run = async(client, turnLog, args, player, player2) => {
 
     //Check if the card exists in the player's field
     if(player.field[cardIndex] === null){
-        client.users.cache.get(player.id).send("That card is not in your field!");
+        await client.users.cache.get(player.id).send("That card is not in your field!");
         return;
     }
 
     //Check if the card is a location card
     if(player.field[cardIndex].type === "Location"){
-        client.users.cache.get(player.id).send("You can't attack with a location card!");
+        await client.users.cache.get(player.id).send("You can't attack with a location card!");
         return;
     }
 
     //Check if the card has already attacked this turn
     if(player.field[cardIndex].hasAttacked){
-        client.users.cache.get(player.id).send("That card has already attacked this turn!");
+        await client.users.cache.get(player.id).send("That card has already attacked this turn!");
         return;
     }
 
@@ -33,8 +33,18 @@ exports.run = async(client, turnLog, args, player, player2) => {
 
     let cardIndex2 = cardIndex;
 
+    //Check if there is no card blocking
+    if(player2.field[cardIndex2] === null){
+        await client.users.cache.get(player.id).send("Since there is no card blocking, you will deal damage to the world!");
+        turnLog.text += "\n" + player.field[cardIndex2].name + " attacked the enemy world!";
+        damageWorld.run(client, turnLog, player2, player.field[cardIndex].attack);
+        player.field[cardIndex].hasAttacked = true;
+        return;
+    }
+
     if(player2.field[cardIndex2].type === "Location"){
-        client.users.cache.get(player.id).send("Since the opposing card is a location " + player.field[cardIndex2].name + " will attack the enemy world!");
+        await client.users.cache.get(player.id).send("Since the opposing card is a location " + player.field[cardIndex2].name + " will attack the enemy world!");
+        turnLog.text += "\n" + player.field[cardIndex2].name + " attacked the enemy world!";
         await damageWorld.run(client, turnLog, player2, player.field[cardIndex2].attack);
         return;
     }

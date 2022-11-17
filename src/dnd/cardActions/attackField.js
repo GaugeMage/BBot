@@ -5,6 +5,10 @@ exports.run = async(client, turnLog, player, player2, cardIndex1, cardIndex2) =>
         let damageAmount2 = player2.field[cardIndex2].attack;
         player.field[cardIndex1].health -= damageAmount2;
         player2.field[cardIndex2].health -= damageAmount1;
+
+        await client.users.cache.get(player.id).send(player.field[cardIndex1].name + " has attacked!");
+        turnLog.text += "\n" + player.field[cardIndex1].name + " has attacked!";
+
         //If the card is a stand user, deal damage to the stand (if it exists)
         breakCheck: if(player2.field[cardIndex].type == "Stand User"){
             if(player2.field[cardIndex + 1].type == "Stand"){
