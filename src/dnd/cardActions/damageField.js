@@ -1,6 +1,6 @@
 exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) => {
     //If cardIndex is null, damage a random card
-    do {
+    while(cardIndex === null){
         //Find how many cards are in the field
         let fieldLength = player2.field.findIndex(card => card === null);
         if(cardIndex === null){
@@ -24,12 +24,18 @@ exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) =
         if(player2.field[cardIndex].type === "Location"){
             cardIndex = null;
         }
-    } while(cardIndex === null);
+    }
 
     //Check if the card is a location card
     if(player2.field[cardIndex].type === "Location"){
         await client.users.cache.get(player.id).send("You can't damage a location card!");
         return;
+    }
+
+    //Check if the card has the Archer's Paradox
+    if(player2.field[cardIndex].name.includes("(P-A)")){
+        //If the card has the paradox, double the damage
+        damageAmount *= 2;
     }
 
     //Deal damage to the card

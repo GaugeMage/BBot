@@ -2,7 +2,10 @@ require('dotenv').config();
 
 const {Client} = require('discord.js');
 const {Player, Track} = require('discord-player');
-const Discord = require('discord.js');
+
+const chessState = require('./chess/chessBoard.js').chessState;
+const loadImages = require('./chess/image.js').loadImages;
+const commands = require('./chess/commands.js');
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
@@ -14,9 +17,8 @@ let board = [];
 let ticTacToeStarted = false;
 let isX = false;
 let killCommand;
-let dndGameStarted = false;
-let dndPlayer1 = null;
-let dndPlayer2 = null;
+
+
 
 const checkArgs = require('./helpers/checkArgs.js');
 
@@ -369,8 +371,6 @@ client.on('message', async (message) => {
             player.nowPlaying(message);
         } else if(CMD_NAME === 'remove'){
             player.remove(message, parseInt(args));
-        } else if(CMD_NAME === 'move'){
-            player.move(message, parseInt(args[0]), parseInt(args[1]));
         } else if(CMD_NAME === 'roll'){
             require('./roller/roll.js').run(message, args);
         } else if(CMD_NAME === 'hRoll' || CMD_NAME === 'hroll'){
@@ -474,8 +474,7 @@ client.on('message', async (message) => {
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player1, player2);
-            await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player1);
-            await require('./dnd/playerCommands/attack.js').run(client, turnLog, "attack 4", player1, player2);
+            await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
@@ -483,6 +482,10 @@ client.on('message', async (message) => {
             setTimeout(function(){
                 killCommand = setInterval(funcKill, 1000);
             }, 24000);
+        } else if(CMD_NAME === 'new' || CMD_NAME === 'New'){
+            chessState.newBoard();
+            chessState.sendBoardImage(message, 'New Game');
+            chessState.saveBoard();
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by **<ERROR_404: USER_NOT_FOUND>** in a future patch? There will be infinite patches after all.');
         }

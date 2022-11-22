@@ -23,6 +23,12 @@ exports.run = async(client, turnLog, args, player, player2) => {
         return;
     }
 
+    //Check if card has barber's paradox
+    if(player.field[cardIndex].name.includes("(P-B)")){
+        await client.users.cache.get(player.id).send("You can't attack with a card that has Barber's Paradox!");
+        return;
+    }
+
     //Check if the card has already attacked this turn
     if(player.field[cardIndex].hasAttacked){
         await client.users.cache.get(player.id).send("That card has already attacked this turn!");

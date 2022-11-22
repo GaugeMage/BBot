@@ -89,6 +89,23 @@ exports.run = async(client, turnLog, args, player, player2) => {
             break;
 
         case "Repugnans Fabula":
+            if(player2.field[0] === null){
+                await client.users.cache.get(player.id).send("There are no cards in your opponent's field for you to silence!");
+            } else {
+                let cardIndex = await chooseEnemyTarget.run(client, player, player2);
+                await paradox.run(client, turnLog, player, player2, cardIndex);
+
+                if(player2.field[1] === null){
+                    await client.users.cache.get(player.id).send("There is not a second card to paradoxify!");
+                } else {
+                    let cardIndex2 = await chooseEnemyTarget.run(client, player, player2);;
+                    while(cardIndex2 === cardIndex){
+                        await client.users.cache.get(player.id).send("You cannot paradoxify the same card twice!");
+                        cardIndex2 = await chooseEnemyTarget.run(client, player, player2);
+                    }
+                    await paradox.run(client, turnLog, player, player2, cardIndex2);
+                }
+            }
             break;
     }
 }

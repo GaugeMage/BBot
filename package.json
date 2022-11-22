@@ -15,6 +15,7 @@
     "discord-player": "^3.0.2",
     "discord.js": "^12.2.1",
     "dotenv": "^16.0.1",
-    "ffmpeg-static": "^5.1.0"
+    "ffmpeg-static": "^5.1.0",
+    "canvas": "^2.6.1"
   }
 }
