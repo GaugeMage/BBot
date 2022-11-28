@@ -18,8 +18,6 @@ let ticTacToeStarted = false;
 let isX = false;
 let killCommand;
 
-
-
 const checkArgs = require('./helpers/checkArgs.js');
 
 client.on('ready', () => {
@@ -234,6 +232,10 @@ client.on('message', async (message) => {
             message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
         } else if(CMD_NAME === 'rook' || CMD_NAME === 'Rook'){
             message.channel.send('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
+        } else if(CMD_NAME === 'faith' || CMD_NAME === 'Faith' || CMD_NAME === 'Chaos' || CMD_NAME === 'chaos'){
+            message.channel.send("The liars....... one did it for the benefit of all and one did it for the benefit of **their** world");
+        } else if(CMD_NAME === '0'){
+            message.channel.send("Ahhh so you understand how this is a perfected game, in which you can make it how you never lose. You are quite a smart cookie! 0... the amount of times that... they were able to win... and also the name of their leader. As he used to say... you should never go into a battle if you don't have at least 1 way of winning. Regardless, you are proceeding nicely...");
         } else if(CMD_NAME === 'muhammed' || CMD_NAME === 'Muhammed'){
             message.channel.send("Oh? The son of ||Redacted||? I am usually not into the younger type of guy but Muhammed is... a little more built than the average boy. Despite his father's achievements, he does ***not*** look at him with a high regard. Muhammed seeks to pave a story for the Hassan family.");
         } else if(CMD_NAME === 'yui' || CMD_NAME === 'Yui' || CMD_NAME === 'Shogun' || CMD_NAME === 'shogun'){
@@ -251,7 +253,7 @@ client.on('message', async (message) => {
             }
             //Send the member a dm using the arg
             member.send(temp);
-            console.log(`Sent ${member.user.username} a DM with the message: ${temp}`);c
+            console.log(`Sent ${member.user.username} a DM with the message: ${temp}`);
         } else if(CMD_NAME === 'mute'){
             checkPermission();
             const member = getMember();
@@ -472,9 +474,8 @@ client.on('message', async (message) => {
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player1, player2);
-            await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player2);
+            await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player2, player1);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){

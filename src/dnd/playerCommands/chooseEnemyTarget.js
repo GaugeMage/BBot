@@ -6,6 +6,9 @@ exports.run = async(client, player, player2) => {
         cardIndex = cardIndex.first().content;
         if(isNaN(cardIndex) || cardIndex < 1 || player2.field[cardIndex - 1] === null){
             client.users.cache.get(player.id).send("Invalid input! The card will not be targeted.");
+        } else if(player2.field[cardIndex - 1].type === "Location"){
+            client.users.cache.get(player.id).send("You cannot target a location card! The card will not be targeted.");
+            cardIndex = NaN;
         } else {
             return cardIndex - 1;
         }

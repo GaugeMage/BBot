@@ -3,6 +3,8 @@ exports.run = async(client, turnLog, player, player2) => {
     const allyDamage = require('../cardActions/allyDamage.js');
     const paradox = require('../cardActions/paradox.js');
 
+    turnLog.text += "\nRound End Effects:\n";
+
     for(let i = 0; i < player.field.length; i++){
         if(player.field[i] !== null){
             player.field[i].hasAttacked = false;
@@ -30,8 +32,17 @@ exports.run = async(client, turnLog, player, player2) => {
                 player.field[i].name = player.field[i].name.split(" (P-B)")[0];
             }
         }
+        
         //Check if paradox is in player 2's field
-        let paradoxIndex = player2.field.findIndex(card => card.name.includes("Paradox"));
+        let paradoxIndex = -1;
+        for(let j = 0; j < player2.field.length; j++){
+            if(player2.field[j] !== null){
+                if(player2.field[j].name.includes("Paradox")){
+                    paradoxIndex = j;
+                }
+            }
+        }
+
         if(paradoxIndex !== -1){
             //Check if the current card is paradoxified
             if(player.field[i] !== null && player.field[i].name.includes("(P)")){

@@ -44,7 +44,7 @@
     {
         "name": "Catastrophe",
         "color": "#FFFF00",
-        "description": "Whenever an enemy attacks or targets an ally card, it has a 50% chance of targeting a random enemy instead. If there are no enemies, it targets itself.",
+        "description": "Whenever an enemy attacks or targets an ally card, it has a 50% chance of targeting a random enemy instead (Including itself).",
         "image": "https://s3.amazonaws.com/files.d20.io/images/280737666/jRjzfAEY9GpaTmW8QJc3lw/med.png?1650057691",
         "attack": 1,
         "health": 1,
@@ -132,7 +132,7 @@
     {
         "name": "Robert E. O. Speedwagon",
         "color": "#DC143C",
-        "description": "Stand Summon: **Die Young**. When I am played, if your world is 50% HP or above, equip me with Wild Child. If I am below 50% give me Kesha.",
+        "description": "Stand Summon: **Die Young**. When I am played, if your world is 50% HP or above, equip me with Wild Child. If the world is below 50% give me Kesha.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/288737978/Qfwl9Vrm1Lrf4T5_YR0RLw/med.png?1654592161",
         "attack": 5,
         "health": 5,
@@ -837,17 +837,17 @@
         "image": "https://cdn.discordapp.com/attachments/954939890745901065/1011298254555721829/unknown.png",
         "attack": 1,
         "health": 1,
-        "cost": 8,
+        "cost": 12,
         "type": "Stand User",
         "footer": "I will not let you take my father away from me!",
         "faction": "None",
         "stand": {
             "name": "Edge of Dawn",
             "description": "No allies can die or take damage while I am in play.",
-            "image": "https://cdn.discordapp.com/attachments/988186263825829898/1011017604200140850/unknown.png",
+            "image": "https://s3.amazonaws.com/files.d20.io/images/295002360/VtolSnOX9CkhYFWs9ESxuQ/med.png?1658082526",
             "attack": 0,
             "health": 1,
-            "cost": 8,
+            "cost": 12,
             "type": "Stand"
         }
     },
@@ -1149,7 +1149,7 @@
         "name": "Dr. Rose",
         "color": "#FFFFFF",
         "description": "Heal the allied world by 2 for every ally character you have on the field.",
-        "image": "https://cdn.discordapp.com/attachments/1036438669680197632/1036445061346512916/token_1_-_2022-10-30T210202.407.png",
+        "image": "https://s3.amazonaws.com/files.d20.io/images/314137817/Y_sM7RWWJm9VpqSaa0aUWA/med.png?1668369772",
         "attack": 2,
         "health": 2,
         "cost": 3,

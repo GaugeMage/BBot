@@ -247,7 +247,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
                 await client.users.cache.get(playerChosen.id).send("That is not a valid command! Please try one of the following: summon, cast, location, equip, endturn, or surrender");
             }
         }
-        await roundEnd.run(client, turnLog, playerChosen);
+        await roundEnd.run(client, turnLog, playerChosen, playerUnchosen);
         if(isPlayer1Turn){
             player1 = playerChosen;
         } else {
