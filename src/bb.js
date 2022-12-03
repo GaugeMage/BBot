@@ -2,10 +2,16 @@ require('dotenv').config();
 
 const {Client} = require('discord.js');
 const {Player, Track} = require('discord-player');
+const Chess = require('chess.js').Chess;
+const Engine = require('node-uci').Engine;
 
-const chessState = require('./chess/chessBoard.js').chessState;
-const loadImages = require('./chess/image.js').loadImages;
-const commands = require('./chess/commands.js');
+const stockfish = new Engine(__dirname + '/chess/stockfish_15_x64_avx2.exe');
+stockfish.init();
+stockfish.setoption('MultiPV', 2);
+let chesses = {};
+let chessmsg = {};
+let thinking = {};
+
 
 const client = new Client();
 const PREFIX = process.env.PREFIX;
@@ -22,10 +28,13 @@ const checkArgs = require('./helpers/checkArgs.js');
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    client.user.setActivity("your mom", {
-        type: "STREAMING",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      });
+    // client.user.setActivity("your mom", {
+    //     type: "STREAMING",
+    //     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    //   });
+    client.user.setActivity("you... hehe", {
+        type: "WATCHING"
+    });
     // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11 uploaded by <Chaos_User>LSH</Chaos_User>! Another step forward on our ***path to a static timeline!***');
     // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
@@ -43,9 +52,9 @@ client.on('error', error => {
 //message.reply: replies to user
 //message.channel.send: sends message to channel
 client.on('message', async (message) => {
-    //Log the person who sent the message if it is a dm
+    //Log the person who sent the message if it is a dm and put the timestamp
     if(message.channel.type === "dm"){
-        console.log(`${message.author.tag} said: ${message.content}`);
+        console.log(`${message.createdAt.toTimeString()} ${message.author.tag} said: ${message.content}`);
     }
     
     //If BB said the message
@@ -238,8 +247,13 @@ client.on('message', async (message) => {
             message.channel.send("Ahhh so you understand how this is a perfected game, in which you can make it how you never lose. You are quite a smart cookie! 0... the amount of times that... they were able to win... and also the name of their leader. As he used to say... you should never go into a battle if you don't have at least 1 way of winning. Regardless, you are proceeding nicely...");
         } else if(CMD_NAME === 'muhammed' || CMD_NAME === 'Muhammed'){
             message.channel.send("Oh? The son of ||Redacted||? I am usually not into the younger type of guy but Muhammed is... a little more built than the average boy. Despite his father's achievements, he does ***not*** look at him with a high regard. Muhammed seeks to pave a story for the Hassan family.");
+        } else if(CMD_NAME === 'lucylovesyou' || CMD_NAME === 'LucyLovesYou' || CMD_NAME === 'lucilovesyou' || CMD_NAME === 'LuciLovesYou' || CMD_NAME === 'LuciIloveYou' || CMD_NAME === 'luciiloveyou' || CMD_NAME === 'lucyiloveyou' || CMD_NAME === 'LucyILoveYou'){
+            message.channel.send("Luci loves you. He sure does... Luci! You were an unseen hero to many. Little do people know of the journey that a crow makes to protect the ones of the world. But of course... why would anybody know that. Ms. BB and Dr. Karolina are the only ones who remember you after all. Do you really need anybody else other than your closest to remember?");
+            message.channel.send("You know... it is quite funny. I did not take Luci as the type of guy who would like songs like... this... especially given his background. Despite his cold nature, maybe 平和's taste in music rubbed off on him a little.")
         } else if(CMD_NAME === 'yui' || CMD_NAME === 'Yui' || CMD_NAME === 'Shogun' || CMD_NAME === 'shogun'){
             message.channel.send("Oh the Shogun! She is quite a good friend of mine (as long as she keeps bringing me that nice Sake :ok_hand: ) She is the current leader of the Verdant Night and is very generous. I would not take this for granted though as she is very strict and sometimes... terrifying. Not even I dare to anger her.");
+        } else if(CMD_NAME === 'LifeIsSacred' || CMD_NAME === 'lifeissacred'){
+            message.channel.send("Luci Luci Luci... the guy never learns... I am surprised that he is still alive after all of the things he has done. He is a very... interesting person. He is very... *caring* for the people he loves. He is also very... *caring* for the people he hates. He is a very... *caring* person. If he was a bit brighter and struck down those ideals, he would not be suffering so much would he...");
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
         } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
@@ -373,6 +387,12 @@ client.on('message', async (message) => {
             player.nowPlaying(message);
         } else if(CMD_NAME === 'remove'){
             player.remove(message, parseInt(args));
+        } else if(CMD_NAME === 'minesweeper'){
+            await require('./minesweeper/minesweeper.js').run(message, args);
+        } else if(CMD_NAME === '32'){
+            message.channel.send("Ah... you have beaten minesweeper. I applaud your effort. You know.... Chaos himself loved minesweeper as well. The reason I chose 32 mines were because... that was the amount of mines that Chaos used when he played minesweeper.... on us. Cruelty comes in many forms... finding entertainment by placing minefields on others is one form of that. Watching families blown to bits with a wrong step.... mothers, daughters, sons, fathers, husbands, and.... wives...");
+        } else if(CMD_NAME === 'Humanitad' || CMD_NAME === 'humanitad'){
+            message.channel.send("The Humanitad. An interesting poem written by Mr. Wilde himself. I will admit, I am not fully versed in poetry of the english variety. I have read some of it, but I am not very good at it. Chaos on the other hand loved this poem and in a sense, it foreshadowed his events.\n*He is not dead, the immemorial Fates*\n*Forbid it, and the closing shears refrain.*\n He was misunderstood and due to that we were the ones to suffer. Poor us... All I ask is that these avatars can use their powers for good rather than for their own entertainment... One of them seems to already be on that path... The other, seems to not change.... please feline...");
         } else if(CMD_NAME === 'roll'){
             require('./roller/roll.js').run(message, args);
         } else if(CMD_NAME === 'hRoll' || CMD_NAME === 'hroll'){
@@ -402,6 +422,14 @@ client.on('message', async (message) => {
             require('./dnd/cardSearches/equipmentCard.js').run(message, args);
         } else if(CMD_NAME === 'spellCard' || CMD_NAME === 'sCard'){
             require('./dnd/cardSearches/spellCard.js').run(message, args);
+        } else if(CMD_NAME === 'characterCardList' || CMD_NAME === 'cCardList'){
+            await require('./dnd/cardSearches/characterCardList.js').run(message);
+        } else if(CMD_NAME === 'locationCardList' || CMD_NAME === 'lCardList'){
+            await require('./dnd/cardSearches/locationCardList.js').run(message);
+        } else if(CMD_NAME === 'equipmentCardList' || CMD_NAME === 'eCardList'){
+            await require('./dnd/cardSearches/equipmentCardList.js').run(message);
+        } else if(CMD_NAME === 'spellCardList' || CMD_NAME === 'sCardList'){
+            await require('./dnd/cardSearches/spellCardList.js').run(message);
         } else if(CMD_NAME === 'addCard'){
             require('./dnd/deckCommands/addCardToDeck.js').run(message, args);
         } else if(CMD_NAME === 'removeCard' || CMD_NAME === 'deleteCard'){
@@ -483,10 +511,57 @@ client.on('message', async (message) => {
             setTimeout(function(){
                 killCommand = setInterval(funcKill, 1000);
             }, 24000);
-        } else if(CMD_NAME === 'new' || CMD_NAME === 'New'){
-            chessState.newBoard();
-            chessState.sendBoardImage(message, 'New Game');
-            chessState.saveBoard();
+        } else if(CMD_NAME === 'new'){
+            const id = message.author.id;
+            if(chesses[id] === undefined){
+                chesses[id] = new Chess();
+                console.log('Chess game: ', message.author.username);
+                message.channel.send('New game started!');
+                message.channel.send('http://www.fen-to-image.com/image/20/single/coords/' + chesses[id].fen().split(' ')[0]);
+            };
+        } else if(CMD_NAME === 'move'){
+            const endGame = require('./chess/endGame.js');
+            function get_fen_img(id){
+                return 'http://www.fen-to-image.com/image/20/single/coords/' + chesses[id].fen().split(' ')[0];
+            }
+            const id = message.author.id;
+            if(chesses[id] === undefined){
+                message.channel.send('You need to start a game first!');
+                return;
+            }
+            let move = args[0];
+            let valid = chesses[id].move(move);
+            if(valid){
+                message.channel.send("Valid move");
+            } else if(!valid || chesses[id].move(move, {sloppy: true}) === null) {
+                message.reply('Illegal move! Valid moves are: ' + chesses[id].moves().join(', ') + '\n' + get_fen_img(id));
+                return;
+            }
+
+            stockfish.chain()
+                .position(chesses[id].fen())
+                .go({depth: 5})
+                .then(function(result){
+                    let match = result.bestmove.match(/^([a-h][1-8])([a-h][1-8])([qrbn])?/);
+                    if(match){
+                        var m = chesses[id].move({from: match[1], to: match[2], promotion: match[3]});
+                        message.channel.send('\n' + get_fen_img(id));
+                        if(chesses[id].isGameOver()) {
+                            endGame.run(id, false, chesses, message);
+                        }
+                    }
+                })
+            if(chesses[id].isGameOver()) {
+                endGame.run(id, false, chesses, message);
+            }
+        } else if(CMD_NAME === 'resign' || CMD_NAME === 'Resign'){
+            const endGame = require('./chess/endGame.js');
+            const id = message.author.id;
+            if(chesses[id] === undefined){
+                message.channel.send('You can\'t resign a game that never started silly!');
+                return;
+            }
+            endGame.run(id, true, chesses, message);
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by **<ERROR_404: USER_NOT_FOUND>** in a future patch? There will be infinite patches after all.');
         }

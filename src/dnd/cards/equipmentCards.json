@@ -55,7 +55,7 @@
     {
         "name": "Eye of Infinity",
         "color": "#E6E6FA",
-        "description": "Whenever you cast a spell, you can cast it multiple times (Each cast will still cost gold).",
+        "description": "Whenever you cast a spell, it will cast 2 additional times.",
         "image": "https://static.wikia.nocookie.net/narutofanon/images/f/fe/Fai_s_Staff_by_Amierith.png/revision/latest?cb=20140311222206",
         "attack": 0,
         "health": 1,
