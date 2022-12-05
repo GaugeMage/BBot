@@ -9,8 +9,6 @@ const stockfish = new Engine(__dirname + '/chess/stockfish_15_x64_avx2.exe');
 stockfish.init();
 stockfish.setoption('MultiPV', 2);
 let chesses = {};
-let chessmsg = {};
-let thinking = {};
 
 
 const client = new Client();
@@ -28,13 +26,13 @@ const checkArgs = require('./helpers/checkArgs.js');
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
-    // client.user.setActivity("your mom", {
-    //     type: "STREAMING",
-    //     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    //   });
-    client.user.setActivity("you... hehe", {
-        type: "WATCHING"
-    });
+    client.user.setActivity("your mom", {
+        type: "STREAMING",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      });
+    // client.user.setActivity("you... hehe", {
+    //     type: "WATCHING"
+    // });
     // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11 uploaded by <Chaos_User>LSH</Chaos_User>! Another step forward on our ***path to a static timeline!***');
     // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
@@ -128,6 +126,7 @@ client.on('message', async (message) => {
                 console.log(err);
                 message.channel.send('An error occurred. Either I do no have permissions or the user was not found.');
             }
+            message
         } else if(CMD_NAME ==='accuse'){
             const member = getMember();
             message.channel.send(`${member}${ACCUSATIONS[Math.floor(Math.random() * ACCUSATIONS.length)]}`);
@@ -254,6 +253,8 @@ client.on('message', async (message) => {
             message.channel.send("Oh the Shogun! She is quite a good friend of mine (as long as she keeps bringing me that nice Sake :ok_hand: ) She is the current leader of the Verdant Night and is very generous. I would not take this for granted though as she is very strict and sometimes... terrifying. Not even I dare to anger her.");
         } else if(CMD_NAME === 'LifeIsSacred' || CMD_NAME === 'lifeissacred'){
             message.channel.send("Luci Luci Luci... the guy never learns... I am surprised that he is still alive after all of the things he has done. He is a very... interesting person. He is very... *caring* for the people he loves. He is also very... *caring* for the people he hates. He is a very... *caring* person. If he was a bit brighter and struck down those ideals, he would not be suffering so much would he...");
+        } else if(CMD_NAME === 'CosmicLoveForMoreMyLovelies' || CMD_NAME === 'cosmicloveformoremylovelies' || CMD_NAME === 'Cosmicloveformoremylovelies'){
+            message.channel.send("Oh oh oh. You can follow directions can you. How cute. Cosmic Love, the name of the sword that Mr. Cosmos made and used during the war. Unfortunately it was snatched away (how very sad) at the end as a consequence of his actions. A sword which contained the memories of many worlds now lost to time and space.");
         } else if(CMD_NAME === '8'){
             message.reply('A beautiful number right? :8ball:');
         } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
@@ -511,7 +512,7 @@ client.on('message', async (message) => {
             setTimeout(function(){
                 killCommand = setInterval(funcKill, 1000);
             }, 24000);
-        } else if(CMD_NAME === 'new'){
+        } else if(CMD_NAME === 'chess'){
             const id = message.author.id;
             if(chesses[id] === undefined){
                 chesses[id] = new Chess();
@@ -531,7 +532,7 @@ client.on('message', async (message) => {
             }
             let move = args[0];
             let valid = chesses[id].move(move);
-            if(valid){
+            if(valid){  
                 message.channel.send("Valid move");
             } else if(!valid || chesses[id].move(move, {sloppy: true}) === null) {
                 message.reply('Illegal move! Valid moves are: ' + chesses[id].moves().join(', ') + '\n' + get_fen_img(id));
@@ -562,6 +563,16 @@ client.on('message', async (message) => {
                 return;
             }
             endGame.run(id, true, chesses, message);
+        } else if(CMD_NAME === 'TheWar' || CMD_NAME === 'thewar'|| CMD_NAME === 'theWar'){
+            const theWar = require('./legacy/theWar.js');
+            theWar.run(message);
+        } else if(CMD_NAME === 'battleship' || CMD_NAME === 'Battleship'){
+            const {DiscordBattleShip} = require('discord-battleship');
+            const BattleShip = new DiscordBattleShip({
+                embedColor: "BLUE",
+                prefix: PREFIX,
+            })
+            await BattleShip.createGame(message);
         } else {
             message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by **<ERROR_404: USER_NOT_FOUND>** in a future patch? There will be infinite patches after all.');
         }

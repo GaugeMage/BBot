@@ -149,5 +149,26 @@
         "image": "https://cdn.discordapp.com/attachments/703461116994650203/1041247964070420562/unknown.png",
         "cost": 3,
         "footer": "Buddy's apartment is a place where you can find a lot of things. But you can't find a lot of things in Buddy's apartment."
+    },
+    {
+        "name": "Sunset Drive: Apartment 444",
+        "description": "Round Start: Add a 0 cost Deluded 'Hellish Training' to your hand.",
+        "image": "https://wallpapercave.com/wp/wp5611970.jpg",
+        "cost": 3,
+        "footer": "Mom, please have mercy on Rep. He may have missed a couple... days... or weeks... or months... but still!",
+        "generatedCards": [
+            {
+                "name": "Hellish Training",
+                "description": "**Deluded** Deal 1 damage to an ally card to give them +2 attack.",
+                "image": "https://i.pinimg.com/736x/63/fb/1e/63fb1e94c9d841a4c1ba7c508ec7e3cd.jpg"
+            }
+        ]
+    },
+    {
+        "name": "The Pendant",
+        "description": "When I am summoned, capture an ally card to fully heal them. Round Start: Destroy me.",
+        "image": "https://cdna.artstation.com/p/assets/images/images/038/421/898/large/scene-unique-royal-bedroom-fix-1.jpg?1623066335",
+        "cost": "4",
+        "footer": "Oh... Hello there. The name is Jordy. Jordy Jones"
     }
 ]

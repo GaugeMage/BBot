@@ -26,6 +26,20 @@ exports.run = async(message, args) => {
                     message.channel.send(generatedCardString);
                 }
             }
+            if(card.generatedCharacters !== undefined){
+                for(let i = 0; i < card.generatedCharacters.length; i++){
+                    const generatedString = new Discord.MessageEmbed().
+                        setTitle(card.generatedCharacters[i].name).
+                        setImage(card.generatedCharacters[i].image).
+                        addFields(
+                            {name: 'Stats', value: 'Attack: ' + card.generatedCharacters[i].attack + '\nHealth: ' + card.generatedCharacters[i].health, inline: true},
+                            {name: 'Cost', value: card.generatedCharacters[i].cost, inline: true},
+                        ).
+                        setDescription('*' + card.generatedCharacters[i].description + '*').
+                        setColor(card.generatedCharacters[i].color);
+                    message.channel.send(generatedString);
+                }
+            }
             return;
         }
     }
