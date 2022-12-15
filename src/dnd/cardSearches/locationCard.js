@@ -19,7 +19,7 @@ exports.run = async(message, args) => {
             if(card.generatedCards !== undefined){
                 for(let i = 0; i < card.generatedCards.length; i++){
                     const generatedCardString = new Discord.MessageEmbed().
-                        setTitle(card.generatedCards[i].name).
+                        setTitle(card.generatedCards[i]?.name).
                         setImage(card.generatedCards[i].image).
                         setDescription('*' + card.generatedCards[i].description + '*').
                         setColor(card.color);
@@ -29,7 +29,7 @@ exports.run = async(message, args) => {
             if(card.generatedCharacters !== undefined){
                 for(let i = 0; i < card.generatedCharacters.length; i++){
                     const generatedString = new Discord.MessageEmbed().
-                        setTitle(card.generatedCharacters[i].name).
+                        setTitle(card.generatedCharacters[i]?.name).
                         setImage(card.generatedCharacters[i].image).
                         addFields(
                             {name: 'Stats', value: 'Attack: ' + card.generatedCharacters[i].attack + '\nHealth: ' + card.generatedCharacters[i].health, inline: true},

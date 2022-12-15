@@ -6,7 +6,7 @@ exports.run = async(message) => {
     let cardCosts = [];
     let cardStats = [];
     for(let i = 0; i < equipmentCards.length; i++){
-        cardNames.push(equipmentCards[i].name);
+        cardNames.push(equipmentCards[i]?.name);
         cardCosts.push(equipmentCards[i].cost);
         cardStats.push(equipmentCards[i].attack + '/' + equipmentCards[i].health);
     }

@@ -23,7 +23,7 @@ exports.run = async(message, args) => {
     let deck = null;
     let deckIndex = null;
     for(let i = 0; i < user.decks.length; i++){
-        if(user.decks[i].name === deckName){
+        if(user.decks[i]?.name === deckName){
             deck = user.decks[i];
             deckIndex = i;
             break;
@@ -45,14 +45,14 @@ exports.run = async(message, args) => {
 
     //Check if deck name is already taken
     for(let i = 0; i < user.decks.length; i++){
-        if(user.decks[i].name === newDeckName){
+        if(user.decks[i]?.name === newDeckName){
             message.channel.send("You already have a deck with that name!");
             return;
         }
     }
 
     //Rename deck
-    user.decks[deckIndex].name = newDeckName;
+    user.decks[deckIndex].name =newDeckName;
 
     //Save changes
     const fs = require('fs');

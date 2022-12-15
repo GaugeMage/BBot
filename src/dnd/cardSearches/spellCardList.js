@@ -5,7 +5,7 @@ exports.run = async(message) => {
     let cardNames = [];
     let cardCosts = [];
     for(let i = 0; i < spellCards.length; i++){
-        cardNames.push(spellCards[i].name);
+        cardNames.push(spellCards[i]?.name);
         cardCosts.push(spellCards[i].cost);
     }
 

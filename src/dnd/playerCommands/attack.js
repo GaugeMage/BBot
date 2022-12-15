@@ -18,13 +18,13 @@ exports.run = async(client, turnLog, args, player, player2) => {
     }
 
     //Check if the card is a location card
-    if(player.field[cardIndex].type === "Location"){
+    if(player.field[cardIndex]?.type === "Location"){
         await client.users.cache.get(player.id).send("You can't attack with a location card!");
         return;
     }
 
     //Check if card has barber's paradox
-    if(player.field[cardIndex].name.includes("(P-B)")){
+    if(player.field[cardIndex]?.name.includes("(P-B)")){
         await client.users.cache.get(player.id).send("You can't attack with a card that has Barber's Paradox!");
         return;
     }
@@ -42,15 +42,15 @@ exports.run = async(client, turnLog, args, player, player2) => {
     //Check if there is no card blocking
     if(player2.field[cardIndex2] === null){
         await client.users.cache.get(player.id).send("Since there is no card blocking, you will deal damage to the world!");
-        turnLog.text += "\n" + player.field[cardIndex2].name + " attacked the enemy world!";
+        turnLog.text += "\n" + player.field[cardIndex2]?.name + " attacked the enemy world!";
         damageWorld.run(client, turnLog, player2, player.field[cardIndex].attack);
         player.field[cardIndex].hasAttacked = true;
         return;
     }
 
-    if(player2.field[cardIndex2].type === "Location"){
-        await client.users.cache.get(player.id).send("Since the opposing card is a location " + player.field[cardIndex2].name + " will attack the enemy world!");
-        turnLog.text += "\n" + player.field[cardIndex2].name + " attacked the enemy world!";
+    if(player2.field[cardIndex2]?.type === "Location"){
+        await client.users.cache.get(player.id).send("Since the opposing card is a location " + player.field[cardIndex2]?.name + " will attack the enemy world!");
+        turnLog.text += "\n" + player.field[cardIndex2]?.name + " attacked the enemy world!";
         await damageWorld.run(client, turnLog, player2, player.field[cardIndex2].attack);
         return;
     }

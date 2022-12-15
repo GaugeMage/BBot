@@ -464,8 +464,8 @@ client.on('message', async (message) => {
                     cards: [
                         "Repugnans Fabula",
                         "Catastrophe",
-                        "Repugnans Fabula",
-                        "Buddy McLean",
+                        "Karolina Zeitmagier",
+                        "Stand Strike",
                         "Buddy McLean",
                         "Buddy McLean",
                         "Buddy McLean"
@@ -484,7 +484,7 @@ client.on('message', async (message) => {
                 deck: {
                     name: "uwu",
                     cards: [
-                        "Enrico Pucci", "Speedwagon Foundation HQ", "Ultor", "Joy Jones", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
+                        "Enrico Pucci", "Speedwagon Foundation HQ", "Catastrophe", "Joy Jones", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
                     ],
                     isValid: true
                 },
@@ -498,13 +498,16 @@ client.on('message', async (message) => {
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Karolina Zeitmagier", player1, player2);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player2, player1);
+            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Stand Strike", player1, player2);
             await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player2, player1);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             message.channel.send("Turn Log:\n" + turnLog.text);

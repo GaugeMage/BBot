@@ -26,7 +26,7 @@ exports.run = async(message, args) => {
     let deck = null;
     let deckIndex = null;
     for(let i = 0; i < user.decks.length; i++){
-        if(user.decks[i].name === deckName){
+        if(user.decks[i]?.name === deckName){
             deck = user.decks[i];
             deckIndex = i;
             break;

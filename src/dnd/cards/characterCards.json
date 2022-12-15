@@ -44,7 +44,7 @@
     {
         "name": "Catastrophe",
         "color": "#FFFF00",
-        "description": "Whenever an ally is targeted by the opponent, it has a 50% chance of targeting a random enemy instead (Including itself).",
+        "description": "Whenever an ally is about to be damaged, it has a 50% chance of damaging a random enemy instead (Including itself).",
         "image": "https://s3.amazonaws.com/files.d20.io/images/280737666/jRjzfAEY9GpaTmW8QJc3lw/med.png?1650057691",
         "attack": 1,
         "health": 1,

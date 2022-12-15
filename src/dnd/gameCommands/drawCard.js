@@ -18,7 +18,7 @@ exports.run = async(client, turnLog, player) => {
 
     let card = null;
     for(let i = 0; i < characterCards.length; i++){
-        if(characterCards[i].name === cardDrawn){
+        if(characterCards[i]?.name === cardDrawn){
             card = Object.assign({}, characterCards[i]);
             break;
         }
@@ -26,7 +26,7 @@ exports.run = async(client, turnLog, player) => {
 
     if(card === null){
         for(let i = 0; i < locationCards.length; i++){
-            if(locationCards[i].name === cardDrawn){
+            if(locationCards[i]?.name === cardDrawn){
                 card = Object.assign({}, locationCards[i]);
                 card['type'] = "Location";
                 card['attack'] = 0;
@@ -38,7 +38,7 @@ exports.run = async(client, turnLog, player) => {
 
     if(card === null){
         for(let i = 0; i < equipmentCards.length; i++){
-            if(equipmentCards[i].name === cardDrawn){
+            if(equipmentCards[i]?.name === cardDrawn){
                 card = Object.assign({}, equipmentCards[i]);
                 break;
             }
@@ -47,7 +47,7 @@ exports.run = async(client, turnLog, player) => {
 
     if(card === null){
         for(let i = 0; i < spellCards.length; i++){
-            if(spellCards[i].name === cardDrawn){
+            if(spellCards[i]?.name === cardDrawn){
                 card = Object.assign({}, spellCards[i]);
                 break;
             }

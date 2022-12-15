@@ -5,7 +5,7 @@ exports.run = async(message) => {
     let cardNames = [];
     let cardCosts = [];
     for(let i = 0; i < locationCards.length; i++){
-        cardNames.push(locationCards[i].name);
+        cardNames.push(locationCards[i]?.name);
         cardCosts.push(locationCards[i].cost);
     }
 

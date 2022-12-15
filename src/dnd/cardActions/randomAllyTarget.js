@@ -14,13 +14,15 @@ exports.run = async(client, player) => {
         }
 
         //Check if there is only one card and that card is a location card
-        if(fieldLength === 1 && player.field[0].type === "Location"){
+        if(fieldLength === 1 && player.field[0]?.type === "Location"){
             await client.users.cache.get(player.id).send("Cannot damage a location card!");
             return;
         }
         
-        if(player.field[cardIndex].type === "Location"){
+        if(player.field[cardIndex]?.type === "Location"){
             cardIndex = null;
         }
     }
+
+    return cardIndex;
 }

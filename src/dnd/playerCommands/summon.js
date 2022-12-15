@@ -6,7 +6,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     cardName = cardName.join(" ");
 
     //Check if the card exists in the player's hand
-    let cardIndex = player.hand.findIndex(card => card.name === cardName);
+    let cardIndex = player.hand.findIndex(card => card?.name === cardName);
 
     if(cardIndex === -1){
         client.users.cache.get(player.id).send("That card is not in your hand!");
@@ -17,7 +17,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     let isCharacterCard = false;
     let card = null;
     for(let i = 0; i < characterCards.length; i++){
-        if(characterCards[i].name === cardName){
+        if(characterCards[i]?.name === cardName){
             card = player.hand[cardIndex];
             isCharacterCard = true;
         }

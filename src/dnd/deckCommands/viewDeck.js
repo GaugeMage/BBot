@@ -23,7 +23,7 @@ exports.run = async(message, args) => {
     //Check if deck exists
     let deck = null;
     for(let i = 0; i < user.decks.length; i++){
-        if(user.decks[i].name === deckName){
+        if(user.decks[i]?.name === deckName){
             deck = user.decks[i];
             break;
         }

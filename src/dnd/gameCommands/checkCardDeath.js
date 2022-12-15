@@ -7,27 +7,26 @@ exports.run = async(client, turnLog, player, player2) => {
         }
         //Iterate through player 2 field
         for(let cardIndex = 0; cardIndex < currentPlayer.field.length; cardIndex++){
-            console.log("It is this");
             //If the card is null, skip it
             if(currentPlayer.field[cardIndex] === null){
                 continue;
             }
 
             //If card is a location card, skip it
-            if(currentPlayer.field[cardIndex].type === "Location"){
+            if(currentPlayer.field[cardIndex]?.type === "Location"){
                 continue;
             }
 
             //If the card's health is 0 or less, kill it
             if(currentPlayer.field[cardIndex].health <= 0){
-                await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex].name + " has died!");
-                turnLog.text += "\n" + currentPlayer.field[cardIndex].name + " has died!";
+                await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex]?.name + " has died!");
+                turnLog.text += "\n" + currentPlayer.field[cardIndex]?.name + " has died!";
 
                 //If the card is a stand user, kill the stand (if it exists)
                 breakCheck: if(currentPlayer.field[cardIndex].type == "Stand User"){
                     if(currentPlayer.field[cardIndex + 1].type == "Stand"){
-                        await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex + 1].name + " has died!");
-                        turnLog.text += "\nDue to Stand User and Stand HP linkage: " + currentPlayer.field[cardIndex + 1].name + " has died!";
+                        await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex + 1]?.name + " has died!");
+                        turnLog.text += "\nDue to Stand User and Stand HP linkage: " + currentPlayer.field[cardIndex + 1]?.name + " has died!";
                         currentPlayer.field[cardIndex + 1] = null;
                         break breakCheck;
                     }
@@ -39,8 +38,8 @@ exports.run = async(client, turnLog, player, player2) => {
                         break breakCheck;
                     }
                     if(currentPlayer.field[cardIndex - 1].type == "Stand User"){
-                        await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex - 1].name + " has died!");
-                        turnLog.text += "\nDue to Stand User and Stand HP linkage: "  + currentPlayer.field[cardIndex - 1].name + " has died!";
+                        await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex - 1]?.name + " has died!");
+                        turnLog.text += "\nDue to Stand User and Stand HP linkage: "  + currentPlayer.field[cardIndex - 1]?.name + " has died!";
                         currentPlayer.field[cardIndex - 1] = null;
                         break breakCheck;
                     }

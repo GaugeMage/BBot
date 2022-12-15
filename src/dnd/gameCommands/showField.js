@@ -23,7 +23,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player1.subField[i].name + "**";
+            tempString = "| " + (i + 1) + ". **" + player1.subField[i]?.name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
@@ -49,7 +49,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player1.field[i].name + "**";
+            tempString = "| " + (i + 1) + ". **" + player1.field[i]?.name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
@@ -175,7 +175,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player2.field[i].name + "**";
+            tempString = "| " + (i + 1) + ". **" + player2.field[i]?.name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }
@@ -202,7 +202,7 @@ exports.run = async(message, player1, player2) => {
         }
 
         if(!isEmpty){
-            tempString = "| " + (i + 1) + ". **" + player2.subField[i].name + "**";
+            tempString = "| " + (i + 1) + ". **" + player2.subField[i]?.name + "**";
         } else {
             tempString = "| " + (i + 1) + ". ";
         }

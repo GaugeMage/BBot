@@ -6,7 +6,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     cardName = cardName.join(" ");
 
     //Check if the card exists in the player's hand
-    let cardIndex = player.hand.findIndex(card => card.name === cardName);
+    let cardIndex = player.hand.findIndex(card => card?.name === cardName);
 
     if(cardIndex === -1){
         client.users.cache.get(player.id).send("That card is not in your hand!");
@@ -17,7 +17,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     let isEquipmentCard = false;
     let card = null;
     for(let i = 0; i < equipmentCards.length; i++){
-        if(equipmentCards[i].name === cardName){
+        if(equipmentCards[i]?.name === cardName){
             card = player.hand[cardIndex];
             isEquipmentCard = true;
         }
@@ -61,10 +61,10 @@ exports.run = async(client, turnLog, args, player, player2) => {
         charIndex = await chooseAllyTarget.run(client, player);
 
         //Check if the card is a location card
-        if(player.field[charIndex].type === "Location"){
+        if(player.field[charIndex]?.type === "Location"){
             client.users.cache.get(player.id).send("You cannot equip a location card!");
         }
-    } while(player.field[charIndex].type === "Location");
+    } while(player.field[charIndex]?.type === "Location");
 
     //equip card to character card
     player.subField[charIndex] = card;
@@ -75,8 +75,8 @@ exports.run = async(client, turnLog, args, player, player2) => {
     //Remove gold from player
     player.gold -= card.cost;
 
-    client.users.cache.get(player.id).send("You have equipped " + card.name + " to " + player.field[charIndex].name + "!");
-    turnLog.text += "\n" + player.name + " has equipped " + card.name + " to " + player.field[charIndex].name + "!";
+    client.users.cache.get(player.id).send("You have equipped " + card.name + " to " + player.field[charIndex]?.name + "!");
+    turnLog.text += "\n" + player.name + " has equipped " + card.name + " to " + player.field[charIndex]?.name + "!";
 
     //Special effects for cards
     switch(card.name){
@@ -85,7 +85,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
             let stand = player.standsSummoned[Math.floor(Math.random() * player.standsSummoned.length)];
 
             //Change the name of the card to Ultor (Stand Name)
-            player.subField[charIndex].name = "Ultor (" + stand.name + ")";
+            player.subField[charIndex].name ="Ultor (" + stand.name + ")";
             break;
     }
 }

@@ -4,7 +4,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     cardName = cardName.join(" ");
 
     //Check if the card exists in the player's hand
-    let cardIndex = player.hand.findIndex(card => card.name === cardName);
+    let cardIndex = player.hand.findIndex(card => card?.name === cardName);
 
     if(cardIndex === -1){
         client.users.cache.get(player.id).send("That card is not in your hand!");
@@ -15,7 +15,7 @@ exports.run = async(client, turnLog, args, player, player2) => {
     let isSpellCard = false;
     let card = null;
     for(let i = 0; i < spellCards.length; i++){
-        if(spellCards[i].name === cardName){
+        if(spellCards[i]?.name === cardName){
             card = player.hand[cardIndex];
             isSpellCard = true;
         }
@@ -45,28 +45,21 @@ exports.run = async(client, turnLog, args, player, player2) => {
     const chooseAllyTarget = require('./chooseAllyTarget.js');
     const chooseEnemyTarget = require('./chooseEnemyTarget.js');
     const damageField = require('../cardActions/damageField.js');
+    const chooseAllyStand = require('./chooseAllyStand.js');
 
     switch(card.name){
         case "Stand Strike":
-            let standIndex = -1;
-            do {
-                standIndex = await chooseAllyTarget.run(client, player);
-                //Check if the player did not choose a stand
-                if(player.field[standIndex].type !== "Stand"){
-                    client.users.cache.get(player.id).send("That card is not a stand! Try again");
-                }
-            } while(player.field[standIndex].type !== "Stand");
-
+            let standIndex = await chooseAllyStand.run(client, player);
             
             let enemyIndex = null;
             do {
                 enemyIndex = await chooseEnemyTarget.run(client, player, player2);
             
                 //Check if card at enemy index is a location card
-                if(player2.field[enemyIndex].type === "Location"){
+                if(player2.field[enemyIndex]?.type === "Location"){
                     await client.users.cache.get(player.id).send("You can't damage a location card! Try again");
                 }
-            } while(player2.field[enemyIndex].type === "Location");
+            } while(player2.field[enemyIndex]?.type === "Location");
 
             //Have the stand strike the enemy
             await damageField.run(client, turnLog, player, player2, enemyIndex, player.field[standIndex].attack);

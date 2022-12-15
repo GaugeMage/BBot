@@ -57,7 +57,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
 
     //Check if player 1 picked a deck that exists
     for(let i = 0; i < player1.decks.length; i++){
-        if(player1.decks[i].name === player1Deck){
+        if(player1.decks[i]?.name === player1Deck){
             if(player1.decks[i].isValid === false){
                 client.users.cache.get(player1.id).send("That deck is not valid!  Please fill this deck with the appropriate amount of cards");
                 return [dndGameStarted, null, null, null, null];
@@ -91,7 +91,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
 
     //Check if player 2 picked a deck that exists
     for(let i = 0; i < player2.decks.length; i++){
-        if(player2.decks[i].name === player2Deck){
+        if(player2.decks[i]?.name === player2Deck){
             if(player2.decks[i].isValid == false){
                 client.users.cache.get(player2.id).send("That deck is not valid! Please fill this deck with the appropriate amount of cards");
                 return [dndGameStarted, null, null, null, null];

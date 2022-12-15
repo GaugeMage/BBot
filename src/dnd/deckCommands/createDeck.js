@@ -24,7 +24,7 @@ exports.run = (message, args) => {
     
     //Check if deck already exists
     for(let i = 0; i < user.decks.length; i++){
-        if(user.decks[i].name === deckName){
+        if(user.decks[i]?.name === deckName){
             message.channel.send("You already have a deck with that name!");
             return;
         }

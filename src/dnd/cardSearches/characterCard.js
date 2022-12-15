@@ -34,7 +34,7 @@ exports.run = async(message, args) => {
                 } else {
                     for(let i = 0; i < card.stand.mode.length; i++){
                         const standString = new Discord.MessageEmbed().
-                            setTitle(card.stand.mode[i].name).
+                            setTitle(card.stand.mode[i]?.name).
                             setImage(card.stand.mode[i].image).
                             addFields(
                                 {name: 'Stats', value: 'Attack: ' + card.stand.mode[i].attack + '\nHealth: ' + card.stand.mode[i].health, inline: true},
@@ -49,7 +49,7 @@ exports.run = async(message, args) => {
             if(card.equipment !== undefined){
                 for(let i = 0; i < card.equipment.length; i++){
                     const equipmentString = new Discord.MessageEmbed().
-                        setTitle(card.equipment[i].name).
+                        setTitle(card.equipment[i]?.name).
                         setImage(card.equipment[i].image).
                         addFields(
                             {name: 'Stats', value: 'Attack: ' + card.equipment[i].attack + '\nHealth: ' + card.equipment[i].health, inline: true},
@@ -63,7 +63,7 @@ exports.run = async(message, args) => {
             if(card.generatedCharacters !== undefined){
                 for(let i = 0; i < card.generatedCharacters.length; i++){
                     const generatedString = new Discord.MessageEmbed().
-                        setTitle(card.generatedCharacters[i].name).
+                        setTitle(card.generatedCharacters[i]?.name).
                         setImage(card.generatedCharacters[i].image).
                         addFields(
                             {name: 'Stats', value: 'Attack: ' + card.generatedCharacters[i].attack + '\nHealth: ' + card.generatedCharacters[i].health, inline: true},
@@ -77,7 +77,7 @@ exports.run = async(message, args) => {
             if(card.generatedCards !== undefined){
                 for(let i = 0; i < card.generatedCards.length; i++){
                     const generatedString = new Discord.MessageEmbed().
-                        setTitle(card.generatedCards[i].name).
+                        setTitle(card.generatedCards[i]?.name).
                         setImage(card.generatedCards[i].image).
                         setDescription('*' + card.generatedCards[i].description + '*').
                         setColor(card.generatedCards[i].color);
