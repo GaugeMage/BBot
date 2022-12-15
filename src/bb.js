@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const {Client} = require('discord.js');
+const {Client, MessageEmbed} = require('discord.js');
 const {Player, Track} = require('discord-player');
 const Chess = require('chess.js').Chess;
 const Engine = require('node-uci').Engine;
@@ -443,6 +443,8 @@ client.on('message', async (message) => {
             require('./dnd/deckCommands/viewDeck.js').run(message, args);
         } else if(CMD_NAME === 'viewCards' || CMD_NAME === 'viewCollection'){
             require('./dnd/deckCommands/viewCards.js').run(message);
+        } else if(CMD_NAME === 'renameDeck'){
+            require('./dnd/deckCommands/renameDeck.js').run(message, args);
         } else if(CMD_NAME === 'decks'){
             require('./dnd/deckCommands/viewDecks.js').run(message);
         } else if(CMD_NAME === 'temp'){
@@ -502,7 +504,6 @@ client.on('message', async (message) => {
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Repugnans Fabula", player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player1, player2);
             await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player2, player1);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
@@ -563,7 +564,7 @@ client.on('message', async (message) => {
                 return;
             }
             endGame.run(id, true, chesses, message);
-        } else if(CMD_NAME === 'TheWar' || CMD_NAME === 'thewar'|| CMD_NAME === 'theWar'){
+        } else if(CMD_NAME === 'TheWarLegacy' || CMD_NAME === 'thewarLegacy'|| CMD_NAME === 'theWarLegacy'){
             const theWar = require('./legacy/theWar.js');
             theWar.run(message);
         } else if(CMD_NAME === 'battleship' || CMD_NAME === 'Battleship'){
@@ -573,8 +574,31 @@ client.on('message', async (message) => {
                 prefix: PREFIX,
             })
             await BattleShip.createGame(message);
+        } else if(CMD_NAME === '2poll' || CMD_NAME === '2Poll'){
+            let [channel, ...moreArgs] = args;
+            const embed = new MessageEmbed()
+                .setTitle('Poll')
+                .setDescription('React to vote!')
+                .setColor('#00D1CD');
+                // .setFooter('Poll created by ' + message.author.username);
+            if(args[0]){
+                embed.addField(moreArgs.join(' '), '-----------------------');
+            } else {
+                embed.addField('Poll', '-----------------------');
+            }
+            if(channel[0] === '<' && channel[channel.length - 1] === '>'){
+                channel = channel.substring(2, channel.length -1);
+            }
+            let msgEmbed = await client.channels.cache.get(channel).send(embed);
+            await msgEmbed.react('👍');
+            await msgEmbed.react('👎');
+            // message.delete({timeout: 1000});
         } else {
-            message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by **<ERROR_404: USER_NOT_FOUND>** in a future patch? There will be infinite patches after all.');
+            if(CMD_NAME === 'attack' || CMD_NAME === 'Attack' || CMD_NAME === 'add' || CMD_NAME === 'Add'){
+                return;
+            } else {
+                message.reply('I do not know what you are talking about. :thinking: Maybe this will be implemented by **<ERROR_404: USER_NOT_FOUND>** in a future patch? There will be infinite patches after all.');
+            }
         }
     }
 });

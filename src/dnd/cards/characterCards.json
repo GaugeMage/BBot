@@ -33,7 +33,7 @@
         "faction": "5 Horsemen",
         "stand": {
             "name": "Paradox",
-            "description": "Whenever an enemy card becomes paradoxified, spread that paradox to its neighbors.",
+            "description": "Round End: All enemy card's who have the paradoxified condition spread it to its neighbors.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/300795461/Ulsbq-Rcc68SPfy-u96oKg/med.png?1661109305",
             "attack": 1,
             "health": 4,
@@ -44,7 +44,7 @@
     {
         "name": "Catastrophe",
         "color": "#FFFF00",
-        "description": "Whenever an enemy attacks or targets an ally card, it has a 50% chance of targeting a random enemy instead (Including itself).",
+        "description": "Whenever an ally is targeted by the opponent, it has a 50% chance of targeting a random enemy instead (Including itself).",
         "image": "https://s3.amazonaws.com/files.d20.io/images/280737666/jRjzfAEY9GpaTmW8QJc3lw/med.png?1650057691",
         "attack": 1,
         "health": 1,

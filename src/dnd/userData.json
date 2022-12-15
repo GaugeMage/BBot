@@ -115,5 +115,36 @@
 		],
 		"destinyFragments": 0,
 		"delusionPacks": 0
+	},
+	{
+		"id": "195343191065624577",
+		"name": "Bruinbird",
+		"decks": [
+			{
+				"name": "Hi Connor",
+				"cards": [
+					"Buddy McLean",
+					"Darnell Webber",
+					"Niko Goluskey",
+					"Volume Mourning",
+					"Stand Strike",
+					"Stand Rush",
+					"Repugnans Fabula"
+				],
+				"isValid": true
+			}
+		],
+		"wins": 0,
+		"losses": 0,
+		"draws": 0,
+		"cards": [
+			"Repugnans Fabula",
+			"Contradictory Soldier",
+			"Paradoxed Survivors",
+			"Paradox Spit",
+			"Chronohacker"
+		],
+		"destinyFragments": 0,
+		"delusionPacks": 0
 	}
 ]

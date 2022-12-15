@@ -154,6 +154,7 @@ exports.run = async(message) => {
                 setTimeout(function(){
                     message.channel.send("**Hmm... well, I guess this is it... Do you have any last questions for me?**");
                 }, 20000);
+                collector.stop();
                 return;
             }
         });

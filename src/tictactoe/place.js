@@ -57,7 +57,8 @@ exports.run = async(message, args, ticTacToeStarted, isX, board) => {
         message.channel.send('My turn!');
         //Check if someone is about to win
         const placer = isX ? ' X ' : ' O ';
-        let temp = require('./checkWin.js').run(board);
+        let temp = require('./checkWin.js').run(board, placer);
+        console.log("Check Win Result: " + temp);
         if(temp != false){
             if((temp[0] === ' X ' && isX) || (temp[0] === ' O ' && !isX)){
                 if(temp[1] === 'row'){
@@ -118,29 +119,55 @@ exports.run = async(message, args, ticTacToeStarted, isX, board) => {
                 }
             }
         } else {
-            //Check if the center is empty
-            if(board[1][1] === '     '){
-                board[1][1] = placer;
-            } else {
-                //Check if a corner is empty
+            //Check if a corner is taken by opponent
+            let isPlaced = false;
+            if((board[0][0] === ' X ' && !isX) || (board[0][0] === ' O ' && isX)){
+                if(board[2][2] === '     '){
+                    board[2][2] = placer;
+                    isPlaced = true;
+                }
+            } else if((board[0][2] === ' X ' && !isX) || (board[0][2] === ' O ' && isX)){
+                if(board[2][0] === '     '){
+                    board[2][0] = placer;
+                    isPlaced = true;
+                }
+            } else if((board[2][0] === ' X ' && !isX) || (board[2][0] === ' O ' && isX)){
+                if(board[0][2] === '     '){
+                    board[0][2] = placer;
+                    isPlaced = true;
+                }
+            } else if((board[2][2] === ' X ' && !isX) || (board[2][2] === ' O ' && isX)){
                 if(board[0][0] === '     '){
                     board[0][0] = placer;
-                } else if(board[0][2] === '     '){
-                    board[0][2] = placer;
-                } else if(board[2][0] === '     '){
-                    board[2][0] = placer;
-                } else if(board[2][2] === '     '){
-                    board[2][2] = placer;
+                    isPlaced = true;
+                }
+            }
+
+            if(!isPlaced){
+                //Check if the center is empty
+                if(board[1][1] === '     '){
+                    board[1][1] = placer;
                 } else {
-                    //Check if a side is empty
-                    if(board[0][1] === '     '){
-                        board[0][1] = placer;
-                    } else if(board[1][0] === '     '){
-                        board[1][0] = placer;
-                    } else if(board[1][2] === '     '){
-                        board[1][2] = placer;
-                    } else if(board[2][1] === '     '){
-                        board[2][1] = placer;
+                    //Check if a corner is empty
+                    if(board[0][0] === '     '){
+                        board[0][0] = placer;
+                    } else if(board[0][2] === '     '){
+                        board[0][2] = placer;
+                    } else if(board[2][0] === '     '){
+                        board[2][0] = placer;
+                    } else if(board[2][2] === '     '){
+                        board[2][2] = placer;
+                    } else {
+                        //Check if a side is empty
+                        if(board[0][1] === '     '){
+                            board[0][1] = placer;
+                        } else if(board[1][0] === '     '){
+                            board[1][0] = placer;
+                        } else if(board[1][2] === '     '){
+                            board[1][2] = placer;
+                        } else if(board[2][1] === '     '){
+                            board[2][1] = placer;
+                        }
                     }
                 }
             }
