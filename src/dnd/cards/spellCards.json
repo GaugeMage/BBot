@@ -4,7 +4,7 @@
         "color": "#A020F0",
         "description": "Choose an allied stand on the field to strike an opponent 3 times.",
         "image": "https://static.wikia.nocookie.net/jjba/images/c/c1/JotaroRubberSoul.png/revision/latest?cb=20140726112355",
-        "cost": "10",
+        "cost": 10,
         "footer": "ORA ORA ORA ORA ORA"
     },
     {
@@ -12,7 +12,7 @@
         "color": "#A020F0",
         "description": "Choose an allied stand on the field to strike an opponent 1 time.",
         "image": "https://jacksonjournal.news/wp-content/uploads/2021/02/1435017356_jba_sc_2_emerald_splash__by_phatkoala-d7m9l74.gif",
-        "cost": "3",
+        "cost": 3,
         "footer": "Stands are mysterious beings which can be manifested from the souls and willpowers of humans."
     },
     {
@@ -20,7 +20,7 @@
         "color": "#A020F0",
         "description": "Kill an ally card to draw a stand user card.",
         "image": "https://media.tenor.com/images/2401ebd842b435590c8fa587c4165348/tenor.png",
-        "cost": "3",
+        "cost": 3,
         "footer": "'Hey kids we have some free candy!' - Jameson J. Jonah"
     },
     {
@@ -28,7 +28,7 @@
         "color": "#A020F0",
         "description": "Paradoxify an enemy card. If it is already paradoxified, afflict it with a random paradox.",
         "image": "https://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/KogMawQ.png",
-        "cost": "1",
+        "cost": 1,
         "footer": "Paradox. A stand with the power of... contradiction?"  
     },
     {
@@ -36,7 +36,7 @@
         "color": "#FFD700",
         "description": "Give a normal card, a random stand.",
         "image": "https://previews.123rf.com/images/evilwata/evilwata1803/evilwata180300009/98618541-plastic-medical-syringe-filled-with-yellow-liquid-and-isolated-on-white-background-with-clipping-pat.jpg",
-        "cost": "5",
+        "cost": 5,
         "footer": "The syringe with the golden liquid"
     },
     {
@@ -44,7 +44,7 @@
         "color": "#A020F0",
         "description": "Liberate a stand which can liberate.",
         "image": "https://c8.alamy.com/comp/2AB8H7N/syringe-with-purple-liquid-2AB8H7N.jpg",
-        "cost": "5",
+        "cost": 5,
         "footer": "Liberation... An interesting concept pioneered by an... irritating man."
     },
     {
@@ -52,7 +52,7 @@
         "color": "#FF0000",
         "description": "Deal 20 damage to an enemy character. If it has equipment, destroy that as well.",
         "image": "https://i.kym-cdn.com/entries/icons/original/000/032/667/1bcoj6xlfwe31.jpg",
-        "cost": "11",
+        "cost": 11,
         "footer": "Zettaflare!"
     },
     {
@@ -60,7 +60,7 @@
         "color": "#DC143C",
         "description": "Silence all cards that are not '5 Horsemen' cards",
         "image": "https://blog.motionisland.com/wp-content/uploads/2018/04/after-effects-audio-spectrum-with-color-bar.gif",
-        "cost": "6",
+        "cost": 6,
         "footer": "And just like that, the room went silent. Can you believe that?"
     },
     {
@@ -68,7 +68,7 @@
         "color": "#DC143C",
         "description": "Silence 2 enemies",
         "image": "https://cdn.discordapp.com/attachments/703461116994650203/1039666215070744667/unknown.png",
-        "cost": "3",
+        "cost": 3,
         "footer": "This guy's stand is quite fascinating I must say. Maybe he is worthy?"
     },
     {
@@ -76,7 +76,7 @@
         "color": "#964B00",
         "description": "Deal 2 damage to a character",
         "image": "https://media.tenor.com/hRIYC92gFNMAAAAC/nichijou-dog.gif",
-        "cost": "2",
+        "cost": 2,
         "footer": "'Awww that Yorkshire Terrier is so cute!! Wait... why is it AHHHHHHHHHHHHHH' - Unlucky FBI soldier"
     },
     {
@@ -84,7 +84,137 @@
         "color": "",
         "description": "Deal 3 damage to an enemy character and 2 damage to the enemy world",
         "image": "https://cdn.discordapp.com/attachments/719666834269274194/1039668427763241020/unknown.png",
-        "cost": "5",
+        "cost": 5,
         "footer": "'That weird guy just threw a card at me like that is gonna do any-' knife to the throat"
+    },
+    {
+        "name": "Mob Mentality",
+        "color": "#964B00",
+        "description": "Give all allies +1/+1. If you have 5 or more allies, give them +2/+2 instead.",
+        "image": "https://i0.wp.com/drunkenanimeblog.com/wp-content/uploads/2019/02/angry-mob.gif?fit=300%2C225&ssl=1",
+        "cost": 3,
+        "footer": "The power of the mob is strong. It can make you do things you never thought you would do."
+    },
+    {
+        "name": "Soul Bomb",
+        "color": "#964B00",
+        "description": "Deal 2 damage to an enemy character. If it is a stand, deal 4 damage instead.",
+        "image": "https://ms.yugipedia.com//3/35/TronEnergyBall.jpg",
+        "cost": 3,
+        "footer": "Soulsiology is a field of study in which only a couple are proficient in. As the man who invented the field, I can say that it is quite fascinating."
+    },
+    {
+        "name": "Fuck the police",
+        "color": "#0000FF",
+        "description": "Give all Federation of Bizarre Intelligence cards on the field -2 attack",
+        "image": "https://media.tenor.com/l38-JWAUOpQAAAAC/plastic-nee-san-fuck-the-police.gif",
+        "cost": 1,
+        "footer": "FUCK THE POLICE!!!!"
+    },
+    {
+        "name": "Stand Lock: Point 1",
+        "color": "#00FF00",
+        "description": "Nullify a stand for 2 turns",
+        "image": "https://media.tenor.com/m30z69G3QA0AAAAC/anime-sad.gif",
+        "cost": 2,
+        "footer": "By stopping the stream from which the soul connects to the vessel, we are able to stop its existence and tangibility. I must say, I am quite impressed."
+    },
+    {
+        "name": "Stand Lock: Point 2",
+        "color": "#00FF00",
+        "description": "Nullify a stand for the rest of this match",
+        "image": "https://pbs.twimg.com/media/EqjRGlJWMAEKuOu.jpg",
+        "cost": 5,
+        "footer": "Of course... I am not going to let you use that stand again... Take this as punishment... sir."
+    },
+    {
+        "name": "A Child's Remorse",
+        "color": "#00FF00",
+        "description": "Kill a child, to give all allies +3/+3 this round",
+        "image": "https://images-geeknative-com.exactdn.com/wp-content/uploads/2016/04/18220930/Brynhildr-in-the-Darkness-03.jpg?strip=all&lossy=1&sharp=1&ssl=1",
+        "cost": 5,
+        "footer": "I am sorry, but I must do this. I must do this for the greater good."
+    },
+    {
+        "name": "Glock",
+        "color": "#000000",
+        "description": "Deal 5 damage to an enemy character or the enemy world",
+        "image": "https://images.immediate.co.uk/production/volatile/sites/4/2018/08/GettyImages-163927006-80e9bd2.jpg",
+        "cost": 5,
+        "footer": "And for his neutral special he wields a gun."
+    },
+    {
+        "name": "Piñata",
+        "color": "#FF0000",
+        "description": "Summon 2 0/1 Children",
+        "image": "https://m.media-amazon.com/images/I/712cYUdimaL.jpg",
+        "cost": 2,
+        "footer": "I am not sure what this guy is doing, but I am sure it is not good."
+    },
+    {
+        "name": "All for One",
+        "color": "#FFFFFF",
+        "description": "Deal 2 damage to the enemy world for every ally you have on your field",
+        "image": "https://media.tenor.com/55_ZVxH7sN0AAAAC/my-hero-academia-all-might.gif",
+        "cost": 5,
+        "footer": "Don't underestimate strength in numbers"
+    },
+    {
+        "name": "Time Rupture",
+        "color": "#0000FF", 
+        "description": "Deal 1 damage to the enemy world and all enemies for every turn that has passed",
+        "image": "https://c4.wallpaperflare.com/wallpaper/233/263/590/shattered-time-broken-glass-gears-wallpaper-preview.jpg",
+        "cost": 10,
+        "footer": "The difference between man and animal... it's the desire to 'go to Heaven'. Humans think about it...However, dogs and parrots can't grasp this concept. The idea of 'Heaven'. Humans should spend their lives trying to attain 'Heaven'. That is the beauty of humans.."
+    },
+    {
+        "name": "A Fated Encounter",
+        "color": "#00FF00",
+        "description": "**Unique** When I am added to your deck, double the amount of cards in the deck. Shuffle A 'Silver Key' into Your Deck. Draw 1 Card.",
+        "image": "https://64.media.tumblr.com/5c918269471fbc18b6a6541d59b874e1/tumblr_inline_prpoaywVci1smektq_640.png",
+        "cost": 1,
+        "footer": "Hey, I may sound crazy, but life's been... bizarre as of late, so I can't be too sure. You can't... speak english, can you?",
+        "generatedCards": [
+            {
+                "name": "Silver Key",
+                "color": "#C0C0C0",
+                "description": "Shuffle 'For Far Too Long' into your deck. Draw 2 cards. Every time you draw cards, your World heals 1 Health.",
+                "image": "https://www.evilresource.com/images/data/full/recv/silver-key.png",
+                "cost": 2,
+                "footer": "Yeah? Yeah? Just quiet down!"
+            },
+            {
+                "name": "For Far Too Long",
+                "color": "#C0C0C0",
+                "description": "I can only be played when you have no cards in your deck. Obliterate all enemies and obliterate the enemy world.",
+                "image": "https://cdn.pixabay.com/photo/2016/09/28/08/28/art-1699977__480.jpg",
+                "cost": 3,
+                "footer": "..................Good boy"
+            }
+        ]
+    },
+    {
+        "name": "Vampiric Bite",
+        "color": "#FF0000",
+        "description": "**Vampiric** Deal 2 damage to an enemy character.",
+        "image": "https://i.pinimg.com/originals/a5/c1/f4/a5c1f4a05bc021e00b76d738a28b177e.jpg",
+        "cost": 3,
+        "footer": "O Negative it seems. Quite delicious I must say."
+    },
+    {
+        "name": "Depression",
+        "color": "#FFFFFF",
+        "description": "Make a character strike themself",
+        "image": "https://e1.pxfuel.com/desktop-wallpaper/654/955/desktop-wallpaper-suicide-suicidal-anime-boy-thumbnail.jpg",
+        "cost": 4,
+        "footer": "No.. No.. No.. CHRISTINE!!!!!!!!!!!!!!!!!!!!!!!"
+    },
+    {
+        "name": "Inevitability",
+        "color": "#FF0000",
+        "description": "Kill a character",
+        "image": "https://cdn3.whatculture.com/images/2021/06/94552860c1dfeb43-600x338.jpg",
+        "cost": 5,
+        "footer": "Pyotr... please tell me that this letter is not true. He isn't dead right?? Please PLEASE PLEASE!!!!"
     }
 ]

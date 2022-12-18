@@ -431,6 +431,8 @@ client.on('message', async (message) => {
             await require('./dnd/cardSearches/equipmentCardList.js').run(message);
         } else if(CMD_NAME === 'spellCardList' || CMD_NAME === 'sCardList'){
             await require('./dnd/cardSearches/spellCardList.js').run(message);
+        } else if(CMD_NAME === 'totalCards' || CMD_NAME === 'tCards' || CMD_NAME === 'totalcards'){
+            await require('./dnd/cardSearches/totalCards.js').run(message);
         } else if(CMD_NAME === 'addCard'){
             require('./dnd/deckCommands/addCardToDeck.js').run(message, args);
         } else if(CMD_NAME === 'removeCard' || CMD_NAME === 'deleteCard'){
@@ -462,7 +464,7 @@ client.on('message', async (message) => {
                 deck: {
                     name: "Temp",
                     cards: [
-                        "Repugnans Fabula",
+                        "Rook",
                         "Catastrophe",
                         "Karolina Zeitmagier",
                         "Stand Strike",
@@ -484,7 +486,7 @@ client.on('message', async (message) => {
                 deck: {
                     name: "uwu",
                     cards: [
-                        "Enrico Pucci", "Speedwagon Foundation HQ", "Catastrophe", "Joy Jones", "Enrico Pucci", "Enrico Pucci", "Enrico Pucci"
+                        "Enrico Pucci", "Speedwagon Foundation HQ", "Rook", "Stand Strike", "Stand Strike", "Stand Rush", "Vampiric Bite"
                     ],
                     isValid: true
                 },
@@ -502,15 +504,16 @@ client.on('message', async (message) => {
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
+            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
             await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
             await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Karolina Zeitmagier", player1, player2);
-            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player2, player1);
-            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Stand Strike", player1, player2);
-            await require('./dnd/gameCommands/roundEnd').run(client, turnLog, player2, player1);
+            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Rook", player1, player2);
+            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Stand Strike", player2, player1);
+            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Stand Strike", player2, player1);
+            await require('./dnd/gameCommands/showHand.js').run(client, player1);
             await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
-            message.channel.send("Turn Log:\n" + turnLog.text);
         } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
             require('./legacy/abrahamLegacy.js').run(message);
             setTimeout(function(){

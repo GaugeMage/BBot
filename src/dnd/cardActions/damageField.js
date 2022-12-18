@@ -15,26 +15,8 @@ exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) =
     }
 
     //Check if catastophe is in play
-    if(player2.field.some(card => card?.name === "Catastrophe")){
-        //50% chance that the damage is dealt to a random ally
-        const randomAllyTarget = require('./randomAllyTarget.js');
-        if(Math.random() < 0.5){
-            cardIndex = await randomAllyTarget.run(client, player);
-            client.users.cache.get(player.id).send("Catastrophe is in play! A random ally is targeted instead!");
-            turnLog.text += "\nCatastrophe is in play! A random ally is targeted instead!";
-            //Check if cardIndex is null
-            if(cardIndex === null){
-                await client.users.cache.get(player.id).send("No cards in the field!");
-                return ;
-            }
-        }
-
-        const allyDamage = require('./allyDamage.js');
-        await allyDamage.run(client, turnLog, player, cardIndex, damageAmount);
-
-        //Check if the card is dead
-        await checkCardDeath.run(client, turnLog, player, player);
-        
+    const checkCatastrophe = require('./specificCards/checkCatastrophe.js');
+    if(await checkCatastrophe.run(client, turnLog, player, player2, damageAmount)){
         return;
     }
 
@@ -48,6 +30,12 @@ exports.run = async(client, turnLog, player, player2, cardIndex, damageAmount) =
     player2.field[cardIndex].health -= damageAmount;
     await client.users.cache.get(player.id).send("Dealt " + damageAmount + " damage to " + player2.field[cardIndex]?.name + "!");
     turnLog.text += "\nDealt " + damageAmount + " damage to " + player2.field[cardIndex]?.name + "!";
+
+    //Check if card being damaged is rook transform it into ricky
+    const checkRook = require('./specificCards/checkRook.js');
+    if(await checkRook.run(client, turnLog, player, player2, cardIndex)){
+        return;
+    }
 
     //If the card is a stand user, deal damage to the stand (if it exists)
     breakCheck: if(player2.field[cardIndex].type == "Stand User"){

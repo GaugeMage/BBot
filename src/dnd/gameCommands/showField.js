@@ -67,16 +67,6 @@ exports.run = async(message, player1, player2) => {
     fieldString += divider;
 
     //The attack and health values of the card for each space on the field for player 1
-    //Add spaces to the end of each element to make the total length of the array equal to the length of the line
-    const cCardData = require("../cards/characterCards.json");
-    const lCardData = require("../cards/locationCards.json");
-    const eCardData = require("../cards/equipmentCards.json");
-    const sCardData = require("../cards/spellCards.json");
-    console.log("Total Character Cards: " + cCardData.length)
-    console.log("Total Location Cards: " + lCardData.length)
-    console.log("Total Equipment Cards: " + eCardData.length)
-    console.log("Total Spell Cards: " + sCardData.length)
-    console.log("Total Cards: " + (cCardData.length + lCardData.length + eCardData.length + sCardData.length));
 
     //Checks player 1 field
     let field1Attack = [];

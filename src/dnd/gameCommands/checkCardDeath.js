@@ -2,7 +2,7 @@ exports.run = async(client, turnLog, player, player2) => {
     //Check both players
     let currentPlayer = player;
     for(let i = 0; i < 2; i++){
-        if(i === 2){
+        if(i === 1){
             currentPlayer = player2;
         }
         //Iterate through player 2 field
@@ -21,6 +21,9 @@ exports.run = async(client, turnLog, player, player2) => {
             if(currentPlayer.field[cardIndex].health <= 0){
                 await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex]?.name + " has died!");
                 turnLog.text += "\n" + currentPlayer.field[cardIndex]?.name + " has died!";
+
+                const checkRickyDeath = require('../cardActions/specificCards/checkRickyDeath.js');
+                await checkRickyDeath.run(client, turnLog, currentPlayer, cardIndex);
 
                 //If the card is a stand user, kill the stand (if it exists)
                 breakCheck: if(currentPlayer.field[cardIndex].type == "Stand User"){
@@ -64,6 +67,7 @@ exports.run = async(client, turnLog, player, player2) => {
                         currentPlayer.field[i + 2] = null;
                     }
                 }
+
             }
         }
     }

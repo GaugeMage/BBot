@@ -60,24 +60,24 @@
         "image": "https://s3.amazonaws.com/files.d20.io/images/308180610/g72IoykKWQS58EcDBrV3tA/med.jpg?1665182209",
         "attack": 2,
         "health": 2,
-        "cost": 4,
+        "cost": 5,
         "type": "Stand User",
         "footer": "",
         "faction": "5 Horsemen",
         "stand": {
             "name": "Merrie Melodies",
-            "description": "Whenever I am summoned, equip me with a random weapon and add a random spell from the enemy's deck into your hand. All cards that did not start in your deck cost 1 less gold.",
+            "description": "When I am summoned, equip me with a random weapon, add a copoy of a random spell from the enemy's deck into your hand and reduce the cost of all created cards in your hand by 1.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/286566318/WqFEd608YRsB3TovEa5HBw/med.png?1653358824",
             "attack": 1,
             "health": 2,
-            "cost": 4,
+            "cost": 5,
             "type": "Stand"
         },
         "generatedCharacters": [
             {
                 "name": "Ricky Rat",
                 "color": "#FFA500",
-                "description": "Stand Summon: **Merrie Melodies**. When I am defeated, create a 'Rook' in your hand.",
+                "description": "Stand Summon: **Merrie Melodies**. When I am killed, create a 'Rook' in your hand.",
                 "image": "https://s3.amazonaws.com/files.d20.io/images/308183654/UYWA8A3BdJzRcSkMrFoc3Q/med.png?1665183174",
                 "attack": 4,
                 "health": 4,
@@ -87,7 +87,7 @@
                 "faction": "5 Horsemen",
                 "stand": {
                     "name": "Merrie Melodies",
-                    "description": "Whenever I am summoned, equip me with a random weapon and get a random card from either the enemy's or your deck. All cards that you generate cost 1 less gold.",
+                    "description": "Whenever I am summoned, equip me with a random weapon and get a random spell from either the enemy's or your deck. All cards that you generate cost 1 less gold.",
                     "image": "https://s3.amazonaws.com/files.d20.io/images/286566318/WqFEd608YRsB3TovEa5HBw/med.png?1653358824",
                     "attack": 1,
                     "health": 2,
@@ -132,7 +132,7 @@
     {
         "name": "Robert E. O. Speedwagon",
         "color": "#DC143C",
-        "description": "Stand Summon: **Die Young**. When I am played, if your world is 50% HP or above, equip me with Wild Child. If the world is below 50% give me Kesha.",
+        "description": "Stand Summon: **Die Young**. **Vampiric** When I am played, if your world is 50% HP or above, equip me with Wild Child. If the world is below 50% give me Kesha.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/288737978/Qfwl9Vrm1Lrf4T5_YR0RLw/med.png?1654592161",
         "attack": 5,
         "health": 5,

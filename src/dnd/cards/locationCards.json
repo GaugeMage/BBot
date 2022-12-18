@@ -160,7 +160,9 @@
             {
                 "name": "Hellish Training",
                 "description": "**Deluded** Deal 1 damage to an ally card to give them +2 attack.",
-                "image": "https://i.pinimg.com/736x/63/fb/1e/63fb1e94c9d841a4c1ba7c508ec7e3cd.jpg"
+                "image": "https://i.pinimg.com/736x/63/fb/1e/63fb1e94c9d841a4c1ba7c508ec7e3cd.jpg",
+                "cost": 0,
+                "footer": "Woah that was a tough one. Here, you are going to need this water bottle."
             }
         ]
     },
@@ -168,7 +170,23 @@
         "name": "The Pendant",
         "description": "When I am summoned, capture an ally card to fully heal them. Round Start: Destroy me.",
         "image": "https://cdna.artstation.com/p/assets/images/images/038/421/898/large/scene-unique-royal-bedroom-fix-1.jpg?1623066335",
-        "cost": "4",
+        "cost": 4,
         "footer": "Oh... Hello there. The name is Jordy. Jordy Jones"
+    },
+    {
+        "name": "Monastery of Infinity",
+        "description": "**Unique** When I am added to your deck, all cards in your deck must have a cost equal to that of a Fibonacci Number. (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, etc.) Game Start: Summon all copies of me from your deck. Round Start: Add a **Deluded** 0 Cost 'Infinity Cast' to your hand. I cannot be destroyed",
+        "image": "https://w0.peakpx.com/wallpaper/300/117/HD-wallpaper-anime-castle-art-manga-game-sky-fantasy-green-anime-castle-blue.jpg",
+        "cost": 5,
+        "footer": "Lavender Archmage! I was looking for you! One of the recruits injured themself trying to make an Infinity Portal and the wounds look grave. We tried fixing it but there seems to be an Infinomaly. Could you please assist us?",
+        "generatedCards": [
+            {
+                "name": "Infinity Cast",
+                "description": "**Deluded** The next spell you cast, casts 1 more time. (This number changes into the next number of the Fibonacci Sequence for every time this is cast)",
+                "image": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/07/Mage-Noir-Druid-Horns.jpg",
+                "cost": 0,
+                "footer": "If I train hard enough, the Lavender Archmage will notice me! *Excited Fangirl Noises*"
+            }
+        ]
     }
 ]

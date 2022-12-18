@@ -8,7 +8,7 @@ exports.run = async(client, turnLog, player, player2, cardIndex) => {
     turnLog.text += "\n" + player2.field[cardIndex]?.name + " silenced!";
 
     //Check if American Pie is in player 1's field
-    let americanPieIndex = player.field.findIndex(card => card?.name === "American Pie");
+    let americanPieIndex = player.field.findIndex(card => card?.name.includes("American Pie"));
 
     //If American Pie is in player 1's field, deal 1 damage to a random card
     if(americanPieIndex !== -1){
@@ -18,7 +18,7 @@ exports.run = async(client, turnLog, player, player2, cardIndex) => {
     }
 
     //Check if ultor is in player 2's field
-    const checkUltor = require("./checkUltor.js");
+    const checkUltor = require("./specificCards/checkUltor.js");
     let ultorStands = await checkUltor.run(player);
 
     //Check if American pie is in ultor stands

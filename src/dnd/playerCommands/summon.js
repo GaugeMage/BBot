@@ -87,7 +87,6 @@ exports.run = async(client, turnLog, args, player, player2) => {
                 await silenceField.run(client, turnLog, player, player2, cardIndex);
             }
             break;
-
         case "Repugnans Fabula":
             if(player2.field[0] === null){
                 await client.users.cache.get(player.id).send("There are no cards in your opponent's field for you to silence!");

@@ -21,6 +21,10 @@ exports.run = async(message, args) => {
                     const generatedCardString = new Discord.MessageEmbed().
                         setTitle(card.generatedCards[i]?.name).
                         setImage(card.generatedCards[i].image).
+                        addFields(
+                            {name: 'Cost', value: card.generatedCards[i].cost, inline: true},
+                        ).
+                        setFooter('"' + card.generatedCards[i].footer + '"').
                         setDescription('*' + card.generatedCards[i].description + '*').
                         setColor(card.color);
                     message.channel.send(generatedCardString);

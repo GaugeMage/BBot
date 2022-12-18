@@ -50,9 +50,6 @@
         "footer": "I wonder why that cat wheres that black top hat..."
     },
     {
-        "name": "GPU"
-    },
-    {
         "name": "Eye of Infinity",
         "color": "#E6E6FA",
         "description": "Whenever you cast a spell, it will cast 2 additional times.",
@@ -61,5 +58,25 @@
         "health": 1,
         "cost": 9,
         "footer": "And we offer this to you my Archmage... for you are now the Lavenger Archmage of Infinity!"
+    },
+    {
+        "name": "Stone Mask",
+        "color": "#FF0000",
+        "description": "My wielder has **Vampiric**",
+        "image": "https://static.wikia.nocookie.net/vsbattles/images/2/23/Stone_Mask.jpg/revision/latest?cb=20140626112512",
+        "attack": 3,
+        "health": 1,
+        "cost": 4,
+        "footer": "My brother!!! I'm sorry, I couldn't save you. But I will avenge you."
+    },
+    {
+        "name": "AK-47",
+        "color": "#FF0000",
+        "description": "When my wielder attacks, deal 2 damage to the enemy world",
+        "image": "https://static.wikia.nocookie.net/jormungand/images/f/f0/S1_03_Orchestra.jpg/revision/latest?cb=20120511183237",
+        "attack": 2,
+        "health": 0,
+        "cost": 2,
+        "footer": "This firearm packs quite the punch and can be very destructive."
     }
 ]
