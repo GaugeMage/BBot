@@ -109,7 +109,7 @@
         "faction": "5 Horsemen",
         "stand": {
             "name": "See You Again",
-            "description": "Round Start: Store an enemy who has equal or less attack than my user inside me",
+            "description": "Every round, the first spell or equipment the opponent plays is stored inside me.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/309658874/I_n0UGWef-6QWzzW6GNByg/med.png?1665949221",
             "attack": 0,
             "health": 0,

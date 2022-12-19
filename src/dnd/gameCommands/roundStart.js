@@ -1,5 +1,4 @@
 exports.run = async(client, turnLog, player) => {
-
     //Finds the null
     let fieldLength = player.field.findIndex(card => card === null);
     //Checks every card in the player's field
@@ -10,6 +9,10 @@ exports.run = async(client, turnLog, player) => {
             player.gold += 2;
             client.users.cache.get(player.id).send("You have gained 2 gold from " + card.name + "!");
             turnLog.text += "\n" + player.name + " has gained 2 gold from " + card.name + "!";
+        }
+
+        if(player.field[i]?.stand?.name.includes("See You Again")){
+            player.field[i]['seeYouAgainTriggered'] = false;
         }
     }
 }

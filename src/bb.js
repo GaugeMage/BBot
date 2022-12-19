@@ -487,7 +487,7 @@ client.on('message', async (message) => {
 	                deck: {
 	                    name: "uwu",
 	                    cards: [
-	                        "Enrico Pucci", "Speedwagon Foundation HQ", "Catastrophe", "Bite", "Stand Strike", "Stand Rush", "Vampiric Bite"
+	                        "Enrico Pucci", "Speedwagon Foundation HQ", "Catastrophe", "Bite", "Bite", "Stand Rush", "Vampiric Bite"
 	                    ],
 	                    isValid: true
 	                },
@@ -507,12 +507,15 @@ client.on('message', async (message) => {
 	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
 	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
 	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
+				await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
 	            await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
 	            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
 	            await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
 	            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player2, player1);
 	            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Tyler Wolfe", player1, player2);
+				await require('./dnd/gameCommands/roundStart.js').run(client, turnLog, player1);
 	            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Bite", player2, player1);
+				await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Bite", player2, player1);
 	            await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
 	        } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
 	            require('./legacy/abrahamLegacy.js').run(message);

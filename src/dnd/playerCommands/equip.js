@@ -1,4 +1,4 @@
-exports.run = async(client, turnLog, args, player) => {
+exports.run = async(client, turnLog, args, player, player2) => {
 
     const equipmentCards = require('../cards/equipmentCards.json');
 
@@ -66,26 +66,12 @@ exports.run = async(client, turnLog, args, player) => {
         }
     } while(player.field[charIndex]?.type === "Location");
 
-    //equip card to character card
-    player.subField[charIndex] = card;
-
     //Remove card from hand
     player.hand.splice(cardIndex, 1);
 
     //Remove gold from player
     player.gold -= card.cost;
 
-    client.users.cache.get(player.id).send("You have equipped " + card.name + " to " + player.field[charIndex]?.name + "!");
-    turnLog.text += "\n" + player.name + " has equipped " + card.name + " to " + player.field[charIndex]?.name + "!";
-
-    //Special effects for cards
-    switch(card.name){
-        case "Ultor":
-            //Pick a random stand which was summoned
-            let stand = player.standsSummoned[Math.floor(Math.random() * player.standsSummoned.length)];
-
-            //Change the name of the card to Ultor (Stand Name)
-            player.subField[charIndex].name ="Ultor (" + stand.name + ")";
-            break;
-    }
+    const equipCard = require('../cardActions/actionCards/equipCard.js');
+    await equipCard.run(client, turnLog, player, player2, charIndex, card);
 }

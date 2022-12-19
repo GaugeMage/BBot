@@ -3,6 +3,7 @@ exports.run = async(client, turnLog, player, player2, cardIndex1, cardIndex2) =>
     if(player.field[cardIndex1]['storedCards'] === undefined){
         player.field[cardIndex1]['storedCards'] = [];
     }
+    
     player.field[cardIndex1]['storedCards'].push(Object.assign({}, player2.field[cardIndex2]));
 
     turnLog.text += "\n" + player.field[cardIndex1].name + " has stored " + player2.field[cardIndex2].name + "!";

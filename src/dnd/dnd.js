@@ -233,7 +233,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
             } else if(answer.includes("location")){
                 await location.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("equip")){
-                await equip.run(client, turnLog, answer, playerChosen);
+                await equip.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("attack")){
                 await attack.run(client, turnLog, answer, playerChosen, playerUnchosen);
             } else if(answer.includes("endturn")){
