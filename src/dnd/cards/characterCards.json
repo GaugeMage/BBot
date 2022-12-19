@@ -103,17 +103,17 @@
         "image": "https://s3.amazonaws.com/files.d20.io/images/293904627/IPQshzOEGqLwmYNMi0ugtQ/med.png?1657485598",
         "attack": 3,
         "health": 2,
-        "cost": 6,
+        "cost": 5,
         "type": "Stand User",
         "footer": "I'm not gonna let my friends die, not anymore.",
         "faction": "5 Horsemen",
         "stand": {
             "name": "See You Again",
-            "description": "Round Start: Store an enemy inside me",
+            "description": "Round Start: Store an enemy who has equal or less attack than my user inside me",
             "image": "https://s3.amazonaws.com/files.d20.io/images/309658874/I_n0UGWef-6QWzzW6GNByg/med.png?1665949221",
             "attack": 0,
             "health": 0,
-            "cost": 6,
+            "cost": 5,
             "type": "Stand"
         }
     },

@@ -37,8 +37,8 @@ exports.run = async(client, turnLog, player, cardIndex, damageAmount) => {
     turnLog.text += "\nDealt " + damageAmount + " damage to " + player.field[cardIndex]?.name + "!";
 
     //If the card is a stand user, deal damage to the stand (if it exists)
-    breakCheck: if(player.field[cardIndex].type == "Stand User"){
-        if(player.field[cardIndex + 1].type == "Stand"){
+    breakCheck: if(player.field[cardIndex].description.includes("Stand Summon: ")){
+        if(player.field[cardIndex + 1]?.type == "Stand"){
             player.field[cardIndex + 1].health -= damageAmount;
             await client.users.cache.get(player.id).send("Dealt " + damageAmount + " damage to " + player.field[cardIndex + 1]?.name + "!");
             turnLog.text += "\nDue to Stand User and Stand HP linkage: Dealt " + damageAmount + " damage to " + player.field[cardIndex + 1]?.name + "!";
@@ -54,7 +54,7 @@ exports.run = async(client, turnLog, player, cardIndex, damageAmount) => {
 
     //If the card is a stand, deal damage to the stand user (if it exists)
     breakCheck: if(player.field[cardIndex].type == "Stand"){
-        if(player.field[cardIndex - 1].type == "Stand User"){
+        if(player.field[cardIndex - 1]?.type == "Stand User"){
             player.field[cardIndex - 1].health -= damageAmount;
             await client.users.cache.get(player.id).send("Dealt " + damageAmount + " damage to " + player.field[cardIndex - 1]?.name + "!");
             turnLog.text += "\nDue to Stand User and Stand HP linkage: Dealt " + damageAmount + " damage to " + player.field[cardIndex - 1]?.name + "!";

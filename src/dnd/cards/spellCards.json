@@ -32,12 +32,12 @@
         "footer": "Paradox. A stand with the power of... contradiction?"  
     },
     {
-        "name": "The syringe with the golden liquid",
+        "name": "Golden Liquid Syringe",
         "color": "#FFD700",
         "description": "Give a normal card, a random stand.",
         "image": "https://previews.123rf.com/images/evilwata/evilwata1803/evilwata180300009/98618541-plastic-medical-syringe-filled-with-yellow-liquid-and-isolated-on-white-background-with-clipping-pat.jpg",
         "cost": 5,
-        "footer": "The syringe with the golden liquid"
+        "footer": "The power of a stand is quite strong, however not everyone is capable of wielding one"
     },
     {
         "name": "D10",

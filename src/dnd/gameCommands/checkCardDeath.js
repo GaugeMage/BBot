@@ -25,9 +25,12 @@ exports.run = async(client, turnLog, player, player2) => {
                 const checkRickyDeath = require('../cardActions/specificCards/checkRickyDeath.js');
                 await checkRickyDeath.run(client, turnLog, currentPlayer, cardIndex);
 
+                const checkStoredCards = require('./checkStoredCards.js');
+                await checkStoredCards.run(client, turnLog, currentPlayer, currentPlayer === player2 ? player : player2, currentPlayer.field[cardIndex]);
+
                 //If the card is a stand user, kill the stand (if it exists)
-                breakCheck: if(currentPlayer.field[cardIndex].type == "Stand User"){
-                    if(currentPlayer.field[cardIndex + 1].type == "Stand"){
+                breakCheck: if(currentPlayer.field[cardIndex].description.includes("Stand Summon: ")){
+                    if(currentPlayer.field[cardIndex + 1]?.type == "Stand"){
                         await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex + 1]?.name + " has died!");
                         turnLog.text += "\nDue to Stand User and Stand HP linkage: " + currentPlayer.field[cardIndex + 1]?.name + " has died!";
                         currentPlayer.field[cardIndex + 1] = null;
@@ -40,7 +43,7 @@ exports.run = async(client, turnLog, player, player2) => {
                     if(currentPlayer.field[cardIndex - 1] == undefined){
                         break breakCheck;
                     }
-                    if(currentPlayer.field[cardIndex - 1].type == "Stand User"){
+                    if(currentPlayer.field[cardIndex - 1].description.includes("Stand Summon: ")){
                         await client.users.cache.get(player.id).send(currentPlayer.field[cardIndex - 1]?.name + " has died!");
                         turnLog.text += "\nDue to Stand User and Stand HP linkage: "  + currentPlayer.field[cardIndex - 1]?.name + " has died!";
                         currentPlayer.field[cardIndex - 1] = null;
@@ -51,23 +54,25 @@ exports.run = async(client, turnLog, player, player2) => {
                 currentPlayer.field[cardIndex] = null;
 
                 //Move all cards after the card index to the left
-                if(currentPlayer.field[cardIndex - 1] === null){
-                    cardIndex -= 1;
-                }
+                const shiftCards = require('./shiftCards.js');
+                await shiftCards.run(currentPlayer, cardIndex);
 
-                for(let i = cardIndex; i < currentPlayer.field.length; i++){
-                    if(currentPlayer.field[i + 1] !== null && currentPlayer.field[i + 1] !== undefined){
-                        currentPlayer.field[i] = currentPlayer.field[i + 1];
-                        currentPlayer.field[i + 1] = null;
-                        continue;
-                    }
+                // if(currentPlayer.field[cardIndex - 1] === null){
+                //     cardIndex -= 1;
+                // }
 
-                    if(currentPlayer.field[i + 2] !== null && currentPlayer.field[i + 2] !== undefined){
-                        currentPlayer.field[i] = currentPlayer.field[i + 2];
-                        currentPlayer.field[i + 2] = null;
-                    }
-                }
+                // for(let i = cardIndex; i < currentPlayer.field.length; i++){
+                //     if(currentPlayer.field[i + 1] !== null && currentPlayer.field[i + 1] !== undefined){
+                //         currentPlayer.field[i] = currentPlayer.field[i + 1];
+                //         currentPlayer.field[i + 1] = null;
+                //         continue;
+                //     }
 
+                //     if(currentPlayer.field[i + 2] !== null && currentPlayer.field[i + 2] !== undefined){
+                //         currentPlayer.field[i] = currentPlayer.field[i + 2];
+                //         currentPlayer.field[i + 2] = null;
+                //     }
+                // }
             }
         }
     }

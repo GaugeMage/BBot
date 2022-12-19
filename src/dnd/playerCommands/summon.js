@@ -40,71 +40,12 @@ exports.run = async(client, turnLog, args, player, player2) => {
         return;
     }
 
-    //Insert card into field
-    for(let i = 0; i < player.field.length; i++){
-        if(player.field[i] === null){
-            player.field[i] = card;
-            player.field[i]['hasAttacked'] = true;
-            break;
-        }
-    }
-
     //Remove card from hand
     player.hand.splice(cardIndex, 1);
 
     //Remove gold from player
     player.gold -= card.cost;
 
-    client.users.cache.get(player.id).send("You have summoned " + card.name + " to your field!");
-    turnLog.text += "\n" + player.name + " has summoned " + card.name + " to their field!";
-
-    //Special effects for cards
-    const standSummon = require('../cardActions/standSummon.js');
-    const chooseEnemyTarget = require('./chooseEnemyTarget.js');
-    const silenceField = require('../cardActions/silenceField.js');
-    const silenceHand = require('../cardActions/silenceHand.js');
-    const damageField = require('../cardActions/damageField.js');
-    const paradox = require('../cardActions/paradox.js');
-    const summonCard = require('../cardActions/summonCard.js');
-    const damageWorld = require('../cardActions/damageWorld.js');
-
-    //Checks if the card has "Stand Summon: " in its description
-    if(card.description.includes("Stand Summon: ")){
-        await standSummon.run(client, turnLog, player, player2, card.stand.name);
-    }
-
-    switch(card.name){
-        case "Buddy McLean":
-            if(player2.field[1] === null){
-                await damageWorld.run(client, turnLog, player2, 5);
-            } else {
-                //Choose 1st target
-                let cardIndex = await chooseEnemyTarget.run(client, player, player2);
-                await silenceField.run(client, turnLog, player, player2, cardIndex);
-
-                //Choose 2nd target
-                cardIndex = await chooseEnemyTarget.run(client, player, player2);
-                await silenceField.run(client, turnLog, player, player2, cardIndex);
-            }
-            break;
-        case "Repugnans Fabula":
-            if(player2.field[0] === null){
-                await client.users.cache.get(player.id).send("There are no cards in your opponent's field for you to silence!");
-            } else {
-                let cardIndex = await chooseEnemyTarget.run(client, player, player2);
-                await paradox.run(client, turnLog, player, player2, cardIndex);
-
-                if(player2.field[1] === null){
-                    await client.users.cache.get(player.id).send("There is not a second card to paradoxify!");
-                } else {
-                    let cardIndex2 = await chooseEnemyTarget.run(client, player, player2);;
-                    while(cardIndex2 === cardIndex){
-                        await client.users.cache.get(player.id).send("You cannot paradoxify the same card twice!");
-                        cardIndex2 = await chooseEnemyTarget.run(client, player, player2);
-                    }
-                    await paradox.run(client, turnLog, player, player2, cardIndex2);
-                }
-            }
-            break;
-    }
+    const summonCard = require('../cardActions/actionCards/summonCard.js');
+    await summonCard.run(client, turnLog, player, player2, card);
 }

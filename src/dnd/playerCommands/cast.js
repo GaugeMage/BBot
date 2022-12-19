@@ -38,31 +38,6 @@ exports.run = async(client, turnLog, args, player, player2) => {
     //Remove card from hand
     player.hand.splice(cardIndex, 1);
 
-    client.users.cache.get(player.id).send("You have cast " + card.name + "!");
-    turnLog.text += "\n" + player.name + " has cast " + card.name + "!";
-
-    //Special effects for cards
-    const chooseAllyTarget = require('./chooseAllyTarget.js');
-    const chooseEnemyTarget = require('./chooseEnemyTarget.js');
-    const damageField = require('../cardActions/damageField.js');
-    const chooseAllyStand = require('./chooseAllyStand.js');
-
-    switch(card.name){
-        case "Stand Strike":
-            let standIndex = await chooseAllyStand.run(client, player);
-            
-            let enemyIndex = null;
-            do {
-                enemyIndex = await chooseEnemyTarget.run(client, player, player2);
-            
-                //Check if card at enemy index is a location card
-                if(player2.field[enemyIndex]?.type === "Location"){
-                    await client.users.cache.get(player.id).send("You can't damage a location card! Try again");
-                }
-            } while(player2.field[enemyIndex]?.type === "Location");
-
-            //Have the stand strike the enemy
-            await damageField.run(client, turnLog, player, player2, enemyIndex, player.field[standIndex].attack);
-            break;
-    }
+    const castCard = require('../cardActions/actionCards/castCard.js');
+    await castCard.run(client, turnLog, player, player2, card);
 }
