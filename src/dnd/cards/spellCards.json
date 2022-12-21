@@ -32,7 +32,7 @@
         "footer": "Paradox. A stand with the power of... contradiction?"  
     },
     {
-        "name": "Golden Liquid Syringe",
+        "name": "Syringe with Golden Liquid",
         "color": "#FFD700",
         "description": "Give a normal card, a random stand.",
         "image": "https://previews.123rf.com/images/evilwata/evilwata1803/evilwata180300009/98618541-plastic-medical-syringe-filled-with-yellow-liquid-and-isolated-on-white-background-with-clipping-pat.jpg",
@@ -81,7 +81,7 @@
     },
     {
         "name": "Card Throw",
-        "color": "",
+        "color": "#FFFFFF",
         "description": "Deal 3 damage to an enemy character and 2 damage to the enemy world",
         "image": "https://cdn.discordapp.com/attachments/719666834269274194/1039668427763241020/unknown.png",
         "cost": 5,
@@ -144,7 +144,7 @@
         "footer": "And for his neutral special he wields a gun."
     },
     {
-        "name": "Piñata",
+        "name": "Pinata",
         "color": "#FF0000",
         "description": "Summon 2 0/1 Children",
         "image": "https://m.media-amazon.com/images/I/712cYUdimaL.jpg",

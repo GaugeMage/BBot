@@ -450,6 +450,12 @@ client.on('message', async (message) => {
 	            require('./dnd/deckCommands/renameDeck.js').run(message, args);
 	        } else if(CMD_NAME === 'decks'){
 	            require('./dnd/deckCommands/viewDecks.js').run(message);
+			} else if(CMD_NAME === 'listPacks' || CMD_NAME === 'lPacks'){
+				require('./dnd/packCommands/listPacks.js').run(message);
+			} else if(CMD_NAME === 'shop' || CMD_NAME === 'Shop'){
+				require('./dnd/packCommands/shop.js').run(message);
+			} else if(CMD_NAME === 'pOpen' || CMD_NAME === 'open'){
+				require('./dnd/packCommands/openPack.js').run(message);
 	        } else if(CMD_NAME === 'temp'){
 	            let player1 = message.author.id;
 	            const userData = require('./dnd/userData.json');

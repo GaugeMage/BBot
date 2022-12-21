@@ -1,0 +1,176 @@
+[
+    {
+        "name": "Eternity Unleashed",
+        "description": "This pack contains 5 'Eye Of The Peacock' cards.",
+        "cards": [
+            "Grey Nullifer",
+            "Cometon",
+            "Xeion",
+            "Ace Nullman",
+            "Arthur Pendragon",
+            "Silver Bucciarati",
+            "Pyotr Parker",
+            "Jameson J. Jonah",
+            "JoJo Media Corporation Building",
+            "Free Candy!",
+            "Stand Lock: Point 1",
+            "Stand Lock: Point 2",
+            "Depression",
+            "Inevitability"
+        ],
+        "image": "https://media1.thehungryjpeg.com/thumbs2/ori_3656608_e5y4f6j6bpjec13yhrwtkp9f14n7ywz6axskjiuu_infinity-with-golden-peacock-feather.jpg",
+        "cost": 100,
+        "packSize": 5
+    },
+    {
+        "name": "Freedom Sworn & Reborn",
+        "description": "This pack contains 1 'Children of Liberty' cards.",
+        "cards": [
+            "Ben Torch",
+            "Kelly Shanks",
+            "Darnell Webber",
+            "Shane Crawford",
+            "Child of Liberty"
+        ],
+        "image": "https://i.pinimg.com/originals/65/27/77/652777ddf69714c357f0811d6dc380c4.jpg",
+        "cost": 200,
+        "packSize": 1
+    },
+    {
+        "name": "The Perpetual Masquerade",
+        "description": "This pack contains 5 'Dancing Court' cards.",
+        "cards": [
+            "Yang",
+            "Narcissus",
+            "The Queen"
+        ],
+        "image": "https://cdn.discordapp.com/attachments/719666834269274194/1053014190421442661/image0.jpg",
+        "cost": 100,
+        "packSize": 5
+    },
+    {
+        "name": "Allah's Waning Hope",
+        "description": "This pack contains 3 'Mouse Halal' cards.",
+        "cards": [
+            "Mickey Bausse",
+            "Enrico Pucci",
+            "Minnie Bausse",
+            "Boofy",
+            "Donald Buck",
+            "Bete",
+            "Bhip",
+            "Bale",
+            "Mortimer Bausse",
+            "Daisy Buck",
+            "Donald's Zettaflare!"
+        ],
+        "image": "https://pbs.twimg.com/media/Fc4JDq9XwAEjxCU?format=jpg&name=large",
+        "cost": 100,
+        "packSize": 3
+    },
+    {
+        "name": "50th Apocalypse of the Aeon",
+        "description": "This pack contains 5 '5 Horsemen' cards",
+        "cards": [
+            "Repugnans Fabula",
+            "Catastrophe",
+            "Rook",
+            "Buddy McLean",
+            "Tyler Wolfe",
+            "Danny",
+            "Hat of Chaos",
+            "Ultor",
+            "McLean Cap",
+            "Paradox Spit",
+            "Sergey Stepanov",
+            "Chronohacker",
+            "Imbroglione",
+            "Eye of Infinity",
+            "5 Horsemen HQ",
+            "Ice Cream Store",
+            "Buddy's Apartment",
+            "The Pendant",
+            "Paradox Spit",
+            "Volume Mourning",
+            "Sonic Cannon",
+            "Bite",
+            "Card Throw",
+            "A Fated Encounter"
+        ],  
+        "image": "https://static.wikia.nocookie.net/gods_and_demons/images/9/9c/Olli-hihnala-the-four-horsemen-of-the-apocalypse-olli-hihnala.jpg/revision/latest?cb=20220316160103",
+        "cost": 100,
+        "packSize": 5
+    },
+    {
+        "name": "The Clipped Wings",
+        "description": "This pack contains 1 'Wings of Icarus' card.",
+        "cards": [
+            "BB",
+            "Karolina Zeitmagier",
+            "Grey Nullifer",
+            "Monastery of Infinity",
+            "Soul Bomb",
+            "Time Rupture"
+        ],
+        "image": "https://pm1.narvii.com/6430/4c190a4335865af01ad66dfc68199b14263f0aca_hq.jpg",
+        "cost": 300,
+        "packSize": 1
+    },
+    {
+        "name": "The Philanthropic Guise",
+        "description": "This pack contains 2 'Speedwagon Foundation' cards.",
+        "cards": [
+            "Robert E. O. Speedwagon",
+            "BB",
+            "Nic",
+            "Garnet Speedwagon",
+            "Speedwagon Foundation HQ",
+            "Brooklyn Art Museum"
+        ],
+        "image": "https://i.pinimg.com/originals/47/c1/a9/47c1a9cb9137cd09c31a48d9458d6b40.jpg",
+        "cost": 200,
+        "packSize": 2
+    },
+    {
+        "name": "Cybernetic Retribution of the End",
+        "description": "This pack contains 1 'Vindicators of Tomorrow' card.",
+        "cards": [
+            "Sabrina"
+        ],
+        "image": "https://cdn.dribbble.com/users/319473/screenshots/4111136/reinvently_insights_3.0.gif",
+        "cost": 500,
+        "packSize": 1
+    },
+    {
+        "name": "Intellect of the Bizarre & Experiments of the Fallen",
+        "description": "This pack contains 3 'Federation of Bizarre Intelligence' cards.",
+        "cards": [
+            "Dr. Wilson",
+            "Essence of Delusion",
+            "Pretender",
+            "Contradictory Soldier",
+            "Chris Woles",
+            "FBI Soldier",
+            "FBI Pediatrician",
+            "Stone Mask",
+            "Meth Lab",
+            "Syringe with Golden Liquid",
+            "D10",
+            "A Child's Remorse",
+            "Pinata"
+        ],
+        "image": "https://static.zerochan.net/Elsa.Granhiert.full.3131632.png",
+        "cost": 100,
+        "packSize": 3
+    },
+    {
+        "name": "The Yakuza's Domain",
+        "description": "This pack contains 1 'Verdant Night' cards.",
+        "cards": [
+            "Ki Akihito"
+        ],
+        "image": "https://million-wallpapers.com/wallpapers/0/65/13881008140974980935/japan-castle-geisha-tattoo-girl-yakuza-back.jpg",
+        "cost": 500,
+        "packSize": 1
+    }
+]

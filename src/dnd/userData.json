@@ -67,10 +67,43 @@
 			"Nic",
 			"Garnet Speedwagon",
 			"Rook",
-			"Speedwagon Foundation HQ"
+			"Speedwagon Foundation HQ",
+			"Arthur Pendragon",
+			"Depression",
+			"Stand Lock: Point 1",
+			"Free Candy!",
+			"Daisy Buck",
+			"The Queen",
+			"Narcissus",
+			"Paradox Spit",
+			"Hat of Chaos",
+			"Eye of Infinity",
+			"D10",
+			"FBI Pediatrician",
+			"Meth Lab",
+			"Sonic Cannon",
+			"5 Horsemen HQ",
+			"Card Throw"
 		],
-		"destinyFragments": 0,
-		"delusionPacks": 0
+		"destinyFragments": 900,
+		"soulFragments": 130,
+		"packs": [
+			"Allah's Waning Hope",
+			"Intellect of the Bizarre & Experiments of the Fallen",
+			"Intellect of the Bizarre & Experiments of the Fallen",
+			"Intellect of the Bizarre & Experiments of the Fallen",
+			"Intellect of the Bizarre & Experiments of the Fallen",
+			"The Clipped Wings",
+			"The Clipped Wings",
+			"The Clipped Wings",
+			"50th Apocalypse of the Aeon",
+			"50th Apocalypse of the Aeon",
+			"50th Apocalypse of the Aeon",
+			"50th Apocalypse of the Aeon",
+			"50th Apocalypse of the Aeon",
+			"50th Apocalypse of the Aeon",
+			"50th Apocalypse of the Aeon"
+		]
 	},
 	{
 		"id": "88",
@@ -83,7 +116,8 @@
 			"BB"
 		],
 		"destinyFragments": 0,
-		"delusionPacks": 0
+		"soulFragments": 0,
+		"packs": 0
 	},
 	{
 		"id": "291016452884922368",
@@ -114,7 +148,8 @@
 			"Stand Rush"
 		],
 		"destinyFragments": 0,
-		"delusionPacks": 0
+		"soulFragments": 0,
+		"packs": []
 	},
 	{
 		"id": "195343191065624577",
@@ -144,7 +179,10 @@
 			"Paradox Spit",
 			"Chronohacker"
 		],
-		"destinyFragments": 0,
-		"delusionPacks": 0
+		"destinyFragments": 700,
+		"soulFragments": 0,
+		"packs": [
+			"Allah's Waning Hope"
+		]
 	}
 ]

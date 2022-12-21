@@ -120,7 +120,7 @@
     {
         "name": "Tommy",
         "color": "#000000",
-        "description": "If all of the 5 Horsemen have been summoned, I gain +5/+5 and all cards on the field, in your hand, and in your deck gain +5/+5.",
+        "description": "If all of the 5 Horsemen have been summoned this game, I gain +5/+5 and all cards on the field, in your hand, and in your deck gain +5/+5.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/300795152/F2Rlrs2s75pUof5M_G41nA/med.png?1661109236",
         "attack": 1,
         "health": 1,
@@ -706,7 +706,7 @@
         "cost": 4,
         "type": "Stand User",
         "footer": "The younger... the better :)",
-        "faction": "JoJo Media Corporation",
+        "faction": "Eye of the Peacock",
         "stand": {
             "name": "Paparazzi",
             "description": "When I am summoned, for every position taken on the allied field, reveal a card in the enemy hand.",
@@ -807,7 +807,7 @@
         "cost": 1,
         "type": "Normal",
         "footer": "I hope you guys enjoyed the tour for today!",
-        "faction": "JoJo Media Corporation"
+        "faction": "Eye of the Peacock"
     },
     {
         "name": "Arthur Pendragon",
@@ -1134,7 +1134,7 @@
         "faction": "None"
     },
     {
-        "name": "FBI Pediatrician (Children's Doctor)",
+        "name": "FBI Pediatrician",
         "color": "#FFFFFF",
         "description": "When I am summoned, heal an ally character and the allied world for 2 health",
         "image": "https://static.wikia.nocookie.net/p__/images/7/7b/Kobato_Anime_Infobox.png/revision/latest?cb=20211203064304&path-prefix=protagonist",
