@@ -172,5 +172,27 @@
         "image": "https://million-wallpapers.com/wallpapers/0/65/13881008140974980935/japan-castle-geisha-tattoo-girl-yakuza-back.jpg",
         "cost": 500,
         "packSize": 1
+    },
+    {
+        "name": "Jordy's Legacy",
+        "description": "This pack contains 3 'Jordy' cards.",
+        "cards": [
+            "Jolene Jones",
+            "Joy Jones",
+            "Wilford Zeppeli",
+            "Garnet Speedwagon",
+            "BB",
+            "Ultor",
+            "Imbroglione",
+            "A Fated Encounter",
+            "Willie's Pizzas and Gyros",
+            "Sunset Drive: Apartment 444",
+            "The Pendant",
+            "Buddy McLean",
+            "Danny"
+        ],
+        "image": "https://i.pinimg.com/originals/2d/2d/bd/2d2dbd0dca10fd250591fb535d01f487.jpg",
+        "cost": 100,
+        "packSize": 3
     }
 ]

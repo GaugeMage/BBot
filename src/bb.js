@@ -452,6 +452,8 @@ client.on('message', async (message) => {
 	            require('./dnd/deckCommands/viewDecks.js').run(message);
 			} else if(CMD_NAME === 'listPacks' || CMD_NAME === 'lPacks'){
 				require('./dnd/packCommands/listPacks.js').run(message);
+			} else if(CMD_NAME === 'viewPack' || CMD_NAME === 'vPacks'){
+				require('./dnd/packCommands/viewPack.js').run(message, args);
 			} else if(CMD_NAME === 'shop' || CMD_NAME === 'Shop'){
 				require('./dnd/packCommands/shop.js').run(message);
 			} else if(CMD_NAME === 'pOpen' || CMD_NAME === 'open'){
@@ -608,6 +610,9 @@ client.on('message', async (message) => {
 	            await msgEmbed.react('👍');
 	            await msgEmbed.react('👎');
 	            // message.delete({timeout: 1000});
+			} else if(CMD_NAME === 'christmas' || CMD_NAME === 'Christmas'){
+				const christmas = require('./legacy/christmas.js');
+				christmas.run(message);
 	        } else {
 	            if(CMD_NAME === 'attack' || CMD_NAME === 'Attack' || CMD_NAME === 'add' || CMD_NAME === 'Add'){
 	                return;
