@@ -44,7 +44,7 @@ exports.run = async(client, turnLog, player, player2, standName) => {
                 }
                 indexes.push(randomIndex);
                 for(let i = 0; i < spellCards.length; i++){
-                    if(spellCards[i].name == player2.deck.cards[randomIndex]){
+                    if(spellCards[i].name == player2.deck.cards[randomIndex].name){
                         randomSpell = Object.assign({}, spellCards[i]);
                         const addCardToHand = require('./addCardToHand.js');
                         await addCardToHand.run(client, turnLog, player, randomSpell);
@@ -54,14 +54,14 @@ exports.run = async(client, turnLog, player, player2, standName) => {
             }
             
             //Equip a random equipment card
-            const equipCard = require('./equipCard.js');
+            const equipCard = require('./actionCards/equipCard.js');
             const equipmentCards = require('../cards/equipmentCards.json');
             //Selects a random equipment from the equipmentCards
             let randomEquipment = equipmentCards[Math.floor(Math.random() * equipmentCards.length)];
             randomEquipment["created"] = true;
             //Gets the index of the stand in the field
             let standIndex = player.field.findIndex(cardlet => cardlet?.name.includes(card.name));
-            await equipCard.run(client, turnLog, player, standIndex, randomEquipment);
+            await equipCard.run(client, turnLog, player, player2, standIndex, randomEquipment);
 
             //Reduces the cost of all created cards in hand by 1
             for(let i = 0; i < player.hand.length; i++){
@@ -69,6 +69,8 @@ exports.run = async(client, turnLog, player, player2, standName) => {
                     player.hand[i].cost -= 1;
                 }
             }
+            await client.users.cache.get(player.id).send("Merrie Melodies has reduced the cost of all created cards in your hand by 1!");
+            turnLog.text += `${player.name}'s Merrie Melodies has reduced the cost of all created cards in their hand by 1!`;
             break;
     }
 

@@ -86,10 +86,9 @@ exports.run = async(message, player1, player2) => {
     //Checks player 1 subfield
     for(let i = 0; i < player1.subField.length; i++){
         //Check if it is empty
-        if(player1.subField[i] === null){
+        if(player1.subField[i] === null || player1.subField[i] === undefined){
             continue;
         }
-
         field1Attack[i] += player1.subField[i].attack;
         field1Health[i] += player1.subField[i].health;
     }
@@ -112,7 +111,7 @@ exports.run = async(message, player1, player2) => {
     //Checks player 2 subfield
     for(let i = 0; i < player2.subField.length; i++){
         //Check if it is empty
-        if(player2.subField[i] === null){
+        if(player2.subField[i] === null || player2.subField[i] === undefined){
             continue;
         }
         field2Attack[i] += player2.subField[i].attack;

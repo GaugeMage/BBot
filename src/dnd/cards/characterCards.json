@@ -197,7 +197,7 @@
     {
         "name": "Nic",
         "color": "#FFC0CB",
-        "description": "Stand Suit: **Brittle Bones Nic**. When I am summoned, equip me with 'Mop'.",
+        "description": "Stand Suit: **Brittle Bones Nic**. When I am summoned, I equip 'Mop'.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/300464852/Diobpo6xd6ih3YTAb9ZzuQ/med.png?1660961134",
         "attack": 3,
         "health": 3,
@@ -207,7 +207,7 @@
         "faction": "Speedwagon Foundation",
         "stand": {
             "name": "Brittle Bones Nic",
-            "description": "Turn 'Mop' into 'Bone Club'.",
+            "description": "After I have attacked once, turn 'Mop' into 'Bone Club'.",
             "image": "https://s3.amazonaws.com/files.d20.io/images/307474692/NJTTA5exJBIW7ADNQr2kZA/med.png?1664745953",
             "attack": 3,
             "health": 5,
@@ -225,7 +225,7 @@
             },
             {
                 "name": "Bone Club",
-                "description": "The enemy whom I attacked gets stunned for 1 turn.",
+                "description": "All damage my wielder does to an enemy, also gets dealt to the enemy world.",
                 "image": "https://cdna.artstation.com/p/assets/images/images/002/656/918/large/pio-paulo-santana-jawclub-beauty-frnt-002.jpg?1471711631",
                 "attack": 4,
                 "health": 0,

@@ -33,7 +33,7 @@ client.on('ready', () => {
     // client.user.setActivity("you... hehe", {
     //     type: "WATCHING"
     // });
-    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! BBot no longer crashes when an error has occurred. Due to upgrades within my system, my durability is a lot stronger! No more crashes baby!!! :blush: Another step forward on our ***path to an unstable timeline!***');
+    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! Updated for new characters introduced in recent sessions. Another step forward on our ***path to an unstable timeline!***');
     // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
 
@@ -237,7 +237,22 @@ client.on('message', async (message) => {
 	            message.channel.send('Ahh that man can go on for hours talking about his ideals and goals and values... How boring. It seems that Jordy\'s impact on Silver really did stick even after his death. I am surprised that he decided to take up a sword though... That is pretty unlike him.');
 	        } else if(CMD_NAME === 'Pucci' || CMD_NAME === 'pucci' || CMD_NAME === 'Enrico' || CMD_NAME === 'enrico' || CMD_NAME === 'EnricoPucci' || CMD_NAME === 'enricopucci'){
 	            message.channel.send('Pucci. The second in command for Mouse Halal? He is a unique person who follows more than one religion... AKA: Multiple religious belonging, also known as double belonging. Despite his unusual friends like Dionte and .... him... he seems to act on the benefit of Mouse Halal and for the betterment of people.');
-	        } else if(CMD_NAME === 'sex' || CMD_NAME == 'Sex'){
+			} else if(CMD_NAME === 'Yang' || CMD_NAME === 'yang'){
+				message.channel.send('Ahh, one of the Jokers of the Dancing Court. While many see her as a killjoy, I understand that she is under an immense amount of pressure and rarely has time for fun. I tried to invite her to movie night once but she declined due to work. I hope *The Queen* gives her a break soon.');
+			} else if(CMD_NAME === 'Narcissus' || CMD_NAME === 'narcissus'){
+				message.channel.send('That instagram model? He is quite a.... character. It is always fun to be around that guy. He always thinks he is the shit. While he is very self-obsessed and narcissistic, he is a good friend to have (from what I have heard). I would also not underestimate his Eye. *The Queen* uses it to its fullest potential.');
+			} else if(CMD_NAME === 'TheQueen' || CMD_NAME === 'Queen' || CMD_NAME === 'thequeen' || CMD_NAME === 'queen'){
+				message.channel.send("*The Queen*. The Monarch of the Dancing Court. Her stand is.... terrifying and it is befitting for one of her stature. On a more lighthearted note though, she is one of the most fun people you will ever meet. A saying within the Dancing Court is that 'A party in NYC is not a party unless *The Queen* is there'. She is the literal life of any party. I wish she would connect with me more... (She is one of those gorgeous popular girls after all). I hope you guys can get along well! (Just don't attack Harlem)");
+			} else if(CMD_NAME === 'AurelioGhirga' || CMD_NAME === 'Aurelio' || CMD_NAME === 'aurelioghirga' || CMD_NAME === 'aurelio'){
+				message.channel.send('That young man has big shoes to fill whether he likes it or not! Kinda similar to Muhammed in a way (however Muhammed has decided to not follow in his father\'s footsteps).');
+			} else if(CMD_NAME === 'trike' || CMD_NAME === 'Trike'){
+				message.channel.send("The younger sister? Trike is a girl with many aspirations and her biggest role model of course is Sabrina. Besides being one of the top 'technicians'/engineers of the Vindicators, she is also a very big gamer. If you plan on meeting/talking to her, I'd recommend a... softer approach as she is not the most social butterfly.")
+			} else if(CMD_NAME === 'EyeOfInfinity' || CMD_NAME === 'eyeofinfinity'){
+				message.channel.send('"Lady Archmage, me and some members of the council decided to give you this as a gift. It is forged from the most infiniducting materials and from the soul of... well..."\n||:face_holding_back_tears: Why... thank you for this gift! :flushed: I am not sure if I sho--||\n"Lady Archmage. You have pioneered the art for us Infinity Mages. This is the least we could do."');
+				setTimeout(function(){
+					message.channel.send("Wow. I had to look deep in this restricted linked list chain for that one. :sweat_smile: Hope you enjoyed it!");
+				}, 5000);
+			} else if(CMD_NAME === 'sex' || CMD_NAME == 'Sex'){
 	            message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
 	        } else if(CMD_NAME === 'rook' || CMD_NAME === 'Rook'){
 	            message.channel.send('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
@@ -475,11 +490,12 @@ client.on('message', async (message) => {
 	                    cards: [
 	                        "Tyler Wolfe",
 	                        "Catastrophe",
-	                        "Karolina Zeitmagier",
-	                        "Stand Strike",
 	                        "Buddy McLean",
+	                        "Repugnans Fabula",
+	                        "Rook",
+	                        "Tommy",
 	                        "Buddy McLean",
-	                        "Buddy McLean"
+							"Buddy McLean",
 	                    ],
 	                    isValid: true
 	                },
@@ -505,26 +521,41 @@ client.on('message', async (message) => {
 	                gold: 100,
 	                hand: []
 	            }
-	            let turnLog = {turnNumber: 1, text: ""};;
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player1);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-	            await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-				await require('./dnd/gameCommands/drawCard.js').run(client, turnLog, player2);
-	            await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
-	            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Enrico Pucci", player2, player1);
-	            await require('./dnd/playerCommands/location.js').run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
-	            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Catastrophe", player2, player1);
-	            await require('./dnd/playerCommands/summon.js').run(client, turnLog, "summon Tyler Wolfe", player1, player2);
-				await require('./dnd/gameCommands/roundStart.js').run(client, turnLog, player1);
-	            await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Bite", player2, player1);
-				await require('./dnd/playerCommands/cast.js').run(client, turnLog, "cast Bite", player2, player1);
-	            await require('./dnd/gameCommands/showField.js').run(message, player1, player2);
+	            let turnLog = {turnNumber: 1, text: ""};
+				await require('./dnd/gameCommands/convertDeck.js').run(player1);
+				await require('./dnd/gameCommands/convertDeck.js').run(player2);
+				const drawCard = require('./dnd/gameCommands/drawCard.js');
+				player1.field = [null, null, null, null, null, null, null, null, null, null];
+	            await drawCard.run(client, turnLog, player1);
+	            await drawCard.run(client, turnLog, player1);
+	            await drawCard.run(client, turnLog, player1);
+	            await drawCard.run(client, turnLog, player1);
+				await drawCard.run(client, turnLog, player1);
+				await drawCard.run(client, turnLog, player1);
+				await drawCard.run(client, turnLog, player1);
+	            await drawCard.run(client, turnLog, player2);
+	            await drawCard.run(client, turnLog, player2);
+	            await drawCard.run(client, turnLog, player2);
+	            await drawCard.run(client, turnLog, player2);
+	            await drawCard.run(client, turnLog, player2);
+				await drawCard.run(client, turnLog, player2);
+				const showField = require('./dnd/gameCommands/showField.js');
+				const showHand = require('./dnd/gameCommands/showHand.js');
+	            await showField.run(message, player1, player2);
+				const summon = require('./dnd/playerCommands/summon.js');
+				const location = require('./dnd/playerCommands/location.js');
+				const cast = require('./dnd/playerCommands/cast.js');
+				const equip = require('./dnd/playerCommands/equip.js');
+	            await location.run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
+	            await summon.run(client, turnLog, "summon Catastrophe", player1, player2);
+	            await summon.run(client, turnLog, "summon Tyler Wolfe", player1, player2);
+				await summon.run(client, turnLog, "summon Repugnans Fabula", player1, player2);
+				await summon.run(client, turnLog, "summon Buddy McLean", player1, player2);
+				await summon.run(client, turnLog, "summon Rook", player1, player2);
+				await summon.run(client, turnLog, "summon Tommy", player1, player2);
+	            await showField.run(message, player1, player2);
+				await drawCard.run(client, turnLog, player1);
+				await showHand.run(client, player1);
 	        } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
 	            require('./legacy/abrahamLegacy.js').run(message);
 	            setTimeout(function(){

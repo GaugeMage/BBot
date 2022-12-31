@@ -158,6 +158,11 @@ exports.run = async(client, message, args, dndGameStarted) => {
         hand: player2Hand,
     }
 
+    const convertDeck = require('./gameCommands/convertDeck.js');
+
+    player1.deck = await convertDeck.run(player1);
+    player2.deck = await convertDeck.run(player2);
+
     let isPlayer1Turn = true;
 
     const showField = require('./gameCommands/showField.js');

@@ -17,8 +17,8 @@ exports.run = async(client, turnLog, player1, player2, card) => {
         } else if(spellCard.findIndex(tempCard => tempCard.name.includes(card['storedCards'][i].name)) !== -1 || equipmentCard.findIndex(tempCard => tempCard.name.includes(card['storedCards'][i].name)) !== -1){
             //Return the spell or equipment to the hand of the player who played it
             player2.hand.push(card['storedCards'][i]);
-            turnLog.text += "\n" + card['storedCards'][i].name + "has been returned to " + player2.name + "'s hand!";
-            await client.users.cache.get(player1.id).send(card['storedCards'][i].name + "has been returned to " + player2.name + "'s hand!");
+            turnLog.text += "\n" + card['storedCards'][i].name + " has been returned to " + player2.name + "'s hand!";
+            await client.users.cache.get(player1.id).send(card['storedCards'][i].name + " has been returned to " + player2.name + "'s hand!");
         }
         //Remove the card from the stored cards
         card['storedCards'].splice(i, 1);

@@ -10,57 +10,11 @@ exports.run = async(client, turnLog, player) => {
     }
     let cardDrawn = cards[0];
 
-    //Find the card in any of the card files
-    const characterCards = require('../cards/characterCards.json');
-    const locationCards = require('../cards/locationCards.json');
-    const equipmentCards = require('../cards/equipmentCards.json');
-    const spellCards = require('../cards/spellCards.json');
-
-    let card = null;
-    for(let i = 0; i < characterCards.length; i++){
-        if(characterCards[i]?.name === cardDrawn){
-            card = Object.assign({}, characterCards[i]);
-            break;
-        }
-    }
-
-    if(card === null){
-        for(let i = 0; i < locationCards.length; i++){
-            if(locationCards[i]?.name === cardDrawn){
-                card = Object.assign({}, locationCards[i]);
-                card['type'] = "Location";
-                card['attack'] = 0;
-                card['health'] = 0;
-                break;
-            }
-        }
-    }
-
-    if(card === null){
-        for(let i = 0; i < equipmentCards.length; i++){
-            if(equipmentCards[i]?.name === cardDrawn){
-                card = Object.assign({}, equipmentCards[i]);
-                break;
-            }
-        }
-    }
-
-    if(card === null){
-        for(let i = 0; i < spellCards.length; i++){
-            if(spellCards[i]?.name === cardDrawn){
-                card = Object.assign({}, spellCards[i]);
-                break;
-            }
-        }
-    }
-
-    hand.push(card);
+    hand.push(cardDrawn);
     cards.splice(0, 1);
     deck.cards = cards;
     player.deck = deck;
     player.hand = hand;
-
-    player["standsSummoned"] = [];
 
     turnLog.text += "\n" + player.name + " drew a card!";
 }
