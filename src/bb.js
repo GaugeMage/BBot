@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const {Client, MessageEmbed} = require('discord.js');
+const {Client, ApplicationCommandOptionType, ActivityType, EmbedBuilder, Partials} = require('discord.js');
 const {Player, Track} = require('discord-player');
 const Chess = require('chess.js').Chess;
 const Engine = require('node-uci').Engine;
@@ -10,8 +10,8 @@ stockfish.init();
 stockfish.setoption('MultiPV', 2);
 let chesses = {};
 
+const client = new Client({intents: 65531, partials: [Partials.Channel, Partials.Message]});
 
-const client = new Client();
 const PREFIX = process.env.PREFIX;
 const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 const player = new Player(client);
@@ -24,16 +24,66 @@ let killCommand;
 
 const checkArgs = require('./helpers/checkArgs.js');
 
-client.on('ready', () => {
+player.on("trackStart", (queue, track) => queue.metadata.channel.send(`🎶 | Now playing **${track.title}**!`))
+
+client.on('ready', async() => {
     console.log(`${client.user.tag} has logged in`);
-    client.user.setActivity("your mom", {
-        type: "STREAMING",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    client.user.setPresence({activities: [{
+		name: "your mom",
+        type: ActivityType.Streaming,
+		url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}],
+		status: "online"
       });
+
+	let commands = client.application?.commands
+
+	commands?.create({
+		name: 'ping',
+		description: 'pong'
+	})
+
+	commands?.create({
+		name: 'play',
+		description: 'play a song',
+		options: [
+			{
+				name: "query",
+				type: ApplicationCommandOptionType.String,
+				description: "The song you want to play",
+				required: true
+			}
+		]
+	})
+
+	commands?.create({
+		name: 'stop',
+		description: 'stop the song'
+	})
+
+	commands?.create({
+		name: 'skip',
+		description: 'skip the song'
+	})
+
+	commands?.create({
+		name: 'queue',
+		description: 'show the queue'
+	})
+
+	commands?.create({
+		name: 'clear',
+		description: 'clear the queue'
+	})
+
+	commands?.create({
+		name: 'loop',
+		description: 'loop the song'
+	})
+
     // client.user.setActivity("you... hehe", {
     //     type: "WATCHING"
     // });
-    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! Updated for new characters introduced in recent sessions. Another step forward on our ***path to an unstable timeline!***');
+    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! I have been updated from Discordjsv12 to Discordjsv13. This means that I am only a little outdated instead of very outdated. Of course you guys probably do not know what that means... well for starters! I now have a slash command! Regardless, we are on another step forward on our ***path to an unstable timeline!***');
     // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
 
@@ -49,7 +99,7 @@ client.on('error', error => {
 
 //message.reply: replies to user
 //message.channel.send: sends message to channel
-client.on('message', async (message) => {
+client.on('messageCreate', async (message) => {
     try {
 	//Log the person who sent the message if it is a dm and put the timestamp
 	    if(message.channel.type === "dm"){
@@ -396,6 +446,7 @@ client.on('message', async (message) => {
 	            }
 	        } else if(CMD_NAME === 'loop'){
 	            player.setRepeatMode(message, parseInt(args));
+				message.channel.send("Song(s) are now on loop");
 	        } else if(CMD_NAME === 'shuffle'){
 	            player.shuffle(message);
 	        } else if(CMD_NAME === 'seek'){
@@ -480,8 +531,8 @@ client.on('message', async (message) => {
 	                if(userData[i].id === player1){
 	                    player1 = userData[i];
 	                }
-	            }
-	
+				}
+				
 	            player1 = {
 	                name: player1.name,
 	                id: player1.id,
@@ -526,6 +577,7 @@ client.on('message', async (message) => {
 				await require('./dnd/gameCommands/convertDeck.js').run(player2);
 				const drawCard = require('./dnd/gameCommands/drawCard.js');
 				player1.field = [null, null, null, null, null, null, null, null, null, null];
+				player1.subField = [null, null, null, null, null, null, null, null, null, null];
 	            await drawCard.run(client, turnLog, player1);
 	            await drawCard.run(client, turnLog, player1);
 	            await drawCard.run(client, turnLog, player1);
@@ -552,10 +604,8 @@ client.on('message', async (message) => {
 				await summon.run(client, turnLog, "summon Repugnans Fabula", player1, player2);
 				await summon.run(client, turnLog, "summon Buddy McLean", player1, player2);
 				await summon.run(client, turnLog, "summon Rook", player1, player2);
-				await summon.run(client, turnLog, "summon Tommy", player1, player2);
+				// await summon.run(client, turnLog, "summon Tommy", player1, player2);
 	            await showField.run(message, player1, player2);
-				await drawCard.run(client, turnLog, player1);
-				await showHand.run(client, player1);
 	        } else if(CMD_NAME === 'Abrahamlegacy' || CMD_NAME === 'abrahamlegacy'){
 	            require('./legacy/abrahamLegacy.js').run(message);
 	            setTimeout(function(){
@@ -624,7 +674,7 @@ client.on('message', async (message) => {
 	            await BattleShip.createGame(message);
 	        } else if(CMD_NAME === '2poll' || CMD_NAME === '2Poll'){
 	            let [channel, ...moreArgs] = args;
-	            const embed = new MessageEmbed()
+	            const embed = new EmbedBuilder()
 	                .setTitle('Poll')
 	                .setDescription('React to vote!')
 	                .setColor('#00D1CD');
@@ -637,13 +687,26 @@ client.on('message', async (message) => {
 	            if(channel[0] === '<' && channel[channel.length - 1] === '>'){
 	                channel = channel.substring(2, channel.length -1);
 	            }
-	            let msgEmbed = await client.channels.cache.get(channel).send(embed);
+	            let msgEmbed = await client.channels.cache.get(channel).send({embeds: [embed]});
 	            await msgEmbed.react('👍');
 	            await msgEmbed.react('👎');
 	            // message.delete({timeout: 1000});
 			} else if(CMD_NAME === 'christmas' || CMD_NAME === 'Christmas'){
 				const christmas = require('./legacy/christmas.js');
 				christmas.run(message);
+			} else if(CMD_NAME === 'test123'){
+				const id = (await message.channel.send(args[0])).id;
+				//Rapidly scrambles the letters in the message every 0.1 seconds
+				const scramble = setInterval(function(){
+					const msg = message.channel.messages.cache.get(id);
+					const content = msg.content;
+					const newContent = content.split('').sort(function(){return 0.5-Math.random()}).join('');
+					msg.edit(newContent);
+				}, 500); 
+				//Stops the scrambling after 5 seconds
+				setTimeout(function(){
+					clearInterval(scramble);
+				}, 15000);
 	        } else {
 	            if(CMD_NAME === 'attack' || CMD_NAME === 'Attack' || CMD_NAME === 'add' || CMD_NAME === 'Add'){
 	                return;
@@ -655,6 +718,103 @@ client.on('message', async (message) => {
 } catch (error) {
     console.log("Stack: " + error.stack);
 }
+});
+
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	if (interaction.commandName === 'ping') {
+		await interaction.reply('Pong!');
+	} else if (interaction.commandName === 'server') {
+		await interaction.reply('Server info.');
+	} else if (interaction.commandName === 'user') {
+		await interaction.reply('User info.');
+	}
+	if (interaction.commandName === "play") {
+		if (!interaction.member.voice.channelId) return await interaction.reply({ content: "You are not in a voice channel!", ephemeral: true });
+		if (interaction.guild.members.me.voice.channelId && interaction.member.voice.channelId !== interaction.guild.members.me.voice.channelId) return await interaction.reply({ content: "You are not in my voice channel!", ephemeral: true });
+		const query = interaction.options.getString("query");
+		const queue = player.createQueue(interaction.guild, {
+			ytdlOptions: {
+				filter: "audioonly",
+				highWaterMark: 1 << 30,
+				dlChunkSize: 0,
+			},
+			metadata: {
+				channel: interaction.channel
+			}
+		});
+        
+        // verify vc connection
+        try {
+            if (!queue.connection) await queue.connect(interaction.member.voice.channel);
+		} catch {
+            queue.destroy();
+            return await interaction.reply({ content: "Could not join your voice channel!", ephemeral: true });
+        }
+
+        await interaction.deferReply();
+        const track = await player.search(query, {
+            requestedBy: interaction.user
+        }).then(x => x.tracks[0]);
+        if (!track) return await interaction.followUp({ content: `❌ | Track **${query}** not found!` });
+
+        queue.play(track);
+        return await interaction.followUp({ content: `⏱️ | Loading track **${track.title}**!` });
+    } else if (interaction.commandName === "skip") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		const success = queue.skip();
+		return await interaction.reply({ content: success ? "⏭️ | Skipped the song!" : "❌ | Could not skip the song!", ephemeral: true });
+	} else if (interaction.commandName === "stop") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		queue.destroy();
+		return await interaction.reply({ content: "⏹️ | Stopped the music!", ephemeral: true });
+	} else if (interaction.commandName === "queue") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		return await interaction.reply({ embeds: [new EmbedBuilder()
+			.setColor("#A020F0")
+			.setAuthor({name: "Server Queue ", iconURL: interaction.guild.iconURL()})
+			.setDescription(queue.tracks.length >= 1 ? queue.tracks.map((track, i) => {
+				return `#${i + 1} - ${track.title}`
+			}).join("\n") : "No songs in queue!")
+		], ephemeral: true});
+	} else if (interaction.commandName === "pause") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		const success = queue.setPaused(true);
+		return await interaction.reply({ content: success ? "⏸ | Paused the music!" : "❌ | Could not pause the music!", ephemeral: true });
+	} else if (interaction.commandName === "resume") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		const success = queue.setPaused(false);
+		return await interaction.reply({ content: success ? "▶ | Resumed the music!" : "❌ | Could not resume the music!", ephemeral: true });
+	} else if (interaction.commandName === "loop") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		const success = queue.setRepeatMode(queue.repeatMode ? 0 : 1);
+		return await interaction.reply({ content: success ? "🔁 | Repeating the queue!" : "❌ | Could not repeat the queue!", ephemeral: true });
+	} else if (interaction.commandName === "shuffle") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		const success = queue.shuffle();
+		return await interaction.reply({ content: success ? "🔀 | Shuffled the queue!" : "❌ | Could not shuffle the queue!", ephemeral: true });
+	} else if (interaction.commandName === "remove") {
+		const queue = player.getQueue(interaction.guildId);
+		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
+		const index = interaction.options.getInteger("index");
+		if (index < 1 || index > queue.tracks.length) return await interaction.reply({ content: `❌ | Please enter a valid track number (1 - ${queue.tracks.length})!`, ephemeral: true });
+		const track = queue.tracks[index - 1];
+		queue.remove(index - 1);
+		return await interaction.reply({ content: `✅ | Removed **${track.title}** from the queue!`, ephemeral: true });
+	} else if(interaction.commandName === 'clear'){
+		const queue = player.getQueue(interaction.guildId);
+		if(!queue) return await interaction.reply({content: '❌ | No music is being played!', ephemeral: true});
+		queue.clear();
+		return await interaction.reply({content: '✅ | Cleared the queue!', ephemeral: true});
+	}
 });
 
 client.login(process.env.DISCORDJS_BOT_TOKEN);

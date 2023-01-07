@@ -35,16 +35,15 @@ exports.run = async(message, args) => {
 
     //Create embed
     const Discord = require('discord.js');
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
         .setColor('#0099ff')
         .setTitle(deck.name)
-        .setAuthor(message.author.username, message.author.avatarURL())
         .addFields(
-            {name : 'Cards:', value: deck.cards, inline: true},
-            {name: 'Deck Size', value: deck.cards.length, inline: true},
+            {name : 'Cards:', value: deck.cards.toString(), inline: true},
+            {name: 'Deck Size', value: deck.cards.length.toString(), inline: true},
         )
         .setTimestamp();
 
     //Send embed
-    message.channel.send(embed);
+    message.channel.send({embeds: [embed]});
 };

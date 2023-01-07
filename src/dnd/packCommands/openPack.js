@@ -50,7 +50,7 @@ exports.run = async(message) => {
     //Ask the user which pack they want to open
     message.channel.send('Which pack would you like to open? (Select the number option)');
     const filter = m => m.author.id === message.author.id;
-    message.channel.awaitMessages(filter, {max: 1, time: 30000, errors: ['time']})
+    message.channel.awaitMessages({filter: filter, max: 1, time: 30000, errors: ['time']})
         .then(collected => {
             let packNumber = collected.first().content;
 

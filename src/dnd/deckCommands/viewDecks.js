@@ -19,15 +19,14 @@ exports.run = async(message) => {
 
     //Lists all deck names in an embed
     const Discord = require('discord.js');
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
         .setColor('#0099ff')
         .setTitle('Decks')
-        .setAuthor(message.author.username, message.author.avatarURL())
         .addFields(
-            {name : 'Deck Names:', value: user.decks.map(deck => deck.name), inline: true},
+            {name : 'Deck Names:', value: user.decks.map(deck => deck.name).toString(), inline: true},
         )
         .setTimestamp();
     
     //Send embed
-    message.channel.send(embed);
+    message.channel.send({embeds: [embed]});
 };

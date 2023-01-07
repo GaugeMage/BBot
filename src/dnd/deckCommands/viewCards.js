@@ -19,15 +19,14 @@ exports.run = async(message) => {
 
     //Lists all cards that the user has in an embed
     const Discord = require('discord.js');
-    const embed = new Discord.MessageEmbed()
+    const embed = new Discord.EmbedBuilder()
         .setColor('#0099ff')
         .setTitle('Card Collection:')
-        .setAuthor(message.author.username, message.author.avatarURL())
         .addFields(
-            {name : 'Cards:', value: user.cards.map(card => card), inline: true},
+            {name : 'Cards:', value: user.cards.map(card => card).toString(), inline: true},
         )
         .setTimestamp();
     
     //Send embed
-    message.channel.send(embed);
+    message.channel.send({embeds: [embed]});
 }

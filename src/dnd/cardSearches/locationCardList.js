@@ -9,12 +9,12 @@ exports.run = async(message) => {
         cardCosts.push(locationCards[i].cost);
     }
 
-    const cardString = new Discord.MessageEmbed().
+    const cardString = new Discord.EmbedBuilder().
         setTitle('Location Cards').
         addFields(
-            {name: 'Card Names', value: cardNames.join('\n'), inline: true},
-            {name: 'Cost', value: cardCosts.join('\n'), inline: true},
+            {name: 'Card Names', value: cardNames.join('\n').toString(), inline: true},
+            {name: 'Cost', value: cardCosts.join('\n').toString(), inline: true},
         ).
         setColor('#ff0000');
-    message.channel.send(cardString);
+    message.channel.send({embeds: [cardString]});
 }

@@ -6,17 +6,17 @@ exports.run = async(message, args) => {
     for(let i = 0; i < equipmentCards.length; i++){
         let card = equipmentCards[i];
         if(card.name === cardName){
-            const cardString = new Discord.MessageEmbed().
+            const cardString = new Discord.EmbedBuilder().
                 setTitle(card.name).
                 setImage(card.image).
                 addFields(
-                    {name: 'Stats', value: 'Attack: ' + card.attack + '\nHealth: ' + card.health, inline: true},
-                    {name: 'Cost', value: card.cost, inline: true},
+                    {name: 'Stats', value: 'Attack: ' + card.attack.toString() + '\nHealth: ' + card.health.toString(), inline: true},
+                    {name: 'Cost', value: card.cost.toString(), inline: true},
                 ).
-                setFooter('"' + card.footer + '"').
+                setFooter({text: '"' + card.footer + '"'}).
                 setDescription('*' + card.description + '*').
                 setColor(card.color);
-            message.channel.send(cardString);
+            message.channel.send({embeds: [cardString]});
             return;
         }
     }

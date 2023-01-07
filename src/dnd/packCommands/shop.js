@@ -2,10 +2,12 @@ exports.run = async(message) => {
     //Send every pack
     const Discord = require('discord.js');
     const packs = require('../packs/packs.json');
+    const {Pagination} = require('discordjs-button-embed-pagination');
 
     const tempUser = message.author.id;
 
     let user = null;
+    let pages = [];
     // let userIndex = null;
 
     //Check if user exists
@@ -20,22 +22,24 @@ exports.run = async(message) => {
             message.channel.send("You are not in the database! Please use the command !registerD&D to add yourself to the database.");
             return;
         }
-    }
+    } 
 
     //Print every pack
     for(let i = 0; i < packs.length; i++){
         let pack = packs[i];
-        let packEmbed = new Discord.MessageEmbed().
+        let packEmbed = new Discord.EmbedBuilder().
             setTitle(pack.name).
             addFields(
-                {name: 'Pack Description:', value: pack.description, inline: true},
-                {name: 'Pack Cards:', value: pack.cards.join('\n'), inline: true},
-                {name: 'Pack Cost:', value: pack.cost, inline: true},
+                {name: 'Pack Description:', value: pack.description.toString(), inline: true},
+                {name: 'Pack Cards:', value: pack.cards.join('\n').toString(), inline: true},
+                {name: 'Pack Cost:', value: pack.cost.toString(), inline: true},
             ).
             setImage(pack.image).
             setColor('#ff0000');
-        message.channel.send(packEmbed);
+        pages.push(packEmbed);
     }
+
+    await new Pagination(message.channel, pages, "Page").paginate();
 
     //Ask user which pack they want to buy
     message.channel.send('Which pack would you like to buy? (Select the number option)');
@@ -48,7 +52,7 @@ exports.run = async(message) => {
     message.channel.send(packList);
 
     const filter = m => m.author.id === message.author.id;
-    message.channel.awaitMessages(filter, {max: 1, time: 30000, errors: ['time']})
+    message.channel.awaitMessages({filter: filter, max: 1, time: 30000, errors: ['time']})
         .then(collected => {
             let packNumber = collected.first().content;
 

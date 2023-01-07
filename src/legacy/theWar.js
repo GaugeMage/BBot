@@ -96,7 +96,7 @@ exports.run = async(message) => {
 
         //Wait for user to input any solution
         const filter = m => m.author.id === message.author.id;
-        const collector = message.channel.createMessageCollector(filter, { time: 1200000 });
+        const collector = message.channel.createMessageCollector({filter: filter, time: 1200000 });
         collector.on('collect', m => {
             if(m.content.includes("0") && !zeroUsed){
                 zeroUsed = true;

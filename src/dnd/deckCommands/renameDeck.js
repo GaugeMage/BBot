@@ -36,7 +36,7 @@ exports.run = async(message, args) => {
 
     //Ask user what to rename deck to
     message.channel.send("What would you like to rename the deck **" + deck.name + "** to?");
-    const newDeckName = await message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(collected => {
+    const newDeckName = await message.channel.awaitMessages({filter: m => m.author.id === message.author.id, max: 1, time: 10000}).then(collected => {
         return collected.first().content;
     }).catch(() => {
         message.channel.send("You did not enter a deck name in time!");

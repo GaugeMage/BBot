@@ -11,13 +11,13 @@ exports.run = async(message) => {
         cardCosts.push(characterCards[i].cost);
         cardStats.push(characterCards[i].attack + '/' + characterCards[i].health);
     }
-    const cardString = new Discord.MessageEmbed().
+    const cardString = new Discord.EmbedBuilder().
         setTitle('Character Cards').
         addFields(
-            {name: 'Card Names', value: cardNames.join('\n'), inline: true},
-            {name: 'Cost', value: cardCosts.join('\n'), inline: true},
-            {name: 'Stats', value: cardStats.join('\n'), inline: true},
+            {name: 'Card Names', value: cardNames.join('\n').toString(), inline: true},
+            {name: 'Cost', value: cardCosts.join('\n').toString(), inline: true},
+            {name: 'Stats', value: cardStats.join('\n').toString(), inline: true},
         ).
         setColor('#ff0000');
-    message.channel.send(cardString);
+    message.channel.send({embeds: [cardString]});
 }

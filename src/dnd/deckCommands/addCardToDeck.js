@@ -45,7 +45,7 @@ exports.run = async(message, args) => {
     message.channel.send("What is the name of the card you want to add to the deck **" + deck.name + "**?");
 
     //Ask user for card name
-    const cardName = await message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(collected => {
+    const cardName = await message.channel.awaitMessages(/*m => m.author.id === message.author.id,*/ {filter: m => m.author.id === message.author.id, max: 1, time: 10000}).then(collected => {
         return collected.first().content;
     }).catch(() => {
         message.channel.send("You did not enter a card name in time!");

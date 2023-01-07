@@ -132,7 +132,7 @@
     {
         "name": "Robert E. O. Speedwagon",
         "color": "#DC143C",
-        "description": "Stand Summon: **Die Young**. **Vampiric** When I am played, if your world is 50% HP or above, equip me with Wild Child. If the world is below 50% give me Kesha.",
+        "description": "Stand Summon: **Die Young**. **Vampiric** When I am played, if your world has more than 50% HP, equip me with Wild Child. If the world is below 50% give me Kesha.",
         "image": "https://s3.amazonaws.com/files.d20.io/images/288737978/Qfwl9Vrm1Lrf4T5_YR0RLw/med.png?1654592161",
         "attack": 5,
         "health": 5,
@@ -142,7 +142,7 @@
         "faction": "Speedwagon Foundation",
         "stand": {
             "name": "Die Young",
-            "description": "Whenever I am summoned, grant my user +1/+1 for each HP your world has lost this game. Grant me +1 health for each HP your world has lost this game.",
+            "description": "Whenever I am summoned, grant my user +1/+1 for each HP your world has lost this game. Whenever my user damages any enemy, I also deal the same amount of damage to the enemy world.",
             "image": "https://slm-assets.secondlife.com/assets/18305224/original/gif__Blood_Pool_Waves_Overlay_Alpha_4x3.gif?1504947628",
             "attack": 1,
             "health": 5,
@@ -177,7 +177,7 @@
         "health": 1,
         "cost": 3,
         "type": "Normal",
-        "footer": "'What is your name? Jolene? That is a pretty name. I had a daugther with that name!' - <Redacted> Months/Years ago",
+        "footer": "'What is your name? Jolene? That is a pretty name. I had a daugther with that name!' - Garnet",
         "faction": "Speedwagon Foundation",
         "generatedCharacters": [
             {

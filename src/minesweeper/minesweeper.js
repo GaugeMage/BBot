@@ -48,7 +48,7 @@ exports.run = function (message, args) {
     }
     message.channel.send(minesweeperField !== null ? minesweeperField : 'A minesweeper field can not be generated with the given parameters');
 
-    // const embed = new Discord.MessageEmbed()
+    // const embed = new Discord.EmbedBuilder()
     //     .setTitle('Minesweeper')
     //     .setColor(0x00AE86)
     //     .addFields({
@@ -58,5 +58,5 @@ exports.run = function (message, args) {
     //         inline: false
     //     })
     //     .setDescription(minesweeper.start());
-    // message.channel.send(embed);
+    // message.channel.send({embeds: [embed]});
 };

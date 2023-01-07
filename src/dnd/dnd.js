@@ -42,7 +42,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
     await client.users.cache.get(player1.id).send("Pick what deck you would like to use: (If you don't know what decks you have, use the bb!decks command)");
     // message.channel.send("Player 1: Pick what deck you would like to use: (If you don't know what decks you have, use the bb!decks command)");
     //Wait for player 1 to pick a deck
-    let player1Deck = await message.author.dmChannel.awaitMessages(m => m.author.id === player1.id, {max: 1, time: 30000, errors: ['time']})
+    let player1Deck = await message.author.dmChannel.awaitMessages(/*m => m.author.id === player1.id,*/{filter: m => m.author.id === player1.id, max: 1, time: 30000, errors: ['time']})
         .then(collected => {
             return collected.first().content;
         })
@@ -76,7 +76,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
     await client.users.cache.get(player2.id).send("Pick what deck you would like to use: (If you don't know what decks you have, use the bb!decks command)");
 
     //Wait for player 2 to pick a deck
-    let player2Deck = await client.users.cache.get(player2.id).dmChannel.awaitMessages(m => m.author.id === player2.id, {max: 1, time: 30000, errors: ['time']})
+    let player2Deck = await client.users.cache.get(player2.id).dmChannel.awaitMessages(/*m => m.author.id === player2.id,*/ {filter: m => m.author.id === player2.id, max: 1, time: 30000, errors: ['time']})
         .then(collected => {
             return collected.first().content;
         })
@@ -221,7 +221,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
             //Wait for player to say summon, cast, location, equip, attack, surrender, or end turn
             let answer = "";
             while(!answer.includes("summon") && !answer.includes("cast") && !answer.includes("location") && !answer.includes("equip") && !answer.includes("endturn") && !answer.includes("surrender") && !answer.includes("attack")){
-                answer = await client.users.cache.get(playerChosen.id).dmChannel.awaitMessages(m => m.author.id === playerChosen.id, {max: 1})
+                answer = await client.users.cache.get(playerChosen.id).dmChannel.awaitMessages(/*m => m.author.id === playerChosen.id,*/ {filter: m => m.author.id === playerChosen.id, max: 1})
                     .then(collected => {
                         return collected.first().content;
                     }
