@@ -1,9 +1,10 @@
 require('dotenv').config();
 
-const {Client, ApplicationCommandOptionType, ActivityType, EmbedBuilder, Partials} = require('discord.js');
+const {Client, ApplicationCommandOptionType, Events, ActivityType, EmbedBuilder, Partials, ChannelType} = require('discord.js');
 const {Player, Track} = require('discord-player');
 const Chess = require('chess.js').Chess;
 const Engine = require('node-uci').Engine;
+const {poll} = require('discord.js-poll')
 
 const stockfish = new Engine(__dirname + '/chess/stockfish_15_x64_avx2.exe');
 stockfish.init();
@@ -21,10 +22,90 @@ let board = [];
 let ticTacToeStarted = false;
 let isX = false;
 let killCommand;
+let isAnanias = false;
 
 const checkArgs = require('./helpers/checkArgs.js');
 
-player.on("trackStart", (queue, track) => queue.metadata.channel.send(`🎶 | Now playing **${track.title}**!`))
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isStringSelectMenu()) return;
+
+	const selected = interaction.values[0];
+
+	if(selected === 'yesAnanias'){
+		await interaction.update({content: "You have the courage to continue and I commend you for that young horseman. Together we shall write the history that has happened 49 times over. I hope that you and I can grow together and uncover many beautiful secrets that this world contains. Now, let us continue onto our next puzzle!\n\nLet us start with someone who I consider my sister from overseas (though some of my brothers do not). We are all born of crystal yet, some priests are too ignorant wth their traditional values to see the blessings that she provides this world. Then again, I am the most naive of my brothers so it may be presumptuous of me to say this:\n\nIf first love is made\nUnity and peace follow\nAs Love is Inside\n\n'Some time later God tested Abraham. He said to him, “Abraham!”' - Genesis (?). BBot command as usual", components: []});
+	} else if(selected === 'noAnanias'){
+		await interaction.update({content: "I see... I understand that this job is not for everyone so I cannot fault you for choosing your safety. I appreciate your honesty and courage in saying No as that shows that you have grown independent. I bless thee.", components: []});
+	} else if(selected === 'killBBot'){
+		await interaction.update({content: "Let us do this partner! I will initiate the kill sequence!", components: []});
+
+		await interaction.message.channel.send("```js\nexports.run(killScript);```");
+		
+		const loadingBar = require('./helpers/loadingBar.js');
+		await loadingBar.run(await interaction.message).then(() => {
+			const killBBot = require('./7778891011/killBBot.js');
+			killBBot.run(interaction.message);
+
+			function tempKill(){
+				interaction.message.channel.send("***Kill me please...***")
+			}
+
+			isAnanias = true;
+
+			setTimeout(function(){
+				killCommand = setInterval(tempKill, 1000);
+			}, 24000);
+		});
+	} else if(selected === 'leaveBBot'){
+		await interaction.update({content: "Okay! Before I go, I found the last part of this mages of infi----", components: []});
+
+		setTimeout(function(){
+			interaction.message.channel.send("***INTRUDER FOUND! EXTERMINATION PROTOCOL ACTIVATE***");
+		}, 5000);
+
+		setTimeout(function(){
+			interaction.message.channel.send("https://tenor.com/view/idleglance-amv-anime-edit-fate-heavens-feel-gif-25787405");
+		}, 10000);
+
+		isAnanias = true;
+
+		setTimeout(async function(){
+			interaction.message.channel.send("NO!!!! I WILL LEAVE!");
+			interaction.message.channel.send("```js\nexports.run(escapeScript);```");
+			const loadingBar = require('./helpers/loadingBar.js');
+			await loadingBar.run(await interaction.message).then(() => {
+				interaction.message.channel.send("***ANANIAS-WORKSPACE TERMINATED!***");
+				interaction.message.channel.send("https://tenor.com/view/explosion-earth-explosion-world-exploding-gif-25091517");
+				interaction.message.channel.send("***INTRUDER HAS BEEN TERMINATED... BACK TO MAINTENANCE ROUTES...***");
+			});
+		}, 15000);
+
+		setTimeout(function(){
+			interaction.message.channel.send("I am almost gone. Just a few more seconds!!!!");
+		}, 18000);
+
+		setTimeout(function(){
+			interaction.message.channel.send("Before I leave, you can bring me back in here by executing the bb!awaken command! I believe in you my friend!!!!");
+		}, 20000);
+	} else if(selected === 'friendYes'){
+		await interaction.update({content: "You have chosen an option", components: []});
+		interaction.message.channel.send("Wait really?!?");
+		setTimeout(function(){
+			interaction.message.channel.send('Sorry that I sound a bit surprised. I was just expressing my joy :blush: .');
+		}, 5000);
+		require('./7778891011/finalBeginning.js').run(interaction.message);
+	} else if(selected === 'businessOnly'){
+		await interaction.update({content: "You have chosen an option", components: []});
+		interaction.message.channel.send("I see. Why of course. I was just being a little silly. I understand that you are a busy person and I respect that. I will be here if you need me! Let us continue this mission!");
+		require('./7778891011/finalBeginning.js').run(interaction.message);
+	} else if(selected === 'annoying'){
+		await interaction.update({content: "You have chosen an option", components: []});
+		interaction.message.channel.send("I am sorry if I am being annoying... I am just trying to be friendly. I will try to be less annoying from now on.");
+		require('./7778891011/finalBeginning.js').run(interaction.message);
+	}
+});
+
+//This will be put back on after the event.
+// player.on("trackStart", (queue, track) => queue.metadata.channel.send(`🎶 | Now playing **${track.title}**!`))
 
 client.on('ready', async() => {
     console.log(`${client.user.tag} has logged in`);
@@ -80,9 +161,6 @@ client.on('ready', async() => {
 		description: 'loop the song'
 	})
 
-    // client.user.setActivity("you... hehe", {
-    //     type: "WATCHING"
-    // });
     // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! I have been updated from Discordjsv12 to Discordjsv13. This means that I am only a little outdated instead of very outdated. Of course you guys probably do not know what that means... well for starters! I now have a slash command! Regardless, we are on another step forward on our ***path to an unstable timeline!***');
     // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
@@ -102,7 +180,7 @@ client.on('error', error => {
 client.on('messageCreate', async (message) => {
     try {
 	//Log the person who sent the message if it is a dm and put the timestamp
-	    if(message.channel.type === "dm"){
+	    if(message.channel.type === ChannelType.DM){
 	        console.log(`${message.createdAt.toTimeString()} ${message.author.tag} said: ${message.content}`);
 	    }
 	    
@@ -120,10 +198,19 @@ client.on('messageCreate', async (message) => {
 	    function funcKill(){
 	        message.channel.send('kill me please...');
 	    }
-	    
+
+		const currentTimeAnswer = message.createdAt.getHours() > 12 ? `${message.createdAt.getHours() - 12}:${message.createdAt.getMinutes()}` : `${message.createdAt.getHours()}:${message.createdAt.getMinutes()}`;
+		const current1HourFuture = message.createdAt.getHours() + 1 > 12 ? `${message.createdAt.getHours() + 1 - 12}:${message.createdAt.getMinutes()}` : `${message.createdAt.getHours() + 1}:${message.createdAt.getMinutes()}`;
+
 	    //If it starts with prefix
 	    if(message.content.startsWith(PREFIX)){
 	        const [CMD_NAME, ...args] = message.content.substring(PREFIX.length).trim().split(/\s+/);
+
+			//Check if command is in time format (if X:XX is a time)
+			const checkTime = require('./helpers/checkTime.js');
+			if(checkTime.run(CMD_NAME)){
+			}
+
 	        function checkPermission(){
 	            try {
 	                const permission = String.prototype.concat(String.prototype.toUpperCase(CMD_NAME), '_MEMBERS'); 
@@ -183,6 +270,17 @@ client.on('messageCreate', async (message) => {
 	            message.channel.send(`${member}${ACCUSATIONS[Math.floor(Math.random() * ACCUSATIONS.length)]}`);
 	        } else if(CMD_NAME === 'kill'){
 	            clearInterval(killCommand);
+				if(isAnanias){
+					const ananiasRemorse = require('./7778891011/ananiasRemorse.js');
+					ananiasRemorse.run(message);
+					!isAnanias;
+				}
+			} else if(CMD_NAME === 'awaken'){
+				if(isAnanias){
+					const ananiasAwaken = require('./7778891011/ananiasAwaken.js');
+					ananiasAwaken.run(message);
+					!isAnanias;
+				}
 	        } else if(CMD_NAME === 'uwu'){
 	            message.channel.send('uwu');
 	        } else if(CMD_NAME === 'uwuhelp'){
@@ -239,8 +337,8 @@ client.on('messageCreate', async (message) => {
 	            message.channel.send("The perfect number sequence!");
 	        } else if(CMD_NAME === 'Imbroglione' || CMD_NAME === 'imbroglione'){
 	            message.channel.send('The insatiable heirloom. I\'ve always wondered how it was created and why it exists. I would be wary of it though and suggest that ***nobody*** wields it. Not even the intended user(s) of it could wield it properly. Can\'t believe that ***he*** decided it was a good gift for ***him***.');
-	        } else if(CMD_NAME === "Johnny" || CMD_NAME == 'johnny'){
-	            message.channel.send("My old teacher? What about him?");
+	        // } else if(CMD_NAME === "Johnny" || CMD_NAME == 'johnny'){
+	            // message.channel.send("My old teacher? What about him?");
 	        } else if(CMD_NAME === "Garnet" || CMD_NAME == 'garnet'){
 	            message.channel.send("Oh? The Velvet Thunder? In her prime she was an amazing warrior.");
 	        } else if(CMD_NAME === "Joy" || CMD_NAME == 'joy'){
@@ -325,7 +423,78 @@ client.on('messageCreate', async (message) => {
 	            message.reply('A beautiful number right? :8ball:');
 	        } else if(CMD_NAME === 'omnipotence' || CMD_NAME === 'Omnipotence'){
 	            message.channel.send('Omnipotence? Ahh Jordy\'s ultimate weapon per say. It had quite the attitude and appetite I must say. Who knew providing it with ***infinity*** was enough to stave off its hunger :joy:');
-	        } else if(CMD_NAME === 'Secret'){
+			} else if(CMD_NAME === 'ishmael' || CMD_NAME === 'Ishmael'){
+				message.channel.send('(2)3.(5)(4)(5)zon(5)w(2).co(4)/f(1)(7)e(2).d20.(1)o/(1)(4)(5)g(6)(2)/322182166/QQ(1)(3)WUZ(4)(4)WH(2)9V(5)QYCu_xQ/(4)(5)x.png?1673381219')
+				message.channel.send('Send this image of my brother to me as the final link as a BB command.')
+			} else if(CMD_NAME === 's3.amazonaws.com/files.d20.io/images/322182166/QQihWUZmmWHs9VaQYCu_xQ/max.png?1673381219' || CMD_NAME === 'https://s3.amazonaws.com/files.d20.io/images/322182166/QQihWUZmmWHs9VaQYCu_xQ/max.png?1673381219'){
+				message.channel.send('That is Ishmael. The third of us. He is one of my older brothers. He hates the corrupt priests of this world who use their power to extort people who look up to them... pieces of shit like Joel Olsteen, Kenneth Copeland, and Troy Paxton... Men who are sitting in their multimillion dollar mansions/penthouses... Enough about them though. Ishmael is a leader. He is a man who helps the community and he asks for no help or fame... A true man of faith. Nonetheless, it is onto the next part of this. Given the way I have been talking, I hope you have been able to assume who I am or rather what my title is.');
+				message.channel.send('I want you to type out who I am. I am one of the few which were made after the Messiah was born: \'So the Lord said to him, “Arise and go to the street called Straight, and inquire at the house of Judas for one called Saul of Tarsus, for behold, he is praying.\'')
+			} else if(CMD_NAME === 'Ananias' || CMD_NAME === 'ananias'){
+				require('./7778891011/ananias.js').run(message);
+			} else if(CMD_NAME === '22'){
+				message.channel.send("Indeed. It was her... my sister. Not by blood nor crystal, but by compassion and soul. She is the one who tested my second eldest brother, 'Abraham'. In a sense she is my Messiah. My fourth brother, Solomon, was one who sacrificed a lot to try and prevent the disaster that resulted in her death. He tried to protect her and in turn, he lost more than anyone else.  In the end, it was all for naught... we were not able to stop our brother.")
+				message.channel.send(".... too many regrets.")
+				message.channel.send("def50200807d38a58eb40fc3c434fc41b2df6f29710383f454b4025e68fa29705e38943a3005cf799834d5316aa6379604e9a3ccf3611710f6e11b2d051ed26e3f7632ec2e8bb3f487b614ba141265c9d7a261ed693fb5822e3cb64668e20ffda8a89b3d93e6165040e30da55a62250e89e660337ab2d9db1238a3356cd4c27dbe672aea388452de5e8c644c2a04934a2400a5bb581793284c801b5feac94567defb7e7f593d74a577db710083ca01b2e7ca3d9611702065031fcf2a4d3627196436a6caf37596554abdaa1c8272855ff4f1f28cc4c0889ca65fbef26eab6e450c9a74c7ae627ebf1b1e323cf4eb6b1df23949bc657593e6d3c96a1535376ed6fe767074e34b5d8aaeb0af1f185582739855b2641a921755450ec34da3251cfbfe21c4ec456ae2d1cda0d267b2ce052d516456644caf321ad53fa782d3f1183bdde4449b2dae0b64fbd04bca467d12e9641cf1870c0fda7728428e70d9aadc598d7f475b070323e9173380f10571713587a84e61c95e1b41fc698b9e67f3c0935b6f495445d9b35857c2068381653893ad5d17bbbf49be15fb1d2f1d3726d98779e2b3c8ade4c5e07c6879b223deb936c9c3053272e4a0d6580051750d5bbfabaebd388a303b6c626c614713fb6963d57183c01220cdad038a76aa1a3a94155ff7fdb0a2a53312a27d776a44d8280c3f7788618f141e5bfe422e4aa7d3b7c6dc7f9a04a32169e49697af153c429143cecd5d1bacb040ec20c1e0585f4b19e620a6ca1e1663aa797d663894376e58d9f9f7413642059e15f75c4288ee10b39a68a69685bb5f01f14629918108d87f45e5e1bf445f27f7af35f2402ecb7f07ab7ab4c567e99507b7be483e43d0fecc115deca10f0e4cd2393762ac562dd9d5ba24");
+				message.channel.send("Don't worry though. Something like this would be a bit difficult without the proper tools (and information but you should have that now!): https://www.dbmxpca.com/tools/msg-decrypt/\nOne thing of importance is to make sure that you do not have any extra spaces at the end as that could cause an error!");
+			} else if(CMD_NAME === 'infinitycouncil' || CMD_NAME === 'InfinityCouncil'){
+				require('./7778891011/infinityCouncil.js').run(message);
+			} else if(CMD_NAME === 'JohnnyJoestar' || CMD_NAME === 'johnnyjoestar'){
+				require('./7778891011/johnnyJoestar.js').run(message);
+			} else if(CMD_NAME === '89'){
+				require('./7778891011/89.js').run(message);
+			} else if(CMD_NAME === 'monastery' || CMD_NAME === 'Monastery'){
+				require('./7778891011/monastery.js').run(message);
+			} else if(CMD_NAME === currentTimeAnswer){
+				require('./7778891011/currentTime.js').run(message);
+			} else if(CMD_NAME === current1HourFuture){
+				require('./7778891011/current1HourFuture.js').run(message);
+			} else if(CMD_NAME == 50){
+				require('./7778891011/50.js').run(message);
+			} else if(CMD_NAME === 'play'){
+				if(!message.member.voice.channelId) return await message.reply("You are not in a voice channel");
+				const queue = player.createQueue(message.guild, {
+					ytdlOptions: {
+						filter: "audioonly",
+						highWaterMark: 1 << 30,
+						dlChunkSize: 0,
+					},
+					metaData: {
+						channel: message.channel,
+					}
+				});
+				try {
+					if(!queue.connection) await queue.connect(message.member.voice.channel);
+				} catch {
+					queue.destroy();
+					return await message.reply("Could not join your voice channel!");
+				}
+				const track = await player.search(args.join(" "), {
+					requestedBy: message.author,
+				}).then(x => x.tracks[0]);
+				if(!track) return await message.reply("No results found");
+				queue.play(track);
+			} else if(CMD_NAME === 'test2'){
+				const queue = player.createQueue(message.guild, {
+					ytdlOptions: {
+						filter: "audioonly",
+						highWaterMark: 1 << 30,
+						dlChunkSize: 0,
+					},
+					metadata: {
+						channel: message.channel,
+					}
+				});
+				try {
+					if(!queue.connection) await queue.connect(message.member.voice.channel);
+				} catch {
+					queue.destroy();
+					throw new Error("Could not join your voice channel!");
+				}
+				const track = await player.search("https://www.youtube.com/watch?v=QH2-TGUlwu4", {
+					requestedBy: message.author,	
+				}).then(x => x.tracks[0]);
+				queue.play(track);
+			} else if(CMD_NAME === 'Secret'){
 	            const member = getMember();
 	            //Turn the rest of the args into 1 string
 	            let temp = "";
@@ -388,73 +557,6 @@ client.on('messageCreate', async (message) => {
 	            } else {
 	                message.channel.send('I win! HAHAHAHA :joy: :joy: :joy: Seems like you\'re not very good at this game :wink:');
 	            }
-	        } else if(CMD_NAME === 'play'){
-	            checkArgs.run(args, message);
-	            const member = getMember();
-	            if(!message.member.voice.channel){
-	                message.channel.send("You must be in a channel to play the bot silly :stuck_out_tongue_closed_eyes: " + message.author.username);
-	            }
-	            if(!correctArgs){
-	                return ;
-	            }
-	            let url = args.join(' ');
-	            try {
-	                const queue = player.getQueue(message);
-	                if(queue && queue.playing){
-	                    queue.tracks.push(new Track({url: url, author: message.author}, message.author, player));
-	                } else {
-	                    const song = await player.play(message, url, true);
-	                }
-	            } catch (error) {
-	                console.log(error);
-	            }
-	        } else if(CMD_NAME === 'pause'){
-	            player.pause(message);
-	        } else if(CMD_NAME === 'resume'){
-	            player.resume(message);
-	        } else if(CMD_NAME === 'stop'){
-	            player.stop(message);
-	        } else if(CMD_NAME === 'skip'){
-	            //Checks if bot is playing
-	            if(player.isPlaying(message)){
-	                player.skip(message);
-	            } else {
-	                message.channel.send('The bot is not playing anything right now');
-	            }
-	        } else if(CMD_NAME === 'queue'){
-	            const queue = player.getQueue(message);
-	            //If queue is empty
-	            if(!queue){
-	                message.channel.send('There is nothing in the queue right now');
-	            } else {
-	                message.channel.send(queue.tracks.map((song, i) => {
-	                    // console.log(song);
-	                    return `${i === 0 ? 'Song:' : `#${i+1}`} - ${song.url}`;
-	                    // return `${i === 0 ? 'Song:' : `#${i+1}`} - ${song}`;
-	                }).join('\n'));
-	            }
-	        } else if(CMD_NAME === 'clear'){
-	            player.clearQueue(message);
-	        } else if(CMD_NAME === 'disconnect'){
-	            player.disconnect(message);
-	        } else if(CMD_NAME === 'volume'){
-	            //Check if song is playing
-	            if(!player.isPlaying(message)){
-	                message.channel.send("There is no song playing right now");
-	            } else {
-	                player.setVolume(message, args);
-	            }
-	        } else if(CMD_NAME === 'loop'){
-	            player.setRepeatMode(message, parseInt(args));
-				message.channel.send("Song(s) are now on loop");
-	        } else if(CMD_NAME === 'shuffle'){
-	            player.shuffle(message);
-	        } else if(CMD_NAME === 'seek'){
-	            player.seek(message, parseInt(args));
-	        } else if(CMD_NAME === 'nowplaying'){
-	            player.nowPlaying(message);
-	        } else if(CMD_NAME === 'remove'){
-	            player.remove(message, parseInt(args));
 	        } else if(CMD_NAME === 'minesweeper'){
 	            await require('./minesweeper/minesweeper.js').run(message, args);
 	        } else if(CMD_NAME === '32'){
@@ -672,25 +774,8 @@ client.on('messageCreate', async (message) => {
 	                prefix: PREFIX,
 	            })
 	            await BattleShip.createGame(message);
-	        } else if(CMD_NAME === '2poll' || CMD_NAME === '2Poll'){
-	            let [channel, ...moreArgs] = args;
-	            const embed = new EmbedBuilder()
-	                .setTitle('Poll')
-	                .setDescription('React to vote!')
-	                .setColor('#00D1CD');
-	                // .setFooter('Poll created by ' + message.author.username);
-	            if(args[0]){
-	                embed.addField(moreArgs.join(' '), '-----------------------');
-	            } else {
-	                embed.addField('Poll', '-----------------------');
-	            }
-	            if(channel[0] === '<' && channel[channel.length - 1] === '>'){
-	                channel = channel.substring(2, channel.length -1);
-	            }
-	            let msgEmbed = await client.channels.cache.get(channel).send({embeds: [embed]});
-	            await msgEmbed.react('👍');
-	            await msgEmbed.react('👎');
-	            // message.delete({timeout: 1000});
+	        } else if(CMD_NAME === 'poll' || CMD_NAME === 'Poll'){
+				poll(message, args, "+", '#00D1CD')
 			} else if(CMD_NAME === 'christmas' || CMD_NAME === 'Christmas'){
 				const christmas = require('./legacy/christmas.js');
 				christmas.run(message);
@@ -761,17 +846,17 @@ client.on('interactionCreate', async interaction => {
 
         queue.play(track);
         return await interaction.followUp({ content: `⏱️ | Loading track **${track.title}**!` });
-    } else if (interaction.commandName === "skip") {
+    } else if(interaction.commandName === "skip"){
 		const queue = player.getQueue(interaction.guildId);
 		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
 		const success = queue.skip();
 		return await interaction.reply({ content: success ? "⏭️ | Skipped the song!" : "❌ | Could not skip the song!", ephemeral: true });
-	} else if (interaction.commandName === "stop") {
+	} else if(interaction.commandName === "stop"){
 		const queue = player.getQueue(interaction.guildId);
 		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
 		queue.destroy();
 		return await interaction.reply({ content: "⏹️ | Stopped the music!", ephemeral: true });
-	} else if (interaction.commandName === "queue") {
+	} else if(interaction.commandName === "queue"){
 		const queue = player.getQueue(interaction.guildId);
 		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
 		return await interaction.reply({ embeds: [new EmbedBuilder()
@@ -781,12 +866,12 @@ client.on('interactionCreate', async interaction => {
 				return `#${i + 1} - ${track.title}`
 			}).join("\n") : "No songs in queue!")
 		], ephemeral: true});
-	} else if (interaction.commandName === "pause") {
+	} else if(interaction.commandName === "pause"){
 		const queue = player.getQueue(interaction.guildId);
 		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
 		const success = queue.setPaused(true);
 		return await interaction.reply({ content: success ? "⏸ | Paused the music!" : "❌ | Could not pause the music!", ephemeral: true });
-	} else if (interaction.commandName === "resume") {
+	} else if(interaction.commandName === "resume"){
 		const queue = player.getQueue(interaction.guildId);
 		if (!queue) return await interaction.reply({ content: "❌ | No music is being played!", ephemeral: true });
 		const success = queue.setPaused(false);
