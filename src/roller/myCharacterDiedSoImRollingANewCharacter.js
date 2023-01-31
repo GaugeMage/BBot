@@ -2,6 +2,7 @@ exports.run = async(message) => {
     //Rolls up a new character
     message.channel.send("Your new character's stats:");
     let tempString = "";
+    let totalValue = 0;
     for(let i = 0; i < 6; i++){
         let rolls = [];
         let total = 0;
@@ -30,6 +31,8 @@ exports.run = async(message) => {
         }
 
         tempString += "= " + total;
+        totalValue += total;
     }
     message.channel.send(tempString);
+    message.channel.send("Total: " + totalValue);
 };

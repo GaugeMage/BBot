@@ -17,7 +17,6 @@ const PREFIX = process.env.PREFIX;
 const ACCUSATIONS = [" is sus", " is a Baka~!", " is cringe af "];
 const player = new Player(client);
 let kickPerms = false;
-let correctArgs = true;
 let board = [];
 let ticTacToeStarted = false;
 let isX = false;
@@ -161,7 +160,7 @@ client.on('ready', async() => {
 		description: 'loop the song'
 	})
 
-    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! I have been updated from Discordjsv12 to Discordjsv13. This means that I am only a little outdated instead of very outdated. Of course you guys probably do not know what that means... well for starters! I now have a slash command! Regardless, we are on another step forward on our ***path to an unstable timeline!***');
+    // client.channels.cache.get("954939890745901058").send('BBot Version 9.10.11.***12*** uploaded by BBot! Episode XX updates. New characters including a certain boxer and an alternate form to a knife! We are on another step forward on our ***path to an unstable timeline!***');
     // client.channels.cache.get("954939890745901058").send('Episode XVII Update! Another step forward on our ***path to infinity!***');
 });
 
@@ -404,7 +403,17 @@ client.on('messageCreate', async (message) => {
 	            message.reply('You are going to have to try harder if you want me that badly sweetie :kissing_heart: ');
 	        } else if(CMD_NAME === 'rook' || CMD_NAME === 'Rook'){
 	            message.channel.send('Rook? What do you mean by tha- Oh! What is this?!?! It seems that Dionte never finished ***that*** job.');
-	        } else if(CMD_NAME === 'faith' || CMD_NAME === 'Faith' || CMD_NAME === 'Chaos' || CMD_NAME === 'chaos'){
+			} else if(CMD_NAME === 'Ricky' || CMD_NAME === 'ricky' || CMD_NAME === 'rickyRat' || CMD_NAME === 'RickyRat' || CMD_NAME === 'rickyrat'){
+				message.channel.send('That poor soul. One who has traveled from a world now destroyed. His story was not always meant to be this sad. I understand the pain of losing all of your friends very well and I commend him for keeping true to his values. Ricky Rat, I believe that you will be able to fix the wrongs which were made one world ago.');
+			} else if(CMD_NAME === 'ModwinGriffith' || CMD_NAME === 'modwingriffith' || CMD_NAME === 'modwin' || CMD_NAME === 'Modwin'){
+				message.channel.send('Ahh! That boisterous man who runs the boxing gym in brooklyn? He is quite the fellow I must say. His life story is also quite interesting from the tales I have heard. His stand is quite strong and his hand to hand combat skills are also no joke! However, I must say, despite him being married and a father, he is quite the flirt. I hope he can keep his hands to himself.');
+			} else if(CMD_NAME === 'v' || CMD_NAME === 'V' || CMD_NAME === 'Vivi' || CMD_NAME === 'vivi'){
+				message.channel.send('That mysterious woman with a past not even I can track down? Well, all I have to say about her is that I hope that she is able to find what she is looking for in NYC.');
+			} else if(CMD_NAME === 'ImbroglioneUnleashed' || CMD_NAME === 'imbroglioneunleashed'){
+				message.channel.send("The blade's true form... Unadulterated lust and hunger for blood and flesh. He doesn't even consume it... A monster born out of hatred and a wish for humanity to end. I hope his creator was able to find peace knowing the devastation he set upon the world.");
+			} else if(CMD_NAME === 'CerseiCostello' || CMD_NAME === 'cerseicostello'){
+				message.channel.send("Wait... you found her?? WHERE WAS SHE?!?!?!?");
+			} else if(CMD_NAME === 'faith' || CMD_NAME === 'Faith' || CMD_NAME === 'Chaos' || CMD_NAME === 'chaos'){
 	            message.channel.send("The liars....... one did it for the benefit of all and one did it for the benefit of **their** world");
 	        } else if(CMD_NAME === '0'){
 	            message.channel.send("Ahhh so you understand how this is a perfected game, in which you can make it how you never lose. You are quite a smart cookie! 0... the amount of times that... they were able to win... and also the name of their leader. As he used to say... you should never go into a battle if you don't have at least 1 way of winning. Regardless, you are proceeding nicely...");
@@ -450,6 +459,33 @@ client.on('messageCreate', async (message) => {
 				require('./7778891011/current1HourFuture.js').run(message);
 			} else if(CMD_NAME == 50){
 				require('./7778891011/50.js').run(message);
+			} else if(CMD_NAME === 'unforgotten' || CMD_NAME === 'Unforgotten'){
+				const queue = player.createQueue(message.guild, {
+					ytdlOptions: {
+						filter: "audioonly",
+						highWaterMark: 1 << 30,
+						dlChunkSize: 0,
+					},
+					metadata: {
+						channel: message.channel,
+					}
+				});
+				try {
+					if(!queue.connection) await queue.connect(message.member.voice.channel);
+				} catch {
+					queue.destroy();
+					throw new Error("Could not join your voice channel!");
+				}
+				const track = await player.search("https://youtu.be/ol706oLODzg", {
+					requestedBy: message.author,	
+				}).then(x => x.tracks[0]);
+				queue.play(track);
+			} else if(CMD_NAME === 'nsfw'){
+				require('./helpers/nsfw.js').run(message, args);
+			} else if(CMD_NAME === 'meme'){
+				require('./helpers/meme.js').run(message);
+			} else if(CMD_NAME === 'dankmeme'){
+				require('./helpers/dankmeme.js').run(message);
 			} else if(CMD_NAME === 'play'){
 				if(!message.member.voice.channelId) return await message.reply("You are not in a voice channel");
 				const queue = player.createQueue(message.guild, {
@@ -620,7 +656,7 @@ client.on('messageCreate', async (message) => {
 	            require('./dnd/deckCommands/viewDecks.js').run(message);
 			} else if(CMD_NAME === 'listPacks' || CMD_NAME === 'lPacks'){
 				require('./dnd/packCommands/listPacks.js').run(message);
-			} else if(CMD_NAME === 'viewPack' || CMD_NAME === 'vPacks'){
+			} else if(CMD_NAME === 'viewPack' || CMD_NAME === 'vPack'){
 				require('./dnd/packCommands/viewPack.js').run(message, args);
 			} else if(CMD_NAME === 'shop' || CMD_NAME === 'Shop'){
 				require('./dnd/packCommands/shop.js').run(message);
@@ -700,7 +736,7 @@ client.on('messageCreate', async (message) => {
 				const location = require('./dnd/playerCommands/location.js');
 				const cast = require('./dnd/playerCommands/cast.js');
 				const equip = require('./dnd/playerCommands/equip.js');
-	            await location.run(client, turnLog, "location Speedwagon Foundation HQ", player2, player1);
+	            await location.run(client, turnLog, "l	ocation Speedwagon Foundation HQ", player2, player1);
 	            await summon.run(client, turnLog, "summon Catastrophe", player1, player2);
 	            await summon.run(client, turnLog, "summon Tyler Wolfe", player1, player2);
 				await summon.run(client, turnLog, "summon Repugnans Fabula", player1, player2);

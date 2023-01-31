@@ -10,7 +10,7 @@ exports.run = async(message) => {
     }, 10000);
 
     setTimeout(function(){
-        message.channel.send("It seems that some parts of Dr. Karolina Zeitmagier's personal life are in here. As you probably already knew, Karolina takes up three seats at the Wings of Icarus. Part of this is because of her role as a the Grandiose Antithesis of Chronomancy for the ***Present***, ***Past***, and ***Future***. You can tell which Karolina you are speaking to by seeing what seat she is in among other things. This position which has been placed upon her is rather large given that she was one of the newest members.");
+        message.channel.send("It seems that some parts of Dr. Karolina Zeitmagier's personal life are in here. As you probably already knew, Karolina takes up three seats at the Wings of Icarus. Part of this is because of her role as a the Grandiose Antithesis of Chronomancy for the ***Past***, ***Present***,  and ***Future***. You can tell which Karolina you are speaking to by seeing what seat she is in among other things. This position which has been placed upon her is rather large given that she was one of the newest members.");
     }, 15000);
 
     setTimeout(function(){

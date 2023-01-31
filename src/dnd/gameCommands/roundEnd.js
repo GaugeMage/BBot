@@ -22,9 +22,9 @@ exports.run = async(client, turnLog, player, player2) => {
                 }
                 --turnsLeft;
                 if(turnsLeft !== 0){
-                    player.field[i].name =player.field[i]?.name.split(" (P-G-")[0] + " (P-G-" + turnsLeft + ")";
+                    player.field[i].name = player.field[i]?.name.split(" (P-G-")[0] + " (P-G-" + turnsLeft + ")";
                 } else {
-                    player.field[i].name =player.field[i]?.name.split(" (P-G-")[0];
+                    player.field[i].name = player.field[i]?.name.split(" (P-G-")[0];
                 }
             }
             if(player.field[i]?.name.includes("(P-B)")){

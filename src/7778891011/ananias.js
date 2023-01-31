@@ -6,7 +6,7 @@ exports.run = async(message) => {
     message.channel.send('BBot bid me welcome into this place and I shall respect her wishes as well as the wishes of those who had the blessing of entering this place as well. I will help make this place finalized!');
     message.channel.send('For I am Ananias!');
     message.channel.send('```js\nPhase2: execute(7778891011);```');
-    message.channel.send('Now Horsemen... Tell me... Are you willing to help me complete these archives?');
+    message.channel.send('Now Horseman... Tell me... Are you willing to help me complete these archives?');
     
     const menu = new ActionRowBuilder()
         .addComponents(
