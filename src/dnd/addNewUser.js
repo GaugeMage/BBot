@@ -1,6 +1,6 @@
 exports.run = async(message) => {
     //Checks if user is already in userData.json file
-    const userData = require('./userData.json');
+    const userData = require('../data/userData.json');
     for(let i = 0; i < userData.length; i++){
         if(userData[i].id === message.author.id){
             message.channel.send("You are already in the database!");
@@ -24,6 +24,6 @@ exports.run = async(message) => {
 
     userData.push(newUser);
     const fs = require('fs');
-    fs.writeFile('./src/dnd/userData.json', JSON.stringify(require('./userData.json'), null, '\t'), (err) => {if(err) console.log(err);});
+    fs.writeFile('./src/data/userData.json', JSON.stringify(require('../data/userData.json'), null, '\t'), (err) => {if(err) console.log(err);});
     message.channel.send("You have been added to the database!");
 }

@@ -5,7 +5,7 @@ exports.run = async(message, args) => {
     let user = null;
 
     //Check if user exists
-    const userData = require('../userData.json');
+    const userData = require('.../data/userData.json');
     for(let i = 0; i < userData.length; i++){
         if(userData[i].id === tempUser){
             user = userData[i];

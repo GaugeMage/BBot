@@ -683,7 +683,7 @@ client.on('messageCreate', async (message) => {
 				require('./dnd/packCommands/openPack.js').run(message);
 	        } else if(CMD_NAME === 'temp'){
 	            let player1 = message.author.id;
-	            const userData = require('./dnd/userData.json');
+				const userData = require('./data/userData.json');
 	            for(let i = 0; i < userData.length; i++){
 	                if(userData[i].id === player1){
 	                    player1 = userData[i];

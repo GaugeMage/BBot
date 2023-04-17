@@ -4,7 +4,7 @@ exports.run = async(client, message, args, dndGameStarted) => {
         return [dndGameStarted, null, null, null, null];
     }
     require('../helpers/checkArgs.js').run(args, message);
-    const userData = require('./userData.json');
+    const userData = require('../data/userData.json');
     
     let player1 = message.author.id;
     let player2 = args[0];

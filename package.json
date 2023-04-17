@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/bb.js",
-    "dev": "nodemon ./src/bb.js"
+    "dev": "nodemon --ignore ./src/data/ ./src/bb.js"
   },
   "author": "BB",
   "license": "ISC",

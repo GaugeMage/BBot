@@ -3,7 +3,7 @@ exports.run = async(message, SIAmount) => {
     const tempUser = message.author.id;
 
     //Check if user exists
-    const userData = require('./players.json');
+    const userData = require('../data/players.json');
     for(let i = 0; i < userData.length; i++){
         if(userData[i].id === tempUser){
             user = userData[i];
@@ -34,7 +34,7 @@ exports.run = async(message, SIAmount) => {
 
     //Save user
     const fs = require('fs');
-    fs.writeFile('./src/sicounter/players.json', JSON.stringify(require('./players.json'), null, '\t'), (err) => {
+    fs.writeFile('./src/sicounter/players.json', JSON.stringify(require('../data/players.json'), null, '\t'), (err) => {
         if(err) console.log(err);
     });
 }

@@ -1,5 +1,5 @@
 exports.run = async(message) => {
-    const userData = require('../userData.json');
+    const userData = require('.../data/userData.json');
     const packs = require('../packs/packs.json');
 
     //Check if user exists
@@ -87,7 +87,7 @@ exports.run = async(message) => {
 
             //Save the user data
             const fs = require('fs');
-            fs.writeFile('./src/dnd/userData.json', JSON.stringify(userData, null, '\t'), (err) => {
+            fs.writeFile('./src/data/userData.json', JSON.stringify(userData, null, '\t'), (err) => {
                 if(err){
                     console.log(err);
                 }

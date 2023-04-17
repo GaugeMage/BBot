@@ -3,7 +3,7 @@ exports.run = async(message) => {
     const tempUser = message.author.id;
 
     //Check if user exists
-    const userData = require('./players.json');
+    const userData = require('../data/players.json');
     for(let i = 0; i < userData.length; i++){
         if(userData[i].id === tempUser){
             user = userData[i];
